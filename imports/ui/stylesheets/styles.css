@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'averta-thin';
+    src: url('/fonts/averta_thin-webfont.woff2') format('woff2'),
+         url('/fonts/averta_thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'averta';
+    src: url('/fonts/averta-webfont.woff2') format('woff2'),
+         url('/fonts/averta-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'averta-bold';
+    src: url('/fonts/averta_bold-webfont.woff2') format('woff2'),
+         url('/fonts/averta_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .font-title, .font-raleway{
+    text-transform: uppercase;
+    font-family: "averta-thin";
+}
+
+body{
+  font-family: "averta";
+}

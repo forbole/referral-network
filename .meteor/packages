@@ -28,3 +28,4 @@ react-meteor-data
 std:accounts-ui
 accounts-password
 accounts-facebook
+std:accounts-bootstrap
