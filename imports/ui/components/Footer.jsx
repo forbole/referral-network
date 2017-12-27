@@ -12,24 +12,16 @@ const Footer = () => {
             <nav className="pull-left">
         <ul>
           <li>
-            <a href="#">
-              Creative Tim
-            </a>
+            <a href="#">About Us</a>
           </li>
           <li>
-            <a href="#">
-               About Us
-            </a>
+            <a href="#">Contact Us</a>
           </li>
           <li>
-            <a href="#">
-               Blog
-            </a>
+            <a href="#">Blog</a>
           </li>
           <li>
-            <a href="#">
-              Licenses
-            </a>
+            <a href="#">Privacy Policy</a>
           </li>
         </ul>
             </nav>
