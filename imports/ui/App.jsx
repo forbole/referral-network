@@ -5,6 +5,9 @@ import DefaultLayout from '/imports/ui/layouts/Default.jsx';
 import EmptyLayout from '/imports/ui/layouts/Empty.jsx';
 
 import Home from '/imports/ui/pages/Home.jsx';
+import NotFound from '/imports/ui/pages/NotFound.jsx';
+import Login from '/imports/ui/users/Login.jsx';
+import Register from '/imports/ui/users/Register.jsx';
 // import About from './pages/about.jsx';
 // import NotFound from './pages/not_found.jsx';
 // import SignIn from './pages/sign_in.jsx';
@@ -17,8 +20,9 @@ export default class App extends Component {
             <Router>
               <Switch>
                 <DefaultLayout exact={true} path="/" component={Home} />
-                <DefaultLayout path="/signin" component={() => <div className="container"><Accounts.ui.LoginForm /></div>} />
-                <DefaultLayout path="/signup" component={() => <div className="container"><Accounts.ui.LoginForm formState={STATES.SIGN_UP} /></div>} />
+                <DefaultLayout path="/signin" component={Login} />
+                <DefaultLayout path="/signup" component={Register} />
+                <DefaultLayout path="*" component={NotFound}/>
               </Switch>
                 {/*}<Route path="/about" component={About} />*/}
               {/*

@@ -35,5 +35,11 @@
     "redux": "^3.7.2",
     "serialize-javascript": "^1.4.0",
     "useragent": "^2.2.1"
-  }
+  },
+  "description": "When we need help, we will ask our trusted friends. If our friends cannot help, they will ask their trusted friends. This is where word-of-mouth referrals happen. By making referrals, we are not just helping the people we trust to seize opportunities, but also the people who need help to get the right solutions. The keyword of referrals is trust.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "Forbole",
+  "license": "ISC"
 }
