@@ -1,7 +1,7 @@
 import { Accounts } from 'meteor/std:accounts-ui';
 
 Accounts.config({
-  sendVerificationEmail: true,
+  sendVerificationEmail: false,
   forbidClientAccountCreation: false
 });
 
