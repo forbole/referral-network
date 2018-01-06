@@ -1,1 +1,3 @@
-process.env.MAIL_URL = 'smtp://app84013633@heroku.com:8en52t1m9730@smtp.sendgrid.net:587';
+let sgUser = Meteor.settings.sendgrid.username;
+let sgPass = Meteor.settings.sendgrid.password;
+process.env.MAIL_URL = 'smtp://{sgUser}:{sgPass}@smtp.sendgrid.net:587';
