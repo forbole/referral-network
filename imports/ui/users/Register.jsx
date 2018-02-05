@@ -3,7 +3,9 @@ import { STATES } from 'meteor/std:accounts-ui';
 
 const Register = () => {
   return (
-    <div className="container"><Accounts.ui.LoginForm formState={STATES.SIGN_UP} /></div>
+    <div className="container">
+      <Accounts.ui.LoginForm formState={STATES.SIGN_UP} />
+    </div>
     )
 }
 

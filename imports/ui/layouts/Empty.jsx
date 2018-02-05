@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Match, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Match, Redirect, Switch } from 'react-router-dom';
 
 const EmptyLayout = ({component: Component, ...rest}) => {
   return (
