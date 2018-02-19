@@ -13,7 +13,7 @@ const Header = (...props) => {
                   <span className="icon-bar"></span>
               </button>
               <a className="navbar-brand" href="/">Forbole</a>
-              {(props.currentUser)?
+              {(props.user)?
               <div>has user</div>
               :<div><a href="/login">Sign In</a> <a href="/signup">Register</a></div>}
             </div>

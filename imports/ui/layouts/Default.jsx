@@ -7,7 +7,7 @@ const DefaultLayout = ({component: Component, ...rest}) => {
   return (
     <Route {...rest} render={matchProps => (
       <div className="default">
-        <Header />
+        <Header user={rest.user} />
           <div className="main">
             <Component {...matchProps} />
           </div>

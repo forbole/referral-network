@@ -17,8 +17,8 @@ import Register from '/imports/ui/users/Register.jsx';
 export default class App extends Component {
     constructor(props){
         super(props);
-        state = {
-          user: props.currentUser
+        this.state = {
+          user: props.currentUser?props.currentUser:''
         }
     }
 
@@ -27,7 +27,7 @@ export default class App extends Component {
         return (
             <Router>
               <Switch>
-                <DefaultLayout exact={true} path="/" render={(props) => (<Home user={this.props.currentUser} />)} />
+                <DefaultLayout exact={true} path="/" component={Home} user={this.state.currentUser} />
                 <DefaultLayout path="/login" component={Login} />
                 <DefaultLayout path="/signup" component={Register} />
                 <DefaultLayout path="*" component={NotFound}/>
