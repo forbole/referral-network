@@ -38,7 +38,7 @@ body{
   padding-top:90px;
 }
 
-.main-raised{
+.profile-page .main{
   padding-top: 0 !important;
 }
 
@@ -56,3 +56,10 @@ body{
     padding-right: 24px !important;
 }
 
+.label.label-info{
+  background-color: #f44336 !important;
+}
+
+.label.label-danger{
+  margin: 5px;
+}

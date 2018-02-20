@@ -10,6 +10,8 @@ import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
 import Profile from '/imports/ui/pages/profile/Profile.jsx';
+import Recommend from '/imports/ui/pages/Recommend.jsx';
+import Recommendation from '/imports/ui/pages/Recommendation.jsx';
 // import About from './pages/about.jsx';
 // import SignIn from './pages/sign_in.jsx';
 
@@ -32,6 +34,8 @@ export default class App extends Component {
                 <DefaultLayout path="/login" component={Login} />
                 <DefaultLayout path="/signup" component={Register} />
                 <DefaultLayout path="/profile" component={Profile} user={this.state.currentUser} />
+                <DefaultLayout path="/recommend" component={Recommend} user={this.state.currentUser} />
+                <DefaultLayout path="/recommendation" component={Recommendation} user={this.state.currentUser} />
                 <DefaultLayout path="*" component={NotFound}/>
               </Switch>
                 {/*}<Route path="/about" component={About} />*/}
