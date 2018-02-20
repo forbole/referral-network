@@ -37,3 +37,22 @@ body{
 .default .main{
   padding-top:90px;
 }
+
+.main-raised{
+  padding-top: 0 !important;
+}
+
+.space-50{
+  height: 50px;
+  display: block;
+}
+
+.tag{
+  padding: 3px 12px !important;
+  font-size: 1em !important;
+}
+
+.tag:hover {
+    padding-right: 24px !important;
+}
+

@@ -9,6 +9,7 @@ import Home from '/imports/ui/pages/Home.jsx';
 import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
+import Profile from '/imports/ui/pages/profile/Profile.jsx';
 // import About from './pages/about.jsx';
 // import SignIn from './pages/sign_in.jsx';
 
@@ -30,6 +31,7 @@ export default class App extends Component {
                 <DefaultLayout exact={true} path="/" component={Home} user={this.state.currentUser} />
                 <DefaultLayout path="/login" component={Login} />
                 <DefaultLayout path="/signup" component={Register} />
+                <DefaultLayout path="/profile" component={Profile} user={this.state.currentUser} />
                 <DefaultLayout path="*" component={NotFound}/>
               </Switch>
                 {/*}<Route path="/about" component={About} />*/}

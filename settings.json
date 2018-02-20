@@ -1,0 +1,8 @@
+{
+	"sendgrid": {
+		"username": ""
+	},
+	"facebook": {
+		"appId": ""
+	}
+}

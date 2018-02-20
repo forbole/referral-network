@@ -90,7 +90,7 @@ spacebars@1.0.15
 spacebars-compiler@1.1.3
 srp@1.0.10
 ssrwpo:minifierjs@2.0.0
-ssrwpo:ssr@2.6.1
+ssrwpo:ssr@2.6.0
 ssrwpo:uglifyjs2@0.6.0
 std:accounts-bootstrap@1.2.0
 std:accounts-ui@1.2.23
