@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import About from '/imports/ui/pages/profile/About.jsx';
+import Activity from '/imports/ui/pages/profile/Activity.jsx';
+import Wallet from '/imports/ui/pages/profile/Wallet.jsx';
 
 class Profile extends Component {
   render() {
@@ -27,11 +29,6 @@ class Profile extends Component {
                       </div>
                   </div>
                 </div>
-                <div className="col-xs-2 follow">
-                  <button className="btn btn-fab btn-primary" rel="tooltip" title="Follow this user">
-                    <i className="material-icons">add</i>
-                  </button>
-                </div>
             </div>
 
             <div className="card card-nav-tabs card-plain">
@@ -50,13 +47,9 @@ class Profile extends Component {
                 <div className="tab-content text-center">
                   
                   <About/>
+                  <Activity/>
+                  <Wallet/>
                   
-                  <div className="tab-pane" id="activity">
-                    <p>No activity.</p>
-                  </div>
-                  <div className="tab-pane" id="wallet">
-                    <p>0</p>
-                  </div>
                 </div>
               </div>
             </div>
