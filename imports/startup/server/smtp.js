@@ -1,3 +1,5 @@
-let sgUser = Meteor.settings.sendgrid.username;
-let sgPass = Meteor.settings.sendgrid.password;
-process.env.MAIL_URL = 'smtp://{sgUser}:{sgPass}@smtp.sendgrid.net:587';
+let smtpUser = Meteor.settings.mailgun.username;
+let smtpPassword = Meteor.settings.mailgun.password;
+let smtpServer = Meteor.settings.mailgun.server;
+let smtpPort = Meteor.settngs.mailgun.port
+process.env.MAIL_URL = 'smtp://{smtpUser}:{smtpPassword}@{smtpServer}:{smtpPort}';
