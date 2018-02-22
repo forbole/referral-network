@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.40",
     "actual": "^0.4.0",
     "babel-runtime": "^6.26.0",
     "bcrypt": "^1.0.3",
@@ -17,7 +18,7 @@
     "i18next-node-remote-backend": "0.0.4",
     "i18next-xhr-backend": "^1.5.0",
     "is-retina": "^1.0.3",
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "lodash": "^4.17.4",
     "meteor-node-stubs": "^0.3.2",
     "moment": "^2.20.1",
