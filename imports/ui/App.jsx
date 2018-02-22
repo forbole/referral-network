@@ -9,7 +9,7 @@ import Home from '/imports/ui/pages/Home.jsx';
 import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
-import Profile from '/imports/ui/pages/profile/Profile.jsx';
+import Profile from '/imports/ui/pages/Profile.jsx';
 import Recommend from '/imports/ui/pages/Recommend.jsx';
 import Recommendation from '/imports/ui/pages/Recommendation.jsx';
 // import About from './pages/about.jsx';
