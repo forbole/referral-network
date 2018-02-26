@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Accounts, STATES } from 'meteor/std:accounts-ui';
 import PrivateRoute from '/imports/ui/routes/PrivateRouteContainer.js';
 import DefaultLayout from '/imports/ui/layouts/DefaultContainer.js';
+import PublicLayout from '/imports/ui/layouts/Public.jsx';
 // import EmptyLayout from '/imports/ui/layouts/Empty.jsx';
 
 import Home from '/imports/ui/pages/Home.jsx';
@@ -29,9 +30,9 @@ export default class App extends Component {
             <Router>
               <Switch>
                 <PrivateRoute exact={true} path="/" component={Home} />
-                <DefaultLayout path="/login" component={Login} />
-                <DefaultLayout path="/signup" component={Register} />
-                <DefaultLayout path="*" component={NotFound}/>
+                <PublicLayout path="/login" component={Login} />
+                <PublicLayout path="/signup" component={Register} />
+                <PublicLayout path="*" component={NotFound}/>
               </Switch>
                 {/*}<Route path="/about" component={About} />*/}
               {/*

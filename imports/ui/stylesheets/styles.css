@@ -37,3 +37,9 @@ body{
 .default .main{
   padding-top:90px;
 }
+
+.login-header {
+  background-image: url('/img/bg7.jpg');
+  background-size: cover;
+  background-position: top center;
+}
