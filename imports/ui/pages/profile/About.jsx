@@ -90,7 +90,9 @@ class About extends Component {
 				<div>
 					<h3>Skill</h3>
 					<div class="row">
-						<input type="text" value="Design,UI/UX,Marketing,Web Development" class="tagsinput" data-role="tagsinput" data-color="danger"/>
+						<span className="label label-danger">Design</span>
+						<span className="label label-danger">UI/UX</span>
+						<span className="label label-danger">Marketing</span>
 					</div>
 				</div>
 
