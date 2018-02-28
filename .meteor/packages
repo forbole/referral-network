@@ -31,3 +31,4 @@ service-configuration@1.0.11
 std:accounts-ui
 std:accounts-bootstrap
 ssrwpo:ssr
+meteortoys:allthings
