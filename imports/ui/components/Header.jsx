@@ -31,23 +31,14 @@ class Header extends Component {
                       </li>
                     </ul>
                   : [
-                      (this.state.user.emails? 
+                      (this.state.user.emails?
                         <ul className="nav navbar-nav navbar-right">
                           <li>
                             <a href="#">Hello, {this.state.user.emails[0].address}</a>
                           </li>
                         </ul>
-                      : 
-                        <ul className="nav navbar-nav navbar-right">
-                          <li>
-                            <a href="/login">Sign In</a>
-                          </li>
-                          <li className="button-container">
-                            <a href="/signup" className="btn btn-white btn-round">
-                              <i className="material-icons">shopping_cart</i> Register
-                           </a>
-                          </li>
-                        </ul>
+                      : <></>
+
                       ),
                     ]
                   }
