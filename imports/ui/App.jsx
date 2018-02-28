@@ -2,8 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Accounts, STATES } from 'meteor/std:accounts-ui';
-import DefaultLayout from '/imports/ui/layouts/Default.jsx';
-import EmptyLayout from '/imports/ui/layouts/Empty.jsx';
+import PrivateRoute from '/imports/ui/routes/PrivateRouteContainer.js';
+import DefaultLayout from '/imports/ui/layouts/DefaultContainer.js';
+import PublicLayout from '/imports/ui/layouts/Public.jsx';
+// import EmptyLayout from '/imports/ui/layouts/Empty.jsx';
 
 import Home from '/imports/ui/pages/Home.jsx';
 import NotFound from '/imports/ui/pages/NotFound.jsx';
@@ -30,13 +32,13 @@ export default class App extends Component {
         return (
             <Router>
               <Switch>
-                <DefaultLayout exact={true} path="/" component={Home} user={this.state.currentUser} />
-                <DefaultLayout path="/login" component={Login} />
-                <DefaultLayout path="/signup" component={Register} />
-                <DefaultLayout path="/profile" component={Profile} user={this.state.currentUser} />
-                <DefaultLayout path="/recommend" component={Recommend} user={this.state.currentUser} />
-                <DefaultLayout path="/recommendation" component={Recommendation} user={this.state.currentUser} />
-                <DefaultLayout path="*" component={NotFound}/>
+                <PrivateRoute exact={true} path="/" component={Home} />
+                <PublicLayout path="/login" component={Login} />
+                <PublicLayout path="/signup" component={Register} />
+                <PublicLayout path="*" component={NotFound}/>
+                <PublicLayout path="/profile" component={Profile} user={this.state.currentUser} />
+                <PublicLayout path="/recommend" component={Recommend} user={this.state.currentUser} />
+                <PublicLayout path="/recommendation" component={Recommendation} user={this.state.currentUser} />
               </Switch>
                 {/*}<Route path="/about" component={About} />*/}
               {/*

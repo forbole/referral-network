@@ -2,8 +2,7 @@
     font-family: 'averta-thin';
     src: url('/fonts/averta_thin-webfont.woff2') format('woff2'),
          url('/fonts/averta_thin-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-weight: lighter;
 
 }
 
@@ -12,7 +11,6 @@
     src: url('/fonts/averta-webfont.woff2') format('woff2'),
          url('/fonts/averta-webfont.woff') format('woff');
     font-weight: normal;
-    font-style: normal;
 
 }
 
@@ -20,30 +18,54 @@
     font-family: 'averta-bold';
     src: url('/fonts/averta_bold-webfont.woff2') format('woff2'),
          url('/fonts/averta_bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-weight: bold;
+}
 
+@font-face {
+    font-family: 'ff-tisa';
+    src: url('/fonts/ff-tisa-ot-medium.woff2') format('woff2'),
+         url('/fonts/ff-tisa-ot-medium.woff') format('woff');
+    font-weight: normal;
+
+}
+
+@font-face {
+    font-family: 'ff-tisa-italic';
+    src: url('/fonts/ff-tisa-ot-medium-italic.woff2') format('woff2'),
+         url('/fonts/ff-tisa-ot-medium-italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .font-title, .font-raleway{
     text-transform: uppercase;
-    font-family: "averta-thin";
-}
-
-.title{
-    font-family: 'averta-bold';
-    src: url('/fonts/averta_bold-webfont.woff2') format('woff2'),
-         url('/fonts/averta_bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: "averta-thin", sans-serif;
 }
 
 body{
   font-family: "averta";
 }
 
+.serif-font {
+  font-family: "ff-tisa", "Times New Roman", serif;
+}
+
+.title, .card-title, .info-title, .footer-brand, .footer-big h5, .footer-big h4, .media .media-heading {
+  font-family: "ff-tisa", "Times New Roman", serif;
+}
+
+.media .media-heading small {
+  font-family: "averta", "Helvetica", "Arial", sans-serif;
+}
+
 .default .main{
   padding-top:90px;
+}
+
+.login-header {
+  background-image: url('/img/bg7.jpg');
+  background-size: cover;
+  background-position: top center;
 }
 
 .profile-page .main{
