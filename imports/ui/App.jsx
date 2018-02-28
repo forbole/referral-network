@@ -35,10 +35,10 @@ export default class App extends Component {
                 <PrivateRoute exact={true} path="/" component={Home} />
                 <PublicLayout path="/login" component={Login} />
                 <PublicLayout path="/signup" component={Register} />
-                <PublicLayout path="*" component={NotFound}/>
                 <PrivateRoute path="/profile" component={Profile}/>
                 <PrivateRoute path="/recommend" component={Recommend}/>
                 <PrivateRoute path="/recommendation" component={Recommendation}/>
+                <PublicLayout path="*" component={NotFound}/>
               </Switch>
                 {/*}<Route path="/about" component={About} />*/}
               {/*

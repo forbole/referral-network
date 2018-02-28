@@ -24,21 +24,33 @@ class Header extends Component {
               </div>
 
               <div className="collapse navbar-collapse">
-            		<ul className="nav navbar-nav navbar-right">
-                  {(this.state.user)?
-                  <li>
-                    <a href="#">Hello, {this.state.user.profile.name}</a>
-                  </li>:
-                  <>
-                    <li>
-                      <a href="/login">Sign In</a>
-                    </li>
-                    <li className="button-container">
-                      <a href="/signup" className="btn btn-white btn-round">
-            							<i className="material-icons">shopping_cart</i> Register
-            					</a>
-                    </li></>}
-        		    </ul>
+                  {(this.state.user.profile)?
+                    <ul className="nav navbar-nav navbar-right">
+                      <li>
+                        <a href="#">Hello, {this.state.user.profile.name}</a>
+                      </li>
+                    </ul>
+                  : [
+                      (this.state.user.emails? 
+                        <ul className="nav navbar-nav navbar-right">
+                          <li>
+                            <a href="#">Hello, {this.state.user.emails[0].address}</a>
+                          </li>
+                        </ul>
+                      : 
+                        <ul className="nav navbar-nav navbar-right">
+                          <li>
+                            <a href="/login">Sign In</a>
+                          </li>
+                          <li className="button-container">
+                            <a href="/signup" className="btn btn-white btn-round">
+                              <i className="material-icons">shopping_cart</i> Register
+                           </a>
+                          </li>
+                        </ul>
+                      ),
+                    ]
+                  }
               </div>
             </div>
         </nav>
