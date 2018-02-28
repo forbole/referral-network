@@ -27,7 +27,7 @@ class Header extends Component {
             		<ul className="nav navbar-nav navbar-right">
                   {(this.state.user)?
                   <li>
-                    <a href="#">Hello, {this.state.user}</a>
+                    <a href="#">Hello, {this.state.user.profile.name}</a>
                   </li>:
                   <>
                     <li>
