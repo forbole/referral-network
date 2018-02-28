@@ -18,9 +18,9 @@ class Recommendation extends Component {
 										<h5 className="card-description">
 											Your products, all the kits that I have downloaded from your site and worked with are sooo cool! I love the color mixtures, cards... everything. Keep up the great work!
 										</h5>
-										<span class="label label-danger">Marketing</span>
-										<span class="label label-danger">Advertising</span>
-										<span class="label label-danger">SEM</span>
+										<span className="label label-danger">Marketing</span>
+										<span className="label label-danger">Advertising</span>
+										<span className="label label-danger">SEM</span>
 									</div>
 
 									<div className="footer">
@@ -35,7 +35,7 @@ class Recommendation extends Component {
 								</div>
 							</div>
 							<div className="space-50"></div>
-							<button class="btn btn-primary btn-round">Accept</button>
+							<button className="btn btn-primary btn-round">Accept</button>
 							<div className="space-50"></div>
 						</div>
 					</div>
