@@ -9,6 +9,10 @@ class Header extends Component {
       }
   }
 
+  logout(){
+    Meteor.logout();
+  }
+
   render(){
     return (
       <nav className="navbar navbar-primary navbar-fixed-top">
@@ -24,24 +28,23 @@ class Header extends Component {
               </div>
 
               <div className="collapse navbar-collapse">
+                <ul className="nav navbar-nav navbar-right">
                   {(this.state.user.profile)?
-                    <ul className="nav navbar-nav navbar-right">
                       <li>
                         <a href="#">Hello, {this.state.user.profile.name}</a>
                       </li>
-                    </ul>
                   : [
                       (this.state.user.emails?
-                        <ul className="nav navbar-nav navbar-right">
                           <li>
                             <a href="#">Hello, {this.state.user.emails[0].address}</a>
                           </li>
-                        </ul>
                       : <></>
 
                       ),
                     ]
                   }
+                  <li><a href="#" onClick={this.logout}>Logout</a></li>
+                </ul>
               </div>
             </div>
         </nav>
