@@ -21,7 +21,7 @@ const Header = () => {
                   </li>
                   <li className="button-container">
                     <a href="/signup" className="btn btn-white btn-round">
-          							<i className="material-icons">shopping_cart</i> Register
+          							<i className="material-icons">power_settings_new</i> Register
           					</a>
                   </li>
         		    </ul>
