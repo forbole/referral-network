@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Redirect } from 'react-router-dom'
 
-
 class Login extends Component{
   constructor(props){
     super(props);

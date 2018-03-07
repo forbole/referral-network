@@ -23,7 +23,7 @@ class Register extends Component{
     if (this.state.redirectToReferrer) {
       return <Redirect to={from} />;
     }
-    
+
     return (
         <div className="container">
           <div className="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
