@@ -27,7 +27,7 @@ class Recommend extends Component {
 										</div>
 										<div className="form-group label-floating">
 											<label className="control-label">Tag</label>
-											<input type="text" value="" class="tagsinput" data-role="tagsinput" data-color="danger"/>
+											<input type="text" value="" className="tagsinput" data-role="tagsinput" data-color="danger"/>
 										</div>
 										<div className="submit text-center">
 											<input type="submit" className="btn btn-primary btn-raised btn-round" value="Save" />
