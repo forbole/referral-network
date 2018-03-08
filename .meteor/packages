@@ -32,5 +32,4 @@ std:accounts-bootstrap
 meteortoys:allthings
 bkruse:pace
 ui
-server-render
 blaze-html-templates

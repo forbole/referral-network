@@ -3,16 +3,14 @@ import React, { Component } from 'react';
 class Home extends Component {
   constructor(props){
     super(props);
-    
+
   }
 
   render() {
     return (
-      <div className="container">
-        <header>
-          <h1>Forbole</h1>
-        </header>
-       </div>
+      <div className="main main-raised">
+        <h1>Forbole</h1>
+      </div>
     );
   }
 }

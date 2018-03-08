@@ -10,11 +10,8 @@ class PrivateRoute extends Component {
   }
 
   render(){
-      // console.log(this.props);
-      var { component, ...rest } = this.props;
-      var props = this.props;
-      // console.log(component);
-
+      let { component, transHead, ...rest } = this.props;
+      let props = this.props;
       if (this.props.loggingIn){
         return (
           <div>Loggin In</div>
@@ -23,7 +20,7 @@ class PrivateRoute extends Component {
       else if (this.props.currentUser){
         return (
           <Route {...rest} render={props =>
-                <DefaultLayout {...props} component={component} />}
+                <DefaultLayout {...props} component={component} transHead={this.props.transHead} />}
           />
         )
       }

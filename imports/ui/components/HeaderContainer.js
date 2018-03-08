@@ -7,11 +7,13 @@ import Header from './Header.jsx';
 Header.propTypes = {
     loggingIn: PropTypes.bool,
     currentUser: PropTypes.object,
+    transHead: PropTypes.bool
 };
 
-export default HeaderContainer = withTracker(() => {
+export default HeaderContainer = withTracker((props) => {
   return {
     currentUser : Meteor.user(),
-    loggingIn : Meteor.loggingIn()
+    loggingIn : Meteor.loggingIn(),
+    transHead : props.transHead
   };
 })(Header);

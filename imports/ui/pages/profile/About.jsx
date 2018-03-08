@@ -89,7 +89,7 @@ class About extends Component {
 
 				<div>
 					<h3>Skill</h3>
-					<div class="row">
+					<div className="row">
 						<span className="label label-danger">Design</span>
 						<span className="label label-danger">UI/UX</span>
 						<span className="label label-danger">Marketing</span>

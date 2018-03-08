@@ -18,49 +18,49 @@ var big_image;
 
      // Init Material scripts for buttons ripples, inputs animations etc, more info on the next link https://github.com/FezVrasta/bootstrap-material-design#materialjs
      $.material.init();
-
-     window_width = $(window).width();
-
-     $navbar = $('.navbar[color-on-scroll]');
-     scroll_distance = $navbar.attr('color-on-scroll') || 500;
-
-     $navbar_collapse = $('.navbar').find('.navbar-collapse');
-
-     //  Activate the Tooltips
-     $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
-
-     //    Activate bootstrap-select
-     if($(".selectpicker").length != 0){
-         $(".selectpicker").selectpicker();
-     }
-
-     // Activate Popovers
-     $('[data-toggle="popover"]').popover();
-
-     // Active Carousel
- 	$('.carousel').carousel({
-       interval: 3000
-     });
-
-     //Activate tags
-     //removed class label and label-color from tag span and replaced with data-color
-     var tagClass = $('.tagsinput').data('color');
-
-     $('.tagsinput').tagsinput({
-         tagClass: ' tag-'+ tagClass +' '
-     });
-
-     if($('.navbar-color-on-scroll').length != 0){
-         $(window).on('scroll', materialKit.checkScrollForTransparentNavbar)
-     }
-
-     if (window_width >= 768){
-         big_image = $('.page-header[data-parallax="true"]');
-         if(big_image.length != 0){
-            $(window).on('scroll', materialKitDemo.checkScrollForParallax);
-         }
-
-     }
+  //
+  //    window_width = $(window).width();
+  //
+  //    $navbar = $('.navbar[color-on-scroll]');
+  //    scroll_distance = $navbar.attr('color-on-scroll') || 500;
+  //
+  //    $navbar_collapse = $('.navbar').find('.navbar-collapse');
+  //
+  //    //  Activate the Tooltips
+  //    $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
+  //
+  //    //    Activate bootstrap-select
+  //    if($(".selectpicker").length != 0){
+  //        $(".selectpicker").selectpicker();
+  //    }
+  //
+  //    // Activate Popovers
+  //    $('[data-toggle="popover"]').popover();
+  //
+  //    // Active Carousel
+ 	// $('.carousel').carousel({
+  //      interval: 3000
+  //    });
+  //
+  //    //Activate tags
+  //    //removed class label and label-color from tag span and replaced with data-color
+  //    var tagClass = $('.tagsinput').data('color');
+  //
+  //    $('.tagsinput').tagsinput({
+  //        tagClass: ' tag-'+ tagClass +' '
+  //    });
+  //
+  //    if($('.navbar-color-on-scroll').length != 0){
+  //        $(window).on('scroll', materialKit.checkScrollForTransparentNavbar)
+  //    }
+  //
+  //    if (window_width >= 768){
+  //        big_image = $('.page-header[data-parallax="true"]');
+  //        if(big_image.length != 0){
+  //           $(window).on('scroll', materialKitDemo.checkScrollForParallax);
+  //        }
+  //
+  //    }
  });
 
  $(window).on("load", function() {
