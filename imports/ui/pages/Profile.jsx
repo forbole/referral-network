@@ -7,7 +7,8 @@ import Wallet from '/imports/ui/pages/profile/Wallet.jsx';
 class Profile extends Component {
   render() {
     let headerBg = {
-      backgroundImage:'url(/img/examples/city.jpg)'
+      backgroundImage:'url(/img/kwun-profile-header.jpg)',
+      backgroundPosition: 'center center'
     };
 
     return (
@@ -24,7 +25,7 @@ class Profile extends Component {
                 <div className="col-xs-6 col-xs-offset-3">
                    <div className="profile">
                         <div className="avatar">
-                            <img src="/img/faces/christian.jpg" className="img-circle img-responsive img-raised"/>
+                            <img src="/img/faces/kwun-profile.jpg" className="img-circle img-responsive img-raised"/>
                         </div>
                         <div className="name">
                             <h3 className="title">Kwun Yeung</h3>
@@ -44,9 +45,9 @@ class Profile extends Component {
                   <div className="nav-tabs-navigation">
                     <div className="nav-tabs-wrapper">
                       <ul className="nav nav-tabs" data-tabs="tabs">
-                        <li className="active col-xs-4 text-center"><a href="#about" data-toggle="tab">about</a></li>
-                        <li className="col-xs-4 text-center"><a href="#activity" data-toggle="tab">activity</a></li>
-                        <li className="col-xs-4 text-center"><a href="#wallet" data-toggle="tab">wallet</a></li>
+                        <li className="active col-xs-4 text-center"><a href="#about" data-toggle="tab">About Kwun</a></li>
+                        <li className="col-xs-4 text-center"><a href="#activity" data-toggle="tab">Activities</a></li>
+                        <li className="col-xs-4 text-center"><a href="#wallet" data-toggle="tab">Wallet</a></li>
                       </ul>
                     </div>
                   </div>
