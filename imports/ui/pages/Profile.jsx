@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import About from '/imports/ui/pages/profile/About.jsx';
 import Activity from '/imports/ui/pages/profile/Activity.jsx';
 import Wallet from '/imports/ui/pages/profile/Wallet.jsx';
+import Recommendations from '/imports/ui/pages/profile/Recommendations.jsx';
 
 class Profile extends Component {
   render() {
@@ -45,20 +46,20 @@ class Profile extends Component {
                   <div className="nav-tabs-navigation">
                     <div className="nav-tabs-wrapper">
                       <ul className="nav nav-tabs" data-tabs="tabs">
-                        <li className="active col-xs-4 text-center"><a href="#about" data-toggle="tab">About Kwun</a></li>
-                        <li className="col-xs-4 text-center"><a href="#activity" data-toggle="tab">Activities</a></li>
-                        <li className="col-xs-4 text-center"><a href="#wallet" data-toggle="tab">Wallet</a></li>
+                        <li className="active col-xs-3 text-center"><a href="#activity" data-toggle="tab">Activities</a></li>
+                        <li className="col-xs-3 text-center"><a href="#about" data-toggle="tab">Bio</a></li>
+                        <li className="col-xs-3 text-center"><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
+                        <li className="col-xs-3 text-center"><a href="#wallet" data-toggle="tab">Wallet</a></li>
                       </ul>
                     </div>
                   </div>
                 </div>
                 <div className="card-content">
-                  <div className="tab-content text-center">
-
-                    <About/>
-                    <Activity/>
-                    <Wallet/>
-
+                  <div className="tab-content">
+                    <Activity />
+                    <About />
+                    <Recommendations />
+                    <Wallet />
                   </div>
                 </div>
               </div>
