@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Recommendations extends Component {
   	render() {
     	return (
-    		<div className="tab-pane active" id="recommendations">
+    		<div className="tab-pane" id="recommendations">
           <h3>Recommendation</h3>
           <div className="row">
             <div className="col-md-4">
