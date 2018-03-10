@@ -9,15 +9,6 @@ class Header extends Component {
         headClass: (props.transHead)?" navbar-color-on-scroll navbar-transparent":""
       }
   }
-  // 
-  // componentDidMount(){
-  //     if($('.navbar-color-on-scroll').length != 0){
-  //         $(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
-  //     }
-  //     else{
-  //       $(window).off('scroll', materialKit.checkScrollForTransparentNavbar);
-  //     }
-  // }
 
   logout(){
     Meteor.logout();
@@ -34,7 +25,7 @@ class Header extends Component {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand" href="/">Forbole</a>
+                <a className="navbar-brand" href="/"><img className="logo" src="/img/forbole-logo-white.svg" />Forbole</a>
               </div>
 
               <div className="collapse navbar-collapse">

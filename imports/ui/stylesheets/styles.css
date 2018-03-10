@@ -74,6 +74,12 @@ body{
   min-height: 50vh;
 }
 
+.navbar-brand img.logo{
+  display: inline-block;
+  width: 1.2em;
+  margin-right: 0.2em;
+}
+
 .login-header {
   background-image: url('/img/bg7.jpg');
   background-size: cover;
