@@ -15,11 +15,11 @@ class About extends Component {
 				<div className="space-50"></div>
 
 				<div>
-					<h3>Skill</h3>
+					<h3>Skills</h3>
 					<div className="row">
-						<span className="label label-danger">Design</span>
-						<span className="label label-danger">UI/UX</span>
-						<span className="label label-danger">Marketing</span>
+						<span className="label label-primary">Design</span>
+						<span className="label label-primary">UI/UX</span>
+						<span className="label label-primary">Marketing</span>
 					</div>
 				</div>
 

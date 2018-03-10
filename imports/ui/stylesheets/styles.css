@@ -69,6 +69,11 @@ body{
   padding-top:90px;
 }
 
+.page-header.header-small{
+  height:50vh;
+  min-height: 50vh;
+}
+
 .login-header {
   background-image: url('/img/bg7.jpg');
   background-size: cover;

@@ -4,7 +4,7 @@ class Recommendations extends Component {
   	render() {
     	return (
     		<div className="tab-pane" id="recommendations">
-          <h3>Recommendation</h3>
+          <h3>Recommendations</h3>
           <div className="row">
             <div className="col-md-4">
               <div className="card card-testimonial">
