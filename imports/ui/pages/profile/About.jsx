@@ -10,8 +10,8 @@ class About extends Component {
               </div>
         		<div>
 				</div>
-				<div className="container skills">
-					  <h3>Skills</h3>
+				<div className="skills">
+					  <h3>Endorsed Skills</h3>
             <div className="row">
               <div className="col-md-12">
   						  <span className="label label-primary">Blockchain</span>&nbsp;
