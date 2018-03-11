@@ -53,20 +53,6 @@ export default class App extends Component {
           interval: 3000
         });
 
-        //Activate tags
-        //removed class label and label-color from tag span and replaced with data-color
-        var tagClass = $('.tagsinput').data('color');
-
-        $('.tagsinput').tagsinput({
-            tagClass: ' tag-'+ tagClass +' '
-        });
-
-        if($('.navbar-color-on-scroll').length != 0){
-            $(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
-        }
-        else{
-          $(window).off('scroll', materialKit.checkScrollForTransparentNavbar);
-        }
 
         if (window_width >= 768){
             big_image = $('.page-header[data-parallax="true"]');

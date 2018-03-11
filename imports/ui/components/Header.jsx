@@ -10,6 +10,15 @@ class Header extends Component {
       }
   }
 
+  componentDidMount(){
+      if($('.navbar-color-on-scroll').length != 0){
+          $(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
+      }
+      else{
+        $(window).off('scroll', materialKit.checkScrollForTransparentNavbar);
+      }
+  }
+
   logout(){
     Meteor.logout();
   }
