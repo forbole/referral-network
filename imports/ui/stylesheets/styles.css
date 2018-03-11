@@ -80,6 +80,13 @@ body{
   margin-right: 0.4em;
 }
 
+.navbar .avatar{
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 5px;
+}
 .login-header {
   background-image: url('/img/bg7.jpg');
   background-size: cover;

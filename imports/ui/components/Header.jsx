@@ -39,7 +39,41 @@ class Header extends Component {
 
               <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav navbar-right">
-                  {(this.state.user.profile)?
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="/img/faces/terence-lam.jpg" className="avatar img-raised"/> Terence Lam
+                        <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu dropdown-with-icons">
+                        <li>
+                          <a href="examples/about-us.html">
+                            <i class="material-icons">account_balance</i> My Profile
+                          </a>
+                        </li>
+                        <li>
+                          <a href="examples/blog-posts.html">
+                            <i class="material-icons">view_quilt</i> Blog
+                          </a>
+                        </li>
+                        <li>
+                          <a href="examples/landing-page.html">
+                            <i class="material-icons">view_day</i> Recommendations
+                          </a>
+                        </li>
+                        <li>
+                          <a href="examples/pricing.html">
+                            <i class="material-icons">attach_money</i> Wallet
+                          </a>
+                        </li>
+                        <li>
+                          <a href="examples/product-page.html">
+                            <i class="material-icons">beach_access</i> Settings
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+
+                  {/*(this.state.user.profile)?
                       <li>
                         <a href="/profile">Hello, {this.state.user.profile.name}</a>
                       </li>
@@ -52,8 +86,8 @@ class Header extends Component {
 
                       ),
                     ]
-                  }
-                  <li><a href="#" onClick={this.logout}>Logout</a></li>
+                  */}
+                  <li><a href="#" onClick={this.logout}><i class="material-icons">clear</i> Logout</a></li>
                 </ul>
               </div>
             </div>
