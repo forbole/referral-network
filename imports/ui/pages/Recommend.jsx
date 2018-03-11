@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 
 class Recommend extends Component {
+
+  componentDidMount(){
+      //Activate tags
+      //removed class label and label-color from tag span and replaced with data-color
+      var tagClass = $('.tagsinput').data('color');
+
+      $('.tagsinput').tagsinput({
+          tagClass: 'label label-info tag-'+ tagClass +' ',
+          maxTags: 3
+      });
+
+      $('.bootstrap-tagsinput').addClass('form-control');
+  }
+
   	render() {
     	return (
     		<div>
@@ -8,7 +22,7 @@ class Recommend extends Component {
             <div className="container">
         			<div className="row">
         				<div className="col-md-8 col-md-offset-2 text-center">
-        					<h1 className="title">Recommend Kwun Yeung</h1>
+        					<h1 className="title"></h1>
         				</div>
         			</div>
         		</div>
@@ -18,6 +32,7 @@ class Recommend extends Component {
 			    		<div className="container">
 							<div className="row">
 								<div className="col-md-12">
+                  <div className="title text-center"><h3>Make a Recommendation</h3></div>
                   <div className="card card-profile card-plain">
         						<div className="card-avatar">
         							<a href="#pablo">
@@ -44,8 +59,8 @@ class Recommend extends Component {
       								<textarea name="recommendation" className="form-control" id="recommendation" rows="6"></textarea>
       							</div>
 										<div className="form-group label-floating">
-											<label className="control-label">Tag</label>
-											<input type="text" value="" className="tagsinput" data-role="tagsinput" data-color="primary"/>
+                      <label className="control-label">Endorse 3 Skills</label>
+                      <input type="text" value="Blockchain, UX/UI, Entrepreneurship" class="tagsinput" data-role="tagsinput" data-color="rose"/>
 										</div>
 										<div className="submit text-center">
 											<input type="submit" className="btn btn-primary btn-raised btn-round" value="Send" />
