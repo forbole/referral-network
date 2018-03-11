@@ -1,34 +1,43 @@
 import React, { Component } from 'react';
+import moment from 'moment'
 
 class Recommendation extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      fromDate: moment("20180311", "YYYYMMDD").fromNow()
+    }
+  }
+
   	render() {
     	return (
     		<div className="contact-page">
     			<div className="main main-raised">
 					<div className="contact-content">
 			    		<div className="container">
-			    			<h2 className="title">Receive a Recommendation</h2>
+			    			<h2 className="title">You are recommended!</h2>
 			    			<div className="col-md-12">
-			    				<h5>You've got a recommendation from Alec Thompson on ...</h5>
+			    				<h5>You've got a recommendation from <a href="#"><em>Terence Lam</em></a> {this.state.fromDate}</h5>
 								<div className="card card-testimonial">
 									<div className="icon">
 										<i className="material-icons">format_quote</i>
 									</div>
 									<div className="card-content">
-										<h5 className="card-description">
-											Your products, all the kits that I have downloaded from your site and worked with are sooo cool! I love the color mixtures, cards... everything. Keep up the great work!
-										</h5>
-										<span className="label label-danger">Marketing</span>
-										<span className="label label-danger">Advertising</span>
-										<span className="label label-danger">SEM</span>
+										<blockquote className="blockquote">
+											<p>Kwun always keeps abreast with the latest development of multimedia technology. He shows to me high degree of management skill with junior colleagues. He shows also excellent EQ when handling difficult tasks and clients.</p>
+                      <p>He is a great business partner, colleague and friend to work with.</p>
+										</blockquote>
+										<span className="label label-danger">Blockchain</span>
+										<span className="label label-danger">UX/UI</span>
+										<span className="label label-danger">Entrepreneurship</span>
 									</div>
 
 									<div className="footer">
-										<h4 className="card-title">Alec Thompson</h4>
-										<h6 className="category">@alecthompson</h6>
+										<h4 className="card-title">Terence Lam</h4>
+										<h6 className="category">@terencelam</h6>
 										<div className="card-avatar">
 											<a href="#">
-												<img className="img" src="/img/faces/card-profile1-square.jpg" />
+												<img className="img" src="/img/faces/terence-lam.jpg" />
 											</a>
 										</div>
 									</div>
