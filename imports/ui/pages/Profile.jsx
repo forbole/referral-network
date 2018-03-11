@@ -46,10 +46,9 @@ class Profile extends Component {
                   <div className="nav-tabs-navigation">
                     <div className="nav-tabs-wrapper">
                       <ul className="nav nav-tabs" data-tabs="tabs">
-                        <li className="active col-md-3 text-center"><a href="#about" data-toggle="tab">Bio</a></li>
-                          <li className="col-md-3 text-center"><a href="#blog" data-toggle="tab">Blog</a></li>
-                        <li className="col-md-3 text-center"><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
-                        <li className="col-md-3 text-center"><a href="#wallet" data-toggle="tab">Wallet</a></li>
+                        <li className="active text-center"><a href="#about" data-toggle="tab">Bio</a></li>
+                        <li className="text-center"><a href="#blog" data-toggle="tab">Blog</a></li>
+                        <li className="text-center"><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
                       </ul>
                     </div>
                   </div>
@@ -59,7 +58,6 @@ class Profile extends Component {
                     <About />
                     <Blog />
                     <Recommendations />
-                    <Wallet />
                   </div>
                 </div>
               </div>

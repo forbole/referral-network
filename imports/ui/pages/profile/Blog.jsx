@@ -19,7 +19,7 @@ class Blog extends Component {
               <h6 className="category text-success">Blockchain</h6>
 
               <h4 className="card-title">
-                <a href="#pablo">5 Common Legal Mistakes That Can Trip-Up Your Startup</a>
+                <a href="#pablo">Proof-of-Work vs Proof-of-Stake</a>
               </h4>
               <p className="card-description">
                 Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
@@ -53,7 +53,7 @@ class Blog extends Component {
             <h6 className="category text-success">Technology</h6>
 
             <h4 className="card-title">
-              <a href="#pablo">5 Common Legal Mistakes That Can Trip-Up Your Startup</a>
+              <a href="#pablo">The programming language you should learn in 2018</a>
             </h4>
             <p className="card-description">
               Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
@@ -88,7 +88,7 @@ class Blog extends Component {
           <h6 className="category text-success">Entrepreneurship</h6>
 
           <h4 className="card-title">
-            <a href="#pablo">5 Common Legal Mistakes That Can Trip-Up Your Startup</a>
+            <a href="#pablo">Be naughty</a>
           </h4>
           <p className="card-description">
             Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
