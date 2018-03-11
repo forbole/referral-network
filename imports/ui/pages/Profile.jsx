@@ -41,7 +41,7 @@ class Profile extends Component {
 	                </div>
               </div>
 
-              <div className="card card-nav-tabs card-plain">
+              <div className="card card-nav-tabs">
                 <div className="header header-danger">
                   <div className="nav-tabs-navigation">
                     <div className="nav-tabs-wrapper">
