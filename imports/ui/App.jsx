@@ -13,6 +13,7 @@ import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
 import Profile from '/imports/ui/pages/Profile.jsx';
 import Recommend from '/imports/ui/pages/Recommend.jsx';
+import RecommendSent from '/imports/ui/pages/RecommendSent.jsx';
 import Recommendation from '/imports/ui/pages/Recommendation.jsx';
 // import About from './pages/about.jsx';
 // import SignIn from './pages/sign_in.jsx';
@@ -22,9 +23,9 @@ import Recommendation from '/imports/ui/pages/Recommendation.jsx';
 export default class App extends Component {
     constructor(props){
         super(props);
-        this.state = {
-          user: props.currentUser?props.currentUser:''
-        }
+        // this.state = {
+        //   user: props.currentUser?props.currentUser:''
+        // }
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -73,6 +74,7 @@ export default class App extends Component {
                 <PublicLayout path="/login" component={Login} />
                 <PublicLayout path="/signup" component={Register} />
                 <PrivateRoute path="/profile" component={Profile} transHead={true} />
+                <PrivateRoute path="/recommend/sent" component={RecommendSent} transHead={true} />
                 <PrivateRoute path="/recommend" component={Recommend} transHead={true}/>
                 <PrivateRoute path="/recommendation" component={Recommendation}/>
                 <PublicLayout path="*" component={NotFound}/>

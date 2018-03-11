@@ -52,18 +52,20 @@ class Recommend extends Component {
 									<form role="form" id="contact-form" method="post">
 										<div className="form-group label-floating">
 											<label className="control-label">Your name</label>
-											<input type="text" name="name" className="form-control" value="Terence Lam"/>
+											<input type="text" name="name" className="form-control" value="Terence Lam" readOnly={true}/>
 										</div>
                     <div className="form-group label-floating">
       								<label className="control-label">Recommendation</label>
-      								<textarea name="recommendation" className="form-control" id="recommendation" rows="6"></textarea>
+      								<textarea name="recommendation" className="form-control" id="recommendation" rows="6" value="Kwun always keeps abreast with the latest development of multimedia technology. He shows to me high degree of management skill with junior colleagues. He shows also excellent EQ when handling difficult tasks and clients.
+
+He is a great business partner, colleague and friend to work with." readOnly={true}></textarea>
       							</div>
 										<div className="form-group label-floating">
                       <label className="control-label">Endorse 3 Skills</label>
-                      <input type="text" value="Blockchain, UX/UI, Entrepreneurship" class="tagsinput" data-role="tagsinput" data-color="rose"/>
+                      <input type="text" readOnly={true} defaultValue="Blockchain, UX/UI, Entrepreneurship" className="tagsinput" data-role="tagsinput" data-color="rose"/>
 										</div>
 										<div className="submit text-center">
-											<input type="submit" className="btn btn-primary btn-raised btn-round" value="Send" />
+											<a href="/recommend/sent/" className="btn btn-primary btn-raised btn-round">Send</a>
 										</div>
 									</form>
 								</div>

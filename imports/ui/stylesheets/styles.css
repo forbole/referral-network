@@ -111,3 +111,7 @@ body{
 .label.label-danger{
   margin: 2px;
 }
+
+.skills span.label{
+  display: inline-block;
+}
