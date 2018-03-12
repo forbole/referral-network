@@ -11,7 +11,7 @@ const Header = () => {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand" href="/">Forbole</a>
+                <a className="navbar-brand" href="/"><img className="logo" src="/img/forbole-logo-white.svg" />Forbole</a>
               </div>
 
               <div className="collapse navbar-collapse">
