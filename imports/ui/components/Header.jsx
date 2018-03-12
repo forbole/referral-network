@@ -40,7 +40,7 @@ class Header extends Component {
               <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav navbar-right">
                     <li className="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                         <img src="/img/faces/terence-lam.jpg" className="avatar img-raised"/> Terence Lam
                         <b className="caret"></b>
                       </a>
