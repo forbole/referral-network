@@ -29,7 +29,6 @@ ssrwpo:uglifyjs2
 service-configuration@1.0.11
 std:accounts-ui
 std:accounts-bootstrap
-meteortoys:allthings
 bkruse:pace
 ui
 blaze-html-templates

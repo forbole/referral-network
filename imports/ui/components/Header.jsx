@@ -61,7 +61,7 @@ class Header extends Component {
                           </a>
                         </li>
                         <li>
-                          <a href="/recommendations/">
+                          <a href="/recommendation/">
                             <i className="material-icons">view_day</i> Recommendations
                           </a>
                         </li>
@@ -92,7 +92,7 @@ class Header extends Component {
                       ),
                     ]
                   */}
-                  <li><a href="#" onClick={this.logout}><i class="material-icons">clear</i> Logout</a></li>
+                  <li><a href="#" onClick={this.logout}><i className="material-icons">clear</i> Logout</a></li>
                 </ul>
               </div>
             </div>

@@ -15,6 +15,8 @@ import Profile from '/imports/ui/pages/Profile.jsx';
 import Recommend from '/imports/ui/pages/Recommend.jsx';
 import RecommendSent from '/imports/ui/pages/RecommendSent.jsx';
 import Recommendation from '/imports/ui/pages/Recommendation.jsx';
+import Connections from '/imports/ui/pages/Connections.jsx';
+
 // import About from './pages/about.jsx';
 // import SignIn from './pages/sign_in.jsx';
 
@@ -77,6 +79,7 @@ export default class App extends Component {
                 <PrivateRoute path="/recommend/sent" component={RecommendSent} transHead={true} />
                 <PrivateRoute path="/recommend" component={Recommend} transHead={true}/>
                 <PrivateRoute path="/recommendation" component={Recommendation}/>
+                <PrivateRoute path="/connections" component={Connections}/>
                 <PublicLayout path="*" component={NotFound}/>
               </Switch>
                 {/*}<Route path="/about" component={About} />*/}

@@ -111,6 +111,11 @@ body{
     padding-right: 24px !important;
 }
 
+.media .label{
+  display: inline-block;
+  margin-right: 0.2em;
+}
+
 .label.label-info{
   background-color: #f44336 !important;
 }
