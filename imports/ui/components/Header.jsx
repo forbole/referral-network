@@ -39,35 +39,40 @@ class Header extends Component {
 
               <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav navbar-right">
-                    <li class="dropdown">
+                    <li className="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="/img/faces/terence-lam.jpg" className="avatar img-raised"/> Terence Lam
-                        <b class="caret"></b>
+                        <b className="caret"></b>
                       </a>
-                      <ul class="dropdown-menu dropdown-with-icons">
+                      <ul className="dropdown-menu dropdown-with-icons">
                         <li>
-                          <a href="examples/about-us.html">
-                            <i class="material-icons">account_balance</i> My Profile
+                          <a href="/profile/">
+                            <i className="material-icons">account_balance</i> My Profile
                           </a>
                         </li>
                         <li>
-                          <a href="examples/blog-posts.html">
-                            <i class="material-icons">view_quilt</i> Blog
+                          <a href="/connections">
+                            <i className="material-icons">device_hub</i> Connections
                           </a>
                         </li>
                         <li>
-                          <a href="examples/landing-page.html">
-                            <i class="material-icons">view_day</i> Recommendations
+                          <a href="/blog/">
+                            <i className="material-icons">view_quilt</i> Blog
                           </a>
                         </li>
                         <li>
-                          <a href="examples/pricing.html">
-                            <i class="material-icons">attach_money</i> Wallet
+                          <a href="/recommendations/">
+                            <i className="material-icons">view_day</i> Recommendations
                           </a>
                         </li>
                         <li>
-                          <a href="examples/product-page.html">
-                            <i class="material-icons">beach_access</i> Settings
+                          <a href="/wallet/">
+                            <i className="material-icons">attach_money</i> Wallet
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/settings/">
+                            <i className="material-icons">beach_access</i> Settings
                           </a>
                         </li>
                       </ul>

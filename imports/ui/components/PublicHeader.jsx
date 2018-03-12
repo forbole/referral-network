@@ -17,11 +17,11 @@ const Header = () => {
               <div className="collapse navbar-collapse">
             		<ul className="nav navbar-nav navbar-right">
                   <li>
-                    <a href="/login">Sign In</a>
+                    <a href="/login"><i className="material-icons">power_settings_new</i> Sign In</a>
                   </li>
                   <li className="button-container">
                     <a href="/signup" className="btn btn-white btn-round">
-          							<i className="material-icons">power_settings_new</i> Register
+          							<i className="material-icons">add_circle</i> Register
           					</a>
                   </li>
         		    </ul>
