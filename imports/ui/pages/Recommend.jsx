@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class Recommend extends Component {
   constructor(props){
     super(props);
-    this.props = props;
+    // this.props = props;
 
     this.state = {
       toUser : ''
@@ -22,6 +22,7 @@ class Recommend extends Component {
       });
 
       $('.bootstrap-tagsinput').addClass('form-control');
+
       if (this.props.match.params.username != null){
           const toUser = (<div className="card card-profile card-plain">
             <div className="card-avatar">
@@ -40,6 +41,11 @@ class Recommend extends Component {
           </div>);
           this.setState({toUser: toUser});
       }
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitted");
   }
 
   	render() {
@@ -61,23 +67,34 @@ class Recommend extends Component {
     							<div className="row">
     								<div className="col-md-12">
                       {this.state.toUser}
-    									<form role="form" id="contact-form" method="post">
+    									<form role="form" id="recommendation-form" method="post">
     										<div className="form-group label-floating">
     											<label className="control-label">Your name</label>
-    											<input type="text" name="name" className="form-control" value="Terence Lam" readOnly={true}/>
+    											<input type="text" name="name" className="form-control" value={(this.props.currentUser)?this.props.currentUser.profile.name:''} readOnly={true}/>
     										</div>
+                        {(!this.state.toUser)?<div>
                         <div className="form-group label-floating">
-          								<label className="control-label">Recommendation</label>
-          								<textarea name="recommendation" className="form-control" id="recommendation" rows="6" value="Kwun always keeps abreast with the latest development of multimedia technology. He shows to me high degree of management skill with junior colleagues. He shows also excellent EQ when handling difficult tasks and clients.
+                          <label className="control-label">Who are you recommending?</label>
+                          <input type="text" name="toName" className="form-control" />
+                        </div>
+                        <div className="form-group label-floating">
+                          <label className="control-label">His/Her email address?</label>
+                          <input type="email" name="toName" className="form-control" />
+                        </div></div>:''}
+                        <div className="form-group label-floating">
+          								<textarea name="recommendation" className="form-control" id="recommendation" rows="6" placeholder="Detail of your recommendation.
 
-    He is a great business partner, colleague and friend to work with." readOnly={true}></textarea>
+                            What does he/she do?
+
+                            Why are you recommending this person?
+                            "></textarea>
           							</div>
-    										<div className="form-group label-floating">
-                          <label className="control-label">Endorse 3 Skills</label>
-                          <input type="text" readOnly={true} defaultValue="Blockchain, UX/UI, Entrepreneurship" className="tagsinput" data-role="tagsinput" data-color="rose"/>
+    										<div className="form-group">
+                          <label className="control-label">Endorse 3 Skills (press Enter for each skill)</label>
+                          <input type="text" className="tagsinput" data-role="tagsinput" data-color="rose"/>
     										</div>
     										<div className="submit text-center">
-    											<Link to="/recommend/sent/" className="btn btn-primary btn-raised btn-round">Send</Link>
+    											<button type="submit" className="btn btn-primary btn-raised btn-round" onClick={this.handleSubmit}>Send</button>
     										</div>
     									</form>
     								</div>

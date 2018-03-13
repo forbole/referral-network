@@ -5,6 +5,8 @@ import { Accounts, STATES } from 'meteor/std:accounts-ui';
 import PrivateRoute from '/imports/ui/routes/PrivateRouteContainer.js';
 import DefaultLayout from '/imports/ui/layouts/DefaultContainer.js';
 import PublicLayout from '/imports/ui/layouts/Public.jsx';
+import PropTypes from 'prop-types';
+
 // import EmptyLayout from '/imports/ui/layouts/Empty.jsx';
 
 import Home from '/imports/ui/pages/Home.jsx';
@@ -12,7 +14,7 @@ import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
 import Profile from '/imports/ui/pages/Profile.jsx';
-import Recommend from '/imports/ui/pages/Recommend.jsx';
+import Recommend from '/imports/ui/pages/RecommendContainer.js';
 import RecommendSent from '/imports/ui/pages/RecommendSent.jsx';
 import Recommendation from '/imports/ui/pages/Recommendation.jsx';
 import Connections from '/imports/ui/pages/Connections.jsx';
@@ -94,3 +96,8 @@ export default class App extends Component {
         );
     }
 }
+
+App.propTypes = {
+    loggingIn: PropTypes.bool,
+    currentUser: PropTypes.object,
+};
