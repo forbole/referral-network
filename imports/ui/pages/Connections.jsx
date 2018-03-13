@@ -8,9 +8,9 @@ class Connections extends Component {
         <h3 className="text-center">Your Connections</h3>
         <div className="row">
           <div className="col-md-12">
-							<select className="selectpicker" data-style="select-with-transition" title="Sort by: Recently recommended">
+							<select className="selectpicker" value="2" data-style="select-with-transition" title="Sort by: Recently recommended">
 								<option disabled> Sort by: Recently recommended</option>
-								<option value="2" selected>Recently recommended </option>
+								<option value="2" >Recently recommended </option>
 								<option value="3">First Name</option>
 								<option value="4">Last Name</option>
 							</select>
