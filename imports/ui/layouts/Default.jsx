@@ -9,7 +9,7 @@ const DefaultLayout = ({component: Component, transHead: transHead, ...rest}) =>
     <Route {...rest} render={matchProps => {
         return (
           <div className="default">
-            <HeaderContainer transHead={transHead}/>
+            <HeaderContainer />
               <div className={mainClass}>
                 <Component {...matchProps} />
               </div>

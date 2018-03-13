@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Connections extends Component {
   render(){
@@ -16,11 +17,11 @@ class Connections extends Component {
               <div className="card">
                 <div className="card-body media">
                   <div className="col-xs-3">
-                    <a href="/profile" className="pull-left">
+                    <Link to="/profile" className="pull-left">
                       <div className="avatar">
                         <img src="/img/faces/kwun-profile.jpg" />
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="col-xs-9">
                     <h4 className="media-heading">Kwun Yeung</h4>
@@ -38,11 +39,11 @@ class Connections extends Component {
               <div className="card">
                 <div className="card-body media">
                   <div className="col-xs-3">
-                    <a href="/profile" className="pull-left">
+                    <Link to="/profile" className="pull-left">
                       <div className="avatar">
                         <img src="/img/faces/jade-lai.jpg" />
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="col-xs-9">
                     <h4 className="media-heading">Jade Lai</h4>
@@ -60,11 +61,11 @@ class Connections extends Component {
               <div className="card">
                 <div className="card-body media">
                   <div className="col-xs-3">
-                    <a href="/profile" className="pull-left">
+                    <Link to="/profile" className="pull-left">
                       <div className="avatar">
                         <img src="/img/faces/gurjeet-chima.jpg" />
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="col-xs-9">
                     <h4 className="media-heading">Gurjeet Chima</h4>

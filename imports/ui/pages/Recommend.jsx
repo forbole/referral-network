@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Recommend extends Component {
 
@@ -35,9 +36,9 @@ class Recommend extends Component {
                   <div className="title text-center"><h3>Make a Recommendation</h3></div>
                   <div className="card card-profile card-plain">
         						<div className="card-avatar">
-        							<a href="#pablo">
+        							<Link to="#pablo">
         								<img className="img" src="/img/faces/kwun-profile.jpg" />
-        							</a>
+        							</Link>
         						</div>
 
         						<div className="card-content">
@@ -65,7 +66,7 @@ He is a great business partner, colleague and friend to work with." readOnly={tr
                       <input type="text" readOnly={true} defaultValue="Blockchain, UX/UI, Entrepreneurship" className="tagsinput" data-role="tagsinput" data-color="rose"/>
 										</div>
 										<div className="submit text-center">
-											<a href="/recommend/sent/" className="btn btn-primary btn-raised btn-round">Send</a>
+											<Link to="/recommend/sent/" className="btn btn-primary btn-raised btn-round">Send</Link>
 										</div>
 									</form>
 								</div>

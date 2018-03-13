@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 class Recommendation extends Component {
   constructor(props){
@@ -17,7 +18,7 @@ class Recommendation extends Component {
 			    		<div className="container">
 			    			<h2 className="title">You are recommended!</h2>
 			    			<div className="col-md-12">
-			    				<h5>You've got a recommendation from <a href="#"><em>Terence Lam</em></a> {this.state.fromDate}</h5>
+			    				<h5>You've got a recommendation from <Link to="#"><em>Terence Lam</em></Link> {this.state.fromDate}</h5>
 								<div className="card card-testimonial">
 									<div className="icon">
 										<i className="material-icons">format_quote</i>
@@ -36,9 +37,9 @@ class Recommendation extends Component {
 										<h4 className="card-title">Terence Lam</h4>
 										<h6 className="category">@terencelam</h6>
 										<div className="card-avatar">
-											<a href="#">
+											<Link to="#">
 												<img className="img" src="/img/faces/terence-lam.jpg" />
-											</a>
+											</Link>
 										</div>
 									</div>
 								</div>

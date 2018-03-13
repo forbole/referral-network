@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 
 class Blog extends Component {
   render() {
@@ -8,9 +9,9 @@ class Blog extends Component {
           <div className="col-md-6 col-lg-4">
           <div className="card card-blog">
             <div className="card-image">
-              <a href="#pablo">
+              <Link to="#pablo">
                 <img className="img" src="/img/examples/card-blog3.jpg"/>
-              </a>
+              </Link>
               <div className="colored-shadow" style={{backgroundImage: 'url(/img/examples/card-blog3.jpg)',opacity: 1}}></div>
               <div className="ripple-container"></div>
             </div>
@@ -19,17 +20,17 @@ class Blog extends Component {
               <h6 className="category text-success">Blockchain</h6>
 
               <h4 className="card-title">
-                <a href="#pablo">Proof-of-Work vs Proof-of-Stake</a>
+                <Link to="#pablo">Proof-of-Work vs Proof-of-Stake</Link>
               </h4>
               <p className="card-description">
                 Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
               </p>
               <div className="footer">
                 <div className="author">
-                  <a href="/profile">
+                  <Link to="/profile">
                     <img src="/img/faces/kwun-profile.jpg" alt="..." className="avatar img-raised"/>
                     <span>Kwun Yeung</span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="stats">
                   <i className="material-icons">schedule</i>
@@ -42,9 +43,9 @@ class Blog extends Component {
         <div className="col-md-6 col-lg-4">
         <div className="card card-blog">
           <div className="card-image">
-            <a href="#pablo">
+            <Link to="#pablo">
               <img className="img" src="/img/examples/card-blog2.jpg"/>
-            </a>
+            </Link>
             <div className="colored-shadow" style={{backgroundImage: 'url(/img/examples/card-blog2.jpg)',opacity: 1}}></div>
             <div className="ripple-container"></div>
           </div>
@@ -53,17 +54,17 @@ class Blog extends Component {
             <h6 className="category text-success">Technology</h6>
 
             <h4 className="card-title">
-              <a href="#pablo">The programming language you should learn in 2018</a>
+              <Link to="#pablo">The programming language you should learn in 2018</Link>
             </h4>
             <p className="card-description">
               Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
             </p>
             <div className="footer">
               <div className="author">
-                <a href="/profile">
+                <Link to="/profile">
                   <img src="/img/faces/kwun-profile.jpg" alt="..." className="avatar img-raised"/>
                   <span>Kwun Yeung</span>
-                </a>
+                </Link>
               </div>
               <div className="stats">
                 <i className="material-icons">schedule</i>
@@ -77,9 +78,9 @@ class Blog extends Component {
       <div className="col-md-6 col-lg-4">
       <div className="card card-blog">
         <div className="card-image">
-          <a href="#pablo">
+          <Link to="#pablo">
             <img className="img" src="/img/examples/card-blog1.jpg"/>
-          </a>
+          </Link>
           <div className="colored-shadow" style={{backgroundImage: 'url(/img/examples/card-blog1.jpg)',opacity: 1}}></div>
           <div className="ripple-container"></div>
         </div>
@@ -88,17 +89,17 @@ class Blog extends Component {
           <h6 className="category text-success">Entrepreneurship</h6>
 
           <h4 className="card-title">
-            <a href="#pablo">Be naughty</a>
+            <Link to="#pablo">Be naughty</Link>
           </h4>
           <p className="card-description">
             Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
           </p>
           <div className="footer">
             <div className="author">
-              <a href="/profile">
+              <Link to="/profile">
                 <img src="/img/faces/kwun-profile.jpg" alt="..." className="avatar img-raised"/>
                 <span>Kwun Yeung</span>
-              </a>
+              </Link>
             </div>
             <div className="stats">
               <i className="material-icons">schedule</i>

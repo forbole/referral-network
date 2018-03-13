@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Recommendations extends Component {
   	render() {
@@ -21,9 +22,9 @@ class Recommendations extends Component {
                   <h4 className="card-title">Terence Lam</h4>
                   <h6 className="category">@terencelam</h6>
                   <div className="card-avatar">
-                    <a href="#">
+                    <Link to="#">
                       <img className="img" src="/img/faces/terence-lam.jpg" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -44,9 +45,9 @@ class Recommendations extends Component {
                   <h4 className="card-title">Sami Edger</h4>
                   <h6 className="category">@samiyim</h6>
                   <div className="card-avatar">
-                    <a href="#">
+                    <Link to="#">
                       <img className="img" src="/img/faces/sami-yim.jpg" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -68,9 +69,9 @@ class Recommendations extends Component {
                   <h4 className="card-title">Colin Calnan</h4>
                   <h6 className="category">@colincalnan</h6>
                   <div className="card-avatar">
-                    <a href="#">
+                    <Link to="#">
                       <img className="img" src="/img/faces/colin-calnan.jpg" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   // console.log(props);
@@ -34,46 +35,46 @@ class Header extends Component {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand" href="/"><img className="logo" src="/img/forbole-logo-white.svg" />Forbole</a>
+                <Link className="navbar-brand" to="/"><img className="logo" src="/img/forbole-logo-white.svg" />Forbole</Link>
               </div>
 
               <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav navbar-right">
                     <li className="dropdown">
-                      <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                      <Link to="#" className="dropdown-toggle profile-link" data-toggle="dropdown">
                         <img src="/img/faces/terence-lam.jpg" className="avatar img-raised"/> Terence Lam
                         <b className="caret"></b>
-                      </a>
+                      </Link>
                       <ul className="dropdown-menu dropdown-with-icons">
                         <li>
-                          <a href="/profile/">
+                          <Link to="/profile/">
                             <i className="material-icons">account_balance</i> My Profile
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="/connections">
+                          <Link to="/connections">
                             <i className="material-icons">device_hub</i> Connections
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="/blog/">
+                          <Link to="/blog/">
                             <i className="material-icons">view_quilt</i> Blog
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="/recommendation/">
+                          <Link to="/recommendation/">
                             <i className="material-icons">view_day</i> Recommendations
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="/wallet/">
+                          <Link to="/wallet/">
                             <i className="material-icons">attach_money</i> Wallet
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="/settings/">
+                          <Link to="/settings/">
                             <i className="material-icons">beach_access</i> Settings
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </li>
@@ -92,7 +93,7 @@ class Header extends Component {
                       ),
                     ]
                   */}
-                  <li><a href="#" onClick={this.logout}><i className="material-icons">clear</i> Logout</a></li>
+                  <li><Link to="#" onClick={this.logout}><i className="material-icons">clear</i> Logout</Link></li>
                 </ul>
               </div>
             </div>

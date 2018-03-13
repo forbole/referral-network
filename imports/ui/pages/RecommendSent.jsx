@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 
 class RecommendSent extends Component {
 
@@ -38,9 +39,9 @@ class RecommendSent extends Component {
                 </div>
                 <div className="card card-profile card-plain">
                   <div className="card-avatar">
-                    <a href="#pablo">
+                    <Link to="#pablo">
                       <img className="img" src="/img/faces/kwun-profile.jpg"/>
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="card-content">

@@ -97,6 +97,10 @@ body{
   padding-top: 0 !important;
 }
 
+.profile-page .page-header{
+  height: 340px;
+}
+
 .space-50{
   height: 50px;
   display: block;
@@ -126,4 +130,11 @@ body{
 
 .skills span.label{
   display: inline-block;
+}
+
+@media (min-width: 768px){
+    .navbar .navbar-nav > li > a.profile-link{
+      padding-top: 12px;
+      padding-bottom: 8px;
+    }
 }

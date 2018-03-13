@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 import About from '/imports/ui/pages/profile/About.jsx';
 import Blog from '/imports/ui/pages/profile/Blog.jsx';
@@ -35,9 +36,9 @@ class Profile extends Component {
                     </div>
                   </div>
                   <div className="col-xs-2 follow">
-	                   <a href="/recommend" className="btn btn-fab btn-primary" rel="tooltip" title="Recommend Kwun">
+	                   <Link to="/recommend" className="btn btn-fab btn-primary" rel="tooltip" title="Recommend Kwun">
                             <i className="material-icons">add</i>
-                        </a>
+                        </Link>
 	                </div>
               </div>
 
