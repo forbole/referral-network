@@ -33,6 +33,7 @@ export default class App extends Component {
     componentDidUpdate(prevProps, prevState){
       // console.log('App componentDidMount');
       //rerun jquery for the current DOM
+
         window_width = $(window).width();
 
         $navbar = $('.navbar[color-on-scroll]');
@@ -72,12 +73,12 @@ export default class App extends Component {
         return (
             <Router>
               <Switch>
-                <PrivateRoute exact={true} path="/" component={Home} />
+                <PrivateRoute path="/" exact={true} component={Home} />
                 <PublicLayout path="/login" component={Login} />
                 <PublicLayout path="/signup" component={Register} />
                 <PrivateRoute path="/profile" component={Profile} transHead={true} />
-                <PrivateRoute path="/recommend/sent" component={RecommendSent} transHead={true} />
-                <PrivateRoute path="/recommend" component={Recommend} transHead={true}/>
+                <PrivateRoute path="/recommend/sent" exact={true} component={RecommendSent} transHead={true} />
+                <PrivateRoute path="/recommend/:username?" component={Recommend} transHead={true}/>
                 <PrivateRoute path="/recommendation" component={Recommendation}/>
                 <PrivateRoute path="/connections" component={Connections}/>
                 <PublicLayout path="*" component={NotFound}/>
