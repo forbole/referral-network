@@ -304,6 +304,7 @@ var big_image;
 
      checkScrollForParallax: debounce(function(){
          oVal = ($(window).scrollTop() / 3);
+         let big_image = $('.page-header[data-parallax="true"]');
          big_image.css({
              'transform':'translate3d(0,' + oVal +'px,0)',
              '-webkit-transform':'translate3d(0,' + oVal +'px,0)',
