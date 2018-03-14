@@ -45,7 +45,18 @@ class Recommend extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    // console.log(e.target);
+    const formData = new FormData(e.target);
+    let data = {};
+    for (let entry of formData.entries()) {
+       data[entry[0]] = entry[1];
+    }
+
+    Meteor.call('Recommendations.insert', data.name, data.toName, data.email, data.recommendation, data.skills, (error, result) => {
+      console.log(result);
+    });
+    // console.log(data);
+    // console.log("submitted");
   }
 
   	render() {
@@ -67,7 +78,7 @@ class Recommend extends Component {
     							<div className="row">
     								<div className="col-md-12">
                       {this.state.toUser}
-    									<form role="form" id="recommendation-form" method="post">
+    									<form role="form" id="recommendation-form" onSubmit={this.handleSubmit}>
     										<div className="form-group label-floating">
     											<label className="control-label">Your name</label>
     											<input type="text" name="name" className="form-control" value={(this.props.currentUser)?this.props.currentUser.profile.name:''} readOnly={true}/>
@@ -79,7 +90,7 @@ class Recommend extends Component {
                         </div>
                         <div className="form-group label-floating">
                           <label className="control-label">His/Her email address?</label>
-                          <input type="email" name="toName" className="form-control" />
+                          <input type="email" name="email" className="form-control" />
                         </div></div>:''}
                         <div className="form-group label-floating">
           								<textarea name="recommendation" className="form-control" id="recommendation" rows="6" placeholder="Detail of your recommendation.
@@ -91,10 +102,10 @@ class Recommend extends Component {
           							</div>
     										<div className="form-group">
                           <label className="control-label">Endorse 3 Skills (press Enter for each skill)</label>
-                          <input type="text" className="tagsinput" data-role="tagsinput" data-color="rose"/>
+                          <input name="skills" type="text" className="tagsinput" data-role="tagsinput" data-color="rose"/>
     										</div>
     										<div className="submit text-center">
-    											<button type="submit" className="btn btn-primary btn-raised btn-round" onClick={this.handleSubmit}>Send</button>
+    											<button type="submit" className="btn btn-primary btn-raised btn-round">Send</button>
     										</div>
     									</form>
     								</div>
