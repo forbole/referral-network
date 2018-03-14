@@ -31,5 +31,5 @@ std:accounts-ui
 std:accounts-bootstrap
 bkruse:pace
 ui
-blaze-html-templates
 meteortoys:allthings
+static-html
