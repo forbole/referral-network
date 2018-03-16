@@ -52,7 +52,7 @@ class Recommend extends Component {
        data[entry[0]] = entry[1];
     }
 
-    Meteor.call('Recommendations.insert', data.name, data.toName, data.email, data.recommendation, data.skills, (error, result) => {
+    Meteor.call('Recommendations.insert', data.name, data.toName, data.email, data.event, data.recommendation, data.skills, (error, result) => {
       console.log(result);
     });
     // console.log(data);
@@ -92,6 +92,10 @@ class Recommend extends Component {
                           <label className="control-label">His/Her email address?</label>
                           <input type="email" name="email" className="form-control" />
                         </div></div>:''}
+                        <div className="form-group label-floating">
+                          <label className="control-label">An event you interact with</label>
+                        <input type="text" name="event" className="form-control" />
+                        </div>
                         <div className="form-group label-floating">
           								<textarea name="recommendation" className="form-control" id="recommendation" rows="6" placeholder="Detail of your recommendation.
 
