@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Alert from '/imports/ui/components/Alert.jsx';
 
 class Recommend extends Component {
   constructor(props){
@@ -7,7 +8,8 @@ class Recommend extends Component {
     // this.props = props;
 
     this.state = {
-      toUser : ''
+      toUser : '',
+      alert: ''
     };
   }
 
@@ -54,9 +56,28 @@ class Recommend extends Component {
 
     Meteor.call('Recommendations.insert', data.name, data.toName, data.email, data.event, data.recommendation, data.skills, (error, result) => {
       console.log(result);
+      if (result){
+        this.setState({
+          alert: <Alert type="success" text={["Thank you! Your recommendation has been sent to ",<strong key="x">{data.toName}</strong>, "."]} />
+        });
+        $('#recommendation-form').hide();
+      }
     });
     // console.log(data);
     // console.log("submitted");
+  }
+
+  recommendAgain = (e) =>{
+    e.preventDefault();
+    $('#recommendation-form input[name=toName]').val('');
+    $('#recommendation-form input[name=email]').val('');
+    $('#recommendation-form input[name=event]').val('');
+    $('#recommendation-form textarea[name=recommendation]').val('');
+    $('.tagsinput').tagsinput('removeAll');;
+    $('#recommendation-form').slideDown('fast');
+    this.setState({
+      alert: ''
+    });
   }
 
   	render() {
@@ -112,6 +133,10 @@ class Recommend extends Component {
     											<button type="submit" className="btn btn-primary btn-raised btn-round">Send</button>
     										</div>
     									</form>
+                      {this.state.alert}
+                      {(this.state.alert == '')?'':
+                      <button className="btn btn-primary" onClick={this.recommendAgain}>Recommend Another Person</button>
+                    }
     								</div>
     			        </div>
   			       </div>

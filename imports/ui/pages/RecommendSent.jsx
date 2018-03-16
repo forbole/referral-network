@@ -53,19 +53,7 @@ class RecommendSent extends Component {
                     </p>
                   </div>
                 </div>
-                <div className="alert alert-success">
-                  <div className="container">
-                    <div className="alert-icon">
-                      <i className="material-icons">check</i>
-                    </div>
-                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">
-                        <i className="material-icons">clear</i>
-                      </span>
-                    </button>
-                    Thank you! Your recommendation has been sent to <strong>Kwun</strong>.
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>
