@@ -15,7 +15,6 @@ import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
 import Profile from '/imports/ui/pages/Profile.jsx';
 import Recommend from '/imports/ui/pages/RecommendContainer.js';
-import RecommendSent from '/imports/ui/pages/RecommendSent.jsx';
 import Recommendation from '/imports/ui/pages/Recommendation.jsx';
 import Connections from '/imports/ui/pages/Connections.jsx';
 
@@ -79,7 +78,7 @@ export default class App extends Component {
                 <PublicLayout path="/login" component={Login} />
                 <PublicLayout path="/signup" component={Register} />
                 <PrivateRoute path="/profile" component={Profile} transHead={true} />
-                <PrivateRoute path="/recommend/sent" exact={true} component={RecommendSent} transHead={true} />
+                <PrivateRoute path="/recommend/accept/:id" exact={true} component={Recommend} transHead={true} />
                 <PrivateRoute path="/recommend/:username?" component={Recommend} transHead={true}/>
                 <PrivateRoute path="/recommendation" component={Recommendation}/>
                 <PrivateRoute path="/connections" component={Connections}/>
