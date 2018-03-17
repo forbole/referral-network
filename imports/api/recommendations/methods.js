@@ -15,17 +15,6 @@ Meteor.methods({
 
     skills = skills.split(',');
 
-    // console.log(name);
-    // console.log(toName);
-    console.log(email);
-    // console.log(event);
-    // console.log(recommendation);
-    // console.log(skills);
-
-    // console.log(new Date());
-
-    // return this.userId;
-
     let id = Recommendations.insert({
       name: name,
       toName: toName,
@@ -46,12 +35,12 @@ Meteor.methods({
     let message = 'Hi '+toName+',\n\n';
     message += name+' has recommended you on Forbole business referral network.\n\n';
     message += 'Please accept your recommendation by clicking here:\n\n';
-    message += 'https://localhost:3000/recommendation/accept/'+id+'\n\n';
+    message += Meteor.settings.public.host+'/recommendation/accept/'+id+'\n\n';
     message += 'Thanks,\n\n';
     message += 'Forbole - Recommend · Refer · Reward';
 
     this.unblock();
-    console.log(process.env.MAIL_URL);
+    // console.log(process.env.MAIL_URL);
     Email.send({
       to: email,
       from: from,

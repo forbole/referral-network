@@ -76,6 +76,11 @@ class Header extends Component {
                             <i className="material-icons">beach_access</i> Settings
                           </Link>
                         </li>
+                        <li>
+                          <Link to="#" onClick={this.logout}>
+                            <i className="material-icons">clear</i> Logout
+                          </Link>
+                        </li>
                       </ul>
                     </li>
 
@@ -93,7 +98,7 @@ class Header extends Component {
                       ),
                     ]
                   */}
-                  <li><Link to="#" onClick={this.logout}><i className="material-icons">clear</i> Logout</Link></li>
+
                 </ul>
               </div>
             </div>

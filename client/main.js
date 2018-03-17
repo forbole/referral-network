@@ -4,7 +4,7 @@ import '/imports/startup/client';
 import '/imports/startup/both';
 import '/imports/ui/stylesheets/bootstrap.min.css';
 import '/imports/ui/stylesheets/material-kit.scss';
-import '/imports/ui/stylesheets/pace-theme-flash.css';
+import '/imports/ui/stylesheets/pace-theme.css';
 import '/imports/ui/stylesheets/styles.css';
 
 import React from 'react';
