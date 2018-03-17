@@ -35,6 +35,7 @@ Meteor.methods({
       skills: skills,
       accepted: false,
       createdAt: new Date(),
+      createdBy: Meteor.userId()
     });
 
     let reco = Recommendations.find({_id: id}).fetch();

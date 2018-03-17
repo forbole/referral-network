@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Alert from '/imports/ui/components/Alert.jsx';
+import { Alert } from '/imports/ui/components/ForboleComponents.jsx';
 
 class Recommend extends Component {
   constructor(props){
