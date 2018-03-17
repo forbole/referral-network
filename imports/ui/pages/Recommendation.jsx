@@ -12,6 +12,10 @@ class Recommendation extends Component {
     }
   }
 
+  handleAccept = (e) => {
+    e.preventDefault();
+
+  }
   	render() {
       if (this.props.loading){
         return <div>Loading</div>
@@ -23,7 +27,7 @@ class Recommendation extends Component {
   					<div className="contact-content">
               {this.props.recoExists?
   			    		<div className="container">
-  			    			<h2 className="title text-center">You are recommended!</h2>
+  			    			<h2 className="title text-center">{this.props.reco.toName}, you are recommended!</h2>
   			    			<div className="col-md-12">
   			    				<p>You've got a recommendation from
                       <Link to={"/profile/"+this.props.createdUser._id}>
@@ -38,7 +42,10 @@ class Recommendation extends Component {
                       skills={this.props.reco.skills}
                     />
   							</div>
-  							<div className="text-center"><button className="btn btn-primary btn-round">Accept</button></div>
+  							<div className="text-center">
+                  <p>You can accept and display your recommendation by clicking the button below.</p>
+                  <button className="btn btn-primary btn-round" onClick={this.handleAccept}>Accept</button>
+                </div>
   						</div>
               :''}
   					</div>

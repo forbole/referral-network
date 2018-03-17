@@ -12,12 +12,12 @@ class PrivateRoute extends Component {
   render(){
       let { component, transHead, ...rest } = this.props;
       let props = this.props;
-      if (this.props.loggingIn){
+      if (Meteor.loggingIn()){
         return (
           <div>Loggin In</div>
         )
       }
-      else if (this.props.currentUser){
+      else if (Meteor.user()){
         return (
           <Route {...rest} render={props =>
                 <DefaultLayout {...props} component={component} transHead={this.props.transHead} />}

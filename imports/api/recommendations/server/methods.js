@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { Recommendations } from './recommendations.js';
+import { Recommendations } from '../recommendations.js';
 import { Email } from 'meteor/email';
 import moment from 'moment';
 
@@ -50,4 +50,11 @@ Meteor.methods({
 
     return reco;
   },
+  'recommendations.accept'(recoId){
+    check(recoId, String);
+
+    if (Meteor.user()){
+      let reco = Recommendations.find({_id: id}).fetch();
+    }
+  }
 });
