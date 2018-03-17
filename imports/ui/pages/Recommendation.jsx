@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
 import moment from 'moment'
 import { Link } from 'react-router-dom';
-import { RecommendationCard } from '/imports/ui/components/ForboleComponents.jsx';
+import { RecommendationCard, Alert } from '/imports/ui/components/ForboleComponents.jsx';
 
 class Recommendation extends Component {
   constructor(props){
     super(props);
     // console.log(props);
     this.state = {
-      fromDate: moment("20180311", "YYYYMMDD").fromNow()
+      fromDate: moment("20180311", "YYYYMMDD").fromNow(),
+      accepted: false
     }
   }
 
   handleAccept = (e) => {
     e.preventDefault();
-
+    Meteor.call('recommendations.accept', this.props.reco._id, (err, result) =>{
+      if (result){
+        this.setState({accepted: true});
+      }
+    });
   }
   	render() {
       if (this.props.loading){
         return <div>Loading</div>
+      }
+      else if (this.state.accepted){
+        return (
+          <div className="contact-page">
+            <div className="main">
+              <Alert type="success" text="You have accepted the recommendation!" />              
+            </div>
+          </div>
+        )
       }
       else {
       	return (

@@ -54,7 +54,15 @@ Meteor.methods({
     check(recoId, String);
 
     if (Meteor.user()){
-      let reco = Recommendations.find({_id: id}).fetch();
+      let reco = Recommendations.find({_id: recoId}).fetch();
+      if (reco && !reco.accepted){
+        return Recommendations.update(recoId, {
+          $set:{
+            accepted: true,
+            acceptedBy: this.userId
+          }
+        });
+      }
     }
   }
 });
