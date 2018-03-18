@@ -1,15 +1,15 @@
 import { Accounts } from 'meteor/std:accounts-ui';
 
 Accounts.config({
-  sendVerificationEmail: false,
+  sendVerificationEmail: true,
   forbidClientAccountCreation: false
 });
 
 Accounts.ui.config({
-  passwordSignupFields: 'EMAIL_ONLY',
+  passwordSignupFields: 'USERNAME_AND_EMAIL',
   // loginPath: '/login',
   // signUpPath: '/signup',
   // resetPasswordPath: '/reset-password',
   // profilePath: '/profile',
-  minimumPasswordLength: 8
+  minimumPasswordLength: 7
 });

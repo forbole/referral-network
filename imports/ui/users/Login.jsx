@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import { RegistrationForm } from './RegistrationForm.jsx';
 
 class Login extends Component{
   constructor(props){
@@ -32,7 +33,7 @@ class Login extends Component{
                 <h4 className="card-title">Log in / Signup</h4>
               </div>
               <div className="card-content">
-                <Accounts.ui.LoginForm />
+                <RegistrationForm />
               </div>
             </div>
           </div>
