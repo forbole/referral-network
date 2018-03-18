@@ -30,7 +30,7 @@ class Profile extends Component {
                             <img src="/img/faces/kwun-profile.jpg" className="img-circle img-responsive img-raised"/>
                         </div>
                         <div className="name">
-                            <h3 className="title">Kwun Yeung</h3>
+                            <h4 className="title">Kwun Yeung</h4>
                             <h6>Co-founder &amp; Coductor of Forbole</h6>
                         </div>
                     </div>

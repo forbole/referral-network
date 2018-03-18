@@ -156,6 +156,19 @@ body{
     font-size: 2.5em;
   }
 
+  .profile-page .page-header {
+    height: 15vh;
+    min-height: 15vh;
+  }
+
+  .profile-page .profile img{
+    max-width: 100px;
+  }
+
+  .profile-page .profile .name{
+    margin-top: -50px;
+  }
+
   .page-header .container{
     padding-top: 15vh;
   }
@@ -163,6 +176,7 @@ body{
   .page-header .footer .container{
     padding-top: 5vh;
   }
+
 }
 @media (min-width: 768px){
     .navbar .navbar-nav > li > a.profile-link{
