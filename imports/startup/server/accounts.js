@@ -1,3 +1,5 @@
+import { Accounts } from 'meteor/accounts-base'
+
 ServiceConfiguration.configurations.upsert({
   service: "facebook"
 }, {
@@ -45,3 +47,30 @@ Accounts.onCreateUser(function(options, user) {
   }
   return user;
 });
+
+Accounts.emailTemplates.siteName = 'Forbole – Recommend · Refer · Reward';
+Accounts.emailTemplates.from = 'Forbole <refer@forbole.com>';
+
+Accounts.emailTemplates.enrollAccount.subject = (user) => {
+  return `Welcome to the Forbole network, ${user.profile.name}`;
+};
+
+// Accounts.emailTemplates.enrollAccount.text = (user, url) => {
+//   return 'You have been selected to participate in building a better future!'
+//     + ' To activate your account, simply click the link below:\n\n'
+//     + url;
+// };
+
+Accounts.emailTemplates.resetPassword.from = () => {
+  // Overrides the value set in `Accounts.emailTemplates.from` when resetting
+  // passwords.
+  return 'Forbole Password Reset <no-reply@forbole.com>';
+};
+// Accounts.emailTemplates.verifyEmail = {
+//    subject() {
+//       return "Activate your account now!";
+//    },
+//    text(user, url) {
+//       return `Hey ${user}! Verify your e-mail by following this link: ${url}`;
+//    }
+// };
