@@ -42,7 +42,7 @@ class Header extends Component {
                 <ul className="nav navbar-nav navbar-right">
                     <li className="dropdown">
                       <Link to="#" className="dropdown-toggle profile-link" data-toggle="dropdown">
-                        <img src="/img/faces/terence-lam.jpg" className="avatar img-raised"/> {Meteor.user().profile.name}
+                        <img src={Meteor.user().profile.picture} className="avatar img-raised"/> {Meteor.user().profile.name}
                         <b className="caret"></b>
                       </Link>
                       <ul className="dropdown-menu dropdown-with-icons">

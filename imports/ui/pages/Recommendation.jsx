@@ -29,7 +29,10 @@ class Recommendation extends Component {
         return (
           <div className="contact-page">
             <div className="main">
-              <Alert type="success" text="You have accepted the recommendation!" />              
+              <Alert type="success" text="You have accepted the recommendation!" />
+              <div className="text-center">
+                <Link to="/profile" className="btn btn-primary btn-round">View your profile</Link>
+              </div>
             </div>
           </div>
         )
