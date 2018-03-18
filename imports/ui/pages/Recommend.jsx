@@ -82,21 +82,13 @@ class Recommend extends Component {
 
   	render() {
     	return (
-    		<div>
-          <div className="page-header header-filter header-small" data-parallax="true" style={{backgroundImage: 'url(/img/recommend-bg.jpg)'}}>
-            <div className="container">
-        			<div className="row">
-        				<div className="col-md-8 col-md-offset-2 text-center">
-        					<h1 className="title">Make a Recommendation</h1>
-                  <h4>Recommend a person that you trust.</h4>
-        				</div>
-        			</div>
-        		</div>
-          </div>
     			<div className="main">
-  					<div className="contact-content">
   			    		<div className="container">
     							<div className="row">
+                    <div className="col-md-8 col-md-offset-2 text-center">
+            					<h1 className="title">Make a Recommendation</h1>
+                      <h4>Recommend a person that you trust.</h4>
+            				</div>
     								<div className="col-md-12">
                       {this.state.toUser}
     									<form role="form" id="recommendation-form" onSubmit={this.handleSubmit}>
@@ -140,9 +132,7 @@ class Recommend extends Component {
     								</div>
     			        </div>
   			       </div>
-  					</div>
 			    </div>
-    		</div>
     	)
   	}
 }

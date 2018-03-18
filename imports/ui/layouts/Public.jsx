@@ -6,11 +6,13 @@ import Footer from '/imports/ui/components/Footer.jsx';
 const PublicLayout = ({component: Component, ...rest}) => {
   return (
     <Route {...rest} render={matchProps => (
-      <div className="default">
-        <Header />
-        <div className="page-header header-filter login-header">
-          <Component {...matchProps} />
-          <Footer />
+      <div>
+      <Header />
+        <div className="default">
+          <div className="page-header header-filter login-header">
+            <Component {...matchProps} />
+            <Footer />
+          </div>
         </div>
       </div>
     )} />

@@ -49,8 +49,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .font-title, .font-raleway
 }
 
 body{
-  font-family: "averta";
-  background-color: #fff;
+  font-family: "averta", 'Helvetica', 'Arial', sans-serif;
+  background-color: #f5f5f5;
 }
 
 .serif-font {
@@ -68,6 +68,10 @@ body{
 /* .default .main{
   padding-top:90px;
 } */
+
+.main > .container {
+    padding-bottom: 2em;
+}
 
 .navbar{
   padding: 0;
@@ -143,6 +147,23 @@ body{
   display: none;
 }
 
+.card-profile, .card-testimonial{
+  margin-top: 50px;
+}
+
+@media (max-width: 767px){
+  h1, .h1, .presentation-page .brand h1 {
+    font-size: 2.5em;
+  }
+
+  .page-header .container{
+    padding-top: 15vh;
+  }
+
+  .page-header .footer .container{
+    padding-top: 5vh;
+  }
+}
 @media (min-width: 768px){
     .navbar .navbar-nav > li > a.profile-link{
       padding-top: 12px;

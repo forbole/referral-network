@@ -24,12 +24,12 @@ export const RecommendationCard = (props) => {
     <div className="card card-testimonial">
       <div className="card-avatar">
         <Link to="#">
-          <img className="img" src="/img/faces/terence-lam.jpg" />
+          <img className="img" src={props.picture} />
         </Link>
       </div>
       <div className="card-content">
         <h4 className="card-title">{props.createdBy}</h4>
-        <h6 className="category text-grey">{props.title}</h6>
+        <p className="category text-grey">@{props.title}</p>
         <p className="card-description">
           {props.recommendation}
         </p>

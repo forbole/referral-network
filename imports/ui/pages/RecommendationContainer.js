@@ -9,8 +9,11 @@ export default RecommendationContainer = withTracker((props) => {
   const recoHandle = Meteor.subscribe('recommendations.findOne', props.match.params.id);
   // const referrer = Meteor.users.findOne()
   const loading = !recoHandle.ready();
+
+  const userHandle = Meteor.subscribe('users.all');
+  const loadingUser = !userHandle.ready();
   const reco = Recommendations.findOne(props.match.params.id);
-  const recoExists = !loading && !!reco;
+  const recoExists = !loading && !loadingUser && !!reco;
 
   // console.log(reco);
   // console.log(Meteor.users.findOne({_id: "ZHJbGgzLrgrmmfxeN"}));
