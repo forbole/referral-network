@@ -65,8 +65,15 @@ body{
   font-family: "averta", "Helvetica", "Arial", sans-serif;
 }
 
-.default .main{
+/* .default .main{
   padding-top:90px;
+} */
+
+.navbar{
+  padding: 0;
+}
+.default{
+  padding-top: 50px;
 }
 
 .page-header.header-small{
@@ -132,10 +139,18 @@ body{
   display: inline-block;
 }
 
+.bootstrap-tagsinput-max input{
+  display: none;
+}
+
 @media (min-width: 768px){
     .navbar .navbar-nav > li > a.profile-link{
       padding-top: 12px;
       padding-bottom: 8px;
+    }
+
+    .navbar {
+      padding: 3px 0;
     }
 
     /* .page-header.header-small{

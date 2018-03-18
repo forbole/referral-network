@@ -19,7 +19,7 @@ class Profile extends Component {
         <div className="page-header header-filter" data-parallax="true" style={headerBg}>
         </div>
 
-        <div className="main main-raised">
+        <div className="main">
           <div className="profile-content">
             <div className="container">
 

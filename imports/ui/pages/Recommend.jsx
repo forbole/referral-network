@@ -93,7 +93,7 @@ class Recommend extends Component {
         			</div>
         		</div>
           </div>
-    			<div className="main main-raised">
+    			<div className="main">
   					<div className="contact-content">
   			    		<div className="container">
     							<div className="row">

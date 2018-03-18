@@ -4,15 +4,13 @@ import Header from '/imports/ui/components/HeaderContainer.js';
 import Footer from '/imports/ui/components/Footer.jsx';
 // import Navbar from './../ui/navigation/navbar';
 const DefaultLayout = ({component: Component, transHead: transHead, ...rest}) => {
-  let mainClass = (transHead)?'':"main";
+  // let mainClass = (transHead)?'':"main";
   return (
     <Route {...rest} render={matchProps => {
         return (
           <div className="default">
             <HeaderContainer />
-              <div className={mainClass}>
                 <Component {...matchProps} />
-              </div>
             <Footer />
           </div>
       )
