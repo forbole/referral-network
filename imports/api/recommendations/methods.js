@@ -54,14 +54,24 @@ Meteor.methods({
     check(recoId, String);
 
     if (Meteor.user()){
-      let reco = Recommendations.find({_id: recoId}).fetch();
+      let reco = Recommendations.findOne({_id: recoId});
+      console.log(reco);
       if (reco && !reco.accepted){
-        return Recommendations.update(recoId, {
+        let userState = Meteor.users.update({_id: this.userId}, {
+          $addToSet: {skills:{$each:reco.skills}}
+        });
+
+        let recoState = Recommendations.update(recoId, {
           $set:{
             accepted: true,
             acceptedBy: this.userId
           }
         });
+
+        if (userState && recoState){
+          return "success";
+        }
+        else return "failed";
       }
     }
   }

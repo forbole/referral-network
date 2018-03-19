@@ -18,7 +18,9 @@ class Recommendation extends Component {
     Meteor.call('recommendations.accept', this.props.reco._id, (err, result) =>{
       if (result){
         this.setState({accepted: true});
+        console.log(result);
       }
+      else console.log(err);
     });
   }
   	render() {

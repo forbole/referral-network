@@ -13,7 +13,7 @@ import Home from '/imports/ui/pages/Home.jsx';
 import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
-import Profile from '/imports/ui/pages/Profile.jsx';
+import Profile from '/imports/ui/pages/ProfileContainer.js';
 import Recommend from '/imports/ui/pages/RecommendContainer.js';
 import Recommendation from '/imports/ui/pages/RecommendationContainer.js';
 import Connections from '/imports/ui/pages/Connections.jsx';
@@ -77,7 +77,7 @@ export default class App extends Component {
                 <PrivateRoute path="/" exact={true} component={Home} />
                 <PublicLayout path="/login" component={Login} />
                 <PublicLayout path="/signup" component={Register} />
-                <PrivateRoute path="/profile" component={Profile} transHead={true} />
+                <PrivateRoute path="/profile/:username?" component={Profile} transHead={true} />
                 <PrivateRoute path="/recommendation/accept/:id" exact={true} component={Recommendation} transHead={true} />
                 <PrivateRoute path="/recommend/:username?" component={Recommend} transHead={true}/>
                 <PrivateRoute path="/connections" component={Connections}/>

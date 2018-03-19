@@ -19,6 +19,12 @@ export const Alert = (props) => {
   )
 }
 
+export const Skill = (props) => {
+  return(
+    <span className="label label-rose">{props.skill}</span>
+  )
+}
+
 export const RecommendationCard = (props) => {
   return (
     <div className="card card-testimonial">
@@ -34,7 +40,7 @@ export const RecommendationCard = (props) => {
           {props.recommendation}
         </p>
         <div className="footer">
-          {props.skills.map((skill, i) => <span className="label label-danger" key={i}>{skill}</span>)}
+          {props.skills.map((skill, i) => <Skill key={i} skill={skill} />)}
         </div>
       </div>
     </div>
