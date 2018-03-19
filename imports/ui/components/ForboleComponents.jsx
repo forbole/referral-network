@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export const Alert = (props) => {
   return (
@@ -29,18 +30,19 @@ export const RecommendationCard = (props) => {
   return (
     <div className="card card-testimonial">
       <div className="card-avatar">
-        <Link to="#">
+        <Link to={"/profile/"+props.username}>
           <img className="img" src={props.picture} />
         </Link>
       </div>
       <div className="card-content">
         <h4 className="card-title">{props.createdBy}</h4>
         <p className="category text-grey">@{props.title}</p>
+        <p className="time text-grey">Recommended on {moment(props.createdAt).format("Do MMM YYYY")}</p>
         <p className="card-description">
           {props.recommendation}
         </p>
-        <div className="footer">
-          {props.skills.map((skill, i) => <Skill key={i} skill={skill} />)}
+        <div className="footer skills">
+          {(props.skills)?props.skills.map((skill, i) => <Skill key={i} skill={skill} />):''}
         </div>
       </div>
     </div>

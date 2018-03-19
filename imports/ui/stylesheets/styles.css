@@ -141,6 +141,7 @@ body{
 
 .skills span.label{
   display: inline-block;
+  margin-right: 0.3em;
 }
 
 .bootstrap-tagsinput-max input{
@@ -149,8 +150,28 @@ body{
 
 .card-profile, .card-testimonial{
   margin-top: 50px;
+  font-style: normal;
 }
 
+.card-profile, .card-testimonial p.time{
+  text-align: left;
+  font-size: 80%;
+  font-style: italic;
+  margin-bottom: 2px;
+}
+
+.card-profile, .card-testimonial p.card-description{
+  text-align: left;
+  font-style: normal;
+}
+
+.profile-page .profile img{
+  background-color: #fff;
+}
+
+.profile-content .nav.nav-pills{
+  margin-bottom: 2em;
+}
 @media (max-width: 767px){
   h1, .h1, .presentation-page .brand h1 {
     font-size: 2.5em;

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-import { Skill } from '/imports/ui/components/ForboleComponents.jsx';
-import Blog from '/imports/ui/pages/profile/Blog.jsx';
-import Wallet from '/imports/ui/pages/profile/Wallet.jsx';
-import Recommendations from '/imports/ui/pages/profile/Recommendations.jsx';
+import { Skill, RecommendationCard } from '/imports/ui/components/ForboleComponents.jsx';
+
+// import Blog from '/imports/ui/pages/profile/Blog.jsx';
+// import Wallet from '/imports/ui/pages/profile/Wallet.jsx';
+// import Recommendations from '/imports/ui/pages/profile/Recommendations.jsx';
 
 class Profile extends Component {
   constructor(props){
@@ -28,8 +29,7 @@ class Profile extends Component {
           </div>
 
           <div className="main">
-            <div className="profile-content">
-              <div className="container">
+            <div className="profile-content container">
 
                 <div className="row">
                   <div className="col-xs-6 col-xs-offset-3">
@@ -44,25 +44,18 @@ class Profile extends Component {
                       </div>
                     </div>
                     <div className="col-xs-2 follow">
-  	                   <Link to="/recommend" className="btn btn-fab btn-primary" rel="tooltip" title="Recommend Kwun">
+                      {(this.props.user._id != this.userId)?
+  	                   (<Link to="/recommend" className="btn btn-fab btn-primary" rel="tooltip" title="Recommend Kwun">
                               <i className="material-icons">add</i>
-                          </Link>
+                          </Link>):''}
   	                </div>
                 </div>
 
-                <div className="card card-nav-tabs">
-                  <div className="header header-danger">
-                    <div className="nav-tabs-navigation">
-                      <div className="nav-tabs-wrapper">
-                        <ul className="nav nav-tabs" data-tabs="tabs">
-                          <li className="active text-center"><a href="#about" data-toggle="tab">Bio</a></li>
-                          {/*}<li className="text-center"><a href="#blog" data-toggle="tab">Blog</a></li>*/}
-                          <li className="text-center"><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-content">
+                <ul className="nav nav-pills nav-pills-rose">
+                  <li className="active"><a href="#about" data-toggle="tab">Bio</a></li>
+                  <li><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
+                </ul>
+
                     <div className="tab-content">
                       <div className="tab-pane active" id="about">
                         <div className="description">
@@ -71,7 +64,7 @@ class Profile extends Component {
                         </div>
 
                         <div className="skills">
-                            <h3>Endorsed Skills</h3>
+                            <h4>Endorsed Skills</h4>
                             <div className="row">
                               <div className="col-md-12">
                                 {(this.props.user.skills)?(this.props.user.skills.map((skill, i) => <Skill key={i} skill={skill} />)):''}
@@ -80,12 +73,27 @@ class Profile extends Component {
                         </div>
                     </div>
                       {/*}<Blog />*/}
-                      <Recommendations user={this.props.user._id}/>
+                      {/* <Recommendations user={this.props.user._id}/> */}
+                      <div className="tab-pane" id="recommendations">
+                        <div className="row">
+                          <div className="col-md-6 col-lg-4">
+                            {this.props.recos.map((reco, i) => <RecommendationCard key={i}
+                              username={reco.creator().username}
+                              picture={reco.creator().profile.picture}
+                              createdBy={reco.creator().profile.name}
+                              title={reco.creator().username}
+                              recommendation={reco.recommendation}
+                              skills={reco.skills}
+                              createdAt={reco.createdAt}
+                            />)}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-              </div>
+
+
+
             </div>
           </div>
 
