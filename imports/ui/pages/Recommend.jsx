@@ -20,7 +20,8 @@ class Recommend extends Component {
 
       $('.tagsinput').tagsinput({
           tagClass: 'label label-info tag-'+ tagClass +' ',
-          maxTags: 3
+          maxTags: 3,
+          minTags: 3
       });
 
       $('.bootstrap-tagsinput').addClass('form-control');
@@ -54,16 +55,17 @@ class Recommend extends Component {
        data[entry[0]] = entry[1];
     }
 
-    Meteor.call('Recommendations.insert', data.name, data.toName, data.email, data.event, data.recommendation, data.skills, (error, result) => {
-      console.log(result);
-      if (result){
-        this.setState({
-          alert: <Alert type="success" text={["Thank you! Your recommendation has been sent to ",<strong key="x">{data.toName}</strong>, "."]} />
-        });
-        $('#recommendation-form').hide();
-      }
-    });
-    // console.log(data);
+
+    // Meteor.call('Recommendations.insert', data.name, data.toName, data.email, data.event, data.recommendation, data.skills, (error, result) => {
+    //   console.log(result);
+    //   if (result){
+    //     this.setState({
+    //       alert: <Alert type="success" text={["Thank you! Your recommendation has been sent to ",<strong key="x">{data.toName}</strong>, "."]} />
+    //     });
+    //     $('#recommendation-form').hide();
+    //   }
+    // });
+    console.log(data);
     // console.log("submitted");
   }
 
@@ -97,25 +99,25 @@ class Recommend extends Component {
     											<input type="text" name="name" className="form-control" value={(this.props.currentUser)?this.props.currentUser.profile.name:''} readOnly={true}/>
     										</div>
                         {(!this.state.toUser)?<div>
-                        <div className="form-group label-floating">
+                        <div className="form-group label-floating required">
                           <label className="control-label">Who are you recommending?</label>
-                          <input type="text" name="toName" className="form-control" />
+                          <input type="text" name="toName" className="form-control" required={true}/>
                         </div>
-                        <div className="form-group label-floating">
+                        <div className="form-group label-floating required">
                           <label className="control-label">His/Her email address?</label>
-                          <input type="email" name="email" className="form-control" />
+                          <input type="email" name="email" className="form-control" required={true}/>
                         </div></div>:''}
-                        <div className="form-group label-floating">
+                        <div className="form-group label-floating required">
                           <label className="control-label">An event you interact with</label>
-                        <input type="text" name="event" className="form-control" />
+                          <input type="text" name="event" className="form-control" required={true}/>
                         </div>
-                        <div className="form-group label-floating">
+                        <div className="form-group label-floating required">
           								<textarea name="recommendation" className="form-control" id="recommendation" rows="6" placeholder="Detail of your recommendation.
 
                             What does he/she do?
 
                             Why are you recommending this person?
-                            "></textarea>
+                            " required={true}></textarea>
           							</div>
     										<div className="form-group">
                           <label className="control-label">Endorse 3 Skills (press Enter for each skill)</label>

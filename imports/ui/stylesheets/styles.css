@@ -172,6 +172,13 @@ body{
 .profile-content .nav.nav-pills{
   margin-bottom: 2em;
 }
+
+.form-group.required .control-label:after {
+  content: " *";
+  color: red;
+}
+
+
 @media (max-width: 767px){
   h1, .h1, .presentation-page .brand h1 {
     font-size: 2.5em;

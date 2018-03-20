@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
+export const ValidateSuccess = () => (
+  <span className="form-control-feedback">
+    <i className="material-icons">done</i>
+  </span>
+);
+
+export const ValidateFail = () => (
+  <span class="form-control-feedback">
+    <i className="material-icons">clear</i>
+  </span>
+)
+
 export const Alert = (props) => {
   return (
     <div className={"alert alert-"+props.type}>
