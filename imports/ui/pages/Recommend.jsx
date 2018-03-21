@@ -12,11 +12,16 @@ class Recommend extends Component {
       toUser : '',
       alert: '',
       hasErrors: false,
+      emailTouched: false,
       emailPass: false,
       ownEmailPass: false,
+      toNameTouched: false,
       toNamePass: false,
+      eventTouched: false,
       eventPass: false,
+      recoTouched: false,
       recoPass: false,
+      skillsTouched: false,
       skillsPass: false,
     };
   }
@@ -93,6 +98,16 @@ class Recommend extends Component {
     this.setState({hasErrors:(this.state.toNamePass&&this.state.emailPass&&this.state.ownEmailPass&&this.state.eventPass&&this.state.recoPass&&this.state.skillsPass)});
   }
 
+  handleInputsFocus = (e) => {
+    if (e.target.name == "toName") this.setState({toNameTouched:true});
+    if (e.target.name == "email") this.setState({emailTouched:true});
+    if (e.target.name == "event") this.setState({eventTouched:true});
+    if (e.target.name == "recommendation") this.setState({recoTouched:true});
+
+    // this.setState({hasErrors:(this.state.toNamePass&&this.state.emailPass&&this.state.ownEmailPass&&this.state.eventPass&&this.state.recoPass&&this.state.skillsPass)});
+  }
+
+
   recommendAgain = (e) =>{
     e.preventDefault();
     $('#recommendation-form input[name=toName]').val('');
@@ -125,15 +140,18 @@ class Recommend extends Component {
                     {(!this.state.toUser)?<div>
                     <div className="form-group label-floating required">
                       <label className="control-label">Who are you recommending?</label>
-                      <input type="text" name="toName" className="form-control" required={true} onChange={this.handleInputs}/>
+                      <input type="text" name="toName" className="form-control" required={true} onChange={this.handleInputs} onBlur={this.handleInputsFocus}/>
+                      {(this.state.toNameTouched&&!this.state.toNamePass)?<div className="invalid-feedback">Please enter the name of the person you are recommending.</div>:''}
                     </div>
                     <div className="form-group label-floating required">
                       <label className="control-label">His/Her email address?</label>
-                      <input type="email" name="email" className="form-control" required={true} onChange={this.handleInputs}/>
+                      <input type="email" name="email" className="form-control" required={true} onChange={this.handleInputs} onBlur={this.handleInputsFocus}/>
+                      {(this.state.emailTouched&&!this.state.ownEmailPass&&!this.state.emailPass)?<div className="invalid-feedback">Please enter a valid email address other than yours.</div>:''}
                     </div></div>:''}
                     <div className="form-group label-floating required">
                       <label className="control-label">An event you interact with</label>
-                      <input type="text" name="event" className="form-control" required={true} onChange={this.handleInputs}/>
+                      <input type="text" name="event" className="form-control" required={true} onChange={this.handleInputs} onBlur={this.handleInputsFocus}/>
+                      {(this.state.eventTouched&&!this.state.eventPass)?<div className="invalid-feedback">Based on what event/relationship you recommend this person?</div>:''}
                     </div>
                     <div className="form-group label-floating required">
       								<textarea name="recommendation" className="form-control" id="recommendation" rows="6" placeholder="Detail of your recommendation.
@@ -141,7 +159,8 @@ class Recommend extends Component {
                         What does he/she do?
 
                         Why are you recommending this person?
-                        " required={true} onChange={this.handleInputs}></textarea>
+                        " required={true} onChange={this.handleInputs} onBlur={this.handleInputsFocus} />
+                        {(this.state.recoTouched&&!this.state.recoPass)?<div className="invalid-feedback">Recommendation should contain some contents, pal.</div>:''}
       							</div>
 										<div className="form-group">
                       <label className="control-label">Endorse 3 Skills (press Enter for each skill)</label>

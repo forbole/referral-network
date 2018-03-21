@@ -148,6 +148,11 @@ body{
   display: none;
 }
 
+form .invalid-feedback {
+    font-size: 80%;
+    color: #bd081c;
+}
+
 .card-profile, .card-testimonial{
   margin-top: 50px;
   font-style: normal;
