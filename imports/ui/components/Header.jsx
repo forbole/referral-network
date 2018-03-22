@@ -56,6 +56,7 @@ class Header extends Component {
                             <i className="material-icons">device_hub</i> Connections
                           </Link>
                         </li>
+                        {/*
                         <li>
                           <Link to="/blog/">
                             <i className="material-icons">view_quilt</i> Blog
@@ -76,6 +77,7 @@ class Header extends Component {
                             <i className="material-icons">beach_access</i> Settings
                           </Link>
                         </li>
+                        */}
                         <li>
                           <Link to="#" onClick={this.logout}>
                             <i className="material-icons">clear</i> Logout
