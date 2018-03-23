@@ -26,6 +26,7 @@ class Login extends Component{
     }
 
     return (
+      <div>
         <div className="container">
           <div className="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
   					<div className="card card-signup">
@@ -38,6 +39,7 @@ class Login extends Component{
             </div>
           </div>
         </div>
+      </div>
       )
   }
 }

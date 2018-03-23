@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import { Skill, RecommendationCard } from '/imports/ui/components/ForboleComponents.jsx';
 
@@ -19,7 +19,17 @@ class Profile extends Component {
     };
 
     if (!this.props.userExists){
-      return <div>No user found.</div>
+      if (Meteor.userId()){
+        return <div>No user found.</div>
+      }
+      else{
+        return (<Redirect
+          to={{
+            pathname: "/login",
+            state: { from: this.props.location }
+          }}
+        />)
+      }
     }
     else {
       return (

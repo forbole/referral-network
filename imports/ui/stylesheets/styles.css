@@ -106,6 +106,10 @@ body{
   height: auto;
 }
 
+.alert +.page-header.header-filter.login-header {
+    margin-top: -20px;
+}
+
 .login-header .container{
   padding-top: 15vh;
 }
@@ -191,6 +195,13 @@ form .invalid-feedback {
 .form-group.required .control-label:after {
   content: " *";
   color: red;
+}
+
+@media (max-width: 991px){
+  .page-header {
+      height: auto;
+      min-height: inherit;
+  }  
 }
 
 
