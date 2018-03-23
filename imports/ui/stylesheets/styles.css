@@ -102,6 +102,16 @@ body{
   background-image: url('/img/bg7.jpg');
   background-size: cover;
   background-position: top center;
+  min-height: 100vh;
+  height: auto;
+}
+
+.login-header .container{
+  padding-top: 15vh;
+}
+
+.login-header .footer .container{
+  padding-top: 5vh;
 }
 
 .profile-page .main{
@@ -202,13 +212,6 @@ form .invalid-feedback {
     margin-top: -50px;
   }
 
-  .page-header .container{
-    padding-top: 15vh;
-  }
-
-  .page-header .footer .container{
-    padding-top: 5vh;
-  }
 
 }
 @media (min-width: 768px){

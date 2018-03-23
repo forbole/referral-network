@@ -7,7 +7,7 @@ const PublicLayout = ({component: Component, ...rest}) => {
   return (
     <Route {...rest} render={matchProps => (
       <div>
-      <Header />
+        <Header />
         <div className="default">
           <div className="page-header header-filter login-header">
             <Component {...matchProps} />

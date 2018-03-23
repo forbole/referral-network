@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const Header = () => {
     return (
-      <nav className="navbar navbar-primary navbar-absolute">
+      <nav className="navbar navbar-primary navbar-fixed-top">
           <div className="container">
               <div className="navbar-header">
                 <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigation">

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Accounts, STATES } from 'meteor/std:accounts-ui';
 import PrivateRoute from '/imports/ui/routes/PrivateRouteContainer.js';
 import DefaultLayout from '/imports/ui/layouts/DefaultContainer.js';
-import PublicLayout from '/imports/ui/layouts/Public.jsx';
+import LoginLayout from '/imports/ui/layouts/Login.jsx';
 import PropTypes from 'prop-types';
 
 // import EmptyLayout from '/imports/ui/layouts/Empty.jsx';
@@ -75,13 +75,13 @@ export default class App extends Component {
             <Router>
               <Switch>
                 <PrivateRoute path="/" exact={true} component={Home} />
-                <PublicLayout path="/login" component={Login} />
-                <PublicLayout path="/signup" component={Register} />
-                <PrivateRoute path="/profile/:username?" component={Profile} transHead={true} />
-                <PrivateRoute path="/recommendation/accept/:id" exact={true} component={Recommendation} transHead={true} />
+                <LoginLayout path="/login" component={Login} />
+                <LoginLayout path="/signup" component={Register} />
+                <DefaultLayout path="/profile/:username?" component={Profile} transHead={true} />
+                <DefaultLayout path="/recommendation/accept/:id" exact={true} component={Recommendation} />
                 <PrivateRoute path="/recommend/:username?" component={Recommend} transHead={true}/>
                 <PrivateRoute path="/connections" component={Connections}/>
-                <PublicLayout path="*" component={NotFound}/>
+                <DefaultLayout path="*" component={NotFound}/>
               </Switch>
                 {/*}<Route path="/about" component={About} />*/}
               {/*
