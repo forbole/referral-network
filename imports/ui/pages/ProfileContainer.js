@@ -9,7 +9,15 @@ import { Recommendations } from '/imports/api/recommendations/recommendations.js
 
 export default ProfileContainer = withTracker((props) => {
   // console.log(props)
-  let username = (!props.match.params.username)?Meteor.user().username:props.match.params.username;
+  let username = '';
+
+  if (Meteor.userId()){
+    username = Meteor.user().username;
+  }
+  else if (typeof props.match.params.username != undefined){
+    username = props.match.params.username;
+  }
+  // let username = (!props.match.params.username)?Meteor.user().username:props.match.params.username;
 
   // const userHandle = Meteor.subscribe('users.findByUsername', username);
   const userHandle = Meteor.subscribe('users.all');

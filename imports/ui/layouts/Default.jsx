@@ -8,17 +8,22 @@ import Footer from '/imports/ui/components/Footer.jsx';
 // import Navbar from './../ui/navigation/navbar';
 const DefaultLayout = ({component: Component, transHead: transHead, ...rest}) => {
   // let mainClass = (transHead)?'':"main";
-  return (
-    <Route {...rest} render={matchProps => {
-        return (
-          <div className="default">
-            {Meteor.userId()?<Header />:<PublicHeader />}
-                <Component {...matchProps} />
-            <Footer />
-          </div>
-      )
-      }} />
-  )
+  if (Meteor.loggingIn()){
+    return <div>Logging in... </div>
+  }
+  else {
+    return (
+      <Route {...rest} render={matchProps => {
+          return (
+            <div className="default">
+              {Meteor.user()?<Header />:<PublicHeader />}
+                  <Component {...matchProps} />
+              <Footer />
+            </div>
+        )
+        }} />
+    )
+  }
 };
 
 export default DefaultLayout;

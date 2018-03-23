@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { RecommendationCard, Alert } from '/imports/ui/components/ForboleComponents.jsx';
 
 class Recommendation extends Component {
@@ -9,7 +9,9 @@ class Recommendation extends Component {
     // console.log(props);
     this.state = {
       fromDate: moment("20180311", "YYYYMMDD").fromNow(),
-      accepted: false
+      acceptButton: '',
+      accepted: false,
+      loginAndAccept: false
     }
   }
 
@@ -18,11 +20,17 @@ class Recommendation extends Component {
     Meteor.call('recommendations.accept', this.props.reco._id, (err, result) =>{
       if (result){
         this.setState({accepted: true});
-        console.log(result);
+        // console.log(result);
       }
       else console.log(err);
     });
   }
+
+  loginAndAccept = (e) => {
+    e.preventDefault();
+    this.setState({loginAndAccept:true});
+  }
+
   	render() {
       if (this.props.loading){
         return <div>Loading</div>
@@ -37,12 +45,25 @@ class Recommendation extends Component {
           </div>
         )
       }
+      else if (this.state.loginAndAccept){
+        return (<Redirect
+          to={{
+            pathname: "/login",
+            state: { from: this.props.location }
+          }}
+        />);
+      }
       else {
       	return (
       			<div className="main">
               {this.props.recoExists?
   			    		<div className="container">
                   <div className="row">
+                    {(this.props.reco.createdBy == Meteor.userId())?
+                      <Alert
+                        type="info"
+                        text="This is a preview of a recommendation you have sent."
+                      />:''}
     			    			<h2 className="title text-center">{this.props.reco.toName}, you are recommended!</h2>
     			    			<div className="col-md-12">
     			    				<p>You've got a recommendation from
@@ -60,7 +81,13 @@ class Recommendation extends Component {
                       <blockquote className="blockquote">{this.props.reco.event}</blockquote>
                       <div className="text-center">
                         <p>You can accept and display your recommendation by clicking the button below.</p>
-                        <button className="btn btn-primary btn-round" onClick={this.handleAccept}>Accept</button>
+                        {Meteor.userId()?((this.props.reco.createdBy != Meteor.userId())?<button
+                          className="btn btn-primary btn-round"
+                          onClick={this.handleAccept}>Accept</button>:''):<button
+                            className="btn btn-primary btn-round"
+                            onClick={this.loginAndAccept}>Accept</button>
+                        }
+
                       </div>
     							</div>
 
