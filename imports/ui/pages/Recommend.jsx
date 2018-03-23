@@ -48,22 +48,26 @@ class Recommend extends Component {
 
 
       if (this.props.match.params.username != null){
-          const toUser = (<div className="card card-profile card-plain">
-            <div className="card-avatar">
-              <Link to="#pablo">
-                <img className="img" src="/img/faces/kwun-profile.jpg" />
-              </Link>
-            </div>
-            <div className="card-content">
-              <h4 className="card-title">Kwun Yeung</h4>
-              <h6 className="category text-muted">Co-Founder & Conductor of Forbole</h6>
+        if (!this.props.loading){
+          if (this.props.user.username){
+            const toUser = (<div className="card card-profile card-plain">
+              <div className="card-avatar">
+                <Link to="#pablo">
+                  <img className="img" src="/img/faces/kwun-profile.jpg" />
+                </Link>
+              </div>
+              <div className="card-content">
+                <h4 className="card-title">Kwun Yeung</h4>
+                <h6 className="category text-muted">Co-Founder & Conductor of Forbole</h6>
 
-              <p className="card-description">
-                You can recognize your connection by writing them a recommendation. Your recommendation will be shown on their profiles.
-              </p>
-            </div>
-          </div>);
-          this.setState({toUser: toUser});
+                <p className="card-description">
+                  You can recognize your connection by writing them a recommendation. Your recommendation will be shown on their profiles.
+                </p>
+              </div>
+            </div>);
+            this.setState({toUser: toUser});            
+          }
+        }
       }
   }
 

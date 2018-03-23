@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import Recommend from './Recommend.jsx';
 
-export default RecommendContainer = withTracker(() => {
+export default RecommendContainer = withTracker((props) => {
+  console.log(props);
+  const userHandle = Meteor.subscribe('users.all');
+  const loading = !userHandle.ready();
+
   return {
-    currentUser : Meteor.user(),
-    loggingIn : Meteor.loggingIn()
+    loading,
+    user: (props.match.params.username && !loading)?Meteor.users.findOne({username: props.match.params.username}):{}
   };
 })(Recommend);
