@@ -11,11 +11,10 @@ export default ProfileContainer = withTracker((props) => {
   // console.log(props)
   let username = '';
 
-  if (Meteor.userId()){
-    username = Meteor.user().username;
-  }
-  else if (typeof props.match.params.username != undefined){
+  if (typeof props.match.params.username != undefined){
     username = props.match.params.username;
+  }else if (Meteor.userId()){
+    username = Meteor.user().username;
   }
   // let username = (!props.match.params.username)?Meteor.user().username:props.match.params.username;
 
