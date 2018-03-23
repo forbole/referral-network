@@ -17,7 +17,11 @@ class Profile extends Component {
       backgroundImage:'url(/img/kwun-profile-header.jpg)',
       backgroundPosition: 'center center'
     };
-
+    // console.log(this.props.loading);
+    if (this.props.loading){
+      return (<div>Loading... </div>);
+    }
+    else {
     if (!this.props.userExists){
       if (Meteor.userId()){
         return <div>No user found.</div>
@@ -106,6 +110,7 @@ class Profile extends Component {
         </div>
       );
     }
+  }
   }
 }
 
