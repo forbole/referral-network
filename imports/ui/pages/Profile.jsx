@@ -55,7 +55,7 @@ class Profile extends Component {
                     </div>
                     <div className="col-xs-2 follow">
                       {(this.props.user._id != Meteor.userId())?
-  	                   (<Link to="/recommend" className="btn btn-fab btn-primary" rel="tooltip" title={"Recommend "+this.props.user.profile.firstname}>
+  	                   (<Link to={"/recommend/"+this.props.user.username} className="btn btn-fab btn-primary" rel="tooltip" title={"Recommend "+this.props.user.profile.firstname}>
                               <i className="material-icons">add</i>
                           </Link>):''}
   	                </div>

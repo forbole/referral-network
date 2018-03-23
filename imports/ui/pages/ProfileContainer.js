@@ -9,27 +9,28 @@ import { Recommendations } from '/imports/api/recommendations/recommendations.js
 
 export default ProfileContainer = withTracker((props) => {
   // console.log(props)
-  let username = '';
-
-  if (typeof props.match.params.username != undefined){
-    username = props.match.params.username;
-  }else if (Meteor.userId()){
-    username = Meteor.user().username;
-  }
-  // let username = (!props.match.params.username)?Meteor.user().username:props.match.params.username;
-
-  // const userHandle = Meteor.subscribe('users.findByUsername', username);
   const userHandle = Meteor.subscribe('users.all');
 
+  // let user;
+  // console.log(Meteor.userId());
+
+  // if (typeof props.match.params.username != undefined){
+  //   user = Meteor.users.findOne({username: props.match.params.username});
+  // }else if (Meteor.userId()){
+  //   user = Meteor.users.findOne({_id:Meteor.userId()});
+  //   console.log(user);
+  // }
+  // console.log(username);
+  const username = (!props.match.params.username)?((Meteor.userId())?Meteor.user().username:''):props.match.params.username;
   const user = Meteor.users.findOne({username: username});
+  // const userHandle = Meteor.subscribe('users.findByUsername', username);
 
   const recosHandle = Meteor.subscribe('recommendations.all');
 
   // const recos = Recommendations.find({acceptedBy:user._id}).fetch();
-  const loading = (!userHandle.ready() && !recosHandle.ready());
+  const loading = (!userHandle.ready() || !recosHandle.ready());
   const userExists = !loading && !!user;
   // const recosExists = !loading && !!recos;
-
   return {
     loading,
     userExists,
