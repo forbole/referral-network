@@ -5,19 +5,28 @@ import { Email } from 'meteor/email';
 import moment from 'moment';
 
 Meteor.methods({
-  'Recommendations.insert'(name, toName, email, event, recommendation, skills) {
+  'Recommendations.insert'(name, toName, email, event, recommendation, skills, toUserId) {
     check(name, String);
     check(toName, String);
     check(email, String);
     check(event, String);
     check(recommendation, String);
     check(skills, String);
+    check(toUserId, String);
 
     skills = skills.split(',');
 
+    if (toUserId != ''){
+      let user = Meteor.users.findOne({_id: toUserId});
+      if (user){
+        email = user.emails[0].address;
+        toName = user.profile.name;
+      }
+    }
     let id = Recommendations.insert({
       name: name,
       toName: toName,
+      toUserId: toUserId,
       email: email,
       event: event,
       recommendation: recommendation,

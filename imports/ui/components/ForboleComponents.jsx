@@ -38,6 +38,24 @@ export const Skill = (props) => {
   )
 }
 
+export const ProfileCard = (props) => {
+    return (<div className="card card-profile card-plain">
+      <div className="card-avatar">
+        <Link to={"/profile/"+props.username}>
+          <img className="img" src={props.picture} />
+        </Link>
+      </div>
+      <div className="card-content text-center">
+        <h4 className="card-title">{props.name}</h4>
+        <h6 className="category text-muted">@{props.username}</h6>
+
+        <p className="card-description">
+          {props.text}
+        </p>
+      </div>
+    </div>)
+}
+
 export const RecommendationCard = (props) => {
   return (
     <div className="card card-testimonial">
