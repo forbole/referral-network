@@ -6,6 +6,7 @@ import validator from 'validator';
 class Recommend extends Component {
   constructor(props){
     super(props);
+    console.log(props);
     // this.props = props;
 
     this.state = {
@@ -23,8 +24,7 @@ class Recommend extends Component {
       recoTouched: false,
       recoPass: false,
       skillsTouched: false,
-      skillsPass: false,
-      redirect: false
+      skillsPass: false
     };
   }
 
@@ -138,21 +138,42 @@ class Recommend extends Component {
 
   recommendAgain = (e) =>{
     e.preventDefault();
+    this.props.history.push("/recommend");
+    this.setState({
+      toUser : '',
+      toUserId: '',
+      alert: '',
+      noErrors: false,
+      emailTouched: false,
+      emailPass: false,
+      ownEmailPass: false,
+      toNameTouched: false,
+      toNamePass: false,
+      eventTouched: false,
+      eventPass: false,
+      recoTouched: false,
+      recoPass: false,
+      skillsTouched: false,
+      skillsPass: false,
+    });
+
     $('#recommendation-form input[name=toName]').val('');
     $('#recommendation-form input[name=email]').val('');
     $('#recommendation-form input[name=event]').val('');
     $('#recommendation-form textarea[name=recommendation]').val('');
     $('.tagsinput').tagsinput('removeAll');;
+    $('.bootstrap-tagsinput').removeClass("bootstrap-tagsinput-max");
     $('#recommendation-form').slideDown('fast');
     this.setState({
       alert: ''
     });
   }
 
-  recommendNew = (e) => {
-    e.preventDefault();
-    this.setState({redirect: true});
-  }
+  // recommendNew = (e) => {
+  //   e.preventDefault();
+  //   // this.setState({redirect: true});
+  //   this.props.history.push("/recommend");
+  // }
   	render() {
       // if (this.props.loading){
       //   return (<div>Loading...</div>)
@@ -218,9 +239,7 @@ class Recommend extends Component {
   									</form>
                     {this.state.alert}
                     {(this.state.alert == '')?'':
-                    ((this.state.toUserId == '') ? <button className="btn btn-primary" onClick={this.recommendAgain}>Recommend Another Person</button> :
-                    <button className="btn btn-primary" onClick={this.recommendNew}>Recommend Another Person</button>
-                  )
+                    <button className="btn btn-primary" onClick={this.recommendAgain}>Recommend Another Person</button>
                   }
   								</div>
   			        </div>

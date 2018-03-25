@@ -8,7 +8,7 @@ export default RecommendContainer = withTracker((props) => {
   const loading = !userHandle.ready();
   const user = Meteor.users.findOne({username: props.match.params.username});
   const userExists = !loading && !!user;
-  // console.log(userExists);
+  console.log(userExists);
   return {
     loading,
     userExists,
