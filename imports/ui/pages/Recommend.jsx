@@ -6,8 +6,6 @@ import validator from 'validator';
 class Recommend extends Component {
   constructor(props){
     super(props);
-    console.log(props);
-    // this.props = props;
 
     this.state = {
       toUser : '',
@@ -44,12 +42,6 @@ class Recommend extends Component {
     $('.tagsinput').on('itemAdded', function(){
       self.setState({skillsPass:($('.tagsinput').tagsinput('items').length == 3)}, self.validateForm);
 
-      /*
-      if (self.state.toUserId != '') self.setState({hasErrors:(self.state.eventPass&&self.state.recoPass&&self.state.skillsPass)});
-      else self.setState({hasErrors:(self.state.toNamePass&&self.state.emailPass&&self.state.ownEmailPass&&self.state.eventPass&&self.state.recoPass&&self.state.skillsPass)});
-      */
-      // console.log("item added");
-      // console.log(self.state);
     });
 
     $('.tagsinput').on('itemRemoved', function(){
@@ -90,7 +82,6 @@ class Recommend extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e.target);
     const formData = new FormData(e.target);
     let data = {};
     for (let entry of formData.entries()) {
@@ -102,7 +93,6 @@ class Recommend extends Component {
       data.email = '';
     }
     Meteor.call('Recommendations.insert', data.name, data.toName, data.email, data.event, data.recommendation, data.skills, this.state.toUserId, (error, result) => {
-      // console.log(result);
       if (result){
         this.setState({
           alert: <Alert type="success" text={["Thank you! Your recommendation has been sent to ",<strong key="x">{data.toName}</strong>, "."]} />
@@ -122,8 +112,6 @@ class Recommend extends Component {
     if (e.target.name == "recommendation") this.setState({recoPass:!validator.isEmpty(e.target.value)}, this.validateForm);
 
 
-    // console.log(e.target.name);
-    // console.log(this.state.hasErrors);
   }
 
   handleInputsFocus = (e) => {

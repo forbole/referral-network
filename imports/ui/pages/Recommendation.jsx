@@ -6,7 +6,6 @@ import { RecommendationCard, Alert } from '/imports/ui/components/ForboleCompone
 class Recommendation extends Component {
   constructor(props){
     super(props);
-    // console.log(props);
     this.state = {
       fromDate: moment("20180311", "YYYYMMDD").fromNow(),
       acceptButton: '',
@@ -30,7 +29,7 @@ class Recommendation extends Component {
           }
         });
       }
-      else console.log(err);
+      else if (err) console.log(err);
     });
   }
 
