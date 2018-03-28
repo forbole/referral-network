@@ -21,6 +21,14 @@ class Recommendation extends Component {
       if (result){
         this.setState({accepted: true});
         // console.log(result);
+        Meteor.call('Connections.insert', this.props.reco.createdBy, this.props.reco._id, function(err, result){
+          if (err){
+            console.log(err);
+          }
+          if (result){
+            console.log('connection created.')
+          }
+        });
       }
       else console.log(err);
     });
@@ -55,49 +63,47 @@ class Recommendation extends Component {
       }
       else {
       	return (
-      			<div className="main">
-              {this.props.recoExists?
-  			    		<div className="container">
-                  <div className="row">
-                    {(this.props.reco.createdBy == Meteor.userId())?
-                      <Alert
-                        type="info"
-                        text="This is a preview of a recommendation you have sent."
-                      />:''}
-    			    			<h2 className="title text-center">{this.props.reco.toName}, you are recommended!</h2>
-    			    			<div className="col-md-12">
-    			    				<p>You've got a recommendation from
-                        <Link to={"/profile/"+this.props.createdUser.username}>
-                          <em> {this.props.reco.name}</em>
-                        </Link> {moment(this.props.reco.createdAt,"YYYYMMDD").fromNow()}.
-                      </p>
-    								  <RecommendationCard
-                        createdBy={this.props.reco.name}
-                        title={this.props.createdUser.username}
-                        picture={this.props.createdUser.profile.picture}
-                        recommendation={this.props.reco.recommendation}
-                        skills={this.props.reco.skills}
-                      />
-                      <blockquote className="blockquote">{this.props.reco.event}</blockquote>
-                      <div className="text-center">
-                        <p>You can accept and display your recommendation by clicking the button below.</p>
-                        {Meteor.userId()?((this.props.reco.createdBy != Meteor.userId())?<button
+    			<div className="main">
+            {this.props.recoExists?
+			    		<div className="container">
+                <div className="row">
+                  {(this.props.reco.createdBy == Meteor.userId())?
+                    <Alert
+                      type="info"
+                      text="This is a preview of a recommendation you have sent."
+                    />:''}
+  			    			<h2 className="title text-center">{this.props.reco.toName}, you are recommended!</h2>
+  			    			<div className="col-md-12">
+  			    				<p>You've got a recommendation from
+                      <Link to={"/profile/"+this.props.createdUser.username}>
+                        <em> {this.props.reco.name}</em>
+                      </Link> {moment(this.props.reco.createdAt,"YYYYMMDD").fromNow()}.
+                    </p>
+  								  <RecommendationCard
+                      createdBy={this.props.reco.name}
+                      title={this.props.createdUser.username}
+                      picture={this.props.createdUser.profile.picture}
+                      recommendation={this.props.reco.recommendation}
+                      skills={this.props.reco.skills}
+                    />
+                    <blockquote className="blockquote">{this.props.reco.event}</blockquote>
+                    <div className="text-center">
+                      <p>You can accept and display your recommendation by clicking the button below.</p>
+                      {Meteor.userId()?((this.props.reco.createdBy != Meteor.userId())?<button
+                        className="btn btn-primary btn-round"
+                        onClick={this.handleAccept}>Accept</button>:''):<button
                           className="btn btn-primary btn-round"
-                          onClick={this.handleAccept}>Accept</button>:''):<button
-                            className="btn btn-primary btn-round"
-                            onClick={this.loginAndAccept}>Accept</button>
-                        }
-
-                      </div>
-    							</div>
-
-                </div>
-  						</div>
-              :''}
-  				</div>
-      	)
-      }
-  	}
+                          onClick={this.loginAndAccept}>Accept</button>
+                      }
+                    </div>
+  							</div>
+              </div>
+						</div>
+            :''}
+				</div>
+    	)
+    }
+	}
 }
 
 export default Recommendation;

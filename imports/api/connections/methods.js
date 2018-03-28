@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { Connections } from './Connections.js';
+import { Connections } from './connections.js';
 // import { Email } from 'meteor/email';
 import moment from 'moment';
 
