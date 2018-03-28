@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 class Connections extends Component {
+  constructor(props){
+    super(props);
+  }
+
   render(){
+    if (this.props.connectionsExists){
+      console.log(this.props.connections);
     return <div>
       <div className="container">
         <h3 className="text-center">Your Connections</h3>
@@ -83,6 +89,10 @@ class Connections extends Component {
         </div>
       </div>
     </div>;
+  }
+  else{
+    return <div>No connections yet.</div>;
+  }
   }
 }
 
