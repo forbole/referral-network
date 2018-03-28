@@ -6,7 +6,8 @@ import List from './List.jsx';
 
 export default ConnectionsListContainer = withTracker((props) => {
   const connectionsHandle = Meteor.subscribe('connections.user', Meteor.userId());
-  const loading = !connectionsHandle.ready();
+  const usersHandle = Meteor.subscribe('users.all');
+  const loading = !connectionsHandle.ready() || !usersHandle.ready();
   const connections = Connections.find({users: {$in: [Meteor.userId()]}}).fetch();
   const connectionsExists = !loading && !!connections;
   // console.log(userExists);

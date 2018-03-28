@@ -78,3 +78,29 @@ export const RecommendationCard = (props) => {
     </div>
   )
 }
+
+export const ConnectionsListCard = (props) => {
+  return (
+    <div className="card">
+      <div className="card-body media">
+        <div className="col-xs-3">
+          <Link to={"/profile/"+props.username} className="pull-left">
+            <div className="avatar">
+              <img src={props.picture} />
+            </div>
+          </Link>
+        </div>
+        <div className="col-xs-9">
+          <h4 className="media-heading">{props.name}</h4>
+          <h6 className="media-muted">{props.title}</h6>
+          <div className="media-footer">
+            {props.skills.map((skill, i) =>
+              <span className="label label-rose" key={i}>{skill}</span>
+            )}
+          </div>
+          {(props.otherSkills > 0)? <small>And {props.otherSkills} more skills</small>: ''}
+        </div>
+      </div>
+    </div>
+  )
+}
