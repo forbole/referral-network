@@ -189,6 +189,11 @@ form .invalid-feedback {
   text-align: left;
 }
 
+.media-footer p {
+    font-size: 90%;
+    margin-top: 1em;
+}
+
 .profile-page .profile img{
   background-color: #fff;
 }

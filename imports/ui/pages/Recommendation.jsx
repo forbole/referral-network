@@ -74,7 +74,7 @@ class Recommendation extends Component {
   			    			<h2 className="title text-center">{this.props.reco.toName}, you are recommended!</h2>
   			    			<div className="col-md-12">
   			    				<p>You've got a recommendation from
-                      <Link to={"/profile/"+this.props.createdUser.username}>
+                      <Link to={"/profile/@"+this.props.createdUser.username}>
                         <em> {this.props.reco.name}</em>
                       </Link> {moment(this.props.reco.createdAt,"YYYYMMDD").fromNow()}.
                     </p>

@@ -41,7 +41,7 @@ export const Skill = (props) => {
 export const ProfileCard = (props) => {
     return (<div className="card card-profile card-plain">
       <div className="card-avatar">
-        <Link to={"/profile/"+props.username}>
+        <Link to={"/profile/@"+props.username}>
           <img className="img" src={props.picture} />
         </Link>
       </div>
@@ -58,10 +58,9 @@ export const ProfileCard = (props) => {
 
 export const RecommendationCard = (props) => {
   return (
-    <div className="col-md-6 col-lg-4">
     <div className="card card-testimonial">
       <div className="card-avatar">
-        <Link to={"/profile/"+props.username}>
+        <Link to={"/profile/@"+props.username}>
           <img className="img" src={props.picture} />
         </Link>
       </div>
@@ -78,7 +77,6 @@ export const RecommendationCard = (props) => {
         <blockquote className="blockquote">{props.event}</blockquote>
       </div>
     </div>
-  </div>
   )
 }
 
@@ -88,7 +86,7 @@ export const ConnectionsListCard = (props) => {
       <div className="card-body media">
         <div className="row">
           <div className="col-xs-3">
-            <Link to={"/profile/"+props.username} className="pull-left">
+            <Link to={"/profile/@"+props.username} className="pull-left">
               <div className="avatar">
                 <img src={props.picture} />
               </div>
@@ -103,8 +101,8 @@ export const ConnectionsListCard = (props) => {
             {(props.skills.length > 0)?props.skills.map((skill, i) =>
               <span className="label label-rose" key={i}>{skill}</span>
             ):<div>No recommendation yet. <Link to={"/recommend/"+props.title} className="btn btn-primary btn-round btn-sm">Recommend</Link></div>}
+            {(props.otherSkills > 0)? <small>And {props.otherSkills} more skills</small>: ''}
           </div>
-          {(props.otherSkills > 0)? <small>And {props.otherSkills} more skills</small>: ''}
 
         </div>
       </div>

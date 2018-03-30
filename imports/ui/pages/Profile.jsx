@@ -89,7 +89,8 @@ class Profile extends Component {
                   {/* <Recommendations user={this.props.user._id}/> */}
                   <div className="tab-pane" id="recommendations">
                     <div className="row">
-                        {this.props.recos.map((reco, i) => <RecommendationCard key={i}
+                        {this.props.recos.map((reco, i) => <div key={i} className="col-md-6 col-lg-4">
+                          <RecommendationCard
                           username={reco.creator().username}
                           picture={reco.creator().profile.picture}
                           createdBy={reco.creator().profile.name}
@@ -98,7 +99,7 @@ class Profile extends Component {
                           skills={reco.skills}
                           event={reco.event}
                           createdAt={reco.createdAt}
-                        />)}
+                        /></div>)}
                     </div>
                   </div>
                 </div>

@@ -77,7 +77,7 @@ export default class App extends Component {
                 <PrivateRoute path="/" exact={true} component={Home} />
                 <LoginLayout path="/login" component={Login} />
                 <LoginLayout path="/signup" component={Register} />
-                <DefaultLayout path="/profile/:username?" component={Profile} transHead={true} />
+                <DefaultLayout path="/profile/@:username?" component={Profile} transHead={true} />
                 <DefaultLayout path="/recommendation/accept/:id" exact={true} component={Recommendation} />
                 <PrivateRoute path="/recommend/:username?" component={Recommend} transHead={true}/>
                 <PrivateRoute path="/connections" component={Connections}/>

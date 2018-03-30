@@ -47,7 +47,7 @@ class Header extends Component {
                       </Link>
                       <ul className="dropdown-menu dropdown-with-icons">
                         <li>
-                          <Link to="/profile/">
+                          <Link to={"/profile/@"+Meteor.user().username}>
                             <i className="material-icons">account_balance</i> My Profile
                           </Link>
                         </li>
