@@ -58,6 +58,7 @@ export const ProfileCard = (props) => {
 
 export const RecommendationCard = (props) => {
   return (
+    <div className="col-md-6 col-lg-4">
     <div className="card card-testimonial">
       <div className="card-avatar">
         <Link to={"/profile/"+props.username}>
@@ -77,6 +78,7 @@ export const RecommendationCard = (props) => {
         <blockquote className="blockquote">{props.event}</blockquote>
       </div>
     </div>
+  </div>
   )
 }
 

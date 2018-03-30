@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom'
-
+import { Link, Redirect } from 'react-router-dom';
 import { Skill, RecommendationCard } from '/imports/ui/components/ForboleComponents.jsx';
 
 // import Blog from '/imports/ui/pages/profile/Blog.jsx';
@@ -90,7 +89,6 @@ class Profile extends Component {
                   {/* <Recommendations user={this.props.user._id}/> */}
                   <div className="tab-pane" id="recommendations">
                     <div className="row">
-                      <div className="col-md-6 col-lg-4">
                         {this.props.recos.map((reco, i) => <RecommendationCard key={i}
                           username={reco.creator().username}
                           picture={reco.creator().profile.picture}
@@ -101,7 +99,6 @@ class Profile extends Component {
                           event={reco.event}
                           createdAt={reco.createdAt}
                         />)}
-                      </div>
                     </div>
                   </div>
                 </div>
