@@ -84,8 +84,8 @@ class Recommendation extends Component {
                       picture={this.props.createdUser.profile.picture}
                       recommendation={this.props.reco.recommendation}
                       skills={this.props.reco.skills}
+                      event={this.props.reco.event}
                     />
-                    <blockquote className="blockquote">{this.props.reco.event}</blockquote>
                     <div className="text-center">
                       <p>You can accept and display your recommendation by clicking the button below.</p>
                       {Meteor.userId()?((this.props.reco.createdBy != Meteor.userId())?<button

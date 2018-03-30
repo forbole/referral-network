@@ -98,6 +98,7 @@ class Profile extends Component {
                           title={reco.creator().username}
                           recommendation={reco.recommendation}
                           skills={reco.skills}
+                          event={reco.event}
                           createdAt={reco.createdAt}
                         />)}
                       </div>

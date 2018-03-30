@@ -184,6 +184,11 @@ form .invalid-feedback {
   font-style: normal;
 }
 
+.card-testimonial blockquote{
+  font-size: 1em;
+  text-align: left;
+}
+
 .profile-page .profile img{
   background-color: #fff;
 }
@@ -201,7 +206,7 @@ form .invalid-feedback {
   .page-header {
       height: auto;
       min-height: inherit;
-  }  
+  }
 }
 
 

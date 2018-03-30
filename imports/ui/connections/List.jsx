@@ -9,7 +9,7 @@ class Connections extends Component {
 
   render(){
     if (this.props.connectionsExists){
-      console.log(this.props.connections);
+      // console.log(this.props.connections);
     return <div>
       <div className="container">
         <h3 className="text-center">Your Connections</h3>
@@ -21,6 +21,8 @@ class Connections extends Component {
 								<option value="3">First Name</option>
 								<option value="4">Last Name</option>
 							</select> */}
+            </div>
+          </div>
 
               {this.props.connections.map((connection, i) =>
                 <ConnectionsListCard
@@ -29,14 +31,13 @@ class Connections extends Component {
                   username={connection.user().username}
                   name={connection.user().profile.name}
                   title={connection.user().username}
-                  skills={connection.user().skills.slice(0,3)}
-                  otherSkills={connection.user().skills.length-3}
+                  recoCount={connection.user().recoCount()}
+                  skills={(connection.user().skills)?connection.user().skills.slice(0,3):[]}
+                  otherSkills={(connection.user().skills)?(connection.user().skills.length-3):0}
                 />
               )}
 
 
-					</div>
-        </div>
       </div>
     </div>;
   }

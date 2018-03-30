@@ -74,6 +74,7 @@ export const RecommendationCard = (props) => {
         <div className="footer skills">
           {(props.skills)?props.skills.map((skill, i) => <Skill key={i} skill={skill} />):''}
         </div>
+        <blockquote className="blockquote">{props.event}</blockquote>
       </div>
     </div>
   )
@@ -83,22 +84,26 @@ export const ConnectionsListCard = (props) => {
   return (
     <div className="card">
       <div className="card-body media">
-        <div className="col-xs-3">
-          <Link to={"/profile/"+props.username} className="pull-left">
-            <div className="avatar">
-              <img src={props.picture} />
-            </div>
-          </Link>
-        </div>
-        <div className="col-xs-9">
-          <h4 className="media-heading">{props.name}</h4>
-          <h6 className="media-muted">{props.title}</h6>
-          <div className="media-footer">
-            {props.skills.map((skill, i) =>
+        <div className="row">
+          <div className="col-xs-3">
+            <Link to={"/profile/"+props.username} className="pull-left">
+              <div className="avatar">
+                <img src={props.picture} />
+              </div>
+            </Link>
+          </div>
+          <div className="col-xs-9">
+            <h4 className="media-heading">{props.name}</h4>
+            <h6 className="media-muted">{props.title}</h6>
+          </div>
+          <div className="media-footer col-xs-12">
+            {(props.recoCount > 0)?<p>Received {props.recoCount} recommendations.</p>:''}
+            {(props.skills.length > 0)?props.skills.map((skill, i) =>
               <span className="label label-rose" key={i}>{skill}</span>
-            )}
+            ):<div>No recommendation yet. <Link to={"/recommend/"+props.title} className="btn btn-primary btn-round btn-sm">Recommend</Link></div>}
           </div>
           {(props.otherSkills > 0)? <small>And {props.otherSkills} more skills</small>: ''}
+
         </div>
       </div>
     </div>
