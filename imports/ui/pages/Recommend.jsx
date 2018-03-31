@@ -22,7 +22,8 @@ class Recommend extends Component {
       recoTouched: false,
       recoPass: false,
       skillsTouched: false,
-      skillsPass: false
+      skillsPass: false,
+      sending: false
     };
   }
 
@@ -82,6 +83,8 @@ class Recommend extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    $("#recommendation-form button").prop('disabled', true);
+    this.setState({sending: true});
     const formData = new FormData(e.target);
     let data = {};
     for (let entry of formData.entries()) {
@@ -98,6 +101,9 @@ class Recommend extends Component {
           alert: <Alert type="success" text={["Thank you! Your recommendation has been sent to ",<strong key="x">{data.toName}</strong>, "."]} />
         });
         $('#recommendation-form').hide();
+      }
+      if (error){
+        $("#recommendation-form button").prop('disabled', true);
       }
     });
   }
@@ -143,6 +149,7 @@ class Recommend extends Component {
       recoPass: false,
       skillsTouched: false,
       skillsPass: false,
+      sending: false
     });
 
     $('#recommendation-form input[name=toName]').val('');
@@ -222,6 +229,7 @@ class Recommend extends Component {
                         <input name="skills" type="text" className="tagsinput" data-role="tagsinput" data-color="rose" onChange={this.handleInputs}/>
   										</div>
   										<div className="submit text-center">
+                        {this.state.sending?<div className="alert alert-primary">Please wait while we are sending your recommendation.</div>:''}
   											<button type="submit" className="btn btn-primary btn-raised btn-round" disabled={!this.state.hasErrors}>Send</button>
   										</div>
   									</form>
