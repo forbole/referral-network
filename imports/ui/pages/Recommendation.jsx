@@ -47,7 +47,7 @@ class Recommendation extends Component {
           <div className="main">
             <Alert type="success" text="You have accepted the recommendation!" />
             <div className="text-center">
-              <Link to="/profile" className="btn btn-primary btn-round">View your profile</Link>
+              <Link to={"/profile/@"+Meteor.user().username} className="btn btn-primary btn-round">View your profile</Link>
             </div>
           </div>
         )
