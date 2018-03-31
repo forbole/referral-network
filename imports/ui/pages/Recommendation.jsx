@@ -47,7 +47,7 @@ class Recommendation extends Component {
           <div className="main">
             <Alert type="success" text="You have accepted the recommendation!" />
             <div className="text-center">
-              <Link to={"/profile/@"+Meteor.user().username} className="btn btn-primary btn-round">View your profile</Link>
+              <Link to={"/@"+Meteor.user().username} className="btn btn-primary btn-round">View your profile</Link>
             </div>
           </div>
         )
@@ -74,7 +74,7 @@ class Recommendation extends Component {
   			    			<h2 className="title text-center">{this.props.reco.toName}, you are recommended!</h2>
   			    			<div className="col-md-12">
   			    				<p>You've got a recommendation from
-                      <Link to={"/profile/@"+this.props.createdUser.username}>
+                      <Link to={"/@"+this.props.createdUser.username}>
                         <em> {this.props.reco.name}</em>
                       </Link> {moment(this.props.reco.createdAt,"YYYYMMDD").fromNow()}.
                     </p>
