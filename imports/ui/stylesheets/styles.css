@@ -207,6 +207,10 @@ form .invalid-feedback {
   color: red;
 }
 
+.row.connections .media-footer small {
+    display: block;
+}
+
 @media (max-width: 991px){
   .page-header {
       height: auto;

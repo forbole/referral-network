@@ -13,7 +13,7 @@ class Connections extends Component {
     return <div>
       <div className="container">
         <h3 className="text-center">Your Connections</h3>
-        <div className="row">
+        <div className="row connections">
           <div className="col-md-12">
 							{/* <select className="selectpicker" value="2" data-style="select-with-transition" title="Sort by: Recently recommended" readOnly>
 								<option disabled> Sort by: Recently recommended</option>
@@ -22,8 +22,7 @@ class Connections extends Component {
 								<option value="4">Last Name</option>
 							</select> */}
             </div>
-          </div>
-
+            <div className="col-md-8">
               {this.props.connections.map((connection, i) =>
                 <ConnectionsListCard
                   key={i}
@@ -36,6 +35,10 @@ class Connections extends Component {
                   otherSkills={(connection.user().skills)?(connection.user().skills.length-3):0}
                 />
               )}
+
+            </div>
+          </div>
+
 
 
       </div>
