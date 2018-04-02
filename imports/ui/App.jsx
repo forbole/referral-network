@@ -13,7 +13,8 @@ import Home from '/imports/ui/pages/Home.jsx';
 import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
-import Profile from '/imports/ui/pages/ProfileContainer.js';
+import Profile from '/imports/ui/users/ProfileContainer.js';
+import ProfileEdit from '/imports/ui/users/Edit.jsx';
 import Recommend from '/imports/ui/pages/RecommendContainer.js';
 import Recommendation from '/imports/ui/pages/RecommendationContainer.js';
 import Connections from '/imports/ui/connections/ListContainer.js';
@@ -77,9 +78,10 @@ export default class App extends Component {
                 <PrivateRoute path="/" exact={true} component={Home} />
                 <LoginLayout path="/login" component={Login} />
                 <LoginLayout path="/signup" component={Register} />
-                <DefaultLayout path="/@:username?" component={Profile} transHead={true} />
+                <DefaultLayout path="/@:username?" component={Profile} />
+                <PrivateRoute path="/@:username/edit" component={Profile} />
                 <DefaultLayout path="/recommendation/accept/:id" exact={true} component={Recommendation} />
-                <PrivateRoute path="/recommend/:username?" component={Recommend} transHead={true}/>
+                <PrivateRoute path="/recommend/:username?" component={Recommend} />
                 <PrivateRoute path="/connections" component={Connections}/>
                 <DefaultLayout path="*" component={NotFound}/>
               </Switch>

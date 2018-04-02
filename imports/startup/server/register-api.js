@@ -7,3 +7,7 @@ import '../../api/recommendations/server/publications.js';
 
 import '../../api/connections/methods.js';
 import '../../api/connections/server/publications.js';
+
+import '../../api/images/methods.js';
+import '../../api/images/server/store.js';
+import '../../api/images/server/publications.js';
