@@ -118,11 +118,11 @@ body{
   padding-top: 5vh;
 }
 
-.profile-page .main{
+.default .main{
   padding-top: 0 !important;
 }
 
-.profile-page .page-header{
+.default .page-header{
   height: 340px;
 }
 
@@ -224,16 +224,16 @@ form .invalid-feedback {
     font-size: 2.5em;
   }
 
-  .profile-page .page-header {
+  .default .page-header {
     height: 15vh;
     min-height: 15vh;
   }
 
-  .profile-page .profile img{
+  .default .profile img{
     max-width: 100px;
   }
 
-  .profile-page .profile .name{
+  .default .profile .name{
     margin-top: -50px;
   }
 

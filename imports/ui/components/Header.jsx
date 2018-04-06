@@ -72,12 +72,12 @@ class Header extends Component {
                             <i className="material-icons">attach_money</i> Wallet
                           </Link>
                         </li>
+                        */}
                         <li>
-                          <Link to="/settings/">
+                          <Link to="/settings">
                             <i className="material-icons">beach_access</i> Settings
                           </Link>
                         </li>
-                        */}
                         <li>
                           <Link to="#" onClick={this.logout}>
                             <i className="material-icons">clear</i> Logout

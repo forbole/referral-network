@@ -109,3 +109,25 @@ export const ConnectionsListCard = (props) => {
     </div>
   )
 }
+
+export const ProfileUserControl = (props) => {
+  return (<div className="row">
+    <div className="col-xs-6 col-xs-offset-3">
+       <div className="profile">
+            <div className="avatar">
+                <img src={props.picture} className="img-circle img-responsive img-raised"/>
+            </div>
+            <div className="name">
+                <h4 className="title">{props.name}</h4>
+                <p className="category text-grey">@{props.username}</p>
+            </div>
+        </div>
+      </div>
+      <div className="col-xs-3 follow">
+        {(props.userId != Meteor.userId())?
+         (<Link to={"/recommend/"+props.username} className="btn btn-fab btn-primary" rel="tooltip" title={"Recommend "+props.firstname}>
+                <i className="material-icons">add</i>
+            </Link>):''}
+      </div>
+  </div>)
+}

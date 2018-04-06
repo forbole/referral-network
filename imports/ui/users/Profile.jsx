@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Skill, RecommendationCard } from '/imports/ui/components/ForboleComponents.jsx';
+import { Skill, RecommendationCard, ProfileUserControl } from '/imports/ui/components/ForboleComponents.jsx';
 
 // import Blog from '/imports/ui/pages/profile/Blog.jsx';
 // import Wallet from '/imports/ui/pages/profile/Wallet.jsx';
@@ -44,25 +44,14 @@ class Profile extends Component {
           <div className="main">
             <div className="profile-content container">
 
-                <div className="row">
-                  <div className="col-xs-6 col-xs-offset-3">
-                     <div className="profile">
-                          <div className="avatar">
-                              <img src={this.props.user.profile.picture} className="img-circle img-responsive img-raised"/>
-                          </div>
-                          <div className="name">
-                              <h4 className="title">{this.props.user.profile.name}</h4>
-                              <p className="category text-grey">@{this.props.user.username}</p>
-                          </div>
-                      </div>
-                    </div>
-                    <div className="col-xs-2 follow">
-                      {(this.props.user._id != Meteor.userId())?
-  	                   (<Link to={"/recommend/"+this.props.user.username} className="btn btn-fab btn-primary" rel="tooltip" title={"Recommend "+this.props.user.profile.firstname}>
-                              <i className="material-icons">add</i>
-                          </Link>):''}
-  	                </div>
-                </div>
+              <ProfileUserControl
+                picture={this.props.user.profile.picture}
+                name={this.props.user.profile.name}
+                username={this.props.user.username}
+                userId={this.props.user._id}
+                firstname={this.props.user.profile.firstname}
+              />
+
 
                 <ul className="nav nav-pills nav-pills-rose">
                   <li className="active"><a href="#about" data-toggle="tab">Bio</a></li>
