@@ -40,14 +40,15 @@ class ProfileEdit extends Component {
   }
 
   uploadIt(e){
-    console.log(e);
+    console.log();
     e.preventDefault();
+    let el = $(e.currentTarget).find("input[type=file]")[0];
     let self = this;
 
-    if (e.currentTarget.files && e.currentTarget.files[0]) {
+    if (el.files && el.files[0]) {
       // We upload only one file, in case
       // there was multiple files selected
-      var file = e.currentTarget.files[0];
+      var file = el.files[0];
 
       if (file) {
         let uploadInstance = Images.insert({
