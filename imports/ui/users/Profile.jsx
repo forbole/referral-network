@@ -31,7 +31,7 @@ class Profile extends Component {
     }
     else {
       let headerBg = {
-        backgroundImage:'url('+Meteor.user().coverPic()+')',
+        backgroundImage:'url('+this.props.user.coverPic()+')',
         backgroundPosition: 'center center'
       };
 

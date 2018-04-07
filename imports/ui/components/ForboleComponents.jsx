@@ -56,58 +56,72 @@ export const ProfileCard = (props) => {
     </div>)
 }
 
-export const RecommendationCard = (props) => {
-  return (
-    <div className="card card-testimonial">
-      <div className="card-avatar">
-        <Link to={"/@"+props.username}>
-          <img className="img" src={props.picture} />
-        </Link>
-      </div>
-      <div className="card-content">
-        <h4 className="card-title">{props.createdBy}</h4>
-        <p className="category text-grey">@{props.title}</p>
-        <p className="time text-grey">Recommended on {moment(props.createdAt).format("Do MMM YYYY")}</p>
-        <p className="card-description">
-          {props.recommendation}
-        </p>
-        <div className="footer skills">
-          {(props.skills)?props.skills.map((skill, i) => <Skill key={i} skill={skill} />):''}
+export class RecommendationCard extends Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    let bg = {
+      backgroundImage: 'url('+this.props.picture+')'
+    }
+    return (
+      <div className="card card-testimonial">
+        <div className="card-avatar" style={bg}>
+          <Link to={"/@"+this.props.username} />
         </div>
-        <blockquote className="blockquote">{props.event}</blockquote>
+        <div className="card-content">
+          <h4 className="card-title">{this.props.createdBy}</h4>
+          <p className="category text-grey">@{this.props.title}</p>
+          <p className="time text-grey">Recommended on {moment(this.props.createdAt).format("Do MMM YYYY")}</p>
+          <p className="card-description">
+            {this.props.recommendation}
+          </p>
+          <div className="footer skills">
+            {(this.props.skills)?this.props.skills.map((skill, i) => <Skill key={i} skill={skill} />):''}
+          </div>
+          <blockquote className="blockquote">{this.props.event}</blockquote>
+        </div>
       </div>
-    </div>
-  )
+    )
+
+  }
 }
 
-export const ConnectionsListCard = (props) => {
-  return (
-    <div className="card">
-      <div className="card-body media">
-        <div className="row">
-          <div className="col-xs-3">
-            <Link to={"/@"+props.username} className="pull-left">
-              <div className="avatar">
-                <img src={props.picture} />
-              </div>
-            </Link>
-          </div>
-          <div className="col-xs-9">
-            <h4 className="media-heading">{props.name}</h4>
-            <h6 className="media-muted">{props.title}</h6>
-          </div>
-          <div className="media-footer col-xs-12">
-            {(props.recoCount > 0)?<p>Received {props.recoCount} recommendations.</p>:''}
-            {(props.skills.length > 0)?props.skills.map((skill, i) =>
-              <span className="label label-rose" key={i}>{skill}</span>
-            ):<div>No recommendation yet. <Link to={"/recommend/"+props.title} className="btn btn-primary btn-round btn-sm">Recommend</Link></div>}
-            {(props.otherSkills > 0)? <small>And {props.otherSkills} more skills</small>: ''}
-          </div>
+export class ConnectionsListCard extends Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    let bg = {
+      backgroundImage: 'url('+this.props.picture+')'
+    }
+    return (
+      <div className="card">
+        <div className="card-body media">
+          <div className="row">
+            <div className="col-xs-3">
+              <Link to={"/@"+this.props.username} className="pull-left">
+                <div className="avatar" style={bg} />
+              </Link>
+            </div>
+            <div className="col-xs-9">
+              <h4 className="media-heading">{this.props.name}</h4>
+              <h6 className="media-muted">{this.props.title}</h6>
+            </div>
+            <div className="media-footer col-xs-12">
+              {(this.props.recoCount > 0)?<p>Received {this.props.recoCount} recommendations.</p>:''}
+              {(this.props.skills.length > 0)?this.props.skills.map((skill, i) =>
+                <span className="label label-rose" key={i}>{skill}</span>
+              ):<div>No recommendation yet. <Link to={"/recommend/"+this.props.title} className="btn btn-primary btn-round btn-sm">Recommend</Link></div>}
+              {(this.props.otherSkills > 0)? <small>And {this.props.otherSkills} more skills</small>: ''}
+            </div>
 
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+
 }
 
 export class ProfileUserControl extends Component {

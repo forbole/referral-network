@@ -101,6 +101,7 @@ body{
   background-size: cover;
   display: inline-block;
   vertical-align: middle;
+  background-color: #fff;
 }
 .login-header {
   background-image: url('/img/bg7.jpg');
@@ -229,6 +230,21 @@ form .invalid-feedback {
   background-size: cover;
   margin: 0 auto;
   transform: translateY(-50%);
+  background-color: #fff;
+}
+
+.card-testimonial .card-avatar,
+.media .avatar{
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center center;
+}
+
+.media .avatar{
+  width: 64px;
+  height: 64px;
 }
 
 @media (max-width: 991px){
