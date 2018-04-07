@@ -130,8 +130,8 @@ export const ProfileUserControl = (props) => {
             </Link>):''}
             {(props.edit)?<div className="fileinput text-center" data-provides="fileinput">
               <div>
-                <span className="btn btn-fab btn-primary btn-file">
-                  <span>+</span>
+                <span className="btn btn-fab btn-info btn-file" rel="tooltip" title="Replace profile picture">
+                  <i className="material-icons">insert_emoticon</i>
                   <input type="file" name="profile" />
                 </span>
               </div>
