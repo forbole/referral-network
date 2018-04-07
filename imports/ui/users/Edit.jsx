@@ -12,13 +12,17 @@ class ProfileEdit extends Component {
     this.state = {
       uploading: [],
       progress: 0,
-      inProgress: false
+      inProgress: false,
+      attachButton: true
     }
     this.uploadIt = this.uploadIt.bind(this);
   }
 
-  componentDidMount(){
-    $(".fileinput").on('change.bs.fileinput', this.uploadIt);
+  componentDidUpdate(prevProps, prevState, snapshot){
+    if (this.state.attachButton){
+      $(".fileinput").on('change.bs.fileinput', this.uploadIt);
+      this.setState({attachButton: false});
+    }
   }
 
   showUploads() {
@@ -41,7 +45,6 @@ class ProfileEdit extends Component {
   }
 
   uploadIt(e){
-    // console.log();
     e.preventDefault();
     let el = $(e.currentTarget).find("input[type=file]")[0];
     let self = this;
@@ -75,7 +78,12 @@ class ProfileEdit extends Component {
 
         uploadInstance.on('end', function (error, fileObj) {
           console.log('On end File Object: ', fileObj);
-          Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.image_id":fileObj._id}});
+          // Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.image_id":fileObj._id}});
+          Meteor.call('images.updateProfilePic', fileObj._id, (err, result) => {
+            if (err){
+              console.log(err);
+            }
+          });
         });
 
         uploadInstance.on('uploaded', function (error, fileObj) {
@@ -116,7 +124,7 @@ class ProfileEdit extends Component {
     };
 
     if (!this.props.loading){
-      console.log(Meteor.user().profilePic());
+      // console.log(Meteor.user().profilePic());
     return (
       <div className="profile-page">
           <div className="page-header header-filter" data-parallax="true" style={headerBg}>

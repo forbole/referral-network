@@ -4,9 +4,11 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Accounts } from 'meteor/accounts-base'
 import Profile from './Profile.jsx';
 import { Recommendations } from '/imports/api/recommendations/recommendations.js';
+import { Images } from '/imports/api/images/images.js'
 
 
 export default ProfileContainer = withTracker((props) => {
+  const imagesHandle = Meteor.subscribe('images.all');
   const userHandle = Meteor.subscribe('users.all');
 
   const username = (!props.match.params.username)?((Meteor.userId())?Meteor.user().username:''):props.match.params.username;
@@ -14,7 +16,7 @@ export default ProfileContainer = withTracker((props) => {
 
   const recosHandle = Meteor.subscribe('recommendations.all');
 
-  const loading = (!userHandle.ready() || !recosHandle.ready());
+  const loading = (!userHandle.ready() || !recosHandle.ready() || !imagesHandle.ready());
   const userExists = !loading && !!user;
   return {
     loading,

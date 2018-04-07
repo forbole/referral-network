@@ -3,6 +3,7 @@ import { _ } from 'meteor/underscore';
 import { Random } from 'meteor/random';
 import { FilesCollection } from 'meteor/ostrio:files';
 import stream from 'stream';
+import { check } from 'meteor/check';
 
 import S3 from 'aws-sdk/clients/s3'; // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
 // See fs-extra and graceful-fs NPM packages
@@ -185,6 +186,19 @@ if (s3Conf && s3Conf.key && s3Conf.secret && s3Conf.bucket && s3Conf.region) {
   Meteor.publish('images.all', function () {
     return Images.find().cursor;
   });
+
+
+  Meteor.methods({
+    'images.updateProfilePic'(fileId){
+      check(fileId, String);
+
+      if (Meteor.user().profile.image_id){
+        Images.remove({_id:Meteor.user().profile.image_id});
+      }
+      Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.image_id":fileId}});
+    }
+  })
+
 
 } else {
   throw new Meteor.Error(401, 'Missing Meteor file settings');

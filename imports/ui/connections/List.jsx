@@ -26,7 +26,7 @@ class Connections extends Component {
               {this.props.connections.map((connection, i) =>
                 <ConnectionsListCard
                   key={i}
-                  picture={connection.user().profile.picture}
+                  picture={connection.user().profilePic()}
                   username={connection.user().username}
                   name={connection.user().profile.name}
                   title={connection.user().username}

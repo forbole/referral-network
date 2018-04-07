@@ -65,7 +65,7 @@ class Recommend extends Component {
       if (nextProps.user.username){
         const toUser = <ProfileCard
           username={nextProps.user.username}
-          picture={nextProps.user.profile.picture}
+          picture={nextProps.user.profilePic()}
           name={nextProps.user.profile.name}
           text={"You can recognize "+nextProps.user.profile.name+" by writing her/him a recommendation. Your recommendation will be shown on his/her profile once accepted."}
         />
