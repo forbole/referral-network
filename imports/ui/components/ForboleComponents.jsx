@@ -110,32 +110,45 @@ export const ConnectionsListCard = (props) => {
   )
 }
 
-export const ProfileUserControl = (props) => {
-  return (<div className="row">
-    <div className="col-xs-6 col-xs-offset-3">
-       <div className="profile">
-            <div className="avatar">
-                <img src={props.picture} className="img-circle img-responsive img-raised"/>
-            </div>
-            <div className="name">
-                <h4 className="title">{props.name}</h4>
-                <p className="category text-grey">@{props.username}</p>
-            </div>
-        </div>
-      </div>
-      <div className="col-xs-3 follow">
-        {(props.userId != Meteor.userId())?
-         (<Link to={"/recommend/"+props.username} className="btn btn-fab btn-primary" rel="tooltip" title={"Recommend "+props.firstname}>
-                <i className="material-icons">add</i>
-            </Link>):''}
-            {(props.edit)?<div className="fileinput text-center" data-provides="fileinput">
-              <div>
-                <span className="btn btn-fab btn-info btn-file" rel="tooltip" title="Replace profile picture">
-                  <i className="material-icons">insert_emoticon</i>
-                  <input type="file" name="profile" />
-                </span>
+export class ProfileUserControl extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount(){
+    $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
+  }
+
+  render(){
+    let bg = {
+      backgroundImage: 'url('+this.props.picture+')'
+    }
+    return (<div className="row">
+      <div className="col-xs-6 col-xs-offset-3">
+         <div className="profile">
+              <div className="avatar img-circle img-raised" style={bg}>
               </div>
-            </div>:''}
-      </div>
-  </div>)
+              <div className="name">
+                  <h4 className="title">{this.props.name}</h4>
+                  <p className="category text-grey">@{this.props.username}</p>
+              </div>
+          </div>
+        </div>
+        <div className="col-xs-3 follow">
+          {(this.props.userId != Meteor.userId())?
+           (<Link to={"/recommend/"+this.props.username} className="btn btn-fab btn-primary" rel="tooltip" title={"Recommend "+this.props.firstname}>
+                  <i className="material-icons">add</i>
+              </Link>):''}
+              {(this.props.edit)?<div className="fileinput profile text-center" data-provides="fileinput" rel="tooltip" title="Replace profile picture">
+                <div>
+                  <span className="btn btn-fab btn-info btn-file">
+                    <i className="material-icons">insert_emoticon</i>
+                    <input type="file" name="profile" />
+                  </span>
+                </div>
+              </div>:''}
+        </div>
+    </div>)
+  }
+
 }

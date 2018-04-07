@@ -43,6 +43,13 @@ if (s3Conf && s3Conf.key && s3Conf.secret && s3Conf.bucket && s3Conf.region) {
     // Disallow Client to execute remove, use the Meteor.method
     allowClientCode: false,
 
+    onBeforeUpload(fileRef) {
+      // Allow upload files under 1MB, and only in png/jpg/jpeg formats
+      if (fileRef.size <= 1048576 && /png|jpg|jpeg/i.test(fileRef.extension)) {
+        return true;
+      }
+      return 'Please upload image, with size equal or less than 1MB';
+    },
     // Start moving files to AWS:S3
     // after fully received by the Meteor server
     onAfterUpload(fileRef) {
@@ -190,12 +197,30 @@ if (s3Conf && s3Conf.key && s3Conf.secret && s3Conf.bucket && s3Conf.region) {
 
   Meteor.methods({
     'images.updateProfilePic'(fileId){
-      check(fileId, String);
-
-      if (Meteor.user().profile.image_id){
-        Images.remove({_id:Meteor.user().profile.image_id});
+      if (Meteor.userId() != this.userId){
+        throw new Meteor.Error("not authorized", "Only the user can update her own profile picture.");
       }
-      Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.image_id":fileId}});
+      else{
+        check(fileId, String);
+
+        if (Meteor.user().profile.image_id){
+          Images.remove({_id:Meteor.user().profile.image_id});
+        }
+        Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.image_id":fileId}});
+      }
+    },
+    'images.updateCover'(fileId){
+      if (Meteor.userId() != this.userId){
+        throw new Meteor.Error("not authorized", "Only the user can update her own cover photo.");
+      }
+      else{
+        check(fileId, String);
+
+        if (Meteor.user().profile.cover_image_id){
+          Images.remove({_id:Meteor.user().profile.cover_image_id});
+        }
+        Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.cover_image_id":fileId}});
+      }
     }
   })
 

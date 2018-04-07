@@ -15,5 +15,14 @@ Meteor.users.helpers({
     else{
       return user.profile.picture;
     }
+  },
+  coverPic(){
+    let user = Meteor.users.findOne({_id: this._id});
+    if (user.profile.cover_image_id){
+      return Images.findOne(user.profile.cover_image_id).link();
+    }
+    else{
+      return '/img/kwun-profile-header.jpg';
+    }
   }
 });

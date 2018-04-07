@@ -12,18 +12,13 @@ class Profile extends Component {
   }
 
   render() {
-    let headerBg = {
-      backgroundImage:'url(/img/kwun-profile-header.jpg)',
-      backgroundPosition: 'center center'
-    };
-    // console.log(this.props.loading);
     if (this.props.loading){
       return (<div>Loading... </div>);
     }
     else {
     if (!this.props.userExists){
       if (Meteor.userId()){
-        return <div>No user found.</div>
+        return (<div>No user found.</div>)
       }
       else{
         return (<Redirect
@@ -35,6 +30,11 @@ class Profile extends Component {
       }
     }
     else {
+      let headerBg = {
+        backgroundImage:'url('+Meteor.user().coverPic()+')',
+        backgroundPosition: 'center center'
+      };
+
       return (
         <div className="profile-page">
 

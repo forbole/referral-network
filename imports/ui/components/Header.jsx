@@ -26,6 +26,9 @@ class Header extends Component {
 
   render(){
     if (!this.props.loading){
+      let bg = {
+        backgroundImage: 'url('+Meteor.user().profilePic()+')'
+      }
     return (
       <nav className={"navbar navbar-primary navbar-fixed-top"+this.state.headClass} color-on-scroll="350">
           <div className="container">
@@ -43,7 +46,7 @@ class Header extends Component {
                 <ul className="nav navbar-nav navbar-right">
                     <li className="dropdown">
                       <Link to="#" className="dropdown-toggle profile-link" data-toggle="dropdown">
-                        <img src={Meteor.user().profilePic()} className="avatar img-raised"/> {Meteor.user().profile.name}
+                        <div className="avatar img-raised" style={bg}/> {Meteor.user().profile.name}
                         <b className="caret"></b>
                       </Link>
                       <ul className="dropdown-menu dropdown-with-icons">

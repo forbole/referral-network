@@ -91,12 +91,16 @@ body{
   margin-right: 0.4em;
 }
 
-.navbar .avatar{
+.navbar div.avatar{
   width: 30px;
   height: 30px;
   overflow: hidden;
   border-radius: 50%;
   margin-right: 5px;
+  background-position: center center;
+  background-size: cover;
+  display: inline-block;
+  vertical-align: middle;
 }
 .login-header {
   background-image: url('/img/bg7.jpg');
@@ -202,6 +206,13 @@ form .invalid-feedback {
   margin-bottom: 2em;
 }
 
+.profile-page .page-header .fileinput{
+  position:absolute;
+  z-index: 999;
+  top: 10%;
+  left: 3%;
+}
+
 .form-group.required .control-label:after {
   content: " *";
   color: red;
@@ -209,6 +220,15 @@ form .invalid-feedback {
 
 .row.connections .media-footer small {
     display: block;
+}
+
+.default .profile .avatar{
+  width: 160px;
+  height: 160px;
+  background-position: center center;
+  background-size: cover;
+  margin: 0 auto;
+  transform: translateY(-50%);
 }
 
 @media (max-width: 991px){
@@ -229,8 +249,13 @@ form .invalid-feedback {
     min-height: 15vh;
   }
 
-  .default .profile img{
+  /* .default .profile img{
     max-width: 100px;
+  }
+ */
+  .default .profile .avatar{
+    width: 100px;
+    height: 100px;
   }
 
   .default .profile .name{
