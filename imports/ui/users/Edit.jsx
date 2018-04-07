@@ -14,6 +14,7 @@ class ProfileEdit extends Component {
       progress: 0,
       inProgress: false
     }
+    this.uploadIt = this.uploadIt.bind(this);
   }
 
   componentDidMount(){
@@ -40,7 +41,7 @@ class ProfileEdit extends Component {
   }
 
   uploadIt(e){
-    console.log();
+    // console.log();
     e.preventDefault();
     let el = $(e.currentTarget).find("input[type=file]")[0];
     let self = this;
@@ -74,6 +75,7 @@ class ProfileEdit extends Component {
 
         uploadInstance.on('end', function (error, fileObj) {
           console.log('On end File Object: ', fileObj);
+          Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.image_id":fileObj._id}});
         });
 
         uploadInstance.on('uploaded', function (error, fileObj) {
@@ -113,6 +115,8 @@ class ProfileEdit extends Component {
       backgroundPosition: 'center center'
     };
 
+    if (!this.props.loading){
+      console.log(Meteor.user().profilePic());
     return (
       <div className="profile-page">
           <div className="page-header header-filter" data-parallax="true" style={headerBg}>
@@ -122,7 +126,7 @@ class ProfileEdit extends Component {
             <div className="profile-content container">
 
               <ProfileUserControl
-                picture={Meteor.user().profile.picture}
+                picture={Meteor.user().profilePic()}
                 name={Meteor.user().profile.name}
                 username={Meteor.user().username}
                 userId={Meteor.userId()}
@@ -140,7 +144,10 @@ class ProfileEdit extends Component {
             </div>
           </div>
         </div>
-      )
+      )}
+      else{
+        return <div></div>
+      }
   }
 }
 

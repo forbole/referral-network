@@ -38,7 +38,7 @@ if (s3Conf && s3Conf.key && s3Conf.secret && s3Conf.bucket && s3Conf.region) {
   const Images = new FilesCollection({
     debug: false, // Change to `true` for debugging
     storagePath: 'assets/app/uploads/uploadedFiles',
-    collectionName: 'Images',
+    collectionName: 'images',
     // Disallow Client to execute remove, use the Meteor.method
     allowClientCode: false,
 
@@ -181,6 +181,11 @@ if (s3Conf && s3Conf.key && s3Conf.secret && s3Conf.bucket && s3Conf.region) {
     //remove original file from database
     _origRemove.call(this, search);
   };
+
+  Meteor.publish('images.all', function () {
+    return Images.find().cursor;
+  });
+
 } else {
   throw new Meteor.Error(401, 'Missing Meteor file settings');
 }

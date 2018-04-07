@@ -1,3 +1,3 @@
 import { Mongo } from 'meteor/mongo';
 
-export const Images = new FilesCollection({collectionName: 'Images'});
+export const Images = new FilesCollection({collectionName: 'images'});

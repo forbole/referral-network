@@ -45,7 +45,7 @@ class Profile extends Component {
             <div className="profile-content container">
 
               <ProfileUserControl
-                picture={this.props.user.profile.picture}
+                picture={this.props.user.profilePic()}
                 name={this.props.user.profile.name}
                 username={this.props.user.username}
                 userId={this.props.user._id}

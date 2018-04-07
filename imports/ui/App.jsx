@@ -14,7 +14,7 @@ import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
 import Profile from '/imports/ui/users/ProfileContainer.js';
-import ProfileEdit from '/imports/ui/users/Edit.jsx';
+import ProfileEdit from '/imports/ui/users/EditContainer.js';
 import Recommend from '/imports/ui/pages/RecommendContainer.js';
 import Recommendation from '/imports/ui/pages/RecommendationContainer.js';
 import Connections from '/imports/ui/connections/ListContainer.js';

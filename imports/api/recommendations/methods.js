@@ -49,7 +49,6 @@ Meteor.methods({
     message += 'Forbole - Recommend · Refer · Reward';
 
     this.unblock();
-    // console.log(process.env.MAIL_URL);
     Email.send({
       to: email,
       from: from,
@@ -64,7 +63,6 @@ Meteor.methods({
 
     if (Meteor.user()){
       let reco = Recommendations.findOne({_id: recoId});
-      console.log(reco);
       if (reco && !reco.accepted){
         let userState = Meteor.users.update({_id: this.userId}, {
           $addToSet: {skills:{$each:reco.skills}}
