@@ -90,8 +90,8 @@ class ProfileEdit extends Component {
           console.log('uploaded: ', fileObj);
 
           // Remove the filename from the upload box
-          self.refs['fileinput'].value = '';
-
+          // self.refs['fileinput'].value = '';
+          $("input[name=profile]").val("");
           // Reset our state for the next file
           self.setState({
             uploading: [],
@@ -139,15 +139,8 @@ class ProfileEdit extends Component {
                 username={Meteor.user().username}
                 userId={Meteor.userId()}
                 firstname={Meteor.user().profile.firstname}
+                edit={true}
               />
-              <div className="fileinput text-center" data-provides="fileinput">
-								<div>
-									<span className="btn btn-raised btn-round btn-default btn-file">
-										<span>New Profile Photo</span>
-										<input type="file" name="profile" ref="fileinput" />
-                  </span>
-								</div>
-							</div>
               {this.showUploads()}
             </div>
           </div>

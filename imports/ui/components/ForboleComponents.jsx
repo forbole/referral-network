@@ -128,6 +128,14 @@ export const ProfileUserControl = (props) => {
          (<Link to={"/recommend/"+props.username} className="btn btn-fab btn-primary" rel="tooltip" title={"Recommend "+props.firstname}>
                 <i className="material-icons">add</i>
             </Link>):''}
+            {(props.edit)?<div className="fileinput text-center" data-provides="fileinput">
+              <div>
+                <span className="btn btn-fab btn-primary btn-file">
+                  <span>+</span>
+                  <input type="file" name="profile" />
+                </span>
+              </div>
+            </div>:''}
       </div>
   </div>)
 }
