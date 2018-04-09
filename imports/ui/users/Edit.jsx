@@ -149,6 +149,23 @@ class ProfileEdit extends Component {
     }
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    let data = {};
+    for (let entry of formData.entries()) {
+       data[entry[0]] = entry[1];
+    }
+
+    // console.log(data);
+    Meteor.call('Users.udpateProfile', data.firstname, data.lastname, data.headline, data.position, data.location, (error, result) => {
+      if (result){
+      }
+      if (error){
+      }
+    });
+  }
+
   render(){
 
     if (!this.props.loading){
@@ -182,6 +199,33 @@ class ProfileEdit extends Component {
                 edit={true}
               />
               {this.showUploads()}
+              <div className="col-md-9">
+                <form role="form" id="settings-form" onSubmit={this.handleSubmit} noValidate>
+                  <div className="form-group label-floating">
+                    <label className="control-label">First Name</label>
+                    <input type="text" name="firstname" className="form-control" value={Meteor.user().profile.firstname} />
+                  </div>
+                  <div className="form-group label-floating">
+                    <label className="control-label">Last Name</label>
+                    <input type="text" name="lastname" className="form-control" value={Meteor.user().profile.lastname} />
+                  </div>
+                  <div className="form-group label-floating">
+                    <label className="control-label">Headline</label>
+                    <input type="text"  name="headline" className="form-control" value={Meteor.user().profile.headline} />
+                  </div>
+                  <div className="form-group label-floating">
+                    <label className="control-label">Current Position</label>
+                    <input type="text" name="position" className="form-control" value={Meteor.user().profile.position} />
+                  </div>
+                  <div className="form-group label-floating">
+                    <label className="control-label">Location</label>
+                    <input type="text" name="location" className="form-control" value={Meteor.user().profile.location} />
+                  </div>
+                  <div className="submit text-center">
+                    <button type="submit" className="btn btn-primary btn-raised btn-round" >Update</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
