@@ -128,7 +128,7 @@ body{
 }
 
 .default .page-header{
-  height: 340px;
+  height: 200px;
 }
 
 .space-50{
@@ -199,8 +199,15 @@ form .invalid-feedback {
     margin-top: 1em;
 }
 
+.profile{
+  margin-bottom: 3em;
+}
 .profile-page .profile img{
   background-color: #fff;
+}
+
+.profile .name .other-info span{
+  margin: 0 0.5em;
 }
 
 .profile-content .nav.nav-pills{
@@ -245,6 +252,21 @@ form .invalid-feedback {
 .media .avatar{
   width: 64px;
   height: 64px;
+}
+
+span .material-icons{
+  vertical-align: middle;
+}
+
+span.headline {
+  font-size: 1.5em;
+  font-family: averta-light;
+  line-height: 1.2;
+}
+
+span.position {
+  line-height: 2;
+  color: #777;
 }
 
 @media (max-width: 991px){

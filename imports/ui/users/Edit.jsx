@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Skill, RecommendationCard, ProfileUserControl } from '/imports/ui/components/ForboleComponents.jsx';
 import { Images } from '../../api/images/images.js';
+import { toast } from 'react-toastify';
 
 
 class ProfileEdit extends Component {
@@ -36,7 +37,7 @@ class ProfileEdit extends Component {
 
   showUploads() {
     if (!_.isEmpty(this.state.uploading)) {
-      console.log('**********************************', this.state.uploading);
+      // console.log('**********************************', this.state.uploading);
       return (<div>
         {this.state.uploading.file.name}
 
@@ -78,7 +79,7 @@ class ProfileEdit extends Component {
       });
 
       uploadInstance.on('end', function (error, fileObj) {
-        console.log('On end File Object: ', fileObj);
+        // console.log('On end File Object: ', fileObj);
         // Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.image_id":fileObj._id}});
         if (self.state.isCover){
           Meteor.call('images.updateCover', fileObj._id, (err, result) => {
@@ -97,7 +98,7 @@ class ProfileEdit extends Component {
       });
 
       uploadInstance.on('uploaded', function (error, fileObj) {
-        console.log('uploaded: ', fileObj);
+        // console.log('uploaded: ', fileObj);
 
         // Remove the filename from the upload box
         // self.refs['fileinput'].value = '';
@@ -158,16 +159,17 @@ class ProfileEdit extends Component {
     }
 
     // console.log(data);
-    Meteor.call('Users.udpateProfile', data.firstname, data.lastname, data.headline, data.position, data.location, (error, result) => {
+    Meteor.call('users.udpateProfile', data.firstname, data.lastname, data.headline, data.position, data.location, (error, result) => {
       if (result){
+        toast.success("Your profile is updated.");
       }
       if (error){
+        toast.error(error);
       }
     });
   }
 
   render(){
-
     if (!this.props.loading){
       let headerBg = {
         backgroundImage:'url('+Meteor.user().coverPic()+')',
@@ -189,13 +191,15 @@ class ProfileEdit extends Component {
 
           <div className="main">
             <div className="profile-content container">
-
               <ProfileUserControl
                 picture={Meteor.user().profilePic()}
                 name={Meteor.user().profile.name}
                 username={Meteor.user().username}
                 userId={Meteor.userId()}
                 firstname={Meteor.user().profile.firstname}
+                headline={Meteor.user().profile.headline}
+                position={Meteor.user().profile.position}
+                location={Meteor.user().profile.location}
                 edit={true}
               />
               {this.showUploads()}
@@ -203,23 +207,23 @@ class ProfileEdit extends Component {
                 <form role="form" id="settings-form" onSubmit={this.handleSubmit} noValidate>
                   <div className="form-group label-floating">
                     <label className="control-label">First Name</label>
-                    <input type="text" name="firstname" className="form-control" value={Meteor.user().profile.firstname} />
+                    <input type="text" name="firstname" className="form-control" defaultValue={Meteor.user().profile.firstname} />
                   </div>
                   <div className="form-group label-floating">
                     <label className="control-label">Last Name</label>
-                    <input type="text" name="lastname" className="form-control" value={Meteor.user().profile.lastname} />
+                    <input type="text" name="lastname" className="form-control" defaultValue={Meteor.user().profile.lastname} />
                   </div>
                   <div className="form-group label-floating">
                     <label className="control-label">Headline</label>
-                    <input type="text"  name="headline" className="form-control" value={Meteor.user().profile.headline} />
+                    <input type="text"  name="headline" className="form-control" defaultValue={Meteor.user().profile.headline} />
                   </div>
                   <div className="form-group label-floating">
                     <label className="control-label">Current Position</label>
-                    <input type="text" name="position" className="form-control" value={Meteor.user().profile.position} />
+                    <input type="text" name="position" className="form-control" defaultValue={Meteor.user().profile.position} />
                   </div>
                   <div className="form-group label-floating">
                     <label className="control-label">Location</label>
-                    <input type="text" name="location" className="form-control" value={Meteor.user().profile.location} />
+                    <input type="text" name="location" className="form-control" defaultValue={Meteor.user().profile.location} />
                   </div>
                   <div className="submit text-center">
                     <button type="submit" className="btn btn-primary btn-raised btn-round" >Update</button>

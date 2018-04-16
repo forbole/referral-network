@@ -9,7 +9,7 @@ export const ValidateSuccess = () => (
 );
 
 export const ValidateFail = () => (
-  <span class="form-control-feedback">
+  <span className="form-control-feedback">
     <i className="material-icons">clear</i>
   </span>
 )
@@ -137,14 +137,10 @@ export class ProfileUserControl extends Component {
     let bg = {
       backgroundImage: 'url('+this.props.picture+')'
     }
-    return (<div className="row">
+    return (<div className="profile row">
       <div className="col-xs-6 col-xs-offset-3">
-         <div className="profile">
+         <div className="">
               <div className="avatar img-circle img-raised" style={bg}>
-              </div>
-              <div className="name">
-                  <h4 className="title">{this.props.name}</h4>
-                  <p className="category text-grey">@{this.props.username}</p>
               </div>
           </div>
         </div>
@@ -161,6 +157,11 @@ export class ProfileUserControl extends Component {
                   </span>
                 </div>
               </div>:''}
+        </div>
+        <div className="name col-xs-12">
+            <h4 className="title">{this.props.name}</h4>
+            <div className="category text-grey"><span className="headline">{this.props.headline}</span><br/><span className="position">{this.props.position}</span></div>
+            <div className="other-info category text-muted"><span><i className="material-icons">location_on</i>{this.props.location}</span> <span><i className="material-icons">grade</i>{this.props.reputation}</span></div>
         </div>
     </div>)
   }

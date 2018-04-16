@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Match, Redirect, Switch } from 'r
 import Header from '/imports/ui/components/HeaderContainer.js';
 import PublicHeader from '/imports/ui/components/PublicHeader.jsx';
 import Footer from '/imports/ui/components/Footer.jsx';
+import { ToastContainer } from 'react-toastify';
 
 // import Navbar from './../ui/navigation/navbar';
 const DefaultLayout = ({component: Component, transHead: transHead, ...rest}) => {
@@ -16,6 +17,7 @@ const DefaultLayout = ({component: Component, transHead: transHead, ...rest}) =>
       <Route {...rest} render={matchProps => {
           return (
             <div className="default">
+              <ToastContainer />
               {Meteor.user()?<Header />:<PublicHeader />}
                   <Component {...matchProps} />
               <Footer />
