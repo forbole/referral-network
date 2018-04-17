@@ -49,7 +49,9 @@ class Profile extends Component {
                 name={this.props.user.profile.name}
                 username={this.props.user.username}
                 userId={this.props.user._id}
-                firstname={this.props.user.profile.firstname}
+                headline={this.props.user.profile.headline}
+                position={this.props.user.profile.position}
+                location={this.props.user.profile.location}
               />
 
 

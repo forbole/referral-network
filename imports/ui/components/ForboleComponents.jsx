@@ -47,8 +47,7 @@ export const ProfileCard = (props) => {
       </div>
       <div className="card-content text-center">
         <h4 className="card-title">{props.name}</h4>
-        <h6 className="category text-muted">@{props.username}</h6>
-
+        <div className="category text-grey"><span className="headline">{props.headline}</span><br/><span className="position">{props.position}</span></div>
         <p className="card-description">
           {props.text}
         </p>
@@ -71,7 +70,7 @@ export class RecommendationCard extends Component {
         </div>
         <div className="card-content">
           <h4 className="card-title">{this.props.createdBy}</h4>
-          <p className="category text-grey">@{this.props.title}</p>
+          <p className="category text-grey">{this.props.title}</p>
           <p className="time text-grey">Recommended on {moment(this.props.createdAt).format("Do MMM YYYY")}</p>
           <p className="card-description">
             {this.props.recommendation}
@@ -161,7 +160,7 @@ export class ProfileUserControl extends Component {
         <div className="name col-xs-12">
             <h4 className="title">{this.props.name}</h4>
             <div className="category text-grey"><span className="headline">{this.props.headline}</span><br/><span className="position">{this.props.position}</span></div>
-            <div className="other-info category text-muted"><span><i className="material-icons">location_on</i>{this.props.location}</span> <span><i className="material-icons">grade</i>{this.props.reputation}</span></div>
+            <div className="other-info category text-muted"><span><i className="material-icons">location_on</i>{this.props.location}</span> {/*<span><i className="material-icons">grade</i>{this.props.reputation}</span>*/}</div>
         </div>
     </div>)
   }

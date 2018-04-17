@@ -80,7 +80,7 @@ class Recommendation extends Component {
                     </p>
   								  <RecommendationCard
                       createdBy={this.props.reco.name}
-                      title={this.props.createdUser.username}
+                      title={this.props.createdUser.profile.position}
                       picture={this.props.createdUser.profilePic()}
                       recommendation={this.props.reco.recommendation}
                       skills={this.props.reco.skills}

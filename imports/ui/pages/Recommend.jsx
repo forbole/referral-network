@@ -67,6 +67,8 @@ class Recommend extends Component {
           username={nextProps.user.username}
           picture={nextProps.user.profilePic()}
           name={nextProps.user.profile.name}
+          headline={nextProps.user.profile.headline}
+          position={nextProps.user.profile.position}
           text={"You can recognize "+nextProps.user.profile.name+" by writing her/him a recommendation. Your recommendation will be shown on his/her profile once accepted."}
         />
         this.setState({toUser: toUser, toUserId: nextProps.user._id});

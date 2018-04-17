@@ -196,7 +196,6 @@ class ProfileEdit extends Component {
                 name={Meteor.user().profile.name}
                 username={Meteor.user().username}
                 userId={Meteor.userId()}
-                firstname={Meteor.user().profile.firstname}
                 headline={Meteor.user().profile.headline}
                 position={Meteor.user().profile.position}
                 location={Meteor.user().profile.location}
