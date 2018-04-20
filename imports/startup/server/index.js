@@ -4,3 +4,7 @@ import './fixtures.js';
 import './register-api.js';
 import './smtp.js';
 import './accounts.js';
+
+// Add GTM
+if (process.env.ROOT_URL == 'https://mvp.forbole.com')
+  addGoogleTagManager('GTM-NRHTQQV');

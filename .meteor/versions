@@ -36,6 +36,7 @@ es5-shim@4.7.3
 facebook-oauth@1.4.0
 fortawesome:fontawesome@4.7.0
 fourseven:scss@4.5.4
+fuww:google-tag-manager@0.0.1
 geojson-utils@1.0.10
 hot-code-push@1.0.4
 html-tools@1.0.11
