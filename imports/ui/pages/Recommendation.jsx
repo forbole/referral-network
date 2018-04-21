@@ -28,6 +28,15 @@ class Recommendation extends Component {
             console.log('connection created.')
           }
         });
+        Meteor.call('contributions.insert', 'recommendations', this.props.reco._id, this.props.reco.createdBy, 500, function(err, result){
+          if (err){
+            console.log(err);
+          }
+          if (result){
+            console.log('contributions add');
+          }
+        });
+
       }
       else if (err) console.log(err);
     });
