@@ -15,8 +15,8 @@ import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
 import Profile from '/imports/ui/users/ProfileContainer.js';
 import ProfileEdit from '/imports/ui/users/EditContainer.js';
-import Recommend from '/imports/ui/pages/RecommendContainer.js';
-import Recommendation from '/imports/ui/pages/RecommendationContainer.js';
+import Recommend from '/imports/ui/recommendations/RecommendContainer.js';
+import Recommendation from '/imports/ui/recommendations/RecommendationContainer.js';
 import Connections from '/imports/ui/connections/ListContainer.js';
 
 // import About from './pages/about.jsx';
