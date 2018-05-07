@@ -41,10 +41,18 @@ Meteor.methods({
     let to = toName+' <'+email+'>';
     let from = name+' <recommend@forbole.com>';
     let subject = name+' has recommended you on Forbole!';
-    let message = 'Hi '+toName+',\n\n';
-    message += name+' has recommended you on Forbole business referral network.\n\n';
-    message += 'Please accept your recommendation by clicking here:\n\n';
+    let message = 'Dear '+toName+',\n\n';
+    message += 'Bravo! '+name+' has made the following recommendation about you.\n\n\n';
+    message += '"'+recommendation+'"\n\n\n';
+    message += 'The user has also endorsed you these '+skills.length+' skills: ';
+    for (let skill of skills){
+      message += '['+skill+'] ';
+    }
+    message += '\n\nPlease accept your recommendation by clicking here:\n\n';
     message += Meteor.settings.public.host+'/recommendation/accept/'+id+'\n\n';
+    message += 'At Forbole, we help each other to succeed. If we write recommendations and endorse the skills of each other, we will all do better in our business and career!\n\n';
+    message += 'We keep improving our prototype every day. We invite you to join us by accepting this recommendation, complete your profile and start to make endorsements for the people you trust. One more thing, we are a blockchain project and we will reward users with our crypto-tokens once we are ready. Stay tuned!\n\n';
+    message += 'We love to hear your feedback!\n\n';
     message += 'Thanks,\n\n';
     message += 'Forbole - Recommend · Refer · Reward';
 
