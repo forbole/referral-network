@@ -20,9 +20,6 @@ class InviteAccept extends Component {
     Meteor.call('invites.accept', this.props.invite._id, (err, result) =>{
       if (result){
         this.setState({accepted: true});
-        // console.log(result);
-        console.log(this.props.invite.createdBy);
-        console.log(this.props.invite._id);
         Meteor.call('Connections.insert', this.props.invite.createdBy, this.props.invite._id, "", function(err, result){
           if (err){
             console.log(err);
@@ -95,9 +92,9 @@ class InviteAccept extends Component {
                       title={this.props.createdUser.profile.position}
                       picture={this.props.createdUser.profilePic()}
                       relationship={this.props.invite.relationship}
-                      recommendation={this.props.invite.recommendation}
-                      skills={this.props.invite.skills}
-                      event={this.props.invite.event}
+                      recommendation={this.props.invite.recommendation().recommendation}
+                      skills={this.props.invite.recommendation().skills}
+                      event={this.props.invite.recommendation().event}
                     />
                     <div className="text-center">
                       <p>You can accept this invitation by clicking the button below.</p>

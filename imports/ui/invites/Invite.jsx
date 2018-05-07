@@ -42,12 +42,13 @@ class Invite extends Component {
     let self = this;
 
     $('.tagsinput').on('itemAdded', function(){
-      self.setState({skillsPass:($('.tagsinput').tagsinput('items').length == 3)}, self.validateForm);
-
+      let skillsLength = $('.tagsinput').tagsinput('items').length;
+      self.setState({skillsPass:((skillsLength > 0) && (skillsLength <=3))}, self.validateForm);
     });
 
     $('.tagsinput').on('itemRemoved', function(){
-      self.setState({skillsPass:($('.tagsinput').tagsinput('items').length == 3)}, self.validateForm);
+      let skillsLength = $('.tagsinput').tagsinput('items').length;
+      self.setState({skillsPass:((skillsLength > 0) && (skillsLength <=3))}, self.validateForm);
     });
   }
 
@@ -235,7 +236,7 @@ class Invite extends Component {
                           {(this.state.recoTouched&&!this.state.recoPass)?<div className="invalid-feedback">Recommendation should contain some contents, pal.</div>:''}
                         </div>
                         <div className="form-group">
-                          <label className="control-label">Endorse max 3 Skills (press Enter for each skill)</label>
+                          <label className="control-label">Endorse at least 1 max 3 Skills (press Enter for each skill)</label>
                           <input name="skills" type="text" className="tagsinput" data-role="tagsinput" data-color="rose" onChange={this.handleInputs}/>
                         </div>
                       </div>:<button id="recommendBtn" className="btn btn-primary" onClick={this.handleRecommend}>Add a recommedation with this invite?</button>}
