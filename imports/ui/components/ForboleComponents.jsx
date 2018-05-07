@@ -82,7 +82,38 @@ export class RecommendationCard extends Component {
         </div>
       </div>
     )
+  }
+}
 
+export class InvitationCard extends Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    let bg = {
+      backgroundImage: 'url('+this.props.picture+')'
+    }
+    return (
+      <div className="card card-testimonial">
+        <div className="card-avatar" style={bg}>
+          <Link to={"/@"+this.props.username} />
+        </div>
+        <div className="card-content">
+          <h4 className="card-title">{this.props.createdBy}</h4>
+          <p className="category text-grey">{this.props.title}</p>
+          <blockquote className="blockquote">{this.props.relationship}</blockquote>
+          {(this.props.recommendation)?<div>
+          <p className="time text-grey">Recommended on {moment(this.props.createdAt).format("Do MMM YYYY")}</p>
+          <p className="card-description">
+            {this.props.recommendation}
+          </p>
+          <div className="footer skills">
+            {(this.props.skills)?this.props.skills.map((skill, i) => <Skill key={i} skill={skill} />):''}
+          </div>
+          <blockquote className="blockquote">{this.props.event}</blockquote></div>:''}
+        </div>
+      </div>
+    )
   }
 }
 

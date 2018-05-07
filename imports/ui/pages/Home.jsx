@@ -12,7 +12,7 @@ class Home extends Component {
       <div className="main">
         <div className="container">
           <h1>Forbole</h1>
-          <Link to="/recommend" className="btn btn-primary btn-round">Invite</Link> a connection by making a recommendation.
+          <Link to="/invite" className="btn btn-primary btn-round">Invite</Link> a connection.
         </div>
 
       </div>

@@ -7,8 +7,9 @@ import Recommendation from './Recommendation.jsx';
 export default RecommendationContainer = withTracker((props) => {
   // console.log(props)
   const recoHandle = Meteor.subscribe('recommendations.findOne', props.match.params.id);
+  const imagesHandle = Meteor.subscribe('images.all');
   // const referrer = Meteor.users.findOne()
-  const loading = !recoHandle.ready();
+  const loading = !recoHandle.ready() && !imagesHandle.ready();
 
   const userHandle = Meteor.subscribe('users.all');
   const loadingUser = !userHandle.ready();

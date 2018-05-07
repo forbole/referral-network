@@ -5,8 +5,9 @@ import { Connections } from './connections.js';
 import moment from 'moment';
 
 Meteor.methods({
-  'Connections.insert'(userId, recoId){
+  'Connections.insert'(userId, inviteId, recoId){
     check(userId, String);
+    check(inviteId, String);
     check(recoId, String);
 
     let connection = Connections.findOne( { users : { $all : [this.userId, userId] } } );
@@ -15,6 +16,7 @@ Meteor.methods({
       console.log('not connected yet.');
       return Connections.insert({
         users: [this.userId, userId],
+        inviteId: inviteId,
         recoId: recoId,
         createdAt: new Date()
       })

@@ -7,8 +7,6 @@ import DefaultLayout from '/imports/ui/layouts/DefaultContainer.js';
 import LoginLayout from '/imports/ui/layouts/Login.jsx';
 import PropTypes from 'prop-types';
 
-// import EmptyLayout from '/imports/ui/layouts/Empty.jsx';
-
 import Home from '/imports/ui/pages/Home.jsx';
 import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
@@ -18,10 +16,8 @@ import ProfileEdit from '/imports/ui/users/EditContainer.js';
 import Recommend from '/imports/ui/recommendations/RecommendContainer.js';
 import Recommendation from '/imports/ui/recommendations/RecommendationContainer.js';
 import Connections from '/imports/ui/connections/ListContainer.js';
-
-// import About from './pages/about.jsx';
-// import SignIn from './pages/sign_in.jsx';
-
+import Invite from '/imports/ui/invites/InviteContainer.js';
+import InviteAccept from '/imports/ui/invites/InviteAcceptContainer.js';
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -67,9 +63,7 @@ export default class App extends Component {
             }
 
         }
-
     }
-
 
     render() {
         return (
@@ -81,17 +75,12 @@ export default class App extends Component {
                 <DefaultLayout path="/@:username?" component={Profile} />
                 <PrivateRoute path="/settings" component={ProfileEdit} />
                 <DefaultLayout path="/recommendation/accept/:id" exact={true} component={Recommendation} />
-                <PrivateRoute path="/recommend/:username?" component={Recommend} />
+                <PrivateRoute path="/invite" exact={true} component={Invite} />
+                <DefaultLayout path="/invite/accept/:id" exact={true} component={InviteAccept} />
+                <PrivateRoute path="/recommend/:username" component={Recommend} />
                 <PrivateRoute path="/connections" component={Connections}/>
                 <DefaultLayout path="*" component={NotFound}/>
               </Switch>
-                {/*}<Route path="/about" component={About} />*/}
-              {/*
-              <Route component={EmptyLayout}>
-                <Route path="/sign-in" component={SignIn} />
-              </Route>
-              <Route path="*" component={NotFound}/>
-              */}
             </Router>
         );
     }

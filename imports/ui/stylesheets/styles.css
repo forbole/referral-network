@@ -168,7 +168,7 @@ body{
 }
 
 form .invalid-feedback {
-    font-size: 80%;
+    /* font-size: 80%; */
     color: #bd081c;
 }
 
@@ -220,10 +220,27 @@ form .invalid-feedback {
   top: 10%;
   left: 3%;
 }
+.form-control{
+  font-size: 16px;
+}
+
+.form-group label.control-label{
+  font-size: 15px !important;
+}
 
 .form-group.required .control-label:after {
   content: " *";
   color: red;
+}
+
+.form-group label.control-label,
+.form-group.label-floating.is-focused label.control-label{
+  font-size: 12px;
+}
+
+.form-group.label-floating label.control-label, 
+.form-group.label-placeholder label.control-label{
+  font-size: 16px;
 }
 
 .row.connections .media-footer small {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import moment from 'moment'
 import { Link, Redirect } from 'react-router-dom';
-import { RecommendationCard, Alert } from '/imports/ui/components/ForboleComponents.jsx';
+import { RecommendationCard, InvitationCard, Alert } from '/imports/ui/components/ForboleComponents.jsx';
 
-class Recommendation extends Component {
+class InviteAccept extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -16,11 +16,14 @@ class Recommendation extends Component {
 
   handleAccept = (e) => {
     e.preventDefault();
-    Meteor.call('recommendations.accept', this.props.reco._id, (err, result) =>{
+    console.log(this.props.invite);
+    Meteor.call('invites.accept', this.props.invite._id, (err, result) =>{
       if (result){
         this.setState({accepted: true});
         // console.log(result);
-        Meteor.call('Connections.insert', this.props.reco.createdBy, "", this.props.reco._id, function(err, result){
+        console.log(this.props.invite.createdBy);
+        console.log(this.props.invite._id);
+        Meteor.call('Connections.insert', this.props.invite.createdBy, this.props.invite._id, "", function(err, result){
           if (err){
             console.log(err);
           }
@@ -28,14 +31,14 @@ class Recommendation extends Component {
             console.log('connection created.')
           }
         });
-        Meteor.call('contributions.insert', 'recommendations', this.props.reco._id, this.props.reco.createdBy, 500, function(err, result){
-          if (err){
-            console.log(err);
-          }
-          if (result){
-            console.log('contributions add');
-          }
-        });
+        // Meteor.call('contributions.insert', 'recommendations', this.props.reco._id, this.props.reco.createdBy, 500, function(err, result){
+        //   if (err){
+        //     console.log(err);
+        //   }
+        //   if (result){
+        //     console.log('contributions add');
+        //   }
+        // });
 
       }
       else if (err) console.log(err);
@@ -54,7 +57,7 @@ class Recommendation extends Component {
       else if (this.state.accepted){
         return (
           <div className="main">
-            <Alert type="success" text="You have accepted the recommendation!" />
+            <Alert type="success" text="You have accepted the invitation!" />
             <div className="text-center">
               <Link to={"/@"+Meteor.user().username} className="btn btn-primary btn-round">View your profile</Link>
             </div>
@@ -72,32 +75,33 @@ class Recommendation extends Component {
       else {
       	return (
     			<div className="main">
-            {this.props.recoExists?
+            {this.props.inviteExists?
 			    		<div className="container">
                 <div className="row">
-                  {(this.props.reco.createdBy == Meteor.userId())?
+                  {(this.props.invite.createdBy == Meteor.userId())?
                     <Alert
                       type="info"
-                      text="This is a preview of a recommendation you have sent."
+                      text="This is a preview of a invitation you have sent."
                     />:''}
-  			    			<h2 className="title text-center">{this.props.reco.toName}, you are recommended!</h2>
+  			    			<h2 className="title text-center">{this.props.invite.toName}, you are invited!</h2>
   			    			<div className="col-md-12">
-  			    				<p>You've got a recommendation from
+  			    				<p>You've got an invitation from
                       <Link to={"/@"+this.props.createdUser.username}>
-                        <em> {this.props.reco.name}</em>
-                      </Link> {moment(this.props.reco.createdAt,"YYYYMMDD").fromNow()}.
+                        <em> {this.props.invite.name}</em>
+                      </Link> {moment(this.props.invite.createdAt,"YYYYMMDD").fromNow()}.
                     </p>
-  								  <RecommendationCard
-                      createdBy={this.props.reco.name}
+  								  <InvitationCard
+                      createdBy={this.props.invite.name}
                       title={this.props.createdUser.profile.position}
                       picture={this.props.createdUser.profilePic()}
-                      recommendation={this.props.reco.recommendation}
-                      skills={this.props.reco.skills}
-                      event={this.props.reco.event}
+                      relationship={this.props.invite.relationship}
+                      recommendation={this.props.invite.recommendation}
+                      skills={this.props.invite.skills}
+                      event={this.props.invite.event}
                     />
                     <div className="text-center">
-                      <p>You can accept and display your recommendation by clicking the button below.</p>
-                      {Meteor.userId()?((this.props.reco.createdBy != Meteor.userId())?<button
+                      <p>You can accept this invitation by clicking the button below.</p>
+                      {Meteor.userId()?((this.props.invite.createdBy != Meteor.userId())?<button
                         className="btn btn-primary btn-round"
                         onClick={this.handleAccept}>Accept</button>:''):<button
                           className="btn btn-primary btn-round"
@@ -114,4 +118,4 @@ class Recommendation extends Component {
 	}
 }
 
-export default Recommendation;
+export default InviteAccept;
