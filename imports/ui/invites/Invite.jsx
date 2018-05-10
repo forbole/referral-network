@@ -161,6 +161,7 @@ class Invite extends Component {
     $('.tagsinput').tagsinput('removeAll');;
     $('.bootstrap-tagsinput').removeClass("bootstrap-tagsinput-max");
     $('#recommendation-form').slideDown('fast');
+    $("#recommendBtn").prop('disabled', false);
     this.setState({
       alert: ''
     });
