@@ -67,6 +67,7 @@ Meteor.methods({
         Email.send({
             to: email,
             from: from,
+            replyTo: name+'<'+Meteor.user().emails[0].address+'>',
             subject: subject,
             text: message
         });
