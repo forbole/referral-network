@@ -10,6 +10,16 @@ ServiceConfiguration.configurations.upsert({
   }
 });
 
+ServiceConfiguration.configurations.upsert(
+  { "service": "linkedin" },
+  {
+    $set: {
+      "clientId": "78sqdxiq74fb12",
+      "secret": "EStJrtmhuDZpHLqo"
+    }
+  }
+);
+
 // during new account creation get user picture from Facebook and save it on user object
 Accounts.onCreateUser(function(options, user) {
   if (typeof user.services.facebook != "undefined"){
