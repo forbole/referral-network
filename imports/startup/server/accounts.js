@@ -20,6 +20,18 @@ ServiceConfiguration.configurations.upsert(
   }
 );
 
+generateUsername = function (username) {
+  let count;
+  username = username.toLowerCase().trim().replace(" ", "");
+  count = Meteor.users.find({ "username": username }).count();
+  if (count === 0) {
+    return username;
+  }
+  else {
+    return username + (count + 1)
+  }
+}
+
 // during new account creation get user picture from Facebook and save it on user object
 Accounts.onCreateUser(function(options, user) {
   if (typeof user.services.facebook != "undefined"){
@@ -33,24 +45,33 @@ Accounts.onCreateUser(function(options, user) {
       options.profile.firstname = user.services.facebook.first_name;
       options.profile.lastname = user.services.facebook.last_name;
 
-      generateUsername = function(username) {
-          let count;
-          username = username.toLowerCase().trim().replace(" ", "");
-          count = Meteor.users.find({"username": username}).count();
-          if (count === 0) {
-              return username;
-          }
-          else {
-              return username + (count + 1)
-          }
-      }
-
       // username = user.services.facebook.name;
       user.username = generateUsername(user.services.facebook.name);
 
       user.profile = options.profile; // We still want the default 'profile' behavior.
     }
-  }else{
+  }
+  else if (typeof user.services.linkedin != "undefined") {
+    user.emails = [{
+      address: options.profile.emailAddress,
+      verified: true,
+    }];
+    if (options.profile){
+      options.profile.picture = user.services.linkedin.pictureUrl;
+      options.profile.firstname = user.services.linkedin.firstName;
+      options.profile.lastname = user.services.linkedin.lastName;
+      options.profile.positions = user.services.linkedin.positions.values[0].title + " at " + user.services.linkedin.positions.values[0].company;
+      options.profile.location = user.services.linkedin.location.name;
+      delete options.profile.firstName;
+      delete options.profile.lastName;
+      delete options.profile.emailAddress;
+
+      user.username = generateUsername(user.services.linkedin.firstName + " " + user.services.linkedin.lastName);
+
+      user.profile = options.profile;
+    }
+  }
+  else{
     if (!options.profile) options.profile = {};
     options.profile.picture = "/img/faces/default-profile.svg";
     user.profile = options.profile;
