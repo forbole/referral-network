@@ -5,7 +5,6 @@ ServiceConfiguration.configurations.upsert({
 }, {
   $set: {
     appId: Meteor.settings.facebook.appId,
-    loginStyle: "popup",
     secret: Meteor.settings.facebook.secret
   }
 });
@@ -60,7 +59,8 @@ Accounts.onCreateUser(function(options, user) {
       options.profile.picture = user.services.linkedin.pictureUrl;
       options.profile.firstname = user.services.linkedin.firstName;
       options.profile.lastname = user.services.linkedin.lastName;
-      options.profile.positions = user.services.linkedin.positions.values[0].title + " at " + user.services.linkedin.positions.values[0].company;
+      options.profile.name = user.services.linkedin.firstName + " " + user.services.linkedin.lastName;
+      options.profile.position = user.services.linkedin.positions.values[0].title + " at " + user.services.linkedin.positions.values[0].company.name;
       options.profile.location = user.services.linkedin.location.name;
       delete options.profile.firstName;
       delete options.profile.lastName;
