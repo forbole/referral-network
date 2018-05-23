@@ -25,7 +25,6 @@ accounts-facebook@1.3.1
 fortawesome:fontawesome
 fourseven:scss
 seba:minifiers-autoprefixer
-ssrwpo:uglifyjs2
 service-configuration@1.0.11
 std:accounts-ui
 std:accounts-bootstrap
@@ -41,3 +40,4 @@ session
 khamoud:linkedin-api
 bozhao:link-accounts
 pauli:accounts-linkedin
+abernix:standard-minifier-js
