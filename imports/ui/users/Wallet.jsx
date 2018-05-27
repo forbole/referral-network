@@ -14,11 +14,18 @@ class Wallet extends Component {
         });
         
     }
+
+    checkStatus = () => {
+        Meteor.call('checkStatus', (error, result) => {
+            console.log(JSON.parse(result));
+        })
+    }
     render(){
         return (
             <div className="container">
                 <h2>Wallet</h2>
                 <button className="btn btn-primary" onClick={this.sendCoin}>Send</button>
+                <button className="btn btn-primary" onClick={this.checkStatus}>Check Status</button>
             </div>
         )
         
