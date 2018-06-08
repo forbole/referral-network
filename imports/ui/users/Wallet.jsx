@@ -32,6 +32,12 @@ class Wallet extends Component {
         });
     }
 
+    checkStatus = () => {
+        Meteor.call('fbcli.checkStatus', (error, result) => {
+            console.log(JSON.parse(result));
+        })
+    }
+
     render(){
         return (
             <div className="container">
@@ -40,6 +46,7 @@ class Wallet extends Component {
                 <button className="btn btn-primary" onClick={this.createAccount}>Create Account</button>
                 <button className="btn btn-primary" onClick={this.sendContribReco}>Send Recommendation</button>
                 <button className="btn btn-primary" onClick={this.sendContribVote}>Send Vote</button>
+                <button className="btn btn-primary" onClick={this.checkStatus}>Check Status</button>
             </div>
         )
         

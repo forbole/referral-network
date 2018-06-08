@@ -37,6 +37,19 @@ Meteor.methods({
     // createAccount: (name, password) => {
 
     // },
+    'fbcli.checkStatus': function(){
+        this.unblock();
+        let future = new Future();
+        let command = 'fbcli status';
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                console.log(error);
+                throw new Meteor.Error(500, command + " failed");
+            }
+            future.return(stdout.toString());
+        });
+        return future.wait();
+    },
     'fbcli.sendCoin': function (toAddr, amount, name, password, seq) {
         check(toAddr, String);
         check(amount, String);
