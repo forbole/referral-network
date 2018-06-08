@@ -9,16 +9,37 @@ class Wallet extends Component {
     }
 
     sendCoin = () => {
-        Meteor.call('sendCoin', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
+        Meteor.call('fbcli.sendCoin', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
             console.log(result);
         });
-        
     }
+
+    createAccount = () => {
+        Meteor.call('fbcli.createAccount', 'kwunyeung', '9876543210', 0, (error, result) => {
+            console.log(result);
+        });
+    }
+
+    sendContribReco = () => {
+        Meteor.call('fbcli.sendContribReco', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
+            console.log(result);
+        });
+    }
+
+    sendContribVote = () => {
+        Meteor.call('fbcli.sendContribVote', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
+            console.log(result);
+        });
+    }
+
     render(){
         return (
             <div className="container">
                 <h2>Wallet</h2>
-                <button className="btn btn-primary" onClick={this.sendCoin}>Send</button>
+                <button className="btn btn-primary" onClick={this.sendCoin}>Send 1 Coin</button>
+                <button className="btn btn-primary" onClick={this.createAccount}>Create Account</button>
+                <button className="btn btn-primary" onClick={this.sendContribReco}>Send Recommendation</button>
+                <button className="btn btn-primary" onClick={this.sendContribVote}>Send Vote</button>
             </div>
         )
         

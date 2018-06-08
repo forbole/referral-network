@@ -19,16 +19,31 @@ stderrHandler = function(data){
     output.stderr = data;
 }
 
+generateKey = (name, password) => {
+    // this.unblock();
+    let future = new Future();
+    let command = Meteor.settings.fbPath+'createAccount '+name+' '+password;
+    exec(command, (error, stdout, stderr) => {
+        if (error){
+            console.log(error);
+            throw new Meteor.Error(500, command+" failed");
+        }
+        future.return(stdout.toString());
+    });
+    return future.wait();
+}
+
 Meteor.methods({
     // createAccount: (name, password) => {
 
     // },
-    sendCoin: (toAddr, amount, name, password, seq) => {
+    'fbcli.sendCoin': function (toAddr, amount, name, password, seq) {
         check(toAddr, String);
         check(amount, String);
         check(name, String);
         check(password, String);
         check(seq,Number);
+        // console.log(this);
         this.unblock();
         let future = new Future();
         let command = 'ls -la';
@@ -40,5 +55,13 @@ Meteor.methods({
             future.return(stdout.toString());
         });
         return future.wait();
+    },
+    'fbcli.createAccount': function (username, password) {
+        check(username, String);
+        check(password, String);
+
+        this.unblock();
+        return generateKey(username, password);
+        // return true;
     }
 });
