@@ -2,8 +2,10 @@
 
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
+import bcrypt from 'bcrypt';
 
 let fbPath = Meteor.settings.fbcli.path;
+let chainId = Meteor.settings.fbcli.chainId;
 let output = {};
 
 // Load future from fibers
@@ -40,13 +42,14 @@ Meteor.methods({
     'fbcli.checkStatus': function(){
         this.unblock();
         let future = new Future();
-        let command = 'fbcli status';
+        let command = fbPath + 'checkstatus';
         exec(command, (error, stdout, stderr) => {
             if (error) {
                 console.log(error);
                 throw new Meteor.Error(500, command + " failed");
             }
-            future.return(stdout.toString());
+            let lines = stdout.toString().split('\n');
+            future.return(lines[1]);
         });
         return future.wait();
     },
@@ -69,12 +72,68 @@ Meteor.methods({
         });
         return future.wait();
     },
-    'fbcli.createAccount': function (username, password) {
-        check(username, String);
-        check(password, String);
+    'fbcli.sendContrib': function (toAddr, type, key, content, name, time, seq){
+        check(toAddr, String);
+        check(type, String);
+        check(key, String);
+        check(content, String);
+        check(name, String);
+        check(time, String);
+        check(seq, Number);
 
         this.unblock();
-        return generateKey(username, password);
-        // return true;
+        password = '1234567890';
+
+        let future = new Future();
+        let command = fbPath+'sendContrib '+toAddr+' '+content+' 0 '+key+' '+time+' '+type+' '+name+' '+password+' '+chainId+' 0'; 
+
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                console.log(error);
+                throw new Meteor.Error(500, command + " failed");
+            }
+            future.return(stdout.toString());
+        });
+        return future.wait();
+    },
+    'fbcli.createAccount': function (username) {
+        check(username, String);
+        // check(psSeed, String);
+
+
+        let d = new Date();
+        let psSeed = d.toISOString();
+
+        let future = new Future();
+        this.unblock();
+
+        const saltRounds = 3;
+
+        bcrypt.genSalt(saltRounds, function(err, salt){
+            bcrypt.hash(psSeed, salt, function(err, hash){
+                let password = hash.substring(10);
+                let command = fbPath + 'createAccount ' + username + ' ' + password;
+                exec(command, (error, stdout, stderr) => {
+                    if (error) {
+                        console.log(error);
+                        console.log(stderr);
+                        throw new Meteor.Error(500, command + " failed");
+                    }
+                    console.log(stdout);
+                    let output = stdout.split('\n');
+
+                    let account = {};
+                    account.password = password;
+                    account.key = output[6].split('\t');
+                    account.seed = output[10];
+
+                    // console.log(account);
+                    // future.return(stdout.toString());
+                    future.return(account);
+                });
+            })
+        });
+
+        return future.wait();
     }
 });

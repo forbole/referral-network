@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 
-
 class Wallet extends Component {
     constructor(props){
         super(props);
@@ -15,7 +14,13 @@ class Wallet extends Component {
     }
 
     createAccount = () => {
-        Meteor.call('fbcli.createAccount', 'kwunyeung', '9876543210', 0, (error, result) => {
+        Meteor.call('fbcli.createAccount', this.refs.username.value, (error, result) => {
+            console.log(result);
+        });
+    }
+
+    sendContribInvite = () => {
+        Meteor.call('fbcli.sendContribInvite', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
             console.log(result);
         });
     }
@@ -43,6 +48,7 @@ class Wallet extends Component {
             <div className="container">
                 <h2>Wallet</h2>
                 <button className="btn btn-primary" onClick={this.sendCoin}>Send 1 Coin</button>
+                <input className="form-control" ref="username" />
                 <button className="btn btn-primary" onClick={this.createAccount}>Create Account</button>
                 <button className="btn btn-primary" onClick={this.sendContribReco}>Send Recommendation</button>
                 <button className="btn btn-primary" onClick={this.sendContribVote}>Send Vote</button>

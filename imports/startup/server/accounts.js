@@ -76,6 +76,9 @@ Accounts.onCreateUser(function(options, user) {
     options.profile.picture = "/img/faces/default-profile.svg";
     user.profile = options.profile;
   }
+
+  
+  
   return user;
 });
 
