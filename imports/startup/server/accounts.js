@@ -77,7 +77,7 @@ Accounts.onCreateUser(function(options, user) {
     user.profile = options.profile;
   }
 
-  
+  // Create blockchain key and add key information here
   
   return user;
 });
