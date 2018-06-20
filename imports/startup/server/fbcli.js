@@ -1,45 +1,20 @@
-// All fbcli methods here
+// All fbcli LCD methods here
 
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http'
 import { check } from 'meteor/check';
 import bcrypt from 'bcrypt';
 
-let fbPath = Meteor.settings.fbcli.path;
+let fbHost = Meteor.settings.fbcli.host;
 let chainId = Meteor.settings.fbcli.chainId;
-let output = {};
+let nodePass = Meteor.settings.fbcli.nodePass;
 
 // Load future from fibers
 let Future = Npm.require("fibers/future");
 // Load exec
 let exec = Npm.require("child_process").exec;
 
-stdoutHandler = function(data){
-    output.stdout = data;
-}
-
-stderrHandler = function(data){
-    output.stderr = data;
-}
-
-generateKey = (name, password) => {
-    // this.unblock();
-    let future = new Future();
-    let command = Meteor.settings.fbPath+'createAccount '+name+' '+password;
-    exec(command, (error, stdout, stderr) => {
-        if (error){
-            console.log(error);
-            throw new Meteor.Error(500, command+" failed");
-        }
-        future.return(stdout.toString());
-    });
-    return future.wait();
-}
-
 Meteor.methods({
-    // createAccount: (name, password) => {
-
-    // },
     'fbcli.checkStatus': function(){
         this.unblock();
         let future = new Future();
@@ -115,38 +90,30 @@ Meteor.methods({
                 let password = hash.substring(10);
                 // let command = fbPath + 'createAccount ' + username + ' ' + password;
 
-                let seed = HTTP.get('http://localhost:1317/keys/seed');
-                console.log(seed.content);
+                let seed = HTTP.get(fbHost+'/keys/seed');
+                // console.log(seed.content);
 
                 let account = {
-                    "username":username,
+                    "name":username,
                     "password":password,
-                    "seed":seed
+                    "seed": seed.content
                 };
 
-                let response = HTTP.post('http://localhost:1317/keys', {params:account});
-                console.log(response);
-                // exec(command, (error, stdout, stderr) => {
-                //     if (error) {
-                //         console.log(error);
-                //         console.log(stderr);
-                //         throw new Meteor.Error(500, command + " failed");
-                //     }
-                //     console.log(stdout);
-                //     let output = stdout.split('\n');
+                let response = HTTP.post(fbHost +'/keys', {
+                    data: account,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-                //     let account = {};
-                //     account.password = password;
-                //     account.key = output[6].split('\t');
-                //     account.seed = output[10];
+                let acctAddress = HTTP.get(fbHost +'/keys/'+username);
 
-                //     // console.log(account);
-                //     // future.return(stdout.toString());
-                //     future.return(account);
-                // });
+                let newAccount = {
+                    "response": response,
+                    "account": acctAddress.content
+                }
 
-
-                future.return(true);
+                future.return(newAccount);
             }))
         }));
 
