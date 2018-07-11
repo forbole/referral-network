@@ -22,6 +22,7 @@ export default ProfileContainer = withTracker((props) => {
     loading,
     userExists,
     user: userExists ? user: {},
-    recos: userExists ? Recommendations.find({acceptedBy:user._id}).fetch(): {}
+    recos: userExists ? Recommendations.find({acceptedBy:user._id}).fetch(): {},
+    recosSent: userExists ? Recommendations.find({ createdBy:user._id}).fetch(): {}
   };
 })(Profile);

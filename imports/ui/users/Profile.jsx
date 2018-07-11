@@ -9,6 +9,28 @@ import { Skill, RecommendationCard, ProfileUserControl } from '/imports/ui/compo
 class Profile extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      recos: {}
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    // console.log(this.props);
+    if (this.props != prevProps){
+      this.setState({recos: this.props.recos});
+    }
+  }
+
+  handleChange = (e) => {
+    e.preventDefault();
+    // console.log("value changed");
+    // console.log(e.target.value);
+    if (e.target.value == 'R'){
+      this.setState({ recos: this.props.recos})
+    }
+    else if (e.target.value == 'G'){
+      this.setState({recos: this.props.recosSent});
+    }
   }
 
   render() {
@@ -53,18 +75,15 @@ class Profile extends Component {
                 position={this.props.user.profile.position}
                 location={this.props.user.profile.location}
               />
-
-
-                <ul className="nav nav-pills nav-pills-rose">
-                  <li className="active"><a href="#about" data-toggle="tab">Bio</a></li>
-                  <li><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
+                <ul className="nav nav-pills nav-pills-primary">
+                  {/* <li className="active"><a href="#about" data-toggle="tab">Bio</a></li> */}
+                  <li className="active"><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
                 </ul>
-
-                <div className="tab-content">
-                  <div className="tab-pane active" id="about">
+                <div className="tab-content tab-space">
+                  {/* <div className="tab-pane active" id="about">
                     <div className="description">
-                      {/*<p>Kwun is the CoFounder & Conductor of Forbole. He has started his digital entrepreneur life since 2005. He cofounded Creativeworks Group Limited, a digital agency in Hong Kong which has served clients such as UNICEF, AIA, Miss Universe, All Nippon Airways, etc. He is an advocate in digital transformation through the use of information technology and interactive user experience design. Kwun is now a Senior Advisor of Creativeworks to give advice and guidance in design & digital.</p>
-                      <p>Kwun is also a Adjunct lecturer at The University of Hong Kong (“HKU”). He teaches digital marketing courses in the School of Professional And Continuing Education of HKU.</p>*/}
+                      <p>Kwun is the CoFounder & Conductor of Forbole. He has started his digital entrepreneur life since 2005. He cofounded Creativeworks Group Limited, a digital agency in Hong Kong which has served clients such as UNICEF, AIA, Miss Universe, All Nippon Airways, etc. He is an advocate in digital transformation through the use of information technology and interactive user experience design. Kwun is now a Senior Advisor of Creativeworks to give advice and guidance in design & digital.</p>
+                      <p>Kwun is also a Adjunct lecturer at The University of Hong Kong (“HKU”). He teaches digital marketing courses in the School of Professional And Continuing Education of HKU.</p>
                     </div>
 
                     <div className="skills">
@@ -75,12 +94,19 @@ class Profile extends Component {
                           </div>
                         </div>
                     </div>
-                  </div>
+                  </div> */}
                   {/*}<Blog />*/}
-                  {/* <Recommendations user={this.props.user._id}/> */}
-                  <div className="tab-pane" id="recommendations">
+                  <div className="tab-pane active" id="recommendations">
+                      <div className="row">
+								        <div className="col-lg-5 col-md-6 col-sm-3">
+                          <select className="selectpicker" data-style="select-with-transition" defaultValue="R" data-size="2" onChange={this.handleChange}>
+                            <option value="R">Received</option>
+                            <option value="G">Given</option>
+                          </select>                  
+                        </div>
+                      </div>
                     <div className="row">
-                        {this.props.recos.map((reco, i) => <div key={i} className="col-md-6 col-lg-4">
+                    {(this.state.recos.length > 0) ? this.state.recos.map((reco, i) => <div key={i} className="col-md-6 col-lg-4">
                           <RecommendationCard
                           username={reco.creator().username}
                           picture={reco.creator().profilePic()}
@@ -90,7 +116,7 @@ class Profile extends Component {
                           skills={reco.skills}
                           event={reco.event}
                           createdAt={reco.createdAt}
-                        /></div>)}
+                        /></div>):''}
                     </div>
                   </div>
                 </div>
