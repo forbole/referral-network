@@ -76,6 +76,9 @@ Accounts.onCreateUser(function(options, user) {
     options.profile.picture = "/img/faces/default-profile.svg";
     user.profile = options.profile;
   }
+
+  // Create blockchain key and add key information here
+  
   return user;
 });
 

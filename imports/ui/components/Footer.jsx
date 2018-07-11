@@ -18,7 +18,7 @@ const Footer = () => {
             <a href="https://www.forbole.com/#contact" target="_blank">Contact Us</a>
           </li>
           <li>
-            <a href="https://www.forbole.com/blog/" target="_blank">Blog</a>
+            <a href="https://medium.com/forbole/" target="_blank">Blog</a>
           </li>
           <li>
             <a href="https://www.forbole.com/privacy-policy/" target="_blank">Privacy Policy</a>

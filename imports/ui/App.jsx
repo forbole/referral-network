@@ -12,6 +12,7 @@ import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
 import Profile from '/imports/ui/users/ProfileContainer.js';
+import Wallet from '/imports/ui/users/Wallet.jsx';
 import ProfileEdit from '/imports/ui/users/EditContainer.js';
 import Recommend from '/imports/ui/recommendations/RecommendContainer.js';
 import Recommendation from '/imports/ui/recommendations/RecommendationContainer.js';
@@ -32,12 +33,12 @@ export default class App extends Component {
       // console.log('App componentDidMount');
       //rerun jquery for the current DOM
 
-        window_width = $(window).width();
+        let window_width = $(window).width();
 
-        $navbar = $('.navbar[color-on-scroll]');
-        scroll_distance = $navbar.attr('color-on-scroll') || 300;
+        let $navbar = $('.navbar[color-on-scroll]');
+        let scroll_distance = $navbar.attr('color-on-scroll') || 300;
 
-        $navbar_collapse = $('.navbar').find('.navbar-collapse');
+        let $navbar_collapse = $('.navbar').find('.navbar-collapse');
 
         //  Activate the Tooltips
         $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
@@ -57,7 +58,7 @@ export default class App extends Component {
 
 
         if (window_width >= 768){
-            big_image = $('.page-header[data-parallax="true"]');
+            let big_image = $('.page-header[data-parallax="true"]');
             if(big_image.length != 0){
                $(window).on('scroll', materialKitDemo.checkScrollForParallax);
             }
@@ -72,7 +73,8 @@ export default class App extends Component {
                 <PrivateRoute path="/" exact={true} component={Home} />
                 <LoginLayout path="/login" component={Login} />
                 <LoginLayout path="/signup" component={Register} />
-                <DefaultLayout path="/@:username?" component={Profile} />
+                <DefaultLayout path="/@:username?" exact={true} component={Profile} />
+                    <DefaultLayout path="/@:username/wallet" exact={true} component={Wallet} />
                 <PrivateRoute path="/settings" component={ProfileEdit} />
                 <DefaultLayout path="/recommendation/accept/:id" exact={true} component={Recommendation} />
                 <PrivateRoute path="/invite" exact={true} component={Invite} />
