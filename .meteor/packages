@@ -11,7 +11,7 @@ reactive-var@1.0.11            # Reactive variable for tracker
 tracker@1.2.0                 # Meteor's client-side reactive programming library
 
 es5-shim@4.8.0                # ECMAScript 5 compatibility for older browsers
-ecmascript@0.11.0              # Enable ECMAScript2015+ syntax in app code
+ecmascript@0.11.1              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.3.1            # Server-side component of the `meteor shell` command
 
 less@2.7.12                    # Leaner CSS language
@@ -42,4 +42,4 @@ bozhao:link-accounts
 pauli:accounts-linkedin
 abernix:standard-minifier-js
 jchristman:exec
-underscore
+underscore@1.0.10
