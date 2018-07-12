@@ -10,7 +10,8 @@ class Profile extends Component {
   constructor(props){
     super(props);
     this.state = {
-      recos: {}
+      recos: {},
+      mode: 'R'
     }
   }
 
@@ -18,6 +19,10 @@ class Profile extends Component {
     // console.log(this.props);
     if (this.props != prevProps){
       this.setState({recos: this.props.recos});
+      //    Activate bootstrap-select
+      if ($(".selectpicker").length != 0) {
+        $(".selectpicker").selectpicker();
+      }
     }
   }
 
@@ -26,10 +31,16 @@ class Profile extends Component {
     // console.log("value changed");
     // console.log(e.target.value);
     if (e.target.value == 'R'){
-      this.setState({ recos: this.props.recos})
+      this.setState({ 
+        recos: this.props.recos,
+        mode: 'R'
+      })
     }
     else if (e.target.value == 'G'){
-      this.setState({recos: this.props.recosSent});
+      this.setState({
+        recos: this.props.recosSent,
+        mode: 'G'
+      });
     }
   }
 
@@ -106,17 +117,29 @@ class Profile extends Component {
                         </div>
                       </div>
                     <div className="row">
-                    {(this.state.recos.length > 0) ? this.state.recos.map((reco, i) => <div key={i} className="col-md-6 col-lg-4">
+                    {(this.state.mode == 'R')?(this.state.recos.length > 0) ? this.state.recos.map((reco, i) => <div key={i} className="col-md-6 col-lg-4">
                           <RecommendationCard
                           username={reco.creator().username}
                           picture={reco.creator().profilePic()}
                           createdBy={reco.creator().profile.name}
-                          title={reco.creator().username}
+                          title={reco.creator().profile.position}
                           recommendation={reco.recommendation}
                           skills={reco.skills}
                           event={reco.event}
                           createdAt={reco.createdAt}
-                        /></div>):''}
+                        /></div>):'':
+                      (this.state.recos.length > 0) ? this.state.recos.map((reco, i) => <div key={i} className="col-md-6 col-lg-4">
+                        <RecommendationCard
+                          username={(reco.acceptor())?reco.acceptor().username:''}
+                          picture={(reco.acceptor()) ? reco.acceptor().profilePic() :'/img/faces/default-profile.svg'}
+                          createdBy={(reco.acceptor()) ? reco.acceptor().profile.name : reco.toName}
+                          title={(reco.acceptor()) ?reco.acceptor().profile.position:''}
+                          recommendation={reco.recommendation}
+                          skills={reco.skills}
+                          event={reco.event}
+                          createdAt={reco.createdAt}
+                          notAccepted={(reco.acceptor())?false:true}
+                        /></div>) : ''}
                     </div>
                   </div>
                 </div>

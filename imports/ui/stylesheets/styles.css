@@ -266,6 +266,16 @@ form .invalid-feedback {
   background-position: center center;
 }
 
+.card .footer .not-accepted{
+  line-height: 30px;
+}
+
+.card .footer .not-accepted .material-icons{
+  position: relative;
+  top: 4px;
+  font-size: 18px;
+}
+
 .media .avatar{
   width: 64px;
   height: 64px;

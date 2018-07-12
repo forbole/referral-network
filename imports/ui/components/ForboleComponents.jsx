@@ -79,6 +79,12 @@ export class RecommendationCard extends Component {
             {(this.props.skills)?this.props.skills.map((skill, i) => <Skill key={i} skill={skill} />):''}
           </div>
           <blockquote className="blockquote">{this.props.event}</blockquote>
+          {(this.props.notAccepted)?
+            <div className="footer text-danger">
+              <div className="not-accepted">
+                <i className="material-icons">error_outline</i> Not accepted yet
+	    	      </div>
+            </div>:''}
         </div>
       </div>
     )
