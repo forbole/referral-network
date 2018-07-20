@@ -198,6 +198,12 @@ export class ProfileUserControl extends Component {
             <h4 className="title">{this.props.name}</h4>
             <div className="category text-grey"><span className="headline">{this.props.headline}</span><br/><span className="position">{this.props.position}</span></div>
             <div className="other-info category text-muted"><span><i className="material-icons">location_on</i>{this.props.location}</span> {/*<span><i className="material-icons">grade</i>{this.props.reputation}</span>*/}</div>
+            <div className="row">
+            <div className="records col-md-6 col-md-offset-3 clearfix">
+              <div className="record text-grey col-xs-6"><Link to="/connections"><strong>{this.props.connections}</strong> Connections</Link></div>
+              <div className="record text-grey col-xs-6"><Link to="/contributions"><strong>{this.props.scores}</strong> Scores</Link></div>
+            </div>
+            </div>
         </div>
     </div>)
   }

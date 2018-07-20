@@ -85,6 +85,8 @@ class Profile extends Component {
                 headline={this.props.user.profile.headline}
                 position={this.props.user.profile.position}
                 location={this.props.user.profile.location}
+                connections={100}
+                scores={20000}
               />
                 <ul className="nav nav-pills nav-pills-primary">
                   {/* <li className="active"><a href="#about" data-toggle="tab">Bio</a></li> */}
@@ -107,7 +109,7 @@ class Profile extends Component {
                     </div>
                   </div> */}
                   {/*}<Blog />*/}
-                  <div className="tab-pane active" id="recommendations">
+                  <div className="tab-pane active container" id="recommendations">
                       <div className="row">
 								        <div className="col-lg-5 col-md-6 col-sm-3">
                           <select className="selectpicker" data-style="select-with-transition" defaultValue="R" data-size="2" onChange={this.handleChange}>
@@ -116,9 +118,10 @@ class Profile extends Component {
                           </select>                  
                         </div>
                       </div>
-                    <div className="row">
-                    {(this.state.mode == 'R')?(this.state.recos.length > 0) ? this.state.recos.map((reco, i) => <div key={i} className="col-md-6 col-lg-4">
+                    <div className="row mansory">
+                    {(this.state.mode == 'R')?(this.state.recos.length > 0) ? this.state.recos.map((reco, i) => 
                           <RecommendationCard
+                          key={i} 
                           username={reco.creator().username}
                           picture={reco.creator().profilePic()}
                           createdBy={reco.creator().profile.name}
@@ -127,9 +130,10 @@ class Profile extends Component {
                           skills={reco.skills}
                           event={reco.event}
                           createdAt={reco.createdAt}
-                        /></div>):'':
-                      (this.state.recos.length > 0) ? this.state.recos.map((reco, i) => <div key={i} className="col-md-6 col-lg-4">
+                        />):'':
+                      (this.state.recos.length > 0) ? this.state.recos.map((reco, i) => 
                         <RecommendationCard
+                          key={i} 
                           username={(reco.acceptor())?reco.acceptor().username:''}
                           picture={(reco.acceptor()) ? reco.acceptor().profilePic() :'/img/faces/default-profile.svg'}
                           createdBy={(reco.acceptor()) ? reco.acceptor().profile.name : reco.toName}
@@ -139,7 +143,7 @@ class Profile extends Component {
                           event={reco.event}
                           createdAt={reco.createdAt}
                           notAccepted={(reco.acceptor())?false:true}
-                        /></div>) : ''}
+                        />) : ''}
                     </div>
                   </div>
                 </div>

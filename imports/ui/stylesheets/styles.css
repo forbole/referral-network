@@ -52,6 +52,7 @@ body{
   font-family: "averta", 'Helvetica', 'Arial', sans-serif;
   background-color: #f5f5f5;
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
 .serif-font {
@@ -66,10 +67,6 @@ body{
   font-family: "averta", "Helvetica", "Arial", sans-serif;
 }
 
-/* .default .main{
-  padding-top:90px;
-} */
-
 .main > .container {
     padding-bottom: 2em;
 }
@@ -79,6 +76,11 @@ body{
 }
 .default{
   padding-top: 50px;
+}
+
+.mansory {
+  column-count: 3;
+  column-gap: 1em;
 }
 
 .page-header.header-small{
@@ -297,10 +299,20 @@ span.position {
   color: #777;
 }
 
+.records {
+  font-size: 80%;
+  padding: 1em 0;
+  border-bottom: 0.5em solid #efefef;
+}
 @media (max-width: 991px){
   .page-header {
       height: auto;
       min-height: inherit;
+  }
+  
+  .mansory {
+    column-count: 2;
+    column-gap: 1em;
   }
 }
 
@@ -330,6 +342,14 @@ span.position {
 
 
 }
+
+@media (max-width: 575.98px) { 
+  .mansory {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
 @media (min-width: 768px){
     .navbar .navbar-nav > li > a.profile-link{
       padding-top: 12px;
