@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { Skill, RecommendationCard, ProfileUserControl } from '/imports/ui/components/ForboleComponents.jsx';
+import { Switch, Route, Link, Redirect } from 'react-router-dom';
+import { ProfileUserControl } from '/imports/ui/components/ForboleComponents.jsx';
+import RecommendationList from '/imports/ui/users/RecommendationList.jsx';
+import Skills from '/imports/ui/users/Skills.jsx';
+import BlogList from '/imports/ui/users/BlogList.jsx';
 
 // import Blog from '/imports/ui/pages/profile/Blog.jsx';
 // import Wallet from '/imports/ui/pages/profile/Wallet.jsx';
@@ -8,10 +11,10 @@ import { Skill, RecommendationCard, ProfileUserControl } from '/imports/ui/compo
 
 class Profile extends Component {
   constructor(props){
+    console.log(props);
     super(props);
     this.state = {
-      recos: {},
-      mode: 'R'
+      activeMenu: 0
     }
   }
 
@@ -26,23 +29,7 @@ class Profile extends Component {
     }
   }
 
-  handleChange = (e) => {
-    e.preventDefault();
-    // console.log("value changed");
-    // console.log(e.target.value);
-    if (e.target.value == 'R'){
-      this.setState({ 
-        recos: this.props.recos,
-        mode: 'R'
-      })
-    }
-    else if (e.target.value == 'G'){
-      this.setState({
-        recos: this.props.recosSent,
-        mode: 'G'
-      });
-    }
-  }
+  handleMenu = (index) => this.setState({activeMenu:index});
 
   render() {
     if (this.props.loading){
@@ -88,65 +75,18 @@ class Profile extends Component {
                 connections={100}
                 scores={20000}
               />
-                <ul className="nav nav-pills nav-pills-primary">
-                  {/* <li className="active"><a href="#about" data-toggle="tab">Bio</a></li> */}
-                  <li className="active"><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
+               <nav>
+                <ul className="nav nav-tabs">
+                  <li role="presentation" index={0} className={(this.state.activeMenu === 0) ? "active":''}><Link to={"/@"+this.props.match.params.username+"/recommendations"} >Recommendation</Link></li>
+                  <li role="presentation" index={1} className={(this.state.activeMenu === 1) ? "active" : ''}><Link to={"/@" + this.props.match.params.username +"/skills"} className="nav-link">Skills</Link></li>
+                  <li role="presentation" index={2} className={(this.state.activeMenu === 2) ? "active" : ''}><Link to={"/@" + this.props.match.params.username +"/blog"} className="nav-link">Blog</Link></li>
                 </ul>
-                <div className="tab-content tab-space">
-                  {/* <div className="tab-pane active" id="about">
-                    <div className="description">
-                      <p>Kwun is the CoFounder & Conductor of Forbole. He has started his digital entrepreneur life since 2005. He cofounded Creativeworks Group Limited, a digital agency in Hong Kong which has served clients such as UNICEF, AIA, Miss Universe, All Nippon Airways, etc. He is an advocate in digital transformation through the use of information technology and interactive user experience design. Kwun is now a Senior Advisor of Creativeworks to give advice and guidance in design & digital.</p>
-                      <p>Kwun is also a Adjunct lecturer at The University of Hong Kong (“HKU”). He teaches digital marketing courses in the School of Professional And Continuing Education of HKU.</p>
-                    </div>
-
-                    <div className="skills">
-                        <h4>Endorsed Skills</h4>
-                        <div className="row">
-                          <div className="col-md-12">
-                            {(this.props.user.skills)?(this.props.user.skills.map((skill, i) => <Skill key={i} skill={skill} />)):''}
-                          </div>
-                        </div>
-                    </div>
-                  </div> */}
-                  {/*}<Blog />*/}
-                  <div className="tab-pane active container" id="recommendations">
-                      <div className="row">
-								        <div className="col-lg-5 col-md-6 col-sm-3">
-                          <select className="selectpicker" data-style="select-with-transition" defaultValue="R" data-size="2" onChange={this.handleChange}>
-                            <option value="R">Received</option>
-                            <option value="G">Given</option>
-                          </select>                  
-                        </div>
-                      </div>
-                    <div className="row mansory">
-                    {(this.state.mode == 'R')?(this.state.recos.length > 0) ? this.state.recos.map((reco, i) => 
-                          <RecommendationCard
-                          key={i} 
-                          username={reco.creator().username}
-                          picture={reco.creator().profilePic()}
-                          createdBy={reco.creator().profile.name}
-                          title={reco.creator().profile.position}
-                          recommendation={reco.recommendation}
-                          skills={reco.skills}
-                          event={reco.event}
-                          createdAt={reco.createdAt}
-                        />):'':
-                      (this.state.recos.length > 0) ? this.state.recos.map((reco, i) => 
-                        <RecommendationCard
-                          key={i} 
-                          username={(reco.acceptor())?reco.acceptor().username:''}
-                          picture={(reco.acceptor()) ? reco.acceptor().profilePic() :'/img/faces/default-profile.svg'}
-                          createdBy={(reco.acceptor()) ? reco.acceptor().profile.name : reco.toName}
-                          title={(reco.acceptor()) ?reco.acceptor().profile.position:''}
-                          recommendation={reco.recommendation}
-                          skills={reco.skills}
-                          event={reco.event}
-                          createdAt={reco.createdAt}
-                          notAccepted={(reco.acceptor())?false:true}
-                        />) : ''}
-                    </div>
-                  </div>
-                </div>
+               </nav>
+              <Switch>
+                  <Route path='/@:username' render={() => <RecommendationList />} />
+                  <Route path='/@:username/skills' render={() => <RecommendationList />} />
+                  <Route path='/@:username/blog' render={() => <RecommendationList />} />
+                </Switch>
             </div>
           </div>
 

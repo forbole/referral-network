@@ -83,6 +83,12 @@ body{
   column-gap: 1em;
 }
 
+
+.default .page-header.login-header{
+  height: inherit;
+}
+
+
 .page-header.header-small{
   height:50vh;
   min-height: 50vh;
@@ -128,10 +134,6 @@ body{
 
 .default .main{
   padding-top: 0 !important;
-}
-
-.default .page-header{
-  height: 200px;
 }
 
 .space-50{
@@ -203,7 +205,7 @@ form .invalid-feedback {
 }
 
 .profile{
-  margin-bottom: 3em;
+  margin-bottom: 1em;
 }
 .profile-page .profile img{
   background-color: #fff;
@@ -351,6 +353,10 @@ span.position {
 }
 
 @media (min-width: 768px){
+    .default .page-header{
+      height: 200px;
+    }
+
     .navbar .navbar-nav > li > a.profile-link{
       padding-top: 12px;
       padding-bottom: 8px;
