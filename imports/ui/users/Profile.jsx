@@ -77,19 +77,18 @@ class Profile extends Component {
               />
                <nav>
                 <ul className="nav nav-tabs">
-                  <li role="presentation" index={0} className={(this.state.activeMenu === 0) ? "active":''}><Link to={"/@"+this.props.match.params.username+"/recommendations"} >Recommendation</Link></li>
-                  <li role="presentation" index={1} className={(this.state.activeMenu === 1) ? "active" : ''}><Link to={"/@" + this.props.match.params.username +"/skills"} className="nav-link">Skills</Link></li>
-                  <li role="presentation" index={2} className={(this.state.activeMenu === 2) ? "active" : ''}><Link to={"/@" + this.props.match.params.username +"/blog"} className="nav-link">Blog</Link></li>
+                  <li role="presentation" index={0} className={(this.state.activeMenu === 0) ? "active":''}><Link to={"/@"+this.props.match.params.username} onClick={this.handleMenu.bind(this,0)}>Recommendation</Link></li>
+                  <li role="presentation" index={1} className={(this.state.activeMenu === 1) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/skills"} onClick={this.handleMenu.bind(this, 1)}>Skills</Link></li>
+                  <li role="presentation" index={2} className={(this.state.activeMenu === 2) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/blog"} onClick={this.handleMenu.bind(this, 2)}>Blog</Link></li>
                 </ul>
                </nav>
-              <Switch>
-                  <Route path='/@:username' render={() => <RecommendationList />} />
-                  <Route path='/@:username/skills' render={() => <RecommendationList />} />
-                  <Route path='/@:username/blog' render={() => <RecommendationList />} />
+                <Switch>
+                  <Route path='/@:username' exact={true} render={() => <RecommendationList />} />
+                  <Route path='/@:username/skills' exact={true} render={() => <Skills />} />
+                  <Route path='/@:username/blog' exact={true} render={() => <BlogList />} />
                 </Switch>
             </div>
           </div>
-
         </div>
       );
     }
