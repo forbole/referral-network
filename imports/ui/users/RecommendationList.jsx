@@ -13,6 +13,17 @@ class RecommendationList extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        // console.log(this.props);
+        if (this.props != prevProps) {
+            this.setState({ recos: this.props.recos });
+            //    Activate bootstrap-select
+            if ($(".selectpicker").length != 0) {
+                $(".selectpicker").selectpicker();
+            }
+        }
+    }
+
     handleChange = (e) => {
         e.preventDefault();
         if (e.target.value == 'R') {
@@ -28,7 +39,6 @@ class RecommendationList extends Component {
             });
         }
 
-        console.log(this.state.mode);
     }
 
     render(){
@@ -53,6 +63,7 @@ class RecommendationList extends Component {
                             skills={reco.skills}
                             event={reco.event}
                             createdAt={reco.createdAt}
+                            acceptButton={(reco.acceptor()) ? false : true}
                         />) : '' :
                         (this.state.recos.length > 0) ? this.state.recos.map((reco, i) =>
                             <RecommendationCard

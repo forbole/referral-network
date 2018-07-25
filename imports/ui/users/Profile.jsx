@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import { ProfileUserControl } from '/imports/ui/components/ForboleComponents.jsx';
-import RecommendationList from '/imports/ui/users/RecommendationList.jsx';
+import RecommendationList from '/imports/ui/users/RecommendationListContainer.js';
 import Skills from '/imports/ui/users/Skills.jsx';
 import BlogList from '/imports/ui/users/BlogList.jsx';
 
@@ -11,21 +11,16 @@ import BlogList from '/imports/ui/users/BlogList.jsx';
 
 class Profile extends Component {
   constructor(props){
-    console.log(props);
     super(props);
-    this.state = {
-      activeMenu: 0
+    let menuIndex = 0;
+    if (props.location.pathname.indexOf('skills') > 0){
+      menuIndex = 1;
     }
-  }
-
-  componentDidUpdate(prevProps, prevState){
-    // console.log(this.props);
-    if (this.props != prevProps){
-      this.setState({recos: this.props.recos});
-      //    Activate bootstrap-select
-      if ($(".selectpicker").length != 0) {
-        $(".selectpicker").selectpicker();
-      }
+    else if (props.location.pathname.indexOf('blog')> 0){
+      menuIndex = 2;
+    }
+    this.state = {
+      activeMenu: menuIndex
     }
   }
 
@@ -83,7 +78,7 @@ class Profile extends Component {
                 </ul>
                </nav>
                 <Switch>
-                  <Route path='/@:username' exact={true} render={() => <RecommendationList />} />
+                  <Route path='/@:username' exact={true} render={() => <RecommendationList username={this.props.match.params.username}/>} />
                   <Route path='/@:username/skills' exact={true} render={() => <Skills />} />
                   <Route path='/@:username/blog' exact={true} render={() => <BlogList />} />
                 </Switch>
