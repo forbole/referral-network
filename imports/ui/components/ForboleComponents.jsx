@@ -85,6 +85,9 @@ export class RecommendationCard extends Component {
                 <i className="material-icons">error_outline</i> Not accepted yet
 	    	      </div>
             </div>:''}
+            {(this.props.acceptButton)?<div className="footer">
+              <Link to={"/recommendation/accept/"+this.props.recoId} className="btn btn-primary">Response</Link>
+            </div>:''}
         </div>
       </div>
     )

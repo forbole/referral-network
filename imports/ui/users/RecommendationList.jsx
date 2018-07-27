@@ -55,6 +55,7 @@ class RecommendationList extends Component {
                     {(this.state.mode == 'R') ? (this.state.recos.length > 0) ? this.state.recos.map((reco, i) =>
                         <RecommendationCard
                             key={i}
+                            recoId={reco._id}
                             username={reco.creator().username}
                             picture={reco.creator().profilePic()}
                             createdBy={reco.creator().profile.name}
