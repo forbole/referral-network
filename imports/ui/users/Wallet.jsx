@@ -25,8 +25,8 @@ class Wallet extends Component {
         });
     }
 
-    sendContribReco = () => {
-        Meteor.call('fbcli.sendContribReco', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
+    sendContribReco = () => {  // example input
+        Meteor.call('fbcli.sendContrib', 'cosmosaccaddr14tnvezsrr359v2wsl6ddk7v8j4ar2cjugrv9gs' , 'recommend', '23232323', 'acbd2341', 'sherry', '2018-07-27T16:04:00Z', 6, 0, 200000, (error, result) => {
             console.log(result);
         });
     }
