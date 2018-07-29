@@ -8,7 +8,7 @@ class Connections extends Component {
 
   render(){
     if (_.isEmpty(this.props.connections)){
-      return <div>No connections yet.</div>;
+      return <div className="card"><div className="card-content"><h6>No connections yet.</h6></div></div>;
     }
     else{
     return <div>
