@@ -67,7 +67,7 @@ class Profile extends Component {
                 headline={this.props.user.profile.headline}
                 position={this.props.user.profile.position}
                 location={this.props.user.profile.location}
-                connections={100}
+                connections={this.props.connectionCounts}
                 scores={20000}
               />
                <nav>
