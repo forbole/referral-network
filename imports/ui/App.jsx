@@ -73,14 +73,15 @@ export default class App extends Component {
                 <PrivateRoute path="/" exact={true} component={Home} />
                 <LoginLayout path="/login" component={Login} />
                 <LoginLayout path="/signup" component={Register} />
+                <PrivateRoute path="/@:username/connections" exact={true} component={Connections}/>
+                <PrivateRoute path="/connections" component={Connections}/>
                 <DefaultLayout path="/@:username?" component={Profile} />
-                    <DefaultLayout path="/@:username/wallet" exact={true} component={Wallet} />
+                    {/* <DefaultLayout path="/@:username/wallet" exact={true} component={Wallet} /> */}
                 <PrivateRoute path="/settings" component={ProfileEdit} />
                 <DefaultLayout path="/recommendation/accept/:id" exact={true} component={Recommendation} />
                 <PrivateRoute path="/invite" exact={true} component={Invite} />
                 <DefaultLayout path="/invite/accept/:id" exact={true} component={InviteAccept} />
                 <PrivateRoute path="/recommend/:username" component={Recommend} />
-                <PrivateRoute path="/connections" component={Connections}/>
                 <DefaultLayout path="*" component={NotFound}/>
               </Switch>
             </Router>

@@ -1,22 +1,22 @@
 import { Meteor } from 'meteor/meteor';
-import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Connections } from '/imports/api/connections/connections.js';
-import { Images } from '/imports/api/images/images.js';
 import List from './List.jsx';
 
 export default ConnectionsListContainer = withTracker((props) => {
-  const connectionsHandle = Meteor.subscribe('connections.user', Meteor.userId());
+  const username = (!props.match.params.username)?((Meteor.userId())?Meteor.user().username:''):props.match.params.username;
   const usersHandle = Meteor.subscribe('users.all');
+  const user = Meteor.users.findOne({username:username});
+  const connectionsHandle = Meteor.subscribe('connections.all');
   const imagesHandle = Meteor.subscribe('images.all');
   const recoHandle = Meteor.subscribe('recommendations.all');
   const loading = !connectionsHandle.ready() || !usersHandle.ready() || !recoHandle.ready() || !imagesHandle.ready();
-  const connections = Connections.find({users: {$in: [Meteor.userId()]}}).fetch();
-  const connectionsExists = !loading && !!connections;
+  // const connections = Connections.find({users: {$in: [user._id]}}).fetch();
+  const connectionsExists = !loading && !!user;
   // console.log(userExists);
   return {
     loading,
     connectionsExists,
-    connections: connectionsExists ? connections : {}
+    connections: connectionsExists ? Connections.find({users: {$in: [user._id]}}).fetch() : {}
   };
 })(List);
