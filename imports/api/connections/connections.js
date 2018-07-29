@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 export const Connections = new Mongo.Collection('connections');
 
 Connections.helpers({
-  user(thisUserId){
-    return Meteor.users.findOne({_id: {$nin: [thisUserId]}});
+  user(userId){
+    return Meteor.users.findOne({_id: {$in: this.users, $nin: [userId]}});
   }
 });

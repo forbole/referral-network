@@ -9,7 +9,7 @@ class Connections extends Component {
 
   render(){
     if (this.props.connectionsExists){
-      // console.log(this.props.connections);
+      console.log(this.props.connections);
     return <div>
       <div className="container">
         <h3 className="text-center">Your Connections</h3>
