@@ -12,12 +12,12 @@ export default ConnectionsListContainer = withTracker((props) => {
   const recoHandle = Meteor.subscribe('recommendations.all');
   const loading = !connectionsHandle.ready() || !usersHandle.ready() || !recoHandle.ready() || !imagesHandle.ready();
   // const connections = Connections.find({users: {$in: [user._id]}}).fetch();
-  const connectionsExists = !loading && !!user;
+  const userExists = !loading && !!user;
   // console.log(userExists);
   return {
     loading,
-    connectionsExists,
+    userExists,
     user: user,
-    connections: connectionsExists ? Connections.find({users: {$in: [user._id]}}).fetch() : {}
+    connections: userExists ? Connections.find({users: {$in: [user._id]}}).fetch() : {}
   };
 })(List);

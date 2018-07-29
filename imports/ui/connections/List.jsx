@@ -8,11 +8,14 @@ class Connections extends Component {
   }
 
   render(){
-    if (this.props.connectionsExists){
-      console.log(this.props.connections);
+    if (_.isEmpty(this.props.connections)){
+      return <div>No connections yet.</div>;
+    }
+    else{
+      // console.log(this.props.connections);
     return <div>
       <div className="container">
-        <h3 className="text-center">Your Connections</h3>
+        <h3 className="text-center">{this.props.user.profile.name}'s Connections</h3>
         <div className="row connections">
           <div className="col-md-12">
 							{/* <select className="selectpicker" value="2" data-style="select-with-transition" title="Sort by: Recently recommended" readOnly>
@@ -43,9 +46,6 @@ class Connections extends Component {
 
       </div>
     </div>;
-  }
-  else{
-    return <div>No connections yet.</div>;
   }
   }
 }
