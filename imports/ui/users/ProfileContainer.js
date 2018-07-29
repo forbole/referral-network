@@ -6,9 +6,8 @@ import Profile from './Profile.jsx';
 
 export default ProfileContainer = withTracker((props) => {
   const imagesHandle = Meteor.subscribe('images.all');
-  const userHandle = Meteor.subscribe('users.all');
-
   const username = (!props.match.params.username)?((Meteor.userId())?Meteor.user().username:''):props.match.params.username;
+  const userHandle = Meteor.subscribe('users.findByUsername', username);
   const user = Meteor.users.findOne({username: username});
 
   // const recosHandle = Meteor.subscribe('recommendations.all');

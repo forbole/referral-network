@@ -42,6 +42,10 @@ class RecommendationList extends Component {
     }
 
     render(){
+        if (this.props.loading){
+            return <div></div>
+        }
+        else{
         return (<div className="container" id="recommendations">
                 <div className="row">
                     <div className="col-lg-5 col-md-6 col-sm-3">
@@ -81,6 +85,7 @@ class RecommendationList extends Component {
                             />) : ''}
                 </div>
             </div>)
+        }
     }
 }
 

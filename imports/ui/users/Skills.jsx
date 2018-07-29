@@ -6,7 +6,22 @@ class Skills extends Component {
     }
 
     render(){
-        return <div>Skills</div>
+        if (this.props.loading){
+            return <div></div>
+        }
+        else{
+            if (!this.props.user.skills){
+                return <div><p>{this.props.user.profile.name} has not been endorsed with any skills yet.</p></div>;
+            }
+            else{
+                let skills = this.props.user.skills.map(function(skill, i){
+                    return <span className="label label-rose" key={i}>{skill}</span> 
+                });
+                return <div><p>{this.props.user.profile.name} has been endorsed with the following skills.</p>
+            <div className="skills">{skills}</div>
+            </div>
+            }
+        }
     }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import { ProfileUserControl } from '/imports/ui/components/ForboleComponents.jsx';
 import RecommendationList from '/imports/ui/users/RecommendationListContainer.js';
-import Skills from '/imports/ui/users/Skills.jsx';
+import Skills from '/imports/ui/users/SkillsContainer.js';
 import BlogList from '/imports/ui/users/BlogList.jsx';
 
 // import Blog from '/imports/ui/pages/profile/Blog.jsx';
@@ -79,7 +79,7 @@ class Profile extends Component {
                </nav>
                 <Switch>
                   <Route path='/@:username' exact={true} render={() => <RecommendationList username={this.props.match.params.username}/>} />
-                  <Route path='/@:username/skills' exact={true} render={() => <Skills />} />
+                  <Route path='/@:username/skills' exact={true} render={() => <Skills username={this.props.match.params.username} />} />
                   <Route path='/@:username/blog' exact={true} render={() => <BlogList />} />
                 </Switch>
             </div>
