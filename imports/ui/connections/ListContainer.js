@@ -17,6 +17,7 @@ export default ConnectionsListContainer = withTracker((props) => {
   return {
     loading,
     connectionsExists,
+    user: user,
     connections: connectionsExists ? Connections.find({users: {$in: [user._id]}}).fetch() : {}
   };
 })(List);

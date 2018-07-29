@@ -26,13 +26,13 @@ class Connections extends Component {
               {this.props.connections.map((connection, i) =>
                 <ConnectionsListCard
                   key={i}
-                  picture={connection.user().profilePic()}
-                  username={connection.user().username}
-                  name={connection.user().profile.name}
-                  title={connection.user().username}
-                  recoCount={connection.user().recoCount()}
-                  skills={(connection.user().skills)?connection.user().skills.slice(0,3):[]}
-                  otherSkills={(connection.user().skills)?(connection.user().skills.length-3):0}
+                  picture={connection.user(this.props.user._id).profilePic()}
+                  username={connection.user(this.props.user._id).username}
+                  name={connection.user(this.props.user._id).profile.name}
+                  title={connection.user(this.props.user._id).username}
+                  recoCount={connection.user(this.props.user._id).recoCount()}
+                  skills={(connection.user(this.props.user._id).skills)?connection.user().skills.slice(0,3):[]}
+                  otherSkills={(connection.user(this.props.user._id).skills)?(connection.user().skills.length-3):0}
                 />
               )}
 
