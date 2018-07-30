@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import moment from 'moment'
-import { Link, Redirect } from 'react-router-dom';
-import { RecommendationCard } from '/imports/ui/components/ForboleComponents.jsx';
+// import moment from 'moment'
+// import { Link, Redirect } from 'react-router-dom';
+import { Loading, RecommendationCard } from '/imports/ui/components/ForboleComponents.jsx';
 
 class RecommendationList extends Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class RecommendationList extends Component {
 
     render(){
         if (this.props.loading){
-            return <div></div>
+            return <Loading />
         }
         else{
         return (<div className="container" id="recommendations">

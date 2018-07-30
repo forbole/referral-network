@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Loading } from '/imports/ui/components/ForboleComponents.jsx';
 class Skills extends Component {
     constructor(props){
         super(props);
@@ -7,7 +7,7 @@ class Skills extends Component {
 
     render(){
         if (this.props.loading){
-            return <div></div>
+            return <Loading />
         }
         else{
             if (!this.props.user.skills){

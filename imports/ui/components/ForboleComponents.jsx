@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
+export const Loading = ({size = 42}) => (
+  <img src="/img/loading.svg" height={size} width={size} />
+);
+
 export const ValidateSuccess = () => (
   <span className="form-control-feedback">
     <i className="material-icons">done</i>
