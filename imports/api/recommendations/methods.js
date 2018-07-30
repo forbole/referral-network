@@ -16,7 +16,7 @@ Meteor.methods({
 
     skills = skills.split(',');
 
-    if (toUserId != ''){
+    if ((toUserId != '') && (toUserId != this.userId)){
       let user = Meteor.users.findOne({_id: toUserId});
       if (user){
         email = user.emails[0].address;

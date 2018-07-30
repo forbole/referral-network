@@ -9,7 +9,7 @@ Meteor.methods({
     check(type, String);
     check(propId, String);
     check(userId, String);
-    check(score, Match.Integer);
+    check(score, Number);
 
     return Contributions.insert({
       type: type,

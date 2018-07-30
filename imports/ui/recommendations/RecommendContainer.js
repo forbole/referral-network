@@ -13,6 +13,6 @@ export default RecommendContainer = withTracker((props) => {
   return {
     loading,
     userExists,
-    user: userExists ? Meteor.users.findOne({username: props.match.params.username}) : {}
+    user: userExists ? user : {}
   };
 })(Recommend);

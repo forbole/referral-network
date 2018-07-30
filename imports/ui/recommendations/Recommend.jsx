@@ -187,6 +187,10 @@ class Recommend extends Component {
         )
       }
       else {
+        if (Meteor.userId() == this.props.user._id){
+          return <div>You cannot recommend yourself</div>;
+        }
+        else {
         return (
       			<div className="main">
   		    		<div className="container">
@@ -251,7 +255,7 @@ class Recommend extends Component {
   			        </div>
   		       </div>
   			   </div>
-      	)
+      	)}
       }
   	}
 }
