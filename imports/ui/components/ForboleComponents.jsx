@@ -229,8 +229,8 @@ export class ProfileUserControl extends Component {
         <div className="other-info category text-muted"><span><i className="material-icons">location_on</i>{(this.props.location != null) ? this.props.location:<em>Location not provided yet</em>}</span> {/*<span><i className="material-icons">grade</i>{this.props.reputation}</span>*/}</div>
             <div className="row">
             <div className="records col-md-6 col-md-offset-3 clearfix">
-              <div className="record text-grey col-xs-6"><Link to={"@"+this.props.username+"/connections"}><strong>{this.props.connections}</strong> Connections</Link></div>
-              <div className="record text-grey col-xs-6"><Link to={"@"+this.props.username+"/contributions"}><strong>{this.props.scores}</strong> Scores</Link></div>
+              <div className="record text-grey col-xs-6"><Link to={"/@"+this.props.username+"/connections"}><strong>{this.props.connections}</strong> Connections</Link></div>
+              <div className="record text-grey col-xs-6"><Link to={"/@"+this.props.username+"/contributions"}><strong>{this.props.scores}</strong> Scores</Link></div>
             </div>
             </div>
         </div>
