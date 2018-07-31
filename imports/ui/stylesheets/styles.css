@@ -271,6 +271,9 @@ form .invalid-feedback {
   background-position: center center;
 }
 
+.card.contribution .card-content{
+  padding: 15px 5px;
+}
 .card .footer .not-accepted{
   line-height: 30px;
 }

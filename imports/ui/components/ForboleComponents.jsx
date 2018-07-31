@@ -130,6 +130,28 @@ export class InvitationCard extends Component {
   }
 }
 
+export class ContributionListCard extends Component{
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    let action = "";
+    let object = "";
+    switch (this.props.type){
+      case "recommendations":
+        action = "recommended";
+        object = <Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link>
+        break;
+    }
+    return <div className="card contribution">
+      <div className="card-content clearfix">
+        <div className="col-xs-9">{this.props.from} <span className="text-info">{action}</span> {object} <em>{moment(this.props.time, "YYYYMMDD").fromNow()}</em>.</div>
+        <div className="col-xs-3 text-right"><span className="label label-success">+ {this.props.score}</span></div>
+      </div>
+    </div>
+  }
+}
 export class ConnectionsListCard extends Component {
   constructor(props){
     super(props);
