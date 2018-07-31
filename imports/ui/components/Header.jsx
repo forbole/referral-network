@@ -60,23 +60,6 @@ class Header extends Component {
                             <i className="material-icons">device_hub</i> Connections
                           </Link>
                         </li>
-                        {/*
-                        <li>
-                          <Link to="/blog/">
-                            <i className="material-icons">view_quilt</i> Blog
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="/recommendation/">
-                            <i className="material-icons">view_day</i> Recommendations
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="/wallet/">
-                            <i className="material-icons">attach_money</i> Wallet
-                          </Link>
-                        </li>
-                        */}
                         <li>
                           <Link to="/settings">
                             <i className="material-icons">beach_access</i> Settings
@@ -89,22 +72,6 @@ class Header extends Component {
                         </li>
                       </ul>
                     </li>
-
-                  {/*(this.state.user.profile)?
-                      <li>
-                        <a href="/profile">Hello, {this.state.user.profile.name}</a>
-                      </li>
-                  : [
-                      (this.state.user.emails?
-                          <li>
-                            <a href="/profile">Hello, {this.state.user.emails[0].address}</a>
-                          </li>
-                      : <></>
-
-                      ),
-                    ]
-                  */}
-
                 </ul>
               </div>
             </div>
