@@ -8,7 +8,7 @@ class Wallet extends Component {
     }
 
     sendCoin = () => {  // example: send 1 steak here
-        Meteor.call('fbcli.sendCoin', 'cosmosaccaddr1qlcz62t2j78643g2w33zdlg78l3662ev9c63j0', 1, 'sherry', '1234567890', 3, 0, 200000, (error, result) => {
+        Meteor.call('fbcli.sendCoin', 'cosmosaccaddr1xv6rtafz5xk9d7qu0d3lagn3ycfs2szpg674d5', 1, 'fb-4', '1234567890', 0, 1, 200000, (error, result) => {
             console.log(result);
         });
     } 
@@ -20,24 +20,30 @@ class Wallet extends Component {
     }
 
     sendContribInvite = () => {  //example input
-        Meteor.call('fbcli.sendContrib', 'cosmosaccaddr1f3uspmas856c5583kf2m2sg2kdv2sa4urdk5td' , 'invite', 'adcbef11', 'sherry', '2018-07-30T12:57:00Z', 4, 0, 200000, 'acbd2341', (error, result) => {
+        Meteor.call('fbcli.sendContrib', 'cosmosaccaddr1xv6rtafz5xk9d7qu0d3lagn3ycfs2szpg674d5' , 'invite', 'abcdef11', 'fb-4', '2018-07-31T18:32:00Z', 0, 1, 200000, '239a2341', (error, result) => {
             console.log(result);
         });
     }
 
     sendContribReco = () => {  // example input
-        Meteor.call('fbcli.sendContrib', 'cosmosaccaddr1f3uspmas856c5583kf2m2sg2kdv2sa4urdk5td' , 'recommend', 'abcdef12', 'sherry', '2018-07-30T12:58:00Z', 5, 0, 200000, 'acbd2341', (error, result) => {
+        Meteor.call('fbcli.sendContrib', 'cosmosaccaddr1xv6rtafz5xk9d7qu0d3lagn3ycfs2szpg674d5' , 'recommend', 'abcdef12', 'fb-4', '2018-07-31T12:33:00Z', 1, 1, 200000, 'a2432341', (error, result) => {
             console.log(result); 
         });
     } 
   
     sendContribVote = () => {  // example input, the last param is necessary (votetype)
-        Meteor.call('fbcli.sendContrib', 'cosmosaccaddr1f3uspmas856c5583kf2m2sg2kdv2sa4urdk5td', 'vote', 'abcdef13', 'sherry', '2018-07-30T12:59:00Z', 6, 0, 200000, '766f7465', 'upvote', (error, result) => {
+        Meteor.call('fbcli.sendContrib', 'cosmosaccaddr1xv6rtafz5xk9d7qu0d3lagn3ycfs2szpg674d5', 'vote', 'abcdef13', 'fb-4', '2018-07-31T12:34:00Z', 2, 1, 200000, '766f7465', 'upvote', (error, result) => {
             console.log(result); 
-        }); 
+        });
+    }
+
+    delegateCoins = () => {
+        Meteor.call('fbcli.delegateCoins', (error, result) => {
+            console.log(result);
+        });
     }
   
-    checkStatus = () => {
+    checkStatus = () => { //(delegator_name(t2), password, accnum, seq, gas, amount, delegatoraddr(t2), validatoraddr(sherry), valsrcaddr, valdstaddr)
         Meteor.call('fbcli.checkStatus', (error, result) => {
             console.log(JSON.parse(result)); 
         })

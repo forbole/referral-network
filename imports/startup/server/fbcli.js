@@ -19,8 +19,9 @@ Meteor.methods({
         this.unblock();
         let future = new Future();
         let status = HTTP.get(fbHost + '/node_info');
-    
-        future.return(status.content[0]);
+        
+        console.log(status.content);
+        future.return(status.content);
 
         return future.wait();
     },
@@ -65,14 +66,13 @@ Meteor.methods({
         password = '1234567890';
 
         let future = new Future();
-        console.log("vote: " + votetype)
+        
         if (type == 'vote') {
             if (votetype === "upvote") {
                 content = "7570766f7465" // upvote
             } else if (votetype === "downvote") {
                 content = "646f776e766f7465"; // downvote
             } else {
-                console.log("vote2: " + votetype)
                 console.error("wrong vote type.")
                 return future.wait()
             }
@@ -89,7 +89,7 @@ Meteor.methods({
                 'Content-Type': 'application/json'
             }
         });
-        future.return(recom.toString()); 
+        future.return(recom.toString());
         return future.wait();
     },
     'fbcli.createAccount': function (username) {
@@ -137,6 +137,41 @@ Meteor.methods({
             }))
         }));
 
+        return future.wait();
+    },
+    'fbcli.delegateCoins': function (name, password, accnum, seq, gas, amount, delegatoraddr, validatoraddr, valsrcaddr, valdstaddr) {
+        check(name, String);
+        check(password, String);
+        check(accnum, Number);
+        check(seq, Number);
+        check(gas, Number);
+        check(amount, Number);
+        check(shares, Number);      // calulate shares?
+        check(delegatoraddr, String);
+        check(validatoraddr, String);
+        check(valsrcaddr, String);
+        check(valdstaddr, String);
+        
+        this.unblock();
+
+        let future = new Future();
+        let delegations = '{"delegator_addr" : "' + delegatoraddr + '", "validator_addr": "' + validatoraddr + '", "delegation": "[{"denom": "steak", "amount" : "' + amount + '"}]"}'
+        let begin_unbondings = '{"delegator_addr" : "' + delegatoraddr + '", "validator_addr": "' + validatoraddr + '", "shares": "' + shares + '"}'
+        let complete_unbondings = '{"delegator_addr" : "' + delegatoraddr + '", "validator_addr": "' + validatoraddr + '"}'
+        let begin_redelegates = '{"delegator_addr" : "' + delegatoraddr + '", "validator_src_addr": "' + validatoraddr + '", "validator_dst_addr": "' + valdstaddr + '", "shares": ' + shares + '"}'
+        let complete_redelegates = '{"delegator_addr" : "' + delegatoraddr + '", "validator_src_addr": "' + validatoraddr + '", "validator_dst_addr": "' + valdstaddr + '"}'
+
+        let delegatorbody = '{"name": "' + name + '", "password": "' + '", "chain_id": "' + chainId + '", "account_number": "' + accnum + '", "sequence": "' + seq + '", "gas": "' + gas + '", "delegations": "[' + delegations + ']", "begin_unbondings": "[' + begin_unbondings + ']", "complete_unbondings": "[' + complete_unbondings + ']", "begin_redelegates": "[' + begin_redelegates + ']", "complete_redelegates": "[' + complete_redelegates + ']"}'
+
+        let data = JSON.parse(delegatorbody);
+        console.log(data);
+        let delegate = HTTP.post(fbHost + '/stake/delegations', {
+            data: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        future.return(delegate.toString());
         return future.wait();
     }
 });
