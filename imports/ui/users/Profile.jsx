@@ -49,7 +49,6 @@ class Profile extends Component {
         backgroundImage:'url('+this.props.user.coverPic()+')',
         backgroundPosition: 'center center'
       };
-
       return (
         <div className="profile-page">
 
@@ -68,7 +67,7 @@ class Profile extends Component {
                 position={this.props.user.profile.position}
                 location={this.props.user.profile.location}
                 connections={this.props.connectionCounts}
-                scores={20000}
+                scores={(this.props.user.scores) ? this.props.user.scores:0}
               />
                <nav>
                 <ul className="nav nav-tabs">

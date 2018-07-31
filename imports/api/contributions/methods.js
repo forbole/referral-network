@@ -11,12 +11,17 @@ Meteor.methods({
     check(userId, String);
     check(score, Number);
 
-    return Contributions.insert({
+    let user = Meteor.users.findOne({_id:userId});
+    let curScores = user.scores;
+    if (!curScores) curScores = 0;
+    if (Contributions.insert({
       type: type,
       propId: propId,
       userId: userId,
       score: score,
       createdAt: new Date()
-    });
+    })){
+      return Meteor.users.update({ _id: userId }, { $set: { scores: curScores+score}});
+    }
   }
 });
