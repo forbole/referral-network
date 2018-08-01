@@ -36,11 +36,11 @@ class Header extends Component {
                 <Link className="navbar-brand" to="/"><img className="logo" src="/img/forbole-logo-white.svg" />Forbole</Link>
                 
               </div>
-          <div class="navbar-right">
+          <div className="navbar-right">
             <ul className="nav">
               <li className="dropdown">
                 <Link to="#" className="dropdown-toggle profile-link" data-toggle="dropdown">
-                  <div className="avatar img-raised" style={bg} /> <span class="visible-md-inline visible-lg-inline name">{Meteor.user().profile.name}
+                  <div className="avatar img-raised" style={bg} /> <span className="visible-md-inline visible-lg-inline name">{Meteor.user().profile.name}
                   <b className="caret"></b></span>
                 </Link>
                 <ul className="dropdown-menu dropdown-with-icons main-menu">

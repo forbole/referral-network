@@ -189,6 +189,42 @@ export class ConnectionsListCard extends Component {
 
 }
 
+export class BlogCard extends Component{
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    return <div className="card card-blog">
+      <div className="card-image">
+        <Link to="#pablo">
+          <img className="img" src={this.props.cardImage} />
+	    								</Link>
+          {/* <div className="colored-shadow" style={{backgroundImage: "url(/img/examples/blog8.jpg)", opacity: 1}}></div> */}
+        <div className="ripple-container"></div>
+        </div>
+        <div className="card-content">
+          <h6 className="category text-danger">
+            <i className="material-icons">trending_up</i> Trending
+	    								</h6>
+          <h4 className="card-title">
+            <Link to="#pablo">{this.props.title}</Link>
+          </h4>
+          <div className="footer">
+            <div className="author">
+              <Link to="#pablo">
+                <img src={this.props.avatar} alt="..." className="avatar img-raised" />
+                  <span>{this.props.name}</span>
+	    	                                    </Link>
+	    	                                </div>
+              <div className="stats">
+                <i className="material-icons">schedule</i> {this.props.time} read
+	    	                                </div>
+            </div>
+          </div>
+        </div>
+  }
+}
 export class ProfileUserControl extends Component {
   constructor(props){
     super(props);
@@ -229,8 +265,9 @@ export class ProfileUserControl extends Component {
         <div className="other-info category text-muted"><span><i className="material-icons">location_on</i>{(this.props.location != null) ? this.props.location:<em>Location not provided yet</em>}</span> {/*<span><i className="material-icons">grade</i>{this.props.reputation}</span>*/}</div>
             <div className="row">
             <div className="records col-md-6 col-md-offset-3 clearfix">
-              <div className="record text-grey col-xs-6"><Link to={"/@"+this.props.username+"/connections"}><strong>{this.props.connections}</strong> Connections</Link></div>
-              <div className="record text-grey col-xs-6"><Link to={"/@"+this.props.username+"/contributions"}><strong>{this.props.scores}</strong> Scores</Link></div>
+              <div className="record text-grey col-xs-4"><Link to={"/@"+this.props.username+"/connections"}><strong>{this.props.connections}</strong> Connections</Link></div>
+              <div className="record text-grey col-xs-4"><Link to={"/@"+this.props.username+"/contributions"}><strong>{this.props.scores}</strong> Scores</Link></div>
+              <div className="record text-grey col-xs-4 rank"><img src="/img/icons/diamond.png" /> Conductor</div>
             </div>
             </div>
         </div>

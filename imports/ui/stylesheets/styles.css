@@ -55,6 +55,9 @@ body{
   -webkit-font-smoothing: antialiased;
 }
 
+h6{
+  font-family: "averta";
+}
 .serif-font {
   font-family: "ff-tisa", "Times New Roman", serif;
 }
@@ -224,6 +227,11 @@ form .invalid-feedback {
   text-align: left;
 }
 
+.record.rank img{
+  -webkit-transform: initial;
+  transform: initial;
+  width: 24px;
+}
 .media-footer p {
     font-size: 90%;
     margin-top: 1em;
@@ -334,6 +342,27 @@ span.position {
   padding: 1em 0;
   border-bottom: 0.5em solid #efefef;
 }
+
+
+.blog-list .card-blog{
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.blog-list .card-blog .card-image{
+  margin:0;
+}
+
+.blog-list .card-blog .card-image img{
+  border-radius:0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.blog-list .card{
+  margin-bottom: 0;
+}
+
 @media (max-width: 991px){
   .page-header {
       height: auto;
