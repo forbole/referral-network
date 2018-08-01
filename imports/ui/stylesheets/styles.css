@@ -230,8 +230,28 @@ form .invalid-feedback {
 .record.rank img{
   -webkit-transform: initial;
   transform: initial;
-  width: 24px;
+  width: 14px;
+  margin-top: -4px;
 }
+
+.card-header{
+  padding: 15px 30px;
+}
+
+.engagement{
+  clear:both;
+  line-height: 30px;
+  color: #999;
+  display: block !important;
+  margin-top:3px;
+}
+
+.card .footer .engagement .material-icons {
+    position: relative;
+    top: 4px;
+    font-size: 18px;
+}
+
 .media-footer p {
     font-size: 90%;
     margin-top: 1em;

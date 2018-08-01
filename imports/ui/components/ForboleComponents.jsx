@@ -196,30 +196,48 @@ export class BlogCard extends Component{
 
   render(){
     return <div className="card card-blog">
+      {/* <div className="card-header">
+        <div className="author container">
+          <Link to="#pablo">
+            <div className="row">
+              <div className="col-xs-3">
+                <img src={this.props.avatar} alt="..." className="avatar img-raised" />
+              </div>
+              <div className="col-xs-9">
+                <span>{this.props.name}</span><br/>
+                <span className="headline">{this.props.headline}</span>
+              </div>
+            </div>
+            
+          </Link>
+        </div>
+      </div> */}
       <div className="card-image">
         <Link to="#pablo">
           <img className="img" src={this.props.cardImage} />
 	    								</Link>
-          {/* <div className="colored-shadow" style={{backgroundImage: "url(/img/examples/blog8.jpg)", opacity: 1}}></div> */}
         <div className="ripple-container"></div>
         </div>
         <div className="card-content">
           <h6 className="category text-danger">
-            <i className="material-icons">trending_up</i> Trending
+            {this.props.category}
 	    								</h6>
           <h4 className="card-title">
             <Link to="#pablo">{this.props.title}</Link>
           </h4>
           <div className="footer">
-            <div className="author">
-              <Link to="#pablo">
-                <img src={this.props.avatar} alt="..." className="avatar img-raised" />
-                  <span>{this.props.name}</span>
-	    	                                    </Link>
-	    	                                </div>
-              <div className="stats">
-                <i className="material-icons">schedule</i> {this.props.time} read
-	    	                                </div>
+             <div className="author">
+                <Link to="#pablo">
+                      <img src={this.props.avatar} alt="..." className="avatar img-raised" />
+                      <span>{this.props.name}</span>
+                </Link>
+              </div>
+              <div className="stats"><i className="material-icons">schedule</i> {this.props.date}</div>            
+              <div className="engagement row text-center">
+                <div className="col-xs-4"><i className="material-icons">favorite</i> {this.props.likes}</div>
+            <div className="col-xs-4"><i className="material-icons">chat_bubble</i> {this.props.comments}</div>
+            <div className="col-xs-4"><i className="material-icons">share</i> {this.props.shares}</div>
+	    	      </div>
             </div>
           </div>
         </div>
