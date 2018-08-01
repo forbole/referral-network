@@ -112,6 +112,31 @@ body{
   vertical-align: middle;
   background-color: #fff;
 }
+
+.navbar-right {
+    float: right!important;
+    margin-right: -15px;
+}
+
+.navbar-left {
+    float: left!important;
+}
+
+.navbar-header{
+  float: left;
+}
+
+.navbar-primary .header .nav .open>a,
+.navbar-primary .header .nav>li>a:focus, 
+.navbar-primary .header .nav>li>a:hover{
+  background-color: transparent !important;
+}
+
+
+.navbar-primary .header .name{
+  color: #fff;
+}
+
 .login-header {
   background-image: url('/img/bg7.jpg');
   background-size: cover;
@@ -325,6 +350,10 @@ span.position {
 @media (max-width: 767px){
   h1, .h1, .presentation-page .brand h1 {
     font-size: 2.5em;
+  }
+
+  .navbar-primary .header ul.main-menu{
+    margin-left: -100px;
   }
 
   .default .page-header {
