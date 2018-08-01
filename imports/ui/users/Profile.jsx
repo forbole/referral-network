@@ -61,6 +61,7 @@ class Profile extends Component {
               <ProfileUserControl
                 picture={this.props.user.profilePic()}
                 name={this.props.user.profile.name}
+                firstname={this.props.user.profile.firstname}
                 username={this.props.user.username}
                 userId={this.props.user._id}
                 headline={this.props.user.profile.headline}
