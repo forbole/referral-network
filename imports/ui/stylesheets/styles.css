@@ -246,6 +246,9 @@ form .invalid-feedback {
   margin-top:3px;
 }
 
+.engagement .liked{
+  color: #bd081c;
+}
 .card .footer .engagement .material-icons {
     position: relative;
     top: 4px;

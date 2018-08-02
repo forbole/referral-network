@@ -195,6 +195,11 @@ export class BlogCard extends Component{
   }
 
   render(){
+    let liked = '';
+    if (this.props.liked){
+      liked = "liked"
+    }
+
     return <div className="card card-blog">
       {/* <div className="card-header">
         <div className="author container">
@@ -234,7 +239,7 @@ export class BlogCard extends Component{
               </div>
               <div className="stats"><i className="material-icons">schedule</i> {this.props.date}</div>            
               <div className="engagement row text-center">
-                <div className="col-xs-4"><i className="material-icons">favorite</i> {this.props.likes}</div>
+            <div className="col-xs-4"><i className={"material-icons " + liked}>favorite</i> {this.props.likes}</div>
             <div className="col-xs-4"><i className="material-icons">chat_bubble</i> {this.props.comments}</div>
             <div className="col-xs-4"><i className="material-icons">share</i> {this.props.shares}</div>
 	    	      </div>

@@ -16,6 +16,7 @@ class BlogList extends Component {
                 avatar="/img/faces/kwun-profile.jpg"
                 date="Jun 29, 2018"
                 likes={523}
+                liked={true}
                 comments={78}
                 shares={36}
             />
