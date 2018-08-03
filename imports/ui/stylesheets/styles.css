@@ -366,6 +366,9 @@ span.position {
   border-bottom: 0.5em solid #efefef;
 }
 
+.card{
+  margin-bottom: 5px;
+}
 
 .blog-list .card-blog{
   margin-top: 15px;
