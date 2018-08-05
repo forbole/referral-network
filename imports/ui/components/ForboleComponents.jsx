@@ -143,6 +143,42 @@ export class ContributionListCard extends Component{
         action = "recommended";
         object = <Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link>
         break;
+      case "downvote":
+        action = "downvoted";
+        object = <span><em>{this.props.to}</em>'s <Link to={"#"}>recommendataion</Link> </span>;
+        break;
+      case "upvote":
+        action = "voted";
+        object = <span><em>{this.props.to}</em>'s <Link to="#">answer </Link> </span>;
+        break;
+      case "blog":
+        action = "published";
+        object = <Link to="#">{this.props.to}</Link>;
+        break;
+      case "connection":
+        action = "connected with";
+        object = <Link to="#">{this.props.to}</Link>;
+        break;
+      case "post":
+        action = "posted";
+        object = <Link to="#">an update</Link>;
+        break;
+      case "comment":
+        action = "commented";
+        object = <span><em>{this.props.to}</em>'s <Link to="#">update</Link></span>;
+        break;
+      case "share":
+        action = "shared";
+        object = <span><em>{this.props.to}</em>'s <Link to="#">blog post</Link></span>;
+        break;
+      case "referral":
+        action = "referred";
+        object = <span>a business to <Link to="#">{this.props.to}</Link></span>;
+        break;
+      case "introduction":
+        action = "introduced";
+        object = <span><Link to="#">{this.props.to}</Link> to <Link to="#">{this.props.object}</Link></span>;
+        break;
     }
     return <div className="card contribution">
       <div className="card-content clearfix">
