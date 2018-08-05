@@ -78,7 +78,6 @@ export default class App extends Component {
                 <PrivateRoute path="/@:username/connections" exact={true} component={Connections}/>
                 <PrivateRoute path="/connections" component={Connections}/>
                 <DefaultLayout path="/@:username?" component={Profile} />
-                    {/* <DefaultLayout path="/@:username/wallet" exact={true} component={Wallet} /> */}
                 <PrivateRoute path="/settings" component={ProfileEdit} />
                 <DefaultLayout path="/recommendation/accept/:id" exact={true} component={Recommendation} />
                 <PrivateRoute path="/invite" exact={true} component={Invite} />
