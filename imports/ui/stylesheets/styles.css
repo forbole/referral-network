@@ -389,6 +389,49 @@ span.position {
   margin-bottom: 0;
 }
 
+.card-header .author .avatar{
+  width: 45px;
+  height: 45px;
+}
+
+
+.card-header span.headline{
+  font-size: 1em;
+  line-height:1;
+  display:block;
+}
+
+.feed.blog-list .card-blog .card-image img{
+  border-radius: 0;
+}
+
+.feed .timeago{
+  color:#777;
+  font-size: 95%;
+  line-height:1;
+  display: block;
+}
+
+.feed .card .author a{
+  color: inherit;
+}
+
+.feed .introduction .avatar{
+  border-radius: 50%;
+}
+
+.feed .introduction .symbol{
+  margin-top: 50px;
+  transform: translateY(-50%);
+}
+
+.create-feed{
+  position:fixed;
+  bottom: 1em;
+  right: 1em;
+  z-index: 99999;
+}
+
 h4.token-name{
   line-height: 1;
   padding-left: 0.5em;

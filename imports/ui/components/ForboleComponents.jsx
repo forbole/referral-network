@@ -225,6 +225,67 @@ export class ConnectionsListCard extends Component {
 
 }
 
+export class FeedCard extends Component{
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    let liked = '';
+    if (this.props.liked){
+      liked = "liked"
+    }
+
+    return <div className="card card-blog">
+      <div className="card-header">
+        <div className="author">
+          <Link to="#pablo">
+            <div className="row">
+              <div className="col-xs-2">
+                <img src={this.props.avatar} alt="..." className="avatar img-raised" />
+              </div>
+              <div className="col-xs-10">
+                <span>{this.props.name}</span><br/>
+                <span className="headline">{this.props.headline}</span>
+                <span className="timeago">{this.props.timeago}</span>
+              </div>
+            </div>
+            
+          </Link>
+        </div>
+        <div className="row message">{this.props.message}</div>
+      </div>
+      {(this.props.cardImage)?
+      <div className="card-image">
+        <Link to="#pablo">
+          <img className="img" src={this.props.cardImage} />
+	    								</Link>
+        <div className="ripple-container"></div>
+        </div>:''}
+        <div className="card-content">
+          {(this.props.category)?<h6 className="category text-danger">
+            {this.props.category}
+	    								</h6>:''}
+          {(this.props.title)?<h4 className="card-title">
+            <Link to="#pablo">{this.props.title}</Link>
+          </h4>:''}
+          {(this.props.introA)?<div className="introduction row">
+            <div className="col-xs-5"><img className="avatar img-raised" src={this.props.introA} /></div>
+            <div className="col-xs-2"><i className="material-icons symbol">all_inclusive</i></div>
+            <div className="col-xs-5"><img className="avatar img-raised" src={this.props.introB} /></div>
+          </div>:''}
+          <div className="footer">
+            <div className="engagement row text-center">
+            <div className="col-xs-4"><i className={"material-icons " + liked}>favorite</i> {this.props.likes}</div>
+            <div className="col-xs-4"><i className="material-icons">chat_bubble</i> {this.props.comments}</div>
+            <div className="col-xs-4"><i className="material-icons">share</i> {this.props.shares}</div>
+	    	      </div>
+            </div>
+          </div>
+        </div>
+  }
+}
+
 export class BlogCard extends Component{
   constructor(props){
     super(props);
