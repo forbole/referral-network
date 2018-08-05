@@ -389,6 +389,34 @@ span.position {
   margin-bottom: 0;
 }
 
+h4.token-name{
+  line-height: 1;
+  padding-left: 0.5em;
+  border-left: 0.2em solid #bd081c;
+}
+
+.wallet {
+  margin-top: 0.75em;
+}
+
+.wallet strong{
+  border-bottom-style: dotted;
+  border-bottom-width: 1px;
+}
+.wallet .balance{
+  line-height:2.6;
+  color: #bd081c;
+  font-weight: bold;
+}
+
+.wallet .balance .token-unit{
+  color: #777;
+}
+
+.wallet .token-group{
+  border-bottom: 1px solid #999;
+}
+
 @media (max-width: 991px){
   .page-header {
       height: auto;
