@@ -55,13 +55,18 @@ class Header extends Component {
                               </Link>
                   </li>
                   <li>
+                    <Link to={"/@" + Meteor.user().username+"/wallet"}>
+                      <i className="material-icons">account_balance_wallet</i> Wallet
+                              </Link>
+                  </li>
+                  <li>
                     <Link to="/settings">
-                      <i className="material-icons">beach_access</i> Settings
+                      <i className="material-icons">settings</i> Settings
                               </Link>
                   </li>
                   <li>
                     <Link to="#" onClick={this.logout}>
-                      <i className="material-icons">clear</i> Logout
+                      <i className="material-icons">exit_to_app</i> Logout
                               </Link>
                   </li>
                 </ul>

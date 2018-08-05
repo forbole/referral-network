@@ -7,52 +7,47 @@ class Wallet extends Component {
         super(props);
     }
 
-    sendCoin = () => {
-        Meteor.call('fbcli.sendCoin', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
-            console.log(result);
-        });
-    }
+    // sendCoin = () => {
+    //     Meteor.call('fbcli.sendCoin', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
+    //         console.log(result);
+    //     });
+    // }
 
-    createAccount = () => {
-        Meteor.call('fbcli.createAccount', this.refs.username.value, (error, result) => {
-            console.log(result);
-        });
-    }
+    // createAccount = () => {
+    //     Meteor.call('fbcli.createAccount', this.refs.username.value, (error, result) => {
+    //         console.log(result);
+    //     });
+    // }
 
-    sendContribInvite = () => {
-        Meteor.call('fbcli.sendContribInvite', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
-            console.log(result);
-        });
-    }
+    // sendContribInvite = () => {
+    //     Meteor.call('fbcli.sendContribInvite', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
+    //         console.log(result);
+    //     });
+    // }
 
-    sendContribReco = () => {
-        Meteor.call('fbcli.sendContribReco', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
-            console.log(result);
-        });
-    }
+    // sendContribReco = () => {
+    //     Meteor.call('fbcli.sendContribReco', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
+    //         console.log(result);
+    //     });
+    // }
 
-    sendContribVote = () => {
-        Meteor.call('fbcli.sendContribVote', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
-            console.log(result);
-        });
-    }
+    // sendContribVote = () => {
+    //     Meteor.call('fbcli.sendContribVote', 'aaaa', 'bbbb', 'cccc', 'dddd', 0, (error, result) => {
+    //         console.log(result);
+    //     });
+    // }
 
-    checkStatus = () => {
-        Meteor.call('fbcli.checkStatus', (error, result) => {
-            console.log(JSON.parse(result));
-        })
-    }
+    // checkStatus = () => {
+    //     Meteor.call('fbcli.checkStatus', (error, result) => {
+    //         console.log(JSON.parse(result));
+    //     })
+    // }
 
     render(){
         return (
             <div className="container">
-                <h2>Wallet</h2>
-                <button className="btn btn-primary" onClick={this.sendCoin}>Send 1 Coin</button>
-                <input className="form-control" ref="username" />
-                <button className="btn btn-primary" onClick={this.createAccount}>Create Account</button>
-                <button className="btn btn-primary" onClick={this.sendContribReco}>Send Recommendation</button>
-                <button className="btn btn-primary" onClick={this.sendContribVote}>Send Vote</button>
-                <button className="btn btn-primary" onClick={this.checkStatus}>Check Status</button>
+                <div className="row">
+                </div>
             </div>
         )
         
