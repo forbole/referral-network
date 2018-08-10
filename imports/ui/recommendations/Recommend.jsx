@@ -104,6 +104,13 @@ class Recommend extends Component {
           alert: <Alert type="success" text={["Thank you! Your recommendation has been sent to ",<strong key="x">{data.toName}</strong>, "."]} />
         });
         $('#recommendation-form').hide();
+        // let options = {
+        //   recoId: "",
+        //   toUserId: "",
+        //   toUser: "",
+        //   createdAt: ""
+        // }
+        // Meteor.call('Activities.add', Meteor.userId(), "recommendation", options);
       }
       if (error){
         $("#recommendation-form button").prop('disabled', true);
