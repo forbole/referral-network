@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Alert, ProfileCard } from '/imports/ui/components/ForboleComponents.jsx';
-import TextareaCompatible from 'react-textarea-compatible';
+// import TextareaCompatible from 'react-textarea-compatible';
 import validator from 'validator';
 
 class Recommend extends Component {
