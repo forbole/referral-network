@@ -63,7 +63,7 @@ Meteor.methods({
         check(votetype, String);  // empty string for other contrib except vote
 
         this.unblock();
-        password = '1234567890';
+        password = nodePass;
 
         let future = new Future();
         

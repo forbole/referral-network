@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Images } from '/imports/api/images/images.js';
+// import { Images } from '/imports/api/images/images.js';
 import Invite from './Invite.jsx';
 
 export default InviteContainer = withTracker((props) => {

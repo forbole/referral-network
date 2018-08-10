@@ -7,5 +7,6 @@ Meteor.publish('connections.all', function () {
 });
 
 Meteor.publish('connections.user', function (userId){
+  check(userId, String);
   return Connections.find({users: {$in: [userId]}});
 })

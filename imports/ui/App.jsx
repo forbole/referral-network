@@ -7,7 +7,7 @@ import DefaultLayout from '/imports/ui/layouts/DefaultContainer.js';
 import LoginLayout from '/imports/ui/layouts/Login.jsx';
 import PropTypes from 'prop-types';
 
-import Home from '/imports/ui/pages/Home.jsx';
+import Stream from '/imports/ui/pages/ActivitiesContainer.js';
 import NotFound from '/imports/ui/pages/NotFound.jsx';
 import Login from '/imports/ui/users/Login.jsx';
 import Register from '/imports/ui/users/Register.jsx';
@@ -71,7 +71,7 @@ export default class App extends Component {
         return (
             <Router>
               <Switch>
-                <PrivateRoute path="/" exact={true} component={Home} />
+                <PrivateRoute path="/" exact={true} component={Stream} />
                 <LoginLayout path="/login" component={Login} />
                 <LoginLayout path="/signup" component={Register} />
                 <PrivateRoute path="/@:username/contributions" exact={true} component={Contributions} />
