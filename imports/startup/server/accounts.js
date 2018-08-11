@@ -1,4 +1,5 @@
 import { Accounts } from 'meteor/accounts-base'
+import { WebApp } from 'meteor/webapp';
 
 ServiceConfiguration.configurations.upsert({
   service: "facebook"

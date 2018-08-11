@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment'
 import { Link, Redirect } from 'react-router-dom';
-import { RecommendationCard, InvitationCard, Alert } from '/imports/ui/components/ForboleComponents.jsx';
+import { InvitationCard, Alert } from '/imports/ui/components/ForboleComponents.jsx';
 
 class InviteAccept extends Component {
   constructor(props){
@@ -12,6 +12,8 @@ class InviteAccept extends Component {
       accepted: false,
       loginAndAccept: false
     }
+
+    Session.set("fromInvite", true);
   }
 
   handleAccept = (e) => {
@@ -63,7 +65,7 @@ class InviteAccept extends Component {
       else if (this.state.loginAndAccept){
         return (<Redirect
           to={{
-            pathname: "/login",
+            pathname: "/login/?inviteId=" + this.props.invite._id,
             state: { from: this.props.location }
           }}
         />);

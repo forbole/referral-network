@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Recommendations } from './recommendations.js';
+import { Activities } from '../activities/activities.js';
 import { Email } from 'meteor/email';
 import moment from 'moment';
 
@@ -70,8 +71,10 @@ Meteor.methods({
   'recommendations.accept'(recoId){
     check(recoId, String);
 
+    console.log(recoId);
     if (Meteor.user()){
       let reco = Recommendations.findOne({_id: recoId});
+      console.log(reco);
       if (reco && !reco.accepted){
         let userState = Meteor.users.update({_id: this.userId}, {
           $addToSet: {skills:{$each:reco.skills}}
@@ -89,6 +92,9 @@ Meteor.methods({
         }
         else return "failed";
       }
+    }
+    else {
+      return false;
     }
   }
 });

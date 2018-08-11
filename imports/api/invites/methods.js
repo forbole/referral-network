@@ -93,7 +93,10 @@ Meteor.methods({
 
                 if (invite.recoId != ''){
                     let reco = Recommendations.findOne(invite.recoId);
-                        Recommendations.update(invite.recoId, {
+                    let userState = Meteor.users.update({ _id: this.userId }, {
+                        $addToSet: { skills: { $each: reco.skills } }
+                    });
+                    Recommendations.update(invite.recoId, {
                         $set:{
                             accepted: true,
                             acceptedBy: this.userId
@@ -101,7 +104,7 @@ Meteor.methods({
                     });
                 }
                 // if (userState && inviteState){
-                if (inviteState){
+                if (inviteState && userState){
                     return "success";
                 }
                 else return "failed";
