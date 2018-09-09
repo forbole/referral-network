@@ -21,6 +21,8 @@ import Contributions from '/imports/ui/contributions/ListContainer.js';
 import Invite from '/imports/ui/invites/InviteContainer.js';
 import InviteAccept from '/imports/ui/invites/InviteAcceptContainer.js';
 
+import Refer from '/imports/ui/referrals/Refer.jsx';
+
 // App component - represents the whole app
 export default class App extends Component {
     constructor(props){
@@ -83,6 +85,8 @@ export default class App extends Component {
                 <PrivateRoute path="/invite" exact={true} component={Invite} />
                 <DefaultLayout path="/invite/accept/:id" exact={true} component={InviteAccept} />
                 <PrivateRoute path="/recommend/:username" component={Recommend} />
+                <PrivateRoute path="/refer" exact={true} component={Refer} />
+
                 <DefaultLayout path="*" component={NotFound}/>
               </Switch>
             </Router>
