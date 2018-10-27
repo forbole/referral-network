@@ -10,7 +10,8 @@ export default ContributionsListContainer = withTracker((props) => {
   const contributionsHandle = Meteor.subscribe('contributions.all');
   // const imagesHandle = Meteor.subscribe('images.all');
   const recoHandle = Meteor.subscribe('recommendations.all');
-  const loading = !contributionsHandle.ready() || !usersHandle.ready() || !recoHandle.ready();
+  const inviteHandle = Meteor.subscribe('invites.all');
+  const loading = !contributionsHandle.ready() || !usersHandle.ready() || !recoHandle.ready() || !inviteHandle.ready();
   // const connections = Connections.find({users: {$in: [user._id]}}).fetch();
   const userExists = !loading && !!user;
   // console.log(userExists);

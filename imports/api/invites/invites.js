@@ -7,5 +7,8 @@ export const Invites = new Mongo.Collection('invites');
 Invites.helpers({
   recommendation() {
     return Recommendations.findOne(this.recoId);
+  },
+  acceptor(){
+    return Meteor.users.findOne(this.acceptedBy);
   }
 });

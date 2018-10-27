@@ -7,6 +7,17 @@ class Contributions extends Component {
     super(props);
   }
 
+  getToUserName(contrib){
+    switch(contrib.type){
+      case "recommendations":
+        return contrib.reco().acceptor();
+      case "invites":
+        return contrib.invite().acceptor();
+      default:
+        return '';
+    }
+  }
+
   render(){
     if (this.props.loading){
       return <Loading />
@@ -93,7 +104,7 @@ class Contributions extends Component {
               <ContributionListCard key={i}
                 type={contrib.type}
                 from={this.props.user.profile.name}
-                to={(contrib.type == "recommendations") ? contrib.reco().acceptor():''}
+                to={this.getToUserName(contrib)}
                 time={contrib.createdAt}
                 score={contrib.score}
               />

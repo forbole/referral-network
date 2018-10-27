@@ -175,6 +175,10 @@ export class ContributionListCard extends Component{
         action = "referred";
         object = <span>a business to <Link to="#">{this.props.to}</Link></span>;
         break;
+      case "invites":
+        action = "invited";
+        object = <span><Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link> to join FRN</span>;
+        break;
       case "introduction":
         action = "introduced";
         object = <span><Link to="#">{this.props.to}</Link> to <Link to="#">{this.props.object}</Link></span>;
