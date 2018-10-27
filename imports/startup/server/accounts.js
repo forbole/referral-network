@@ -1,4 +1,5 @@
 import { Accounts } from 'meteor/accounts-base'
+import { InviteSession } from '../../api/inviteSessions/invite_sessions';
 
 ServiceConfiguration.configurations.upsert({
   service: "facebook"
@@ -13,7 +14,7 @@ ServiceConfiguration.configurations.upsert(
   { "service": "linkedin" },
   {
     $set: {
-      "clientId": Meteor.settings.linkedin.client,
+      "clientId": Meteor.settings.linkedin.clientId,
       "secret": Meteor.settings.linkedin.secret
     }
   }
@@ -31,8 +32,17 @@ generateUsername = function (username) {
   }
 }
 
+Meteor.methods({
+  'getConnectionId': function(){
+    return this.connection.id;
+  }
+})
+
 // during new account creation get user picture from Facebook and save it on user object
 Accounts.onCreateUser(function(options, user) {
+  let connectionId = Meteor.call('getConnectionId');
+  let session = InviteSession.findOne({session:connectionId});
+
   if (typeof user.services.facebook != "undefined"){
     user.emails = [{
         address: user.services.facebook.email,
@@ -77,6 +87,15 @@ Accounts.onCreateUser(function(options, user) {
     user.profile = options.profile;
   }
 
+  // Store invitation contribution
+  Meteor.call('contributions.insert', 'invites', session.invite()._id, session.invite().createdBy, 10, function(err, result){
+    if (err){
+      console.log(err);
+    }
+    if (result){
+      console.log('invite contributions add');
+    }
+  });
   // Create blockchain key and add key information here
   
   return user;
