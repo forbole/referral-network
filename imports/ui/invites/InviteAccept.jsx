@@ -46,11 +46,34 @@ class InviteAccept extends Component {
     this.setState({loginAndAccept:true});
   }
 
-  	render() {
+    render() {
+      if (Meteor.status().connected){
+        Meteor.call('invite.session', Meteor.default_connection._lastSessionId, this.props.inviteId, (err, result) => {
+          if (err){
+            console.log(err);
+          }
+          if (result){
+            // console.log(result);
+          }
+        });
+        // console.log(Meteor.default_connection._lastSessionId);
+        // console.log(Meteor.call('getConnectionId'));
+      }
       if (this.props.loading){
         return <div>Loading</div>
       }
       else if (this.state.accepted){
+        if (this.props.invite.recoId){
+          Meteor.call('contributions.insert', 'recommendations', this.props.invite.recoId, this.props.invite.createdBy, 5, function(err, result){
+            if (err){
+              console.log(err);
+            }
+            if (result){
+              console.log('contributions add');
+            }
+          });
+        }
+
         return (
           <div className="main">
             <Alert type="success" text="You have accepted the invitation!" />

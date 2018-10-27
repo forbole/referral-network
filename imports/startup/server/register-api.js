@@ -18,3 +18,5 @@ import '../../api/contributions/server/publications.js';
 import '../../api/images/methods.js';
 import '../../api/images/server/store.js';
 import '../../api/images/server/publications.js';
+
+import '../../api/inviteSessions/methods.js';

@@ -15,6 +15,8 @@ Meteor.startup(function () {
 
   // WebApp.connectHandlers.use("/invite/accept/", function (req, res, next) {
   //   console.log(req.url);
+  //   console.log(Meteor.connection.id);
+  //   // console.log(Meteor.default_server.sessions);
   //   // comment this if you redirect to another route
   //   next();
   // });

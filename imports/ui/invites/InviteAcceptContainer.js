@@ -19,6 +19,7 @@ export default InviteAcceptContainer = withTracker((props) => {
   return {
     loading,
     inviteExists,
+    inviteId: props.match.params.id,
     invite: inviteExists ? invite: {},
     createdUser: inviteExists? Meteor.users.findOne({_id: invite.createdBy}): {}
   };
