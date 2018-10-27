@@ -13,8 +13,8 @@ ServiceConfiguration.configurations.upsert(
   { "service": "linkedin" },
   {
     $set: {
-      "clientId": "78sqdxiq74fb12",
-      "secret": "EStJrtmhuDZpHLqo"
+      "clientId": Meteor.settings.linkedin.client,
+      "secret": Meteor.settings.linkedin.secret
     }
   }
 );

@@ -13,9 +13,11 @@ Meteor.startup(function () {
   if (process.env.ROOT_URL == 'https://mvp.forbole.com')
     addGoogleTagManager('GTM-NRHTQQV');
 
-  WebApp.connectHandlers.use("/invite/accept/", function (req, res, next) {
-    console.log(req.url);
-    // comment this if you redirect to another route
-    next();
-  });
+  // WebApp.connectHandlers.use("/invite/accept/", function (req, res, next) {
+  //   console.log(req.url);
+  //   // comment this if you redirect to another route
+  //   next();
+  // });
+
+  // console.log("Server: "+Meteor.default_connection._lastSessionId);
 });
