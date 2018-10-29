@@ -85,8 +85,7 @@ export default class App extends Component {
                 <PrivateRoute path="/invite" exact={true} component={Invite} />
                 <DefaultLayout path="/invite/accept/:id" exact={true} component={InviteAccept} />
                 <PrivateRoute path="/recommend/:username" component={Recommend} />
-                <PrivateRoute path="/refer" exact={true} component={Refer} />
-
+                <PrivateRoute path="/refer/:username" exact={true} component={Refer} />
                 <DefaultLayout path="*" component={NotFound}/>
               </Switch>
             </Router>

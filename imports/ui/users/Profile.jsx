@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Meteor } from 'meteor/meteor';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import { ProfileUserControl } from '/imports/ui/components/ForboleComponents.jsx';
 import RecommendationList from '/imports/ui/users/RecommendationListContainer.js';
@@ -79,7 +80,7 @@ class Profile extends Component {
                   <li role="presentation" index={1} className={(this.state.activeMenu === 1) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/skills"} onClick={this.handleMenu.bind(this, 1)}>Skills</Link></li>
                   {/* <li role="presentation" index={2} className={(this.state.activeMenu === 2) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/blog"} onClick={this.handleMenu.bind(this, 2)}>Blog</Link></li>
                   <li role="presentation" index={3} className={(this.state.activeMenu === 3) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/wallet"} onClick={this.handleMenu.bind(this, 3)}>Wallet</Link></li> */}
-                  <li role="presentation" index={4} className={(this.state.activeMenu === 4) ? "active" : ''}><Link to={"/settings"} onClick={this.handleMenu.bind(this, 4)}>Settings</Link></li>
+                  {(Meteor.userId()==this.props.user._id)?<li role="presentation" index={4} className={(this.state.activeMenu === 4) ? "active" : ''}><Link to={"/settings"} onClick={this.handleMenu.bind(this, 4)}>Settings</Link></li>:''}
                 </ul>
                </nav>
                 <Switch>
