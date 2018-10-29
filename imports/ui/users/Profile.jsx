@@ -77,8 +77,8 @@ class Profile extends Component {
                 <ul className="nav nav-tabs">
                   <li role="presentation" index={0} className={(this.state.activeMenu === 0) ? "active":''}><Link to={"/@"+this.props.match.params.username} onClick={this.handleMenu.bind(this,0)}>Recommendations</Link></li>
                   <li role="presentation" index={1} className={(this.state.activeMenu === 1) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/skills"} onClick={this.handleMenu.bind(this, 1)}>Skills</Link></li>
-                  <li role="presentation" index={2} className={(this.state.activeMenu === 2) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/blog"} onClick={this.handleMenu.bind(this, 2)}>Blog</Link></li>
-                  <li role="presentation" index={3} className={(this.state.activeMenu === 3) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/wallet"} onClick={this.handleMenu.bind(this, 3)}>Wallet</Link></li>
+                  {/* <li role="presentation" index={2} className={(this.state.activeMenu === 2) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/blog"} onClick={this.handleMenu.bind(this, 2)}>Blog</Link></li>
+                  <li role="presentation" index={3} className={(this.state.activeMenu === 3) ? "active" : ''}><Link to={"/@" + this.props.match.params.username + "/wallet"} onClick={this.handleMenu.bind(this, 3)}>Wallet</Link></li> */}
                   <li role="presentation" index={4} className={(this.state.activeMenu === 4) ? "active" : ''}><Link to={"/settings"} onClick={this.handleMenu.bind(this, 4)}>Settings</Link></li>
                 </ul>
                </nav>

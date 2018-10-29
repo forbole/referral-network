@@ -14,7 +14,6 @@ Contributions.helpers({
         return Recommendations.findOne({_id: this.propId});
     },
     invite(){
-        console.log(this.propId);
         return Invites.findOne({_id:this.propId});
     }
 })
