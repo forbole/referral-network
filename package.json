@@ -34,6 +34,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-sliding-pane": "^3.0.1",
     "react-textarea-compatible": "^1.0.3",
     "react-toastify": "^4.0.1",
     "receptacle": "^1.3.0",

@@ -200,6 +200,14 @@ h6{
   display: none;
 }
 
+textarea#recommendation {
+  background-image: none !important;
+}
+
+div.progress.input{
+  height: 2px;
+}
+
 form .invalid-feedback {
     /* font-size: 80%; */
     color: #bd081c;

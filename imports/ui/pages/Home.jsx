@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FeedCard } from '../components/ForboleComponents.jsx';
+import Modal from 'react-modal';
+import SlidingPane from 'react-sliding-pane';
+import 'react-sliding-pane/dist/react-sliding-pane.css';
 
 class Home extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      isPaneOpen: false,
+      isPaneOpenLeft: false
+    };
 
+    // this.toggle = this.toggle.bind(this);
   }
 
+  componentDidMount() {
+    Modal.setAppElement(this.el);
+  }
+
+  // toggle(e) {
+  //   e.preventDefault();
+  //   console.log("toggle");
+  //   this.setState({
+  //     modal: !this.state.modal
+  //   });
+  // }
+
   render() {
+    const postCloseBtn = <button className="close" onClick={this.toggle}>&times;</button>;
+
     return (
-      <div className="main">
+      <div className="main" ref={ref => this.el = ref}>
         <div className="container feed blog-list mansory">
-        <FeedCard 
+        {/* <FeedCard 
                 // cardImage="https://media.licdn.com/media-proxy/ext?w=1280&h=720&f=pj&hash=ghKQztcNOdvpei0m63j%2FDm4kwGk%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6jnhodx1Ey9KGTqAGj6E5DQJHUA3L0CHH05IbfPWi9cJPffeaooUBFfSkJjQA1eOi1EmXmGo7uKoi8L9RxjMXhJ8b5aRUPbhU4hGUB5sE-Pg"
                 // category="Why Design Thinking"
                 message={<div><Link to="#">Kendall Jenner</Link> has just introduced <Link to="#">Marc Jacob</Link> to <Link to="#">Gurjeet Chima</Link>.</div>}
@@ -55,10 +77,12 @@ class Home extends Component {
                 comments={78}
                 shares={36}
             />
-          <h1>Forbole</h1>
-          <Link to="/invite" className="btn btn-primary btn-round">Invite</Link> a connection.
+             */}
         </div>
-        <div className="create-feed"><Link to="#" className="btn btn-fab btn-primary"><i className="material-icons">create</i></Link></div>
+        <div className="clearfix container">
+              <Link to="/invite" className="btn btn-primary btn-round">Invite</Link> a connection.
+        </div>
+        {/* <div className="create-feed"><Link to="#" className="btn btn-fab btn-primary"  onClick={() => this.setState({ isPaneOpen: true })}><i className="material-icons">create</i></Link></div> */}
       </div>
     );
   }

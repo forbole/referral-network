@@ -24,7 +24,8 @@ class Recommend extends Component {
       recoPass: false,
       skillsTouched: false,
       skillsPass: false,
-      sending: false
+      sending: false,
+      charCount: 0
     };
   }
 
@@ -118,7 +119,12 @@ class Recommend extends Component {
       this.setState({ownEmailPass:(e.target.value!=Meteor.user().emails[0].address)}, this.validateForm);
     }
     if (e.target.name == "event") this.setState({eventPass:!validator.isEmpty(e.target.value)}, this.validateForm);
-    if (e.target.name == "recommendation") this.setState({recoPass:!validator.isEmpty(e.target.value)}, this.validateForm);
+    if (e.target.name == "recommendation"){
+      this.setState({recoPass:!validator.isEmpty(e.target.value)}, this.validateForm);
+      this.setState({
+        charCount:e.target.value.length
+      });
+    } 
 
 
   }
@@ -152,7 +158,8 @@ class Recommend extends Component {
       recoPass: false,
       skillsTouched: false,
       skillsPass: false,
-      sending: false
+      sending: false,
+      charCount: 0
     });
 
     $('#recommendation-form input[name=toName]').val('');
@@ -236,6 +243,11 @@ class Recommend extends Component {
                         onChange={this.handleInputs} 
                         onBlur={this.handleInputsFocus}
                         />
+                        <div className="progress progress-line-primary input">
+                          <div className="progress-bar progress-bar-primary" role="progressbar" aria-valuenow={this.state.charCount} aria-valuemin="0" aria-valuemax="140" style={{width:(this.state.charCount*100/140).toFixed(2)+"%"}}>
+                            <span className="sr-only">{this.state.charCount} characters</span>
+                          </div>
+                        </div>
                         {(this.state.recoTouched&&!this.state.recoPass)?<div className="invalid-feedback">Recommendation should contain some contents, pal.</div>:''}
         							</div>
   										<div className="form-group">
