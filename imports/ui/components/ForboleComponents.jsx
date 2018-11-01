@@ -217,10 +217,13 @@ export class ConnectionsListCard extends Component {
               {(this.props.recoCount > 0)?<p>Received {this.props.recoCount} recommendations.</p>:''}
               {(this.props.skills.length > 0)?this.props.skills.map((skill, i) =>
                 <span className="label label-rose" key={i}>{skill}</span>
-              ):<div>No recommendation yet. <Link to={"/recommend/"+this.props.title} className="btn btn-primary btn-round btn-sm">Recommend</Link></div>}
+              ):<div>No recommendation yet. </div>}
               {(this.props.otherSkills > 0)? <small>And {this.props.otherSkills} more skills</small>: ''}
             </div>
-
+            <div className="col-xs-12">
+              <Link to={"/recommend/"+this.props.title} className="btn btn-primary btn-round btn-sm">Recommend</Link> 
+              <Link to={"/refer/"+this.props.title} className="btn btn-primary btn-round btn-sm">Refer</Link>
+            </div>
           </div>
         </div>
       </div>

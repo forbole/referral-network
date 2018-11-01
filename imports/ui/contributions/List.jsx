@@ -34,7 +34,7 @@ class Contributions extends Component {
         <h3 className="text-center">{this.props.user.profile.name}'s Contributions</h3>
         <div className="row contributions">
             <div className="col-md-12">
-            <ContributionListCard
+            {/* <ContributionListCard
               type="introduction"
               from="Kwun Yeung"
               to='Sami Yim'
@@ -99,15 +99,15 @@ class Contributions extends Component {
                 object='recommendation'
                 time='ISODate("2018-08-02T18:23:00.204Z")'
                 score={2}
-              />
+              /> */}
               {this.props.contributions.map((contrib, i) =>
-              <ContributionListCard key={i}
-                type={contrib.type}
-                from={this.props.user.profile.name}
-                to={this.getToUserName(contrib)}
-                time={contrib.createdAt}
-                score={contrib.score}
-              />
+                <ContributionListCard key={i}
+                  type={contrib.type}
+                  from={this.props.user.profile.name}
+                  to={this.getToUserName(contrib)}
+                  time={contrib.createdAt}
+                  score={contrib.score}
+                />
               )}
 
             </div>
