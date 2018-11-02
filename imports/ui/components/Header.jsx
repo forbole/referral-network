@@ -33,7 +33,7 @@ class Header extends Component {
       <nav className={"navbar navbar-primary navbar-fixed-top"+this.state.headClass} color-on-scroll="350">
           <div className="container header">
               <div className="navbar-header ">
-                <Link className="navbar-brand" to="/"><img className="logo" src="/img/forbole-logo-white.svg" />Forbole</Link>
+                <Link className="navbar-brand" to="/"><img className="logo" src="/img/forbole-logo-white.svg" /></Link>
                 
               </div>
           <div className="navbar-right">
