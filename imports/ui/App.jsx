@@ -21,7 +21,7 @@ import Contributions from '/imports/ui/contributions/ListContainer.js';
 import Invite from '/imports/ui/invites/InviteContainer.js';
 import InviteAccept from '/imports/ui/invites/InviteAcceptContainer.js';
 
-import Refer from '/imports/ui/referrals/Refer.jsx';
+import Refer from '/imports/ui/referrals/ReferContainer.js';
 
 // App component - represents the whole app
 export default class App extends Component {

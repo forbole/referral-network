@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Images } from '/imports/api/images/images.js';
 import Recommend from './Recommend.jsx';
 
 export default RecommendContainer = withTracker((props) => {
