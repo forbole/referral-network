@@ -58,7 +58,7 @@ Meteor.methods({
 
     this.unblock();
     Email.send({
-      to: email,
+      to: to,
       from: from,
       replyTo: name+'<'+Meteor.user().emails[0].address+'>',
       subject: subject,
