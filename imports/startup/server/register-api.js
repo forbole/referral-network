@@ -20,3 +20,5 @@ import '../../api/images/server/store.js';
 import '../../api/images/server/publications.js';
 
 import '../../api/inviteSessions/methods.js';
+
+import '../../api/referrals/methods.js';
