@@ -22,6 +22,9 @@ import Invite from '/imports/ui/invites/InviteContainer.js';
 import InviteAccept from '/imports/ui/invites/InviteAcceptContainer.js';
 
 import Refer from '/imports/ui/referrals/ReferContainer.js';
+import ReferralAccept from '/imports/ui/referrals/Accept.jsx';
+import ReferralReceive from '/imports/ui/referrals/Receive.jsx';
+
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -86,6 +89,8 @@ export default class App extends Component {
                 <DefaultLayout path="/invite/accept/:id" exact={true} component={InviteAccept} />
                 <PrivateRoute path="/recommend/:username" component={Recommend} />
                 <PrivateRoute path="/refer/:username" exact={true} component={Refer} />
+                <PrivateRoute path="/referrals/receive/:id" exact={true} component={ReferralReceive} />
+                <DefaultLayout path="/referrals/accept/:id" exact={true} component={ReferralAccept} />
                 <DefaultLayout path="*" component={NotFound}/>
               </Switch>
             </Router>
