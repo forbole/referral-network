@@ -88,14 +88,16 @@ Accounts.onCreateUser(function(options, user) {
   }
 
   // Store invitation contribution
-  Meteor.call('contributions.insert', 'invites', session.invite()._id, session.invite().createdBy, 10, function(err, result){
-    if (err){
-      console.log(err);
-    }
-    if (result){
-      console.log('invite contributions add');
-    }
-  });
+  if (session.invite()){
+    Meteor.call('contributions.insert', 'invites', session.invite()._id, session.invite().createdBy, 10, function(err, result){
+      if (err){
+        console.log(err);
+      }
+      if (result){
+        console.log('invite contributions add');
+      }
+    });  
+  }
   // Create blockchain key and add key information here
   
   return user;
