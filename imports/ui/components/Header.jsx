@@ -54,11 +54,11 @@ class Header extends Component {
                       <i className="material-icons">device_hub</i> Connections
                               </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to={"/@" + Meteor.user().username+"/wallet"}>
                       <i className="material-icons">account_balance_wallet</i> Wallet
                               </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to="/settings">
                       <i className="material-icons">settings</i> Settings
