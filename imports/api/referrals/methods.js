@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Referrals } from './referrals.js';
 import { check } from 'meteor/check';
 import { Email } from 'meteor/email';
+import { Accounts } from 'meteor/accounts-base'
 
 Meteor.methods({
     'Referrals.insert': function(name, email, details, urgency, refereeId){
@@ -11,12 +12,21 @@ Meteor.methods({
         check(urgency, String);
         check(refereeId, String);
 
+        let acceptUser = Accounts.findUserByEmail(email);
+
+        let acceptUserId = null;
+
+        if (acceptUser){
+            acceptUserId = acceptUser._id;
+        }
+
         let referralId =  Referrals.insert({
             name:name,
             email:email,
             details:details,
             urgency: urgency,
             refereeId:refereeId,
+            acceptUserId: acceptUserId,
             createdBy: this.userId
         });
 
