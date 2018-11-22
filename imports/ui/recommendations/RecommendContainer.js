@@ -4,8 +4,8 @@ import Recommend from './Recommend.jsx';
 
 export default RecommendContainer = withTracker((props) => {
   const userHandle = Meteor.subscribe('users.all');
-  const imagesHandle = Meteor.subscribe('images.all');
-  const loading = !userHandle.ready() || !imagesHandle.ready();
+  // const imagesHandle = Meteor.subscribe('images.all');
+  const loading = !userHandle.ready(); // || !imagesHandle.ready();
   const user = Meteor.users.findOne({username: props.match.params.username});
   const userExists = !loading && !!user;
   // console.log(userExists);
