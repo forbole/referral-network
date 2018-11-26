@@ -424,11 +424,13 @@ span.position {
   color: inherit;
 }
 
-.feed .introduction .avatar{
+.feed .introduction .avatar,
+.referral .introduction .avatar{
   border-radius: 50%;
 }
 
-.feed .introduction .symbol{
+.feed .introduction .symbol,
+.referral .introduction .symbol{
   margin-top: 50px;
   transform: translateY(-50%);
 }

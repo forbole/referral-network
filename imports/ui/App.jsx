@@ -22,7 +22,7 @@ import Invite from '/imports/ui/invites/InviteContainer.js';
 import InviteAccept from '/imports/ui/invites/InviteAcceptContainer.js';
 
 import Refer from '/imports/ui/referrals/ReferContainer.js';
-import ReferralAccept from '/imports/ui/referrals/Accept.jsx';
+import ReferralAccept from '/imports/ui/referrals/AcceptContainer.js';
 import ReferralReceive from '/imports/ui/referrals/Receive.jsx';
 
 
