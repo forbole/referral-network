@@ -43,22 +43,22 @@ class InviteAccept extends Component {
 
   loginAndAccept = (e) => {
     e.preventDefault();
-    this.setState({loginAndAccept:true});
+    let self = this;
+    
+    if (Meteor.status().connected){
+      Meteor.call('invite.session', Meteor.default_connection._lastSessionId, self.props.inviteId, 'invite', (err, result) => {
+        if (err){
+          console.log(err);
+        }
+        if (result){
+          self.setState({loginAndAccept:true});
+          // console.log(result);
+        }
+      });
+    }
   }
 
     render() {
-      if (Meteor.status().connected){
-        Meteor.call('invite.session', Meteor.default_connection._lastSessionId, this.props.inviteId, (err, result) => {
-          if (err){
-            console.log(err);
-          }
-          if (result){
-            // console.log(result);
-          }
-        });
-        // console.log(Meteor.default_connection._lastSessionId);
-        // console.log(Meteor.call('getConnectionId'));
-      }
       if (this.props.loading){
         return <div>Loading</div>
       }
