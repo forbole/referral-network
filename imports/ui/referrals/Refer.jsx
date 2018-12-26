@@ -60,7 +60,7 @@ class Refer extends Component {
         });
 
         if (data['refereeId']){
-            Meteor.call('Referrals.insert', data.name, data.email, data.details, data.urgency, data.refereeId, (error, result) => {
+            Meteor.call('referrals.insert', data.name, data.email, data.details, data.urgency, data.refereeId, (error, result) => {
                 if (result){
                     toast.success("Referral sent.");
                     // console.log(result);

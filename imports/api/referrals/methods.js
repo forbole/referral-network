@@ -5,7 +5,7 @@ import { Email } from 'meteor/email';
 import { Accounts } from 'meteor/accounts-base'
 
 Meteor.methods({
-    'Referrals.insert': function(name, email, details, urgency, refereeId){
+    'referrals.insert': function(name, email, details, urgency, refereeId){
         check(name, String);
         check(email, String);
         check(details, String);
@@ -79,5 +79,8 @@ Meteor.methods({
         });
 
         return referralId;
+    },
+    'referral.accept':function(){
+
     }
 })
