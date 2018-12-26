@@ -13,7 +13,7 @@ export default class ReferralAccept extends Component{
 
     handleAccept = (e) => {
         e.preventDefault();
-        Meteor.call('referral.accept', (err, result) => {
+        Meteor.call('referral.accept', this.props.match.params.id, (err, result) => {
 
         });
     }
@@ -38,7 +38,7 @@ export default class ReferralAccept extends Component{
     }
 
     render(){
-        // console.log(this.props);
+        console.log(this.props);
         if (this.props.loading){
             return <Loading />
         }

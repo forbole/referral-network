@@ -80,7 +80,19 @@ Meteor.methods({
 
         return referralId;
     },
-    'referral.accept':function(){
+    'referral.accept': function(referralId){
+        let referral = Referrals.findOne({_id:referralId});
+        console.log(referral);
+        if (!referral){
+            throw new Meteor.Error('no-referral-found', 'No referral is found.');
+        }
+        
+        if (referral.acceptUserId){
+            if (referral.acceptUserId != this.userId){
+                throw new Meteor.Error(304, "Permission denied.");
+            }
+        }
 
+        return Referrals.update({_id:referralId}, {$set:{acceptedBy:this.userId, acceptedAt: new Date()}});
     }
 })
