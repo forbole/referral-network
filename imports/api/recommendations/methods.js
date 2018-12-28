@@ -85,6 +85,14 @@ Meteor.methods({
         });
 
         if (userState && recoState){
+          Meteor.call('contributions.insert', 'recommendation', reco._id, reco.createdBy, 5, function(err, result){
+            if (err){
+              console.log(err);
+            }
+            if (result){
+              console.log('contributions add');
+            }
+          });
           return "success";
         }
         else return "failed";

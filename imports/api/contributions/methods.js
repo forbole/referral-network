@@ -5,7 +5,7 @@ import { Contributions } from './contributions.js';
 
 Meteor.methods({
   'contributions.insert'(type, propId, userId, score){
-    console.log("contributions insert");
+    console.log("contributions "+type+" insert");
     check(type, String);
     check(propId, String);
     check(userId, String);

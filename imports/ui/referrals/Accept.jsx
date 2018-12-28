@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Loading } from '../components/ForboleComponents.jsx';
+import { toast } from 'react-toastify';
 
 export default class ReferralAccept extends Component{
     constructor(props){
@@ -14,7 +15,24 @@ export default class ReferralAccept extends Component{
     handleAccept = (e) => {
         e.preventDefault();
         Meteor.call('referral.accept', this.props.match.params.id, (err, result) => {
-
+            if (err){
+                toast.error(err);
+            }
+            if (result){
+                // show alert
+                // console.log(result);
+                toast.success('You have accepted this referral.')
+                // add contribution score to the sender
+                
+                // Meteor.call('connections.insert', this.props.referral.createdBy, "referral", this.props.referral._id, function(err, result){
+                //     if (err){
+                //       console.log(err);
+                //     }
+                //     if (result){
+                //       console.log('connection created.')
+                //     }
+                // });
+            }
         });
     }
 
@@ -38,7 +56,6 @@ export default class ReferralAccept extends Component{
     }
 
     render(){
-        console.log(this.props);
         if (this.props.loading){
             return <Loading />
         }
@@ -68,12 +85,12 @@ export default class ReferralAccept extends Component{
                                         <p><Link to={"/@"+this.props.referral.creator().username}>{this.props.referral.creator().profile.firstname}</Link> has given the following message to <Link to={"/@"+this.props.referral.referee().username}>{this.props.referral.referee().profile.firstname}</Link>.</p>
                                         <blockquote>{this.props.referral.details}</blockquote>
                                         <p>Please accept being referrerd and <Link to={"/@"+this.props.referral.referee().username}>{this.props.referral.referee().profile.firstname}</Link> will contact you once this referral has been received.</p>
-                                        <p className="text-center">{Meteor.userId()?((this.props.referral.createdBy != Meteor.userId())?<button
+                                        <p className="text-center">{(!this.props.referral.acceptedAt)?Meteor.userId()?((this.props.referral.createdBy != Meteor.userId())?<button
                                             className="btn btn-primary"
                                             onClick={this.handleAccept}>Accept</button>:''):<button
                                             className="btn btn-primary"
                                             onClick={this.loginAndAccept}>Accept</button>
-                                        }</p>
+                                        :<span className="label label-info">This referral has been accepted.</span>}</p>
                                     </div>
                                 </div>
                             </div>

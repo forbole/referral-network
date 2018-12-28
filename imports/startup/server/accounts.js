@@ -90,7 +90,7 @@ Accounts.onCreateUser(function(options, user) {
   // Store invitation contribution
   if (session){
     if (session.invite()){
-      Meteor.call('contributions.insert', 'invites', session.invite()._id, session.invite().createdBy, 10, function(err, result){
+      Meteor.call('contributions.insert', 'invite', session.invite()._id, session.invite().createdBy, 10, function(err, result){
         if (err){
           console.log(err);
         }

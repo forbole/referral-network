@@ -26,8 +26,8 @@ class Connections extends Component {
                   name={connection.user(this.props.user._id).profile.name}
                   title={connection.user(this.props.user._id).username}
                   recoCount={connection.user(this.props.user._id).recoCount()}
-                skills={(connection.user(this.props.user._id).skills) ? connection.user(this.props.user._id).skills.slice(0,3):[]}
-                otherSkills={(connection.user(this.props.user._id).skills) ? (connection.user(this.props.user._id).skills.length-3):0}
+                  skills={(connection.user(this.props.user._id).skills) ? connection.user(this.props.user._id).skills.slice(0,3):[]}
+                  otherSkills={(connection.user(this.props.user._id).skills) ? (connection.user(this.props.user._id).skills.length-3):0}
                 />
               )}
             </div>

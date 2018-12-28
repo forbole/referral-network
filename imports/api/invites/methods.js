@@ -93,15 +93,24 @@ Meteor.methods({
 
                 if (invite.recoId != ''){
                     let reco = Recommendations.findOne(invite.recoId);
-                        Recommendations.update(invite.recoId, {
+                    Recommendations.update(invite.recoId, {
                         $set:{
                             accepted: true,
                             acceptedBy: this.userId
                         }
                     });
+                    Meteor.call('contributions.insert', 'recommendation', invite.recoId, reco.createdBy, 5, function(err, result){
+                        if (err){
+                          console.log(err);
+                        }
+                        if (result){
+                          console.log('contributions add');
+                        }
+                    });
                 }
                 // if (userState && inviteState){
                 if (inviteState){
+                    
                     return "success";
                 }
                 else return "failed";

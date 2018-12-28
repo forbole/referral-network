@@ -81,8 +81,9 @@ Meteor.methods({
         return referralId;
     },
     'referral.accept': function(referralId){
+        check(referralId, String);
+
         let referral = Referrals.findOne({_id:referralId});
-        console.log(referral);
         if (!referral){
             throw new Meteor.Error('no-referral-found', 'No referral is found.');
         }
@@ -93,6 +94,38 @@ Meteor.methods({
             }
         }
 
-        return Referrals.update({_id:referralId}, {$set:{acceptedBy:this.userId, acceptedAt: new Date()}});
+        let ref = Referrals.update({_id:referralId}, {$set:{acceptedBy:this.userId, acceptedAt: new Date()}});
+        if (ref){
+            Meteor.call('contributions.insert', 'referral', referralId, referral.createdBy, 3, (err, result) => {
+                if (err){
+                    toast.err(err);
+                }
+                if (result){
+                    // console.log(result);
+                    Meteor.call('connections.insert', referral.createdBy, 'referral', referralId, (err, result) => {
+                        if (err){
+                            throw new Meteor.Error(500, "Make connection error.");
+                        }
+
+                        if (result){
+                            if (result != -1){
+                                // add connection contribution score if there is new connection
+                                Meteor.call('contributions.insert', 'connection', result, this.userId, 1, function(err, result){
+                                    if (err){
+                                      console.log(err);
+                                    }
+                                    if (result){
+                                      console.log('contributions add');
+                                    }
+                                });
+
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        return ref;
     }
 })

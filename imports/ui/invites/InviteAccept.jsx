@@ -27,15 +27,6 @@ class InviteAccept extends Component {
             console.log('connection created.')
           }
         });
-        // Meteor.call('contributions.insert', 'recommendations', this.props.reco._id, this.props.reco.createdBy, 500, function(err, result){
-        //   if (err){
-        //     console.log(err);
-        //   }
-        //   if (result){
-        //     console.log('contributions add');
-        //   }
-        // });
-
       }
       else if (err) console.log(err);
     });
@@ -63,17 +54,6 @@ class InviteAccept extends Component {
         return <div>Loading</div>
       }
       else if (this.state.accepted){
-        if (this.props.invite.recoId){
-          Meteor.call('contributions.insert', 'recommendations', this.props.invite.recoId, this.props.invite.createdBy, 5, function(err, result){
-            if (err){
-              console.log(err);
-            }
-            if (result){
-              console.log('contributions add');
-            }
-          });
-        }
-
         return (
           <div className="main">
             <Alert type="success" text="You have accepted the invitation!" />
