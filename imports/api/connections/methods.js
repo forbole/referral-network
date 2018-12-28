@@ -5,10 +5,10 @@ import { Connections } from './connections.js';
 import moment from 'moment';
 
 Meteor.methods({
-  'Connections.insert'(userId, inviteId, recoId){
+  'connections.insert'(userId, type, propId){
     check(userId, String);
-    check(inviteId, String);
-    check(recoId, String);
+    check(type, String);
+    check(propId, String);
 
     let connection = Connections.findOne( { users : { $all : [this.userId, userId] } } );
 
@@ -16,13 +16,13 @@ Meteor.methods({
       console.log('not connected yet.');
       return Connections.insert({
         users: [this.userId, userId],
-        inviteId: inviteId,
-        recoId: recoId,
+        type: type,
+        propId: propId,
         createdAt: new Date()
       })
     }
     else{
-      return connection._id;
+      return -1;
     }
   }
 });

@@ -20,7 +20,7 @@ class Recommendation extends Component {
       if (result){
         this.setState({accepted: true});
         // console.log(result);
-        Meteor.call('Connections.insert', this.props.reco.createdBy, "", this.props.reco._id, function(err, result){
+        Meteor.call('connections.insert', this.props.reco.createdBy, "recommendation", this.props.reco._id, function(err, result){
           if (err){
             console.log(err);
           }

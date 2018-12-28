@@ -19,7 +19,7 @@ class InviteAccept extends Component {
     Meteor.call('invites.accept', this.props.invite._id, (err, result) =>{
       if (result){
         this.setState({accepted: true});
-        Meteor.call('Connections.insert', this.props.invite.createdBy, this.props.invite._id, "", function(err, result){
+        Meteor.call('connections.insert', this.props.invite.createdBy, "invite", this.props.invite._id, function(err, result){
           if (err){
             console.log(err);
           }
