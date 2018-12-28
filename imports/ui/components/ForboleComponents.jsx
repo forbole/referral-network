@@ -157,7 +157,7 @@ export class ContributionListCard extends Component{
         break;
       case "connection":
         action = "connected with";
-        object = <Link to="#">{this.props.to}</Link>;
+        object = <Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link>;
         break;
       case "post":
         action = "posted";

@@ -9,10 +9,12 @@ class Contributions extends Component {
 
   getToUserName(contrib){
     switch(contrib.type){
-      case "recommendations":
+      case "recommendation":
         return contrib.reco().acceptor();
-      case "invites":
+      case "invite":
         return contrib.invite().acceptor();
+      case "connection":
+        return contrib.connection().connector();
       default:
         return '';
     }

@@ -1,11 +1,7 @@
 import { Mongo } from 'meteor/mongo';
-// import { Meteor } from 'meteor/meteor';
 import { Recommendations } from '../recommendations/recommendations.js';
 import { Invites } from '../invites/invites.js';
-
-// import { InvitationCard } from '../../ui/components/ForboleComponents.jsx';
-// import InviteAccept from '../../ui/invites/InviteAccept.jsx';
-// // import Recommendation from '../../ui/recommendations/Recommendation.js';
+import { Connections } from '../connections/connections.js';
 
 export const Contributions = new Mongo.Collection('contributions');
 
@@ -15,5 +11,11 @@ Contributions.helpers({
     },
     invite(){
         return Invites.findOne({_id:this.propId});
+    },
+    connection(){
+        // console.log(this);
+        let conn = Connections.findOne({_id:this.propId});
+        conn.userId = this.userId;
+        return conn;
     }
 })
