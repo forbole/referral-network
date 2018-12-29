@@ -7,11 +7,15 @@ export default ContributionsListContainer = withTracker((props) => {
   const username = (!props.match.params.username)?((Meteor.userId())?Meteor.user().username:''):props.match.params.username;
   const usersHandle = Meteor.subscribe('users.all');
   const user = Meteor.users.findOne({username:username});
-  const contribHandle = Meteor.subscribe('contributions.user', user._id);
+  let contribHandle;
+  let loading = true;
+  if (user){
+    contribHandle = Meteor.subscribe('contributions.user', user._id);
+    loading = !contribHandle.ready() || !usersHandle.ready();
+  }
   // const imagesHandle = Meteor.subscribe('images.all');
   // const recoHandle = Meteor.subscribe('recommendations.all');
   // const inviteHandle = Meteor.subscribe('invites.all');
-  const loading = !contribHandle.ready() || !usersHandle.ready();
   // const connections = Connections.find({users: {$in: [user._id]}}).fetch();
   const userExists = !loading && !!user;
   // console.log(userExists);
@@ -19,6 +23,6 @@ export default ContributionsListContainer = withTracker((props) => {
     loading,
     userExists,
     user: user,
-    contributions: userExists ? Contributions.find({userId: user._id}).fetch() : {}
+    contributions: userExists ? Contributions.find({userId: user._id}, {createdAt:-1}).fetch() : {}
   };
 })(List);

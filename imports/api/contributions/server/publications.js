@@ -14,7 +14,7 @@ publishComposite('contributions.user', function(userId){
     check(userId, String);
     return {
         find(){
-            return Contributions.find({userId:userId});
+            return Contributions.find({userId:userId}, {sort:{createdAt:-1}});
         },
         children:[
             {
