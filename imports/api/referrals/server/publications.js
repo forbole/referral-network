@@ -27,7 +27,7 @@ publishComposite('referrals.findOne', function(referralId) {
               // one record here, we use "find" instead of "findOne"
               // since this function should return a cursor.
               return Meteor.users.find(
-                  { _id: {$in: [referral.createdBy, referral.refereeId] }},
+                  { _id: {$in: [referral.createdBy, referral.refereeId, referral.acceptUserId] }},
                   { fields: { username: 1, profile: 1 } });
           },
           children:[

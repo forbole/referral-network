@@ -7,7 +7,7 @@ Referrals.helpers({
     return Meteor.users.findOne(this.createdBy);
   },
   acceptor(){
-    return Meteor.users.findOne(this.acceptedBy);
+    return Meteor.users.findOne(this.acceptUserId);
   },
   referee(){
     return Meteor.users.findOne(this.refereeId);

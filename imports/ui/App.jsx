@@ -23,7 +23,7 @@ import InviteAccept from '/imports/ui/invites/InviteAcceptContainer.js';
 
 import Refer from '/imports/ui/referrals/ReferContainer.js';
 import ReferralAccept from '/imports/ui/referrals/AcceptContainer.js';
-import ReferralReceive from '/imports/ui/referrals/Receive.jsx';
+import ReferralReceive from '/imports/ui/referrals/ReceiveContainer.js';
 
 
 // App component - represents the whole app
