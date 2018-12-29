@@ -14,7 +14,7 @@ export default class ReferralAccept extends Component{
 
     handleAccept = (e) => {
         e.preventDefault();
-        Meteor.call('referral.accept', this.props.match.params.id, (err, result) => {
+        Meteor.call('referrals.accept', this.props.match.params.id, (err, result) => {
             if (err){
                 toast.error(err);
             }

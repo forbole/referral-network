@@ -435,6 +435,14 @@ span.position {
   transform: translateY(-50%);
 }
 
+.referral .introduction {
+  margin-bottom: 1em;
+}
+
+.referral .email.well {
+  display: block;
+}
+
 .create-feed{
   position:fixed;
   bottom: 1em;
@@ -513,8 +521,6 @@ h4.token-name{
   .default .profile .name{
     margin-top: -50px;
   }
-
-
 }
 
 @media (max-width: 575.98px) { 

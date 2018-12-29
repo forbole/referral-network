@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Loading } from '../components/ForboleComponents.jsx';
 import { toast } from 'react-toastify';
+import moment from 'moment';
 
 export default class ReferralReceive extends Component{
     constructor(props){
@@ -14,9 +15,9 @@ export default class ReferralReceive extends Component{
 
     handleReceive = (e) => {
         e.preventDefault();
-        Meteor.call('referral.receive', this.props.match.params.id, (err, result) => {
+        Meteor.call('referrals.receive', this.props.match.params.id, (err, result) => {
             if (err){
-                toast.error(err);
+                toast.error(err.toString());
             }
             if (result){
                 toast.success('You have received this referral.')
@@ -66,7 +67,7 @@ export default class ReferralReceive extends Component{
                                     <Link to={"/@"+this.props.referral.creator().username}>{this.props.referral.creator().profile.name}</Link>
                                     &nbsp;would like to introduce&nbsp;
                                     <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.name}</Link>
-                                    &nbsp;to you.</div>
+                                    &nbsp;to you <em>{moment(this.props.referral.createdAt).fromNow()}</em>.</div>
                                 <div className="card-content">
                                     <div className="introduction row">
                                         <div className="col-xs-5"><img className="avatar img-raised" src={this.props.referral.creator().profilePic()} /></div>
@@ -76,7 +77,11 @@ export default class ReferralReceive extends Component{
                                     <div>
                                         <p><Link to={"/@"+this.props.referral.creator().username}>{this.props.referral.creator().profile.firstname}</Link> has described what <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link> needed in the following message.</p>
                                         <blockquote>{this.props.referral.details}</blockquote>
-                                        <p>Please receive this referral and <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link> will contact you once this referral has been accepted.</p>
+                                        <p><span>Urgency </span><span className="label label-warning">{this.props.referral.urgency}</span></p>
+                                        <p>{(this.props.referral.receivedBy)?<span>
+                                            Please contact <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link> via the email address below
+                                            <span className="well email">{this.props.referral.email}</span>
+                                            </span>:<span>Please receive this referral and you can contact <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link> for further action.</span>}</p>
                                         <p className="text-center">{(!this.props.referral.receivedAt)?Meteor.userId()?((this.props.referral.createdBy != Meteor.userId())?<button
                                             className="btn btn-primary"
                                             onClick={this.handleReceive}>Receive</button>:''):<button

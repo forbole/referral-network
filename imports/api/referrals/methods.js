@@ -27,7 +27,8 @@ Meteor.methods({
             urgency: urgency,
             refereeId:refereeId,
             acceptUserId: acceptUserId,
-            createdBy: this.userId
+            createdBy: this.userId,
+            createdAt: new Date()
         });
 
         // send emails to referee and receiver
@@ -80,7 +81,7 @@ Meteor.methods({
 
         return referralId;
     },
-    'referral.accept': function(referralId){
+    'referrals.accept': function(referralId){
         check(referralId, String);
 
         let referral = Referrals.findOne({_id:referralId});
@@ -124,8 +125,60 @@ Meteor.methods({
                     });
                 }
             });
+
+            // email referee and referer
         }
 
         return ref;
+    },
+    'referrals.receive': function(referralId){
+        check(referralId, String);
+        
+        let referral = Referrals.findOne({_id:referralId});
+        if (!referral){
+            throw new Meteor.Error('no-referral-found', 'No referral is found.');
+        }
+        
+        // if (referral.acceptUserId){
+        if (referral.refereeId != this.userId){
+            throw new Meteor.Error(304, "Permission denied.");
+        }
+        // }
+
+        let ref = Referrals.update({_id:referralId}, {$set:{receivedBy:this.userId, receivedAt: new Date()}});
+        if (ref){
+            Meteor.call('contributions.insert', 'received-referral', referralId, referral.createdBy, 2, (err, result) => {
+                if (err){
+                    toast.err(err);
+                }
+                if (result){
+                    // console.log(result);
+                    Meteor.call('connections.insert', referral.createdBy, 'referral', referralId, (err, result) => {
+                        if (err){
+                            throw new Meteor.Error(500, "Make connection error.");
+                        }
+
+                        if (result){
+                            if (result != -1){
+                                // add connection contribution score if there is new connection
+                                Meteor.call('contributions.insert', 'connection', result, this.userId, 1, function(err, result){
+                                    if (err){
+                                      console.log(err);
+                                    }
+                                    if (result){
+                                      console.log('contributions add');
+                                    }
+                                });
+
+                            }
+                        }
+                    });
+                }
+            });
+
+            // email acceptor and referrer
+        }
+
+        return ref;        
     }
 })
