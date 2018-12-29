@@ -19,6 +19,7 @@ publishComposite('contributions.user', function(userId){
         children:[
             {
                 find(contrib){
+                    // console.log(contrib);
                     if (contrib.type == "invite"){
                         return Invites.find({_id:contrib.propId});
                     }

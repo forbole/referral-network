@@ -138,6 +138,8 @@ export class ContributionListCard extends Component{
   render(){
     let action = "";
     let object = "";
+
+    // console.log(this.props);
     switch (this.props.type){
       case "recommendations":
         action = "recommended";
@@ -173,9 +175,9 @@ export class ContributionListCard extends Component{
         break;
       case "referral":
         action = "referred";
-        object = <span>a business to <Link to="#">{this.props.to}</Link></span>;
+        object = <span>a business to <Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link></span>;
         break;
-      case "invites":
+      case "invite":
         action = "invited";
         object = <span><Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link> to join FRN</span>;
         break;
