@@ -16,6 +16,8 @@ class Contributions extends Component {
       case "connection":
         return contrib.connection().connector();
       case "referral":
+        return contrib.referral().referee();
+      case "received-referral":
         return contrib.referral().acceptor();
       default:
         return '';
@@ -111,6 +113,7 @@ class Contributions extends Component {
                 /> */}
                 {this.props.contributions.map((contrib, i) =>
                   <ContributionListCard key={i}
+                    propId={contrib.propId}
                     type={contrib.type}
                     from={from}
                     to={this.getToUserName(contrib)}

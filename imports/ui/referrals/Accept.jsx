@@ -20,18 +20,7 @@ export default class ReferralAccept extends Component{
             }
             if (result){
                 // show alert
-                // console.log(result);
                 toast.success('You have accepted this referral.')
-                // add contribution score to the sender
-                
-                // Meteor.call('connections.insert', this.props.referral.createdBy, "referral", this.props.referral._id, function(err, result){
-                //     if (err){
-                //       console.log(err);
-                //     }
-                //     if (result){
-                //       console.log('connection created.')
-                //     }
-                // });
             }
         });
     }

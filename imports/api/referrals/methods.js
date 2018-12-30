@@ -95,7 +95,7 @@ Meteor.methods({
             }
         }
 
-        let ref = Referrals.update({_id:referralId}, {$set:{acceptedBy:this.userId, acceptedAt: new Date()}});
+        let ref = Referrals.update({_id:referralId}, {$set:{acceptedBy:this.userId, acceptUserId: this.userId, acceptedAt: new Date()}});
         if (ref){
             Meteor.call('contributions.insert', 'referral', referralId, referral.createdBy, 3, (err, result) => {
                 if (err){

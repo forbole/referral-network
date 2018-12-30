@@ -19,11 +19,11 @@ publishComposite('contributions.user', function(userId){
         children:[
             {
                 find(contrib){
-                    // console.log(contrib);
+                    console.log(contrib);
                     if (contrib.type == "invite"){
                         return Invites.find({_id:contrib.propId});
                     }
-                    else if (contrib.type == "referral"){
+                    else if ((contrib.type == "referral") || (contrib.type == "received-referral")){
                         return Referrals.find({_id:contrib.propId});
                     }
                     else if (contrib.type == "connection"){

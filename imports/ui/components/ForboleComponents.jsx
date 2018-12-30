@@ -138,6 +138,11 @@ export class ContributionListCard extends Component{
   render(){
     let action = "";
     let object = "";
+    let toName = this.props.to;
+
+    if (typeof this.props.to == "object"){
+      toName = <Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link>;
+    }
 
     // console.log(this.props);
     switch (this.props.type){
@@ -173,9 +178,13 @@ export class ContributionListCard extends Component{
         action = "shared";
         object = <span><em>{this.props.to}</em>'s <Link to="#">blog post</Link></span>;
         break;
-      case "referral":
+      case "received-referral":
         action = "referred";
-        object = <span>a business to <Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link></span>;
+        object = <span>a business to {toName}</span>;
+        break;
+      case "referral":
+        action = "helped";
+        object = <span>{toName} with a business referral</span>;
         break;
       case "invite":
         action = "invited";
