@@ -91,10 +91,16 @@ h6{
   height: inherit;
 }
 
-
 .page-header.header-small{
   height:50vh;
   min-height: 50vh;
+}
+
+footer .motto{
+  clear:both; 
+  color: rgba(0,0,0,0.5);
+  letter-spacing: 0.2em;
+  font-size: 90%;
 }
 
 .navbar-brand img.logo{
