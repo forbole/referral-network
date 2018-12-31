@@ -3,6 +3,10 @@
 import '../../api/users/server/methods.js';
 import '../../api/users/server/publications.js';
 
+import '../../api/activities/activities.js';
+import '../../api/activities/server/methods.js';
+import '../../api/activities/server/publications.js';
+
 import '../../api/recommendations/methods.js';
 import '../../api/recommendations/server/publications.js';
 
@@ -23,3 +27,4 @@ import '../../api/inviteSessions/methods.js';
 
 import '../../api/referrals/methods.js';
 import '../../api/referrals/server/publications.js';
+
