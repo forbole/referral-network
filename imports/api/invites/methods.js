@@ -91,6 +91,17 @@ Meteor.methods({
                     }
                 });
 
+                // add to activity collection
+                Meteor.call('activities.insert', invite.createdBy, 'invite', inviteId, (error, result) => {
+                    if (error){
+                        console.log(error);
+                    }
+
+                    if (result){
+                        console.log(result);
+                    }
+                });
+
                 if (invite.recoId != ''){
                     let reco = Recommendations.findOne(invite.recoId);
                     Recommendations.update(invite.recoId, {

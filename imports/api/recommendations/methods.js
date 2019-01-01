@@ -84,6 +84,17 @@ Meteor.methods({
           }
         });
 
+        // add to activity collection
+        Meteor.call('activities.insert', reco.createdBy, 'recommendation', recoId, (error, result) => {
+            if (error){
+                console.log(error);
+            }
+
+            if (result){
+                console.log(result);
+            }
+        });
+        
         if (userState && recoState){
           Meteor.call('contributions.insert', 'recommendation', reco._id, reco.createdBy, 5, function(err, result){
             if (err){

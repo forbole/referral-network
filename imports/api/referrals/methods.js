@@ -97,11 +97,23 @@ Meteor.methods({
 
         let ref = Referrals.update({_id:referralId}, {$set:{acceptedBy:this.userId, acceptUserId: this.userId, acceptedAt: new Date()}});
         if (ref){
+            // add to activity collection
+            Meteor.call('activities.insert', referral.createdBy, 'referral', referralId, (error, result) => {
+                if (error){
+                    console.log(error);
+                }
+
+                if (result){
+                    console.log(result);
+                }
+            });
+            
             Meteor.call('contributions.insert', 'referral', referralId, referral.createdBy, 3, (err, result) => {
                 if (err){
                     toast.err(err);
                 }
                 if (result){
+
                     // console.log(result);
                     Meteor.call('connections.insert', referral.createdBy, 'referral', referralId, (err, result) => {
                         if (err){
@@ -110,6 +122,17 @@ Meteor.methods({
 
                         if (result){
                             if (result != -1){
+                                // add to activity collection
+                                Meteor.call('activities.insert', referral.createdBy, 'introduction', referralId, (error, result) => {
+                                    if (error){
+                                        console.log(error);
+                                    }
+
+                                    if (result){
+                                        console.log(result);
+                                    }
+                                });
+
                                 // add connection contribution score if there is new connection
                                 Meteor.call('contributions.insert', 'connection', result, this.userId, 1, function(err, result){
                                     if (err){
@@ -147,19 +170,41 @@ Meteor.methods({
 
         let ref = Referrals.update({_id:referralId}, {$set:{receivedBy:this.userId, receivedAt: new Date()}});
         if (ref){
+            // add to activity collection
+            Meteor.call('activities.insert', referral.createdBy, 'received-referral', referralId, (error, result) => {
+                if (error){
+                    console.log(error);
+                }
+
+                if (result){
+                    console.log(result);
+                }
+            });
+
             Meteor.call('contributions.insert', 'received-referral', referralId, referral.createdBy, 2, (err, result) => {
                 if (err){
                     toast.err(err);
                 }
                 if (result){
                     // console.log(result);
-                    Meteor.call('connections.insert', referral.createdBy, 'referral', referralId, (err, result) => {
+                    Meteor.call('connections.insert', referral.createdBy, 'receive-referral', referralId, (err, result) => {
                         if (err){
                             throw new Meteor.Error(500, "Make connection error.");
                         }
 
                         if (result){
                             if (result != -1){
+                                // add to activity collection
+                                Meteor.call('activities.insert', referral.createdBy, 'introduction', referralId, (error, result) => {
+                                    if (error){
+                                        console.log(error);
+                                    }
+
+                                    if (result){
+                                        console.log(result);
+                                    }
+                                });
+                                
                                 // add connection contribution score if there is new connection
                                 Meteor.call('contributions.insert', 'connection', result, this.userId, 1, function(err, result){
                                     if (err){
