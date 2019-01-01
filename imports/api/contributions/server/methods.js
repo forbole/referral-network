@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { Contributions } from './contributions.js';
+import { Contributions } from '../contributions.js';
 // import moment from 'moment';
 
 Meteor.methods({

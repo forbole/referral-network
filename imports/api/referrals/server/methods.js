@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Referrals } from './referrals.js';
+import { Referrals } from '../referrals.js';
 import { check } from 'meteor/check';
 import { Email } from 'meteor/email';
 import { Accounts } from 'meteor/accounts-base'

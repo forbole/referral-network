@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { Invites } from './invites.js';
-import { Recommendations } from '../recommendations/recommendations.js'
+import { Invites } from '../invites.js';
+import { Recommendations } from '../../recommendations/recommendations.js'
 import moment from 'moment';
 
 Meteor.methods({
