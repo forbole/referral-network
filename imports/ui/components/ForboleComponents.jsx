@@ -146,7 +146,7 @@ export class ContributionListCard extends Component{
 
     // console.log(this.props);
     switch (this.props.type){
-      case "recommendations":
+      case "recommendation":
         action = "recommended";
         object = <Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link>
         break;
