@@ -2,28 +2,29 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 // import { Accounts, STATES } from 'meteor/std:accounts-ui';
-import PrivateRoute from '/imports/ui/routes/PrivateRouteContainer.js';
-import DefaultLayout from '/imports/ui/layouts/DefaultContainer.js';
-import LoginLayout from '/imports/ui/layouts/Login.jsx';
+import PrivateRoute from '../ui/routes/PrivateRouteContainer.js';
+import DefaultLayout from '../ui/layouts/DefaultContainer.js';
+import LoginLayout from '../ui/layouts/Login.jsx';
 import PropTypes from 'prop-types';
 
-import Home from '/imports/ui/pages/Home.jsx';
-import NotFound from '/imports/ui/pages/NotFound.jsx';
-import Login from '/imports/ui/users/Login.jsx';
-import Register from '/imports/ui/users/Register.jsx';
-import Profile from '/imports/ui/users/ProfileContainer.js';
-// import Wallet from '/imports/ui/users/Wallet.jsx';
-import ProfileEdit from '/imports/ui/users/EditContainer.js';
-import Recommend from '/imports/ui/recommendations/RecommendContainer.js';
-import Recommendation from '/imports/ui/recommendations/RecommendationContainer.js';
-import Connections from '/imports/ui/connections/ListContainer.js';
-import Contributions from '/imports/ui/contributions/ListContainer.js';
-import Invite from '/imports/ui/invites/InviteContainer.js';
-import InviteAccept from '/imports/ui/invites/InviteAcceptContainer.js';
+import Timeline from '../ui/timeline/TimelineContainer.js';
+// import Home from '../ui/pages/Home.jsx';
+import NotFound from '../ui/pages/NotFound.jsx';
+import Login from '../ui/users/Login.jsx';
+import Register from '../ui/users/Register.jsx';
+import Profile from '../ui/users/ProfileContainer.js';
+// import Wallet from '../ui/users/Wallet.jsx';
+import ProfileEdit from '../ui/users/EditContainer.js';
+import Recommend from '../ui/recommendations/RecommendContainer.js';
+import Recommendation from '../ui/recommendations/RecommendationContainer.js';
+import Connections from '../ui/connections/ListContainer.js';
+import Contributions from '../ui/contributions/ListContainer.js';
+import Invite from '../ui/invites/InviteContainer.js';
+import InviteAccept from '../ui/invites/InviteAcceptContainer.js';
 
-import Refer from '/imports/ui/referrals/ReferContainer.js';
-import ReferralAccept from '/imports/ui/referrals/AcceptContainer.js';
-import ReferralReceive from '/imports/ui/referrals/ReceiveContainer.js';
+import Refer from '../ui/referrals/ReferContainer.js';
+import ReferralAccept from '../ui/referrals/AcceptContainer.js';
+import ReferralReceive from '../ui/referrals/ReceiveContainer.js';
 
 
 // App component - represents the whole app
@@ -76,7 +77,7 @@ export default class App extends Component {
         return (
             <Router>
               <Switch>
-                <PrivateRoute path="/" exact={true} component={Home} />
+                <PrivateRoute path="/" exact={true} component={Timeline} />
                 <LoginLayout path="/login" component={Login} />
                 <LoginLayout path="/signup" component={Register} />
                 <PrivateRoute path="/@:username/contributions" exact={true} component={Contributions} />
