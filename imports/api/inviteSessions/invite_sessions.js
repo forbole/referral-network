@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { Invites } from '../invites/invites.js';
-import ReferralAccept from '../../ui/referrals/Accept.jsx';
+import { Referrals } from '../referrals/referrals.js';
 
 export const InviteSession = new Mongo.Collection('invite_sessions');
 

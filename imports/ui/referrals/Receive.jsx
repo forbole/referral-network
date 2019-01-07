@@ -57,7 +57,7 @@ export default class ReferralReceive extends Component{
             />);
         }
         else{
-            if (this.props.referralExists){            
+            if (this.props.referralExists){
                 return (
                     <div className="main referral">
                         <div className="container">
@@ -66,22 +66,22 @@ export default class ReferralReceive extends Component{
                                 <div className="card-header">
                                     <Link to={"/@"+this.props.referral.creator().username}>{this.props.referral.creator().profile.name}</Link>
                                     &nbsp;would like to introduce&nbsp;
-                                    <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.name}</Link>
+                                    {this.props.referral.acceptor().profile?<Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.name}</Link>:<strong>{this.props.referral.acceptor()}</strong>}
                                     &nbsp;to you <em>{moment(this.props.referral.createdAt).fromNow()}</em>.</div>
                                 <div className="card-content">
                                     <div className="introduction row">
                                         <div className="col-xs-5"><img className="avatar img-raised" src={this.props.referral.creator().profilePic()} /></div>
                                         <div className="col-xs-2"><i className="material-icons symbol">forward</i></div>
-                                        <div className="col-xs-5"><img className="avatar img-raised" src={this.props.referral.acceptor().profilePic()} /></div>
+                                        <div className="col-xs-5"><img className="avatar img-raised" src={this.props.referral.acceptor().profile?this.props.referral.acceptor().profilePic():"/img/faces/default-profile.svg"} /></div>
                                     </div>
                                     <div>
-                                        <p><Link to={"/@"+this.props.referral.creator().username}>{this.props.referral.creator().profile.firstname}</Link> has described what <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link> needed in the following message.</p>
+                                        <p><Link to={"/@"+this.props.referral.creator().username}>{this.props.referral.creator().profile.firstname}</Link> has described what {this.props.referral.acceptor().profile?<Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link>:this.props.referral.acceptor()} needed in the following message.</p>
                                         <blockquote>{this.props.referral.details}</blockquote>
                                         <p><span>Urgency </span><span className="label label-warning">{this.props.referral.urgency}</span></p>
-                                        <p>{(this.props.referral.receivedBy)?<span>
+                                        <p>{(this.props.referral.acceptedBy)?<span>
                                             Please contact <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link> via the email address below
                                             <span className="well email">{this.props.referral.email}</span>
-                                            </span>:<span>Please receive this referral and you can contact <Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link> for further action.</span>}</p>
+                                            </span>:<span>Please receive this referral and you can contact {this.props.referral.acceptor().profile?<Link to={"/@"+this.props.referral.acceptor().username}>{this.props.referral.acceptor().profile.firstname}</Link>:this.props.referral.acceptor()} for further action.</span>}</p>
                                         <p className="text-center">{(!this.props.referral.receivedAt)?Meteor.userId()?((this.props.referral.createdBy != Meteor.userId())?<button
                                             className="btn btn-primary"
                                             onClick={this.handleReceive}>Receive</button>:''):<button

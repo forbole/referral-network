@@ -12,7 +12,12 @@ class Contributions extends Component {
       case "recommendation":
         return contrib.reco().acceptor();
       case "invite":
-        return contrib.invite().acceptor();
+        if (contrib.invite()){
+          return contrib.invite().acceptor();
+        }
+        else{
+          return contrib.referral().acceptor();
+        }
       case "connection":
         return contrib.connection().connector();
       case "referral":
