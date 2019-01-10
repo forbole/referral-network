@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 const Footer = () => {
   let year = new Date().getFullYear();
-  if (year != '2018'){
-    year = '2018-'+year;
+  if (year != '2019'){
+    year = '2019-'+year;
   }
 
   return (
