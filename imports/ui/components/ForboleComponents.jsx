@@ -240,38 +240,85 @@ export class ConnectionsListCard extends Component {
       </div>
     )
   }
-
 }
 
 export class FeedCard extends Component{
   constructor(props){
     super(props);
+    this.state = {
+      message: "",
+      introA: "",
+      introB: "",
+      points: 0,
+      comments: 0,
+      shares: 0
+    }
   }
 
+  componentDidUpdate(prevProps){
+    if (this.props.activity != prevProps.activity){
+      let activity = this.props.activity;
+
+      if (activity.property && activity.user){
+        switch (activity.type){
+          case "introduction":
+            this.setState({
+              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> has introduced <Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link> to <Link to="#">{activity.property.referee().profile.name}</Link>.</div>,
+              introA: activity.property.acceptor().profilePic(),
+              introB: activity.property.referee().profilePic()
+            })
+            break;
+          case "referral":
+            this.setState({
+              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> has referred a bussiness opportunity to <Link to={"/@"+activity.property.referee().username}>{activity.property.referee().profile.name}</Link>.</div>,
+              // introA: activity.property.acceptor().profilePic(),
+              // introB: activity.property.referee().profilePic()
+            })
+            break;
+          case "received-referral":
+            this.setState({
+              message: <div><Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link> has accepted being referred to <Link to={"/@"+activity.property.referee().username}>{activity.property.referee().profile.name}</Link>.</div>,
+              // introA: activity.property.acceptor().profilePic(),
+              // introB: activity.property.referee().profilePic()
+            })
+            break;
+          case "recommendation":
+            break;
+          case "invite":
+            this.setState({
+              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> invited <Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link> to join <strong className="text-primary">FRN</strong>.</div>
+            })
+            break;
+        }
+      }
+    }
+  }
   render(){
     let liked = '';
     if (this.props.liked){
       liked = "liked"
     }
+    let activity = this.props.activity;
 
-    return <div className="card card-blog">
+    return <div className="card card-blog feed">
       <div className="card-header">
+        {activity.user?
         <div className="author">
           <Link to="#pablo">
             <div className="row">
               <div className="col-xs-2">
-                <img src={this.props.avatar} alt="..." className="avatar img-raised" />
+                <img src={activity.user.profilePic()} alt={activity.user.profile.name} className="avatar img-raised" />
               </div>
               <div className="col-xs-10">
-                <span>{this.props.name}</span><br/>
-                <span className="headline">{this.props.headline}</span>
-                <span className="timeago">{this.props.timeago}</span>
+                <span>{activity.user.profile.name}</span><br/>
+                <span className="headline">{activity.user.profile.headline}</span>
+                <span className="timeago">{moment(activity.createdAt).fromNow()}</span>
               </div>
             </div>
-            
           </Link>
         </div>
-        <div className="row message">{this.props.message}</div>
+        :''}
+        <div className="row message">{this.state.message}</div>
       </div>
       {(this.props.cardImage)?
       <div className="card-image">
@@ -287,16 +334,16 @@ export class FeedCard extends Component{
           {(this.props.title)?<h4 className="card-title">
             <Link to="#pablo">{this.props.title}</Link>
           </h4>:''}
-          {(this.props.introA)?<div className="introduction row">
-            <div className="col-xs-5"><img className="avatar img-raised" src={this.props.introA} /></div>
+          {(this.state.introA)?<div className="introduction row">
+            <div className="col-xs-5"><img className="avatar img-raised" src={this.state.introA} /></div>
             <div className="col-xs-2"><i className="material-icons symbol">all_inclusive</i></div>
-            <div className="col-xs-5"><img className="avatar img-raised" src={this.props.introB} /></div>
+            <div className="col-xs-5"><img className="avatar img-raised" src={this.state.introB} /></div>
           </div>:''}
           <div className="footer">
             <div className="engagement row text-center">
-            <div className="col-xs-4"><i className={"material-icons " + liked}>favorite</i> {this.props.likes}</div>
-            <div className="col-xs-4"><i className="material-icons">chat_bubble</i> {this.props.comments}</div>
-            <div className="col-xs-4"><i className="material-icons">share</i> {this.props.shares}</div>
+            <div className="col-xs-6"><i className={"material-icons " + liked}>thumb_up_alt</i> {this.state.points} <i className="material-icons">thumb_down_alt</i></div>
+            <div className="col-xs-6"><i className="material-icons">chat_bubble</i> {this.state.comments}</div>
+            {/* <div className="col-xs-4"><i className="material-icons">share</i> {this.state.shares}</div> */}
 	    	      </div>
             </div>
           </div>

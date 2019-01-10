@@ -441,6 +441,14 @@ span.position {
   transform: translateY(-50%);
 }
 
+.feed.card-blog .message{
+  margin-top: 1em;
+}
+
+.feed.card-blog .card-content{
+  padding-top: 0;
+}
+
 .referral .introduction {
   margin-bottom: 1em;
 }

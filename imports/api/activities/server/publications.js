@@ -73,42 +73,6 @@ publishComposite('activities.timeline', function(limit){
                  }},
                  {$sort:{createdAt:-1}},
                  {$limit:limit},
-                //  {$lookup:{
-                //     from: "recommendations",
-                //     localField: "propId",
-                //     foreignField: "_id",
-                //     as: "recommendation"
-                // }},
-                // {$lookup:{
-                //     from: "connections",
-                //     localField: "propId",
-                //     foreignField: "_id",
-                //     as: "connection"
-                // }},
-                // {$lookup:{
-                //     from: "referrals",
-                //     localField: "propId",
-                //     foreignField: "_id",
-                //     as: "referral"
-                // }},
-                // {$lookup:{
-                //     from: "invites",
-                //     localField: "propId",
-                //     foreignField: "_id",
-                //     as: "invite"
-                // }},
-                // {$lookup:{
-                //     from: "users",
-                //     localField: "userId",
-                //     foreignField: "_id",
-                //     as: "creator"
-                // }},
-                // {$lookup:{
-                //     from: "images",
-                //     localField: "creator.profile.image_id",
-                //     foreignField: "_id",
-                //     as: "profile_picture"
-                // }},
                 {$project:{
                     user:{
                         $filter:{
@@ -121,12 +85,7 @@ publishComposite('activities.timeline', function(limit){
                     propId:1,
                     createdAt:1,
                     userId:1,
-                    // creator:1,
-                    // profile_picture:1,
-                    // recommendation:1,
-                    // referral:1,
-                    // connection:1,
-                    // invite:1
+
                 }}     
             ];
             // let result = aggregateQuery(pipeline, { cursor: {} });
@@ -135,25 +94,5 @@ publishComposite('activities.timeline', function(limit){
 
             return ReactiveAggregate(this, Activities, pipeline);
         }
-        // ,
-        // children:[
-        //     {
-        //         find(activity){
-        //             console.log(activity);
-        //             if (activity.type == "invite"){
-        //                 return Invites.find({_id:activity.propId});
-        //             }
-        //             else if ((activity.type == "referral") || (activity.type == "received-referral")){
-        //                 return Referrals.find({_id:activity.propId});
-        //             }
-        //             else if (activity.type == "connection"){
-        //                 return Connections.find({_id:activity.propId});
-        //             }
-        //             else if (activity.type == "recommendation"){
-        //                 return Recommendations.find({_id:activity.propId});
-        //             }
-        //         }
-        //     }
-        // ]
     }
 });

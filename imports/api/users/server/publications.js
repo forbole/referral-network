@@ -39,3 +39,24 @@ publishComposite('users.findByUsername', function(username) {
     ]
   }
 });
+
+publishComposite('users.findOne', function(userId) {
+    check(userId, String);
+    return {
+        find() {
+            // Find posts made by user. Note arguments for callback function
+            // being used in query.
+            return Meteor.users.find({ _id: userId }, { fields: { _id: 1, username: 1, emails: 1, profile: 1, skills: 1, scores: 1}});
+        },
+        children: [
+          {
+              find(user) {
+                  return Images.find(
+                      { _id: user.profile.image_id },
+                      { limit: 1 }
+                  ).cursor;
+              }
+          }
+      ]
+    }
+  });
