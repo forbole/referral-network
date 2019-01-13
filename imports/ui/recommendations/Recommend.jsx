@@ -232,17 +232,17 @@ class Recommend extends Component {
                         name="recommendation" 
                         className="form-control" 
                         id="recommendation"
-                        maxLength={140}
+                        maxLength={350}
                         rows={6}
                         placeholder="Detail of your recommendation.
                         What does he/she do?
-                        Why are you recommending this person? (max 140 characters)"
+                        Why are you recommending this person? (max 350 characters)"
                         required={true} 
                         onChange={this.handleInputs} 
                         onBlur={this.handleInputsFocus}
                         />
                         <div className="progress progress-line-primary input">
-                          <div className="progress-bar progress-bar-primary" role="progressbar" aria-valuenow={this.state.charCount} aria-valuemin="0" aria-valuemax="140" style={{width:(this.state.charCount*100/140).toFixed(2)+"%"}}>
+                          <div className="progress-bar progress-bar-primary" role="progressbar" aria-valuenow={this.state.charCount} aria-valuemin="0" aria-valuemax="350" style={{width:(this.state.charCount*100/350).toFixed(2)+"%"}}>
                             <span className="sr-only">{this.state.charCount} characters</span>
                           </div>
                         </div>

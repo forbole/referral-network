@@ -48,20 +48,20 @@ Meteor.methods({
         let message = 'Dear '+toName+',\n\n';
         message += 'Bravo! '+name+' has invited you to connect.\n\n';
         if ((event != '') && (recommendation != '')){
-            message += name+" has made the following recommendation about you.\n\n\n"
+            message += name+" has made the following recommendation about you:\n\n\n"
             message += '"'+recommendation+'"\n\n\n';
-            message += 'The user has also endorsed you these '+skills.length+' skills: ';
+            message += 'You have also unlocked '+skills.length+' endorsements!';
             for (let skill of skills){
             message += '['+skill+'] ';
             }
         }
         message += '\n\nPlease accept your invitation by clicking here:\n\n';
         message += Meteor.settings.public.host+'/invite/accept/'+inviteId+'\n\n';
-        message += 'At Forbole, we help each other to succeed. If we write recommendations and endorse the skills of each other, we will all do better in our business and career!\n\n';
-        message += 'We keep improving our prototype every day. We invite you to join us by accepting this invitation, complete your profile and start to make endorsements for the people you trust. One more thing, we are a blockchain project and we will reward users with our crypto-tokens once we are ready. Stay tune!\n\n';
-        message += 'We love to hear your feedback!\n\n';
+        message += 'By making recommendation and referral, we can help each other to become more successful. This is why we started Forbole, a blockchain-based social network that changes the way we make business connection!\n\n';
+        message += 'We are currently in beta version. We love to hear your feedback!\n\n';
         message += 'Thanks,\n';
-        message += 'Forbole - Recommend · Refer · Reward';
+        message += 'Forbole\n';
+        message += 'Recommend · Refer · Reward';
 
         this.unblock();
         Email.send({
