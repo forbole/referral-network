@@ -258,8 +258,7 @@ export class FeedCard extends Component{
   componentDidUpdate(prevProps){
     if (this.props.activity != prevProps.activity){
       let activity = this.props.activity;
-
-      if (activity.property && activity.user){
+      if (activity.property && activity.user && activity.property.acceptor()){
         switch (activity.type){
           case "introduction":
             this.setState({
@@ -283,6 +282,13 @@ export class FeedCard extends Component{
             })
             break;
           case "recommendation":
+            this.setState({
+              message: <div>
+                <Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> recommended <Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link>.
+                <blockquote>{activity.property.recommendation}</blockquote>
+                {(activity.property.skills.length>0)?activity.property.skills.map((skill,i) => <Skill key={i} skill={skill} />):''}
+                </div>
+            })
             break;
           case "invite":
             this.setState({
@@ -293,6 +299,7 @@ export class FeedCard extends Component{
       }
     }
   }
+
   render(){
     let liked = '';
     if (this.props.liked){

@@ -30,8 +30,8 @@ export default TimelineContainer = withTracker((props) => {
                     loading = loading && !referralHandle.ready();
                     timeline[t].property = Referrals.findOne({_id:propId});
                     break;
-                case "recommenation":
-                    const recommendationHandle = Meteor.subscribe('recommendation.findOne', propId);
+                case "recommendation":
+                    const recommendationHandle = Meteor.subscribe('recommendations.findOne', propId);
                     loading = loading && !recommendationHandle.ready();
                     timeline[t].property = Recommendations.findOne({_id:propId});
                     break;
