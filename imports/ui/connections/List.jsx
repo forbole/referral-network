@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ConnectionsListCard } from '../components/ForboleComponents.jsx';
+import { Link } from 'react-router-dom';
 
 class Connections extends Component {
   constructor(props){
@@ -13,7 +14,7 @@ class Connections extends Component {
     else{
     return <div>
       <div className="container">
-        <h3 className="text-center">{this.props.user.profile.name}'s Connections</h3>
+        <div><Link to="/invite" className="btn btn-primary btn-round">Invite</Link> connections and get rewards.</div>
         <div className="row connections">
           <div className="col-md-12">
             </div>

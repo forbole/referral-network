@@ -8,7 +8,12 @@ const Footer = (props) => {
     year = '2019-'+year;
   }
   
-  let path = props.match.path;
+  let path = "";
+
+  if (props.match && props.match.path){
+    path = props.match.path;
+  }
+
   return (
     <footer className="footer">
         <div className="container hidden-xs">
@@ -33,15 +38,16 @@ const Footer = (props) => {
             </div>
             <div className="motto">Don't trust. Verify.</div>
         </div>
+        {Meteor.userId()?
         <nav className="navbar navbar-default navbar-fixed-bottom visible-xs-block mobile-menu">
           <ul className="nav navbar-nav">
             <li className={(path == '/')?"active":""}><Link to="/"><i className="material-icons">home</i></Link></li>
             <li className={(path == '/connections')?"active":""}><Link to="/connections"><i className="material-icons">device_hub</i></Link></li>
             <li className={(path == '/@:username/contributions')?"active":""}><Link to={"/@"+Meteor.user().username+"/contributions"}><i className="material-icons">fingerprint</i></Link></li>
             <li className={(path == '/@:username?')?"active":""}><Link to={"/@"+Meteor.user().username}><i className="material-icons">face</i></Link></li>
-            <li className={(path == '/about')?"active":""}><Link to="/about"><i className="material-icons">info</i></Link></li>
+            <li className={(path == '/settings')?"active":""}><Link to="/settings"><i className="material-icons">settings</i></Link></li>
           </ul>
-        </nav>
+        </nav>:''}
     </footer>
   );
 }
