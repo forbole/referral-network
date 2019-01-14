@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = (props) => {
   let year = new Date().getFullYear();
   if (year != '2019'){
     year = '2019-'+year;
   }
-
+  
+  let path = props.match.path;
   return (
     <footer className="footer">
-        <div className="container">
+        <div className="container hidden-xs">
             <nav className="pull-left">
               <ul>
                 <li>
@@ -30,6 +33,15 @@ const Footer = () => {
             </div>
             <div className="motto">Don't trust. Verify.</div>
         </div>
+        <nav className="navbar navbar-default navbar-fixed-bottom visible-xs-block mobile-menu">
+          <ul className="nav navbar-nav">
+            <li className={(path == '/')?"active":""}><Link to="/"><i className="material-icons">home</i></Link></li>
+            <li className={(path == '/connections')?"active":""}><Link to="/connections"><i className="material-icons">device_hub</i></Link></li>
+            <li className={(path == '/@:username/contributions')?"active":""}><Link to={"/@"+Meteor.user().username+"/contributions"}><i className="material-icons">fingerprint</i></Link></li>
+            <li className={(path == '/@:username?')?"active":""}><Link to={"/@"+Meteor.user().username}><i className="material-icons">face</i></Link></li>
+            <li className={(path == '/about')?"active":""}><Link to="/about"><i className="material-icons">info</i></Link></li>
+          </ul>
+        </nav>
     </footer>
   );
 }

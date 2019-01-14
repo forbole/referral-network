@@ -20,7 +20,7 @@ const DefaultLayout = ({component: Component, transHead: transHead, ...rest}) =>
               <ToastContainer />
               {Meteor.user()?<Header />:<PublicHeader />}
                   <Component {...matchProps} />
-              <Footer />
+              <Footer {...matchProps}/>
             </div>
         )
         }} />

@@ -103,6 +103,27 @@ footer .motto{
   font-size: 90%;
 }
 
+footer .navbar .navbar-nav > li > a .material-icons, 
+footer .navbar .navbar-nav > li > a .fa{
+  font-size: 24px;
+}
+
+footer nav.mobile-menu{
+  border-top: 1px solid #dfdfdf;
+}
+
+footer nav.mobile-menu .navbar-nav {
+  margin: 7.5px;
+}
+
+footer nav.mobile-menu ul li{
+  display: inline-block;
+  width: 20%;
+}
+
+footer nav.mobile-menu li.active a i.material-icons{
+  color: #bd081c;
+}
 .navbar-brand img.logo{
   display: inline-block;
   width: 1.2em;
@@ -508,8 +529,14 @@ h4.token-name{
   }
 }
 
-
 @media (max-width: 767px){
+  body{
+    padding-bottom: 68px;
+  }
+  footer{
+    padding: 0;
+  }
+
   h1, .h1, .presentation-page .brand h1 {
     font-size: 2.5em;
   }
