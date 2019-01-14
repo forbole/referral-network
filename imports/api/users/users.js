@@ -9,22 +9,33 @@ Meteor.users.helpers({
   },
   profilePic(){
     let user = Meteor.users.findOne({_id: this._id});
-    if (user.profile.image_id){
-      if (Images.findOne(user.profile.image_id))
-        return Images.findOne(user.profile.image_id).link();
-      else {
-        return user.profile.picture;
+
+    if (user && user.profile){
+      if (user.profile.image_id){
+        if (Images.findOne(user.profile.image_id))
+          return Images.findOne(user.profile.image_id).link();
+        else {
+          return user.profile.picture;
+        }
       }
+      else{
+        return user.profile.picture;
+      }  
     }
     else{
-      return user.profile.picture;
+      return '/img/faces/default-profile.svg';
     }
   },
   coverPic(){
     let user = Meteor.users.findOne({_id: this._id});
-    if (user.profile.cover_image_id){
-      if (Images.findOne(user.profile.cover_image_id))
-        return Images.findOne(user.profile.cover_image_id).link();
+    if (user && user.profile){
+      if (user.profile.cover_image_id){
+        if (Images.findOne(user.profile.cover_image_id))
+          return Images.findOne(user.profile.cover_image_id).link();
+        else{
+          return '/img/kwun-profile-header.jpg';
+        }
+      }
       else{
         return '/img/kwun-profile-header.jpg';
       }

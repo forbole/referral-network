@@ -299,19 +299,18 @@ export class FeedCard extends Component{
       liked = "liked"
     }
     let activity = this.props.activity;
-
     return <div className="card card-blog feed">
       <div className="card-header">
         {activity.user?
         <div className="author">
-          <Link to="#pablo">
+          <Link to={(activity.user)?"/@"+activity.user.username:"#"}>
             <div className="row">
               <div className="col-xs-2">
-                <img src={activity.user.profilePic()} alt={activity.user.profile.name} className="avatar img-raised" />
+                <img src={(activity.user)?activity.user.profilePic():''} alt={(activity.user)?activity.user.profile.name:''} className="avatar img-raised" />
               </div>
               <div className="col-xs-10">
-                <span>{activity.user.profile.name}</span><br/>
-                <span className="headline">{activity.user.profile.headline}</span>
+                <span>{(activity.user)?activity.user.profile.name:''}</span><br/>
+                <span className="headline">{(activity.user)?activity.user.profile.headline:''}</span>
                 <span className="timeago">{moment(activity.createdAt).fromNow()}</span>
               </div>
             </div>
