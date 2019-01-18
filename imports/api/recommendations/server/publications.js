@@ -17,7 +17,7 @@ publishComposite('recommendations.findOne', function(recommendationId) {
   check(recommendationId, String);
   return {
       find() {
-          return Recommendations.find({ _id: recommendationId });
+          return Recommendations.find({ _id: recommendationId }, {fields:{upvotes:0, downvotes:0}});
       },
       children: [
         {

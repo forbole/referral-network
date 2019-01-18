@@ -18,7 +18,7 @@ publishComposite('referrals.findOne', function(referralId) {
       find() {
           // Find posts made by user. Note arguments for callback function
           // being used in query.
-          return Referrals.find({ _id: referralId });
+          return Referrals.find({ _id: referralId }, {fields:{upvotes:0, downvotes:0});
       },
       children: [
         {
