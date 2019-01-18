@@ -13,10 +13,13 @@ class Timeline extends Component {
 
   componentDidUpdate(prevProps){
       if (this.props.timeline != prevProps.timeline){
+        // console.log(this.props.timeline);
           if (this.props.timeline.length > 0){
               this.setState({
-                  feed: this.props.timeline.map((activity, i) => 
-                    <FeedCard activity={activity} key={i} />
+                  feed: this.props.timeline.map((activity, i) => {
+                    return <FeedCard activity={activity} key={i}/>
+                  }
+                    
                   )
               })
           }

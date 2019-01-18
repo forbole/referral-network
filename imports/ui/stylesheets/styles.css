@@ -284,6 +284,11 @@ form .invalid-feedback {
 .engagement .liked{
   color: #bd081c;
 }
+
+.engagement i.material-icons{
+  cursor: pointer;
+}
+
 .card .footer .engagement .material-icons {
     position: relative;
     top: 4px;

@@ -188,7 +188,7 @@ export class ContributionListCard extends Component{
         break;
       case "invite":
         action = "invited";
-        object = <span><Link to={"/@"+this.props.to.username}>{this.props.to.profile.name}</Link> to join FRN</span>;
+        object = <span>{toName} to join FRN</span>;
         break;
       case "introduction":
         action = "introduced";
@@ -249,34 +249,92 @@ export class FeedCard extends Component{
       message: "",
       introA: "",
       introB: "",
-      points: 0,
+      votes: 0,
       comments: 0,
-      shares: 0
+      shares: 0,
+      upvote: "",
+      downvote: ""
     }
+    // this.vote = this.vote.bind(this);
+  }
+
+  vote= (dir) => (e) => {
+    // console.log(dir);
+    // console.log(this.props.activity);
+    Meteor.call('votes.add', dir, this.props.activity.type, this.props.activity.propId, (err, result) => {
+      if (result){
+        console.log(result);
+      }
+      if (err){
+        console.log(err);
+      }
+    })
+    // console.log(e);
   }
 
   componentDidUpdate(prevProps){
     if (this.props.activity != prevProps.activity){
       let activity = this.props.activity;
-      if (activity.property && activity.user && activity.property.acceptor()){
+      
+      if (activity.property && activity.user){
+        if (activity.property.votes != undefined){
+          this.setState({
+            votes: activity.property.votes
+          })
+        }
+
+        Meteor.call('votes.exists', 1, activity.type, activity.propId, (err, result) => {
+            if (err){
+                console.log(err);
+            }
+            if (result){
+                // console.log(result);
+                this.setState({
+                  upvote: "liked"
+                })
+            }
+            else{
+              this.setState({
+                upvote: ""
+              })
+            }
+        });
+
+        Meteor.call('votes.exists', -1, activity.type, activity.propId, (err, result) => {
+            if (err){
+                console.log(err);
+            }
+            if (result){
+                // console.log(result);
+                this.setState({
+                  downvote: "liked"
+                })
+            }
+            else{
+              this.setState({
+                downvote: ""
+              })
+            }
+        });
+
         switch (activity.type){
           case "introduction":
             this.setState({
-              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> has introduced <Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link> to <Link to="#">{activity.property.referee().profile.name}</Link>.</div>,
-              introA: activity.property.acceptor().profilePic(),
-              introB: activity.property.referee().profilePic()
+              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> has introduced {(activity.property.acceptor())?<Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link>:''} to {activity.property.referee()?<Link to="#">{activity.property.referee().profile.name}</Link>:''}.</div>,
+              introA: (activity.property.acceptor())?activity.property.acceptor().profilePic():'',
+              introB: (activity.property.referee())?activity.property.referee().profilePic():''
             })
             break;
           case "referral":
             this.setState({
-              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> has referred a bussiness opportunity to <Link to={"/@"+activity.property.referee().username}>{activity.property.referee().profile.name}</Link>.</div>,
+              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> has referred a bussiness opportunity to {activity.property.referee()?<Link to={"/@"+activity.property.referee().username}>{activity.property.referee().profile.name}</Link>:''}.</div>,
               // introA: activity.property.acceptor().profilePic(),
               // introB: activity.property.referee().profilePic()
             })
             break;
           case "received-referral":
             this.setState({
-              message: <div><Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link> has accepted being referred to <Link to={"/@"+activity.property.referee().username}>{activity.property.referee().profile.name}</Link>.</div>,
+              message: <div>{(activity.property.acceptor())?<Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link>:''} has accepted being referred to {activity.property.referee()?<Link to={"/@"+activity.property.referee().username}>{activity.property.referee().profile.name}</Link>:''}.</div>,
               // introA: activity.property.acceptor().profilePic(),
               // introB: activity.property.referee().profilePic()
             })
@@ -284,7 +342,7 @@ export class FeedCard extends Component{
           case "recommendation":
             this.setState({
               message: <div>
-                <Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> recommended <Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link>.
+                <Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> recommended {activity.property.acceptor()?<Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link>:''}.
                 <blockquote>{activity.property.recommendation}</blockquote>
                 {(activity.property.skills.length>0)?activity.property.skills.map((skill,i) => <Skill key={i} skill={skill} />):''}
                 </div>
@@ -292,7 +350,7 @@ export class FeedCard extends Component{
             break;
           case "invite":
             this.setState({
-              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> invited <Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link> to join <strong className="text-primary">FRN</strong>.</div>
+              message: <div><Link to={"/@"+activity.user.username}>{activity.user.profile.name}</Link> invited {activity.property.acceptor()?<Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link>:''} to join <strong className="text-primary">FRN</strong>.</div>
             })
             break;
         }
@@ -301,10 +359,6 @@ export class FeedCard extends Component{
   }
 
   render(){
-    let liked = '';
-    if (this.props.liked){
-      liked = "liked"
-    }
     let activity = this.props.activity;
     return <div className="card card-blog feed">
       <div className="card-header">
@@ -347,9 +401,11 @@ export class FeedCard extends Component{
           </div>:''}
           <div className="footer">
             <div className="engagement row text-center">
-            <div className="col-xs-6"><i className={"material-icons " + liked}>thumb_up_alt</i> {this.state.points} <i className="material-icons">thumb_down_alt</i></div>
-            <div className="col-xs-6"><i className="material-icons">chat_bubble</i> {this.state.comments}</div>
-            {/* <div className="col-xs-4"><i className="material-icons">share</i> {this.state.shares}</div> */}
+            <div className="col-xs-4"><i className={"material-icons " + this.state.upvote} onClick={this.vote(1)}>thumb_up_alt</i> {this.state.votes} <i className={"material-icons " + this.state.downvote} onClick={this.vote(-1)}>thumb_down_alt</i></div>
+            <div className="col-xs-4"><i className="material-icons">chat_bubble</i> {this.state.comments}</div>
+            <div className="col-xs-4">
+            {/* <i className="material-icons">share</i> {this.state.shares} */}
+            </div>
 	    	      </div>
             </div>
           </div>

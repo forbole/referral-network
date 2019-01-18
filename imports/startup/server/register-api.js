@@ -7,6 +7,8 @@ import '../../api/activities/activities.js';
 import '../../api/activities/server/methods.js';
 import '../../api/activities/server/publications.js';
 
+import '../../api/votes/server/methods.js';
+
 import '../../api/recommendations/server/methods.js';
 import '../../api/recommendations/server/publications.js';
 

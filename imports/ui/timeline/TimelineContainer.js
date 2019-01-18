@@ -36,6 +36,7 @@ export default TimelineContainer = withTracker((props) => {
                     timeline[t].property = Recommendations.findOne({_id:propId});
                     break;
             }
+
         }
         // subscriptionDone = true;
     }
