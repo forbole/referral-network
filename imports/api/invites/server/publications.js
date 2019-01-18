@@ -7,7 +7,7 @@ publishComposite('invites.findOne', function(invitationId) {
   check(invitationId, String);
   return {
       find() {
-          return Invites.find({ _id: invitationId }, {fields:{upvotes:0, downvotes:0});
+          return Invites.find({ _id: invitationId }, {fields:{upvotes:0, downvotes:0}});
       },
       children: [
         {
