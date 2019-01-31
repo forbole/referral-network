@@ -85,6 +85,12 @@ class ProfileEdit extends Component {
           Meteor.call('images.updateCover', fileObj._id, (err, result) => {
             if (err){
               console.log(err);
+              // toast.error(err);
+            }
+
+            if (result){
+              console.log(result);
+              toast.success(result);
             }
           });
         }
@@ -92,6 +98,11 @@ class ProfileEdit extends Component {
           Meteor.call('images.updateProfilePic', fileObj._id, (err, result) => {
             if (err){
               console.log(err);
+              // toast.error(err);
+            }
+            if (result){
+              console.log(result);
+              toast.success(result);
             }
           });
         }
@@ -112,7 +123,9 @@ class ProfileEdit extends Component {
       });
 
       uploadInstance.on('error', function (error, fileObj) {
+        // console.log(error);
         console.log('Error during upload: ' + error);
+        toast.error(error.message);
       });
 
       uploadInstance.on('progress', function (progress, fileObj) {
