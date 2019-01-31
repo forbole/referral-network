@@ -475,10 +475,30 @@ export class BlogCard extends Component{
 export class ProfileUserControl extends Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      connected: false
+    }
   }
 
   componentDidMount(){
-    $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
+
+    Meteor.call('connections.connected', this.props.userId, (err, result) => {
+
+      if (err){
+        console.log(err);
+      }
+      if (result){
+        this.setState({
+          connected: true
+        }, (err, result) => {
+          $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
+        })
+      }
+      else{
+        $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
+      }
+    });
   }
 
   render(){
@@ -486,25 +506,27 @@ export class ProfileUserControl extends Component {
       backgroundImage: 'url('+this.props.picture+')'
     }
     return (<div className="profile row">
-      <div className="col-xs-6 col-xs-offset-3">
-         <div className="">
-              <div className="avatar img-circle img-raised" style={bg}>
-              </div>
-          </div>
+        <div className="col-xs-4 follow">
+          {(this.props.userId != Meteor.userId()) && this.state.connected?<Link to={"/refer/"+this.props.username} className="btn btn-fab btn-primary" rel="tooltip" title={"Refer "+this.props.firstname}>
+                  <i className="material-icons">all_inclusive</i>
+              </Link>:''}
         </div>
-        <div className="col-xs-3 follow">
-          {(this.props.userId != Meteor.userId())?
-           (<Link to={"/recommend/"+this.props.username} className="btn btn-fab btn-primary" rel="tooltip" title={"Recommend "+this.props.firstname}>
-                  <i className="material-icons">add</i>
-              </Link>):''}
-              {(this.props.edit)?<div className="fileinput profile text-center" data-provides="fileinput" rel="tooltip" title="Replace profile picture">
-                <div>
-                  <span className="btn btn-fab btn-info btn-file">
-                    <i className="material-icons">insert_emoticon</i>
-                    <input type="file" name="profile" />
-                  </span>
-                </div>
-              </div>:''}
+        <div className="col-xs-4">
+            <div className="avatar img-circle img-raised" style={bg}></div>
+        </div>
+        <div className="col-xs-4 follow">
+            {(this.props.userId != Meteor.userId())?
+            (<Link to={"/recommend/"+this.props.username} className="btn btn-fab btn-primary" rel="tooltip" title={(this.state.connected?'Recommend ':'Connect ')+this.props.firstname}>
+                    <i className="material-icons">{this.state.connected?'how_to_reg':'add'}</i>
+                </Link>):''}
+            {(this.props.edit)?<div className="fileinput profile text-center" data-provides="fileinput" rel="tooltip" title="Replace profile picture">
+              <div>
+                <span className="btn btn-fab btn-info btn-file">
+                  <i className="material-icons">insert_emoticon</i>
+                  <input type="file" name="profile" />
+                </span>
+              </div>
+            </div>:''}
         </div>
         <div className="name col-xs-12">
             <h4 className="title">{this.props.name}</h4>

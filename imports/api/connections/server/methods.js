@@ -24,5 +24,16 @@ Meteor.methods({
     else{
       return -1;
     }
+  },
+  'connections.connected'(userId){
+    check(userId, String);
+
+    let connection = Connections.findOne( { users : { $all : [this.userId, userId] } } );
+
+    if (connection){
+      return true;
+    }
+
+    return false;
   }
 });
