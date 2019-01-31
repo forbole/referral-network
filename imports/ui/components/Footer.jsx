@@ -42,7 +42,7 @@ const Footer = (props) => {
         <nav className="navbar navbar-default navbar-fixed-bottom visible-xs-block mobile-menu">
           <ul className="nav navbar-nav">
             <li className={(path == '/')?"active":""}><Link to="/"><i className="material-icons">home</i></Link></li>
-            <li className={(path == '/connections')?"active":""}><Link to="/connections"><i className="material-icons">device_hub</i></Link></li>
+            <li className={(path == '/connections')?"active":""}><Link to="/connections"><i className="material-icons">people</i></Link></li>
             <li className={(path == '/@:username/contributions')?"active":""}><Link to={"/@"+Meteor.user().username+"/contributions"}><i className="material-icons">fingerprint</i></Link></li>
             <li className={(path == '/@:username?')?"active":""}><Link to={"/@"+Meteor.user().username}><i className="material-icons">face</i></Link></li>
             <li className={(path == '/settings')?"active":""}><Link to="/settings"><i className="material-icons">settings</i></Link></li>
