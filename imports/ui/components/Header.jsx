@@ -51,7 +51,7 @@ class Header extends Component {
                   </li>
                   <li>
                     <Link to="/connections">
-                      <i className="material-icons">device_hub</i> Connections
+                      <i className="material-icons">people</i> Connections
                               </Link>
                   </li>
                   {/* <li>

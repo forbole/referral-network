@@ -78,7 +78,7 @@ h6{
   padding: 0;
 }
 .default{
-  padding-top: 50px;
+  padding-top: 56px;
 }
 
 .mansory {
@@ -543,7 +543,15 @@ h4.token-name{
   }
 
   h1, .h1, .presentation-page .brand h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
+  }
+
+  .invite-lead {
+    text-align: center;
+  }
+
+  .invite-lead span{
+    display: inline-block;
   }
 
   .navbar-primary .header ul.main-menu{

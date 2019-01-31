@@ -14,7 +14,7 @@ class Connections extends Component {
     else{
     return <div>
       <div className="container">
-        <div><Link to="/invite" className="btn btn-primary btn-round">Invite</Link> connections and get rewards.</div>
+        <div className="invite-lead"><Link to="/invite" className="btn btn-primary btn-round">Invite</Link> <span>your trusted friends and grow your Contribution Scores.</span></div>
         <div className="row connections">
           <div className="col-md-12">
             </div>
