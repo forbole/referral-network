@@ -231,6 +231,10 @@ textarea#recommendation {
   background-image: none !important;
 }
 
+.single-reco{
+  margin-top: 1em;
+}
+
 div.progress.input{
   height: 2px;
 }

@@ -13,11 +13,11 @@ Meteor.publish('recommendations.all', function () {
 // });
 
 
-publishComposite('recommendations.findOne', function(recommendationId) {
+publishComposite('recommendations.findOne', function(recommendationId, accepted = false) {
   check(recommendationId, String);
   return {
       find() {
-          return Recommendations.find({ _id: recommendationId }, {fields:{upvotes:0, downvotes:0}});
+          return Recommendations.find({ _id: recommendationId, accepted: accepted }, {fields:{upvotes:0, downvotes:0}});
       },
       children: [
         {

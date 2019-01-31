@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 export const Loading = ({size = 42}) => (
   <img src="/img/loading.svg" height={size} width={size} />
@@ -63,6 +64,24 @@ export class RecommendationCard extends Component {
   constructor(props){
     super(props);
   }
+
+  handleShareLink = (e) =>{
+    e.preventDefault();
+    // console.log(e.target.dataset.link);
+
+    const el = document.createElement('textarea');
+    el.value = e.target.dataset.link;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    toast.success("The share URL has been copied to clipboard.");
+  }
+
   render(){
     let bg = {
       backgroundImage: 'url('+this.props.picture+')'
@@ -91,6 +110,9 @@ export class RecommendationCard extends Component {
             </div>:''}
             {(this.props.acceptButton)?<div className="footer">
               <Link to={"/recommendation/accept/"+this.props.recoId} className="btn btn-primary">Response</Link>
+            </div>:''}
+            {(this.props.share && (this.props.acceptor != ''))?<div className="footer">
+              <Link to="#" onClick={this.handleShareLink}><i className="material-icons" data-link={Meteor.settings.public.host+"/@"+this.props.acceptor+"/recommendation/"+this.props.recoId}>share</i></Link>
             </div>:''}
         </div>
       </div>

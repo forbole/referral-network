@@ -61,6 +61,7 @@ class RecommendationList extends Component {
                             key={i}
                             recoId={reco._id}
                             username={reco.creator().username}
+                            acceptor={reco.acceptor().username}
                             picture={reco.creator().profilePic()}
                             createdBy={reco.creator().profile.name}
                             title={reco.creator().profile.position}
@@ -69,11 +70,14 @@ class RecommendationList extends Component {
                             event={reco.event}
                             createdAt={reco.createdAt}
                             acceptButton={(reco.acceptor()) ? false : true}
+                            share={true}
                         />) : '' :
                         (this.state.recos.length > 0) ? this.state.recos.map((reco, i) =>
                             <RecommendationCard
                                 key={i}
+                                recoId={reco._id}
                                 username={(reco.acceptor()) ? reco.acceptor().username : ''}
+                                acceptor={(reco.acceptor()) ? reco.acceptor().username : ''}
                                 picture={(reco.acceptor()) ? reco.acceptor().profilePic() : '/img/faces/default-profile.svg'}
                                 createdBy={(reco.acceptor()) ? reco.acceptor().profile.name : reco.toName}
                                 title={(reco.acceptor()) ? reco.acceptor().profile.position : ''}
@@ -82,6 +86,7 @@ class RecommendationList extends Component {
                                 event={reco.event}
                                 createdAt={reco.createdAt}
                                 notAccepted={(reco.acceptor()) ? false : true}
+                                share={true}
                             />) : ''}
                 </div>
             </div>)

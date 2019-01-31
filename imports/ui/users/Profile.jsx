@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import { ProfileUserControl } from '/imports/ui/components/ForboleComponents.jsx';
 import RecommendationList from '/imports/ui/users/RecommendationListContainer.js';
+import Recommendation from '/imports/ui/users/RecommendationContainer.js';
 import Skills from '/imports/ui/users/SkillsContainer.js';
 import BlogList from '/imports/ui/users/BlogList.jsx';
 import Wallet from '/imports/ui/users/Wallet.jsx';
@@ -84,10 +85,11 @@ class Profile extends Component {
                 </ul>
                </nav>
                 <Switch>
-                  <Route path='/@:username' exact={true} render={() => <RecommendationList username={this.props.match.params.username}/>} />
-                  <Route path='/@:username/skills' exact={true} render={() => <Skills username={this.props.match.params.username} />} />
-                  <Route path='/@:username/blog' exact={true} render={() => <BlogList />} />
-                  <Route path='/@:username/wallet' exact={true} render={() => <Wallet />} />
+                  <Route path='/@:username/recommendation/:id' exact component={Recommendation} />
+                  <Route path='/@:username' exact render={() => <RecommendationList username={this.props.match.params.username}/>} />
+                  <Route path='/@:username/skills' exact render={() => <Skills username={this.props.match.params.username} />} />
+                  <Route path='/@:username/blog' exact render={() => <BlogList />} />
+                  <Route path='/@:username/wallet' exact render={() => <Wallet />} />
                 </Switch>
             </div>
           </div>
