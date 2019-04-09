@@ -7,7 +7,7 @@ import { Referrals } from '../../api/referrals/referrals.js';
 import { Recommendations } from '../../api/recommendations/recommendations.js';
 
 export default TimelineContainer = withTracker((props) => {
-    const activitiesHandle = Meteor.subscribe('activities.timeline', 10);
+    const activitiesHandle = Meteor.subscribe('activities.timeline', 50);
     let loading = !activitiesHandle.ready(); 
     // let connections = 
     let timeline = Activities.find({}).fetch();

@@ -7,10 +7,8 @@ Referrals.helpers({
     return Meteor.users.findOne(this.createdBy);
   },
   acceptor(){
-    if (this.acceptUserId)
+    if (this.acceptUserId){
       return Meteor.users.findOne(this.acceptUserId);
-    else {
-      return this.name;
     }
   },
   referee(){

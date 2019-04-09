@@ -34,5 +34,15 @@ Meteor.methods({
     else{
       throw new Meteor.Error('not-authorized', "You are not authorized to do this.");
     }
+  },
+  'users.getName': function(userId){
+    let user = Meteor.users.find({_id:userId}, {profile: 1});
+
+    if (user){
+      return user.profile.name
+    }
+    else{
+      return "(no name)"
+    }
   }
 })

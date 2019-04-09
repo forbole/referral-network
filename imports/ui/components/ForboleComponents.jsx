@@ -299,6 +299,7 @@ export class FeedCard extends Component{
       let activity = this.props.activity;
       
       if (activity.property && activity.user){
+          console.log(activity);
         if (activity.property.votes != undefined){
           this.setState({
             votes: activity.property.votes
@@ -356,7 +357,7 @@ export class FeedCard extends Component{
             break;
           case "received-referral":
             this.setState({
-              message: <div>{(activity.property.acceptor())?<Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link>:''} has accepted being referred to {activity.property.referee()?<Link to={"/@"+activity.property.referee().username}>{activity.property.referee().profile.name}</Link>:''}.</div>,
+              message: <div>{(activity.property.referee())?<Link to={"/@"+activity.property.referee().username}>{activity.property.referee().profile.name}</Link>:''} has accepted being referred to {activity.property.acceptor()?<Link to={"/@"+activity.property.acceptor().username}>{activity.property.acceptor().profile.name}</Link>:activity.property.name}.</div>,
               // introA: activity.property.acceptor().profilePic(),
               // introB: activity.property.referee().profilePic()
             })
